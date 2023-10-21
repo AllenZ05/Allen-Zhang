@@ -9,7 +9,7 @@ Other: Node, npm, Axios, Postman, Firebase, CVAT |
 Tools: Git, Github, VSCode |
 
 
-Courses: CS12 - CodeCademy - ECE150 - FreeCodeCamp - Odin Project | 
+Courses: CS12 - CodeCademy - ECE150 - FreeCodeCamp - Odin Project | Full Stack Open
 
 Projects: Movie Website | Python Games - Object Detection - Renterloo 
 
