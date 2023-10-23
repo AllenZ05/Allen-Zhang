@@ -4,9 +4,13 @@ Coding Journey:
 
 Languages: HTML - CSS - JS - Vue - Vite - C++ - Python - React | C, C# 
 
-Other: Node, npm, Axios, Postman, Firebase, CVAT |
+Frameworks/Libraries: Vite.js, Vue.js, React.js, PyTorch | 
 
-Tools: Git, Github, VSCode |
+Other: Node - npm - Axios - Postman - Firebase - CVAT |
+
+Tools: Git - Github - VSCode |
+
+Misc: STM32 - STM32CubeIDE | 
 
 
 Courses: CS12 - CodeCademy - ECE150 - FreeCodeCamp - Odin Project | Full Stack Open
