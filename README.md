@@ -4,7 +4,7 @@ Coding Journey:
 
 Languages: HTML - CSS - JS - Vue - Vite - C++ - Python - React | C, C# 
 
-Frameworks/Libraries: Vite.js, Vue.js, React.js, PyTorch | 
+Frameworks/Libraries: Vite.js, Vue.js, React.js, PyGame, PyTorch | 
 
 Other: Node - npm - Axios - Postman - Firebase - CVAT |
 
@@ -13,7 +13,7 @@ Tools: Git - Github - VSCode |
 Misc: STM32 - STM32CubeIDE | 
 
 
-Courses: CS12 - CodeCademy - ECE150 - FreeCodeCamp - Odin Project | Full Stack Open
+Courses: CS12 - CodeCademy - ECE150 - FreeCodeCamp - Odin Project |
 
 Projects: Movie Website | Python Games - Object Detection - Renterloo 
 
