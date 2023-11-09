@@ -1,11 +1,11 @@
 import "./HeroHome.css";
-import Herobg from "../assets/heroHome-bg.jpeg";
+import HeroHomebg from "../assets/heroHome-bg.jpg";
 
 const Hero = () => {
   return (
     <div className="hero-home">
       <div className="images">
-        <img className="background-img" src={Herobg} alt="Background Image" />
+        <img className="background-img" src={HeroHomebg} alt="Background Image" />
       </div>
       <div className="hero-content">
         <p>Hi there, I am</p>
