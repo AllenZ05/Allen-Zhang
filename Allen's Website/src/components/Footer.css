@@ -1,0 +1,42 @@
+.footer {
+  width: 100%;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.initials,
+.copyright {
+  display: flex;
+  margin: 0.1rem;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 100%;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.quote {
+    text-align: center;
+    margin: 0.1rem;
+}
+
+p {
+    font-size: 1.1rem;
+    font-weight: 200;
+}
