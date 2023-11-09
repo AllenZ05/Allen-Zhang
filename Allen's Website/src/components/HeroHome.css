@@ -1,15 +1,15 @@
-.hero {
+.hero-home {
   height: 100%;
   width: 100%;
 }
 
-.images {
+.hero-home .images {
   height: 100vh;
   width: 100%;
   position: relative;
 }
 
-.background-img {
+.hero-home .images .background-img {
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -17,7 +17,7 @@
   object-fit: cover;
 }
 
-.images::after {
+.hero-home .images::after {
   content: "";
   position: absolute;
   height: 100%;
@@ -28,7 +28,7 @@
   opacity: 0.25;
 }
 
-.content {
+.hero-content {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -36,13 +36,13 @@
   text-align: center;
 }
 
-.content h1 {
+.hero-content h1 {
   font-size: 4rem;
   font-weight: 700;
-  padding: 1rem; 
+  padding: 1rem;
 }
 
-.content p {
+.hero-content p {
   font-size: 1.5rem;
   font-weight: 200;
 }
