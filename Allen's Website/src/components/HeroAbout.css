@@ -1,0 +1,52 @@
+.hero-about {
+  height: 100%;
+  width: 100%;
+}
+
+.hero-about .images {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.hero-about .images .background-img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.hero-about .images::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.2;
+}
+
+.about-content {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  text-align: center;
+
+  background-color: rgba(0, 0, 255, 0.25); 
+  padding: 1rem;
+
+}
+
+.about-content h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.about-content p {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
