@@ -48,16 +48,16 @@ const MainProjects = () => {
         </div>
         <div className="project4 project">
           <div className="project-content">
-            <h3>Mineseeker</h3>
+            <h3>Minesweeper</h3>
             <p>
-              Developed a Mineseeker like game, inspired by the classic Minesweeper game. Except it has a Waterloo twist
+              Developed a Minesweeper like game, inspired by the classic Minesweeper game. Except it has a Waterloo twist
               (as the University of Waterloo is known for having tons of Canadian Geese). It asks the user to enter the
               number of rows, columns, and geese on the board. The user then has to try to win the game by clearing all
               tiles without a goose.
             </p>
             <p>Tech stack: C++</p>
             <p>
-              <a href="https://github.com/AllenZ05/Mineseeker" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/AllenZ05/Minesweeper" target="_blank" rel="noopener noreferrer">
                 Github Repo
               </a>
             </p>
