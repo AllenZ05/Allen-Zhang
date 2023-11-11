@@ -9,7 +9,7 @@ const HeroProjects = () => {
       </div>
       <div className="projects-content">
         <h2>Projects</h2>
-        <p>TODO</p>
+        <p>My Projects</p>
       </div>
     </div>
   );

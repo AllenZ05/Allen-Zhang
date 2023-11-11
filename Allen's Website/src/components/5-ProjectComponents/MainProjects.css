@@ -1,4 +1,4 @@
-.projects {
+.my-projects {
   height: 100%;
   width: 100%;
   margin: 0 auto;
@@ -14,12 +14,22 @@
   align-items: center;
 }
 
-.project1,
-.project2,
-.project3 {
-  margin: 3rem;
+.project {
+  margin: 2rem 3rem;
   border: 0.2rem solid blue;
-  padding: 2rem 5rem;
+  padding: 2rem 5rem 1rem 5rem;
+}
+
+.project a:link {
+  color: blue;
+}
+
+.project a:visited {
+  color: purple;
+}
+
+.project a:hover {
+  color: red;
 }
 
 .projects-container h3 {
@@ -33,4 +43,5 @@
   font-size: 1.2rem;
   font-weight: 200;
   text-align: center;
+  margin: 1rem; 
 }
