@@ -1,5 +1,5 @@
 import "./HeroProjects.css";
-import HeroProjectsbg from "../assets/heroProjects-bg.jpg";
+import HeroProjectsbg from "../../assets/heroProjects-bg.jpg";
 
 const HeroProjects = () => {
   return (

@@ -1,6 +1,6 @@
-import Navbar from "../components/Navbar";
-import HeroHome from "../components/HeroHome";
-import Footer from "../components/Footer";
+import Navbar from "../components/1-NavComponents/Navbar";
+import HeroHome from "../components/3-HomeComponents/HeroHome";
+import Footer from "../components/2-FooterComponents/Footer";
 
 const Home = () => {
   return (

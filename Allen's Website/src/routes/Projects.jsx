@@ -1,7 +1,7 @@
-import Navbar from "../components/Navbar";
-import HeroProjects from "../components/HeroProjects";
-import MainProjects from "../components/MainProjects";
-import Footer from "../components/Footer";
+import Navbar from "../components/1-NavComponents/Navbar";
+import HeroProjects from "../components/5-ProjectComponents/HeroProjects";
+import MainProjects from "../components/5-ProjectComponents/MainProjects";
+import Footer from "../components/2-FooterComponents/Footer";
 
 const Projects = () => {
   return (
