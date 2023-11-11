@@ -1,13 +1,15 @@
 import Navbar from "../components/Navbar";
+import HeroMore from "../components/HeroMore";
 import Footer from "../components/Footer";
 
-const Contact = () => {
+const More = () => {
   return (
     <div>
       <Navbar />
+      <HeroMore />
       <Footer />
     </div>
   );
 };
 
-export default Contact;
+export default More;

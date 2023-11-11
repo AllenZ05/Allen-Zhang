@@ -4,7 +4,7 @@
 
 .footer .sections {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: 0 auto;
 }
 
@@ -21,6 +21,49 @@
   display: flex;
   margin: 0.1rem;
 }
+
+.sections .middle {
+  display: flex;
+  height: 100%;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.1rem;
+}
+
+.socials button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.socials button:focus {
+  outline: none;
+}
+
+.icon {
+  color: white;
+  margin: 0.5rem;
+  font-size: 1.5em;
+}
+
+/* Ensure buttons have no border or background */
+.footer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footer button:focus {
+  outline: none;
+}
+
+
 
 .sections .right-side {
   display: flex;
