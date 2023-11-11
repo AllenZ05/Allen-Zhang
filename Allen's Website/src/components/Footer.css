@@ -8,6 +8,7 @@
   margin: 0 auto;
 }
 
+/* Left Side */
 .sections .left-side {
   display: flex;
   flex-direction: column;
@@ -22,49 +23,32 @@
   margin: 0.1rem;
 }
 
+/* Middle */
 .sections .middle {
-  display: flex;
   height: 100%;
-  max-width: 100%;
-  padding: 1rem;
+  width: 100%;
 }
 
 .socials {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.1rem;
 }
 
-.socials button {
+.socials button,
+.socials a {
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.socials button:focus {
-  outline: none;
 }
 
 .icon {
   color: white;
-  margin: 0.5rem;
+  margin: 1rem;
   font-size: 1.5em;
 }
 
-/* Ensure buttons have no border or background */
-.footer button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.footer button:focus {
-  outline: none;
-}
-
-
-
+/* Right Side */
 .sections .right-side {
   display: flex;
   flex-direction: column;
