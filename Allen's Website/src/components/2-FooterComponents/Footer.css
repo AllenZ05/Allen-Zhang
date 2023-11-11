@@ -40,6 +40,13 @@
   background: none;
   border: none;
   cursor: pointer;
+
+  transition: transform 250ms; 
+}
+
+.socials button:hover,
+.socials a:hover {
+  transform: scale(1.2);
 }
 
 .icon {
