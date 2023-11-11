@@ -11,7 +11,7 @@ const MainProjects = () => {
               Designed and developed a personal website to learn more about me! Showcases my experiences, projects,
               skills. Will also be a place where I store things I write about. You&apos;re on it right now!
             </p>
-            <p>Tools used: Vite.js, React.js, JavaScript, HTML/CSS</p>
+            <p>Tech stack: Vite.js, React.js, JavaScript, HTML/CSS</p>
             <p>
               <a href="https://github.com/AllenZ05/Personal-Website" target="_blank" rel="noopener noreferrer">Github Repo</a>
             </p>
@@ -42,7 +42,7 @@ const MainProjects = () => {
               emergency contacts and services. Schematic and circuit diagrams were crafted for the entire device,
               optimizing signal flow, ease of assembly, and efficiency
             </p>
-            <p>Tools used: C, C++, STM32, STM32CubeIDE, Accelerometer, GSM Module</p>
+            <p>Tech stack: C, C++, STM32, STM32CubeIDE, Accelerometer, GSM Module</p>
             <p>Currently on STM32CubeIDE, will move to Github later</p>
           </div>
         </div>
@@ -55,7 +55,7 @@ const MainProjects = () => {
               number of rows, columns, and geese on the board. The user then has to try to win the game by clearing all
               tiles without a goose.
             </p>
-            <p>Tools used: C++</p>
+            <p>Tech stack: C++</p>
             <p>
               <a href="https://github.com/AllenZ05/Mineseeker" target="_blank" rel="noopener noreferrer">
                 Github Repo
@@ -73,7 +73,7 @@ const MainProjects = () => {
               <br /> <br />
               2. In progress
             </p>
-            <p>Tools used: Python, Pygame</p>
+            <p>Tech stack: Python, Pygame</p>
             <p>
               <a href="https://github.com/AllenZ05/Python-Games" target="_blank" rel="noopener noreferrer">
                 Github Repo
@@ -91,7 +91,7 @@ const MainProjects = () => {
               Utilized Firebase for user authentication, login management, and storage of liked movies and movie
               watch-list.
             </p>
-            <p>Tools used: Vue.js, JavaScript, HTML/CSS, Firebase, Postman, Axios, TMDb API</p>
+            <p>Tech stack: Vue.js, JavaScript, HTML/CSS, Firebase, Postman, Axios, TMDb API</p>
             <p>
               <a href="https://github.com/AllenZ05/Movie-Project" target="_blank" rel="noopener noreferrer">
                 Github Repo
