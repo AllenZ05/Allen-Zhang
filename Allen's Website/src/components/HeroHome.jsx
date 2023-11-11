@@ -1,7 +1,7 @@
 import "./HeroHome.css";
 import HeroHomebg from "../assets/heroHome-bg.jpg";
 
-const Hero = () => {
+const HeroHome = () => {
   return (
     <div className="hero-home">
       <div className="images">
@@ -15,4 +15,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default HeroHome;
