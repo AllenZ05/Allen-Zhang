@@ -5,7 +5,7 @@ const MainAbout = () => {
     <div className="about-me">
       <div className="sections">
         <div className="introduction">
-          <p className="update">IMPROVEMENTS TO THIS PAGE COMING (when I have time)</p>
+          <p className="update">IMPROVEMENTS + MORE INFO TO THIS PAGE COMING (when I have time)</p>
           <h3>Introduction</h3>
           <p>
             My name is Allen. I am currently a first year student attending the University of Waterloo, as a Candidate
@@ -15,7 +15,6 @@ const MainAbout = () => {
           <p>An ambitious individual, with a mission to change the world the best I can. </p>
           <br />
           <p>Location: Toronto, Canada</p>
-          <p>Birthday: November 22 2005</p>
         </div>
         <div className="coding">
           <h3>Coding</h3>
