@@ -28,7 +28,7 @@
   opacity: 0.25;
 }
 
-.projects-content {
+.hero-projects .description {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -36,17 +36,13 @@
   text-align: center;
 }
 
-.projects-content h2 {
+.hero-projects .description h2 {
   font-size: 3rem;
   font-weight: 700;
   padding: 1rem;
 }
 
-.projects-content p {
+.hero-projects .description p {
   font-size: 1.5rem;
   font-weight: 200;
 }
-
-
-
-

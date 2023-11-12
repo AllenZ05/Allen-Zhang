@@ -28,7 +28,7 @@
   opacity: 0.25;
 }
 
-.home-content {
+.hero-home .description {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -36,7 +36,7 @@
   text-align: center;
 }
 
-.home-content h1 {
+.hero-home .description h1 {
   font-size: 4rem;
   font-weight: 700;
   padding: 1rem;

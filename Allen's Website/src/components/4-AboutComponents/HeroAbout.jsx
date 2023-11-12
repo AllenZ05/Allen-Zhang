@@ -7,7 +7,7 @@ const HeroAbout = () => {
       <div className="images">
         <img className="background-img" src={HeroAboutbg} alt="Background Image" />
       </div>
-      <div className="about-content">
+      <div className="description">
         <h2>About me</h2>
         <p>Hello! :)</p>
       </div>

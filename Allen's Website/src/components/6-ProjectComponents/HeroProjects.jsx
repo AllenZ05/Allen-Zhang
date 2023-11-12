@@ -7,7 +7,7 @@ const HeroProjects = () => {
       <div className="images">
         <img className="background-img" src={HeroProjectsbg} alt="Background Image" />
       </div>
-      <div className="projects-content">
+      <div className="description">
         <h2>Projects</h2>
         <p>My Projects</p>
       </div>
