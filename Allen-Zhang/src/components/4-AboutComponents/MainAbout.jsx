@@ -14,7 +14,7 @@ const MainAbout = () => {
           <br />
           <p>An ambitious individual, with a mission to change the world the best I can. </p>
           <br />
-          <p>Location: Toronto, Canada</p>
+          <p>I live in Toronto, Canada</p>
         </div>
         <div className="coding">
           <h3>Coding</h3>

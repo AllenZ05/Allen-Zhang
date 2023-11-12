@@ -70,7 +70,7 @@ const MainExperiences = () => {
           <div className="experience-info">
             <h3 className="job-title">Data Entry And Logistics Operator</h3>
             <h5>Somerville Merchandising</h5>
-            <h6>Waterloo, ON</h6>
+            <h6>Toronto, ON</h6>
             <h6>Sep 2021 - Feb 2022</h6>
           </div>
           <div className="experience-description">
