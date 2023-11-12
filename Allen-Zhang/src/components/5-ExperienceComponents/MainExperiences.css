@@ -1,0 +1,71 @@
+.my-experiences {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, rgb(65, 65, 190), rgb(35, 50, 165) 60%, rgba(0, 0, 0, 0.7)),
+    linear-gradient(to right, rgba(0, 0, 0, 0.7), rgb(35, 50, 165) 20%, rgb(35, 50, 165) 80%, rgba(0, 0, 0, 0.7));
+  background-blend-mode: multiply;
+}
+
+.experiences-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.experience {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+
+  margin: 2rem 3rem;
+  border: 0.2rem solid blue;
+  padding: 2rem 5rem 1rem 5rem;
+}
+
+.experience a:link {
+  color: blue;
+}
+
+.experience a:visited {
+  color: purple;
+}
+
+.experience a:hover {
+  color: red;
+}
+
+.experience-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure it takes the full height of the grid cell */
+}
+
+.job-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 3rem;
+  text-align: center;
+}
+
+.experience h5 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 2rem;
+  text-align: center;
+}
+
+.experience h6 {
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+.experience p {
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin: 1rem;
+}

@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: color 0.3s; 
+}
+
+.nav {
+  display: flex;
+}
+
+.nav li {
+  padding: 0 1rem;
+}
+
+.nav li a {
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.3s; 
+}
+
+.nav li a:hover,
+.header h2:hover {
+  color: blue; 
+}

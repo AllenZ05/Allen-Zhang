@@ -1,0 +1,30 @@
+/* App Styles */
+
+body {
+  background-color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  color: white;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* .btn {
+    For Future Buttons
+  } 
+  
+  .btn:hover {
+    For Future Buttons
+  } 
+*/

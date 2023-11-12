@@ -1,0 +1,48 @@
+.hero-projects {
+  height: 100%;
+  width: 100%;
+}
+
+.hero-projects .images {
+  height: 90vh;
+  width: 100%;
+  position: relative;
+}
+
+.hero-projects .images .background-img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.hero-projects .images::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: purple;
+  opacity: 0.25;
+}
+
+.hero-projects .description {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  text-align: center;
+}
+
+.hero-projects .description h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.hero-projects .description p {
+  font-size: 1.5rem;
+  font-weight: 200;
+}

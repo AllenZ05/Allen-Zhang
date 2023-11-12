@@ -1,0 +1,43 @@
+.about-me {
+  height: 100%;
+  width: 100%;
+}
+
+.about-me .sections {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  margin: 3rem;
+}
+
+.introduction,
+.coding,
+.misc {
+  margin: 0.5rem 3rem 2rem 3rem;
+}
+
+.sections h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 1.5rem;
+}
+
+.sections h4 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 1.5rem;
+}
+
+.sections p {
+  font-weight: 200;
+  margin: 0.2rem;
+}
+
+.update {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: 200;
+}

@@ -1,0 +1,44 @@
+.hero-home {
+  height: 100%;
+  width: 100%;
+}
+
+.hero-home .images {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.hero-home .images .background-img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.hero-home .images::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.25;
+}
+
+.hero-home .description {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  text-align: center;
+}
+
+.hero-home .description h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+

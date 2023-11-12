@@ -1,0 +1,76 @@
+.footer {
+  width: 100%;
+}
+
+.footer .sections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+}
+
+/* Left Side */
+.sections .left-side {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.initials,
+.copyright {
+  display: flex;
+  margin: 0.1rem;
+}
+
+/* Middle */
+.sections .middle {
+  height: 100%;
+  width: 100%;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socials button,
+.socials a {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  transition: transform 250ms; 
+}
+
+.socials button:hover,
+.socials a:hover {
+  transform: scale(1.2);
+}
+
+.icon {
+  color: white;
+  margin: 1rem;
+  font-size: 1.5em;
+}
+
+/* Right Side */
+.sections .right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 100%;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.quote {
+  text-align: center;
+  margin: 0.1rem;
+}
+
+.quote p {
+  font-size: 1.1rem;
+  font-weight: 200;
+}

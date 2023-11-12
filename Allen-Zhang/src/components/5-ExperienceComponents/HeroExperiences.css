@@ -1,0 +1,48 @@
+.hero-experiences {
+  height: 100%;
+  width: 100%;
+}
+
+.hero-experiences .images {
+  height: 90vh;
+  width: 100%;
+  position: relative;
+}
+
+.hero-experiences .images .background-img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.hero-experiences .images::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: white;
+  opacity: 0.05;
+}
+
+.hero-experiences .description {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  text-align: center;
+}
+
+.hero-experiences .description h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.hero-experiences .description p {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
