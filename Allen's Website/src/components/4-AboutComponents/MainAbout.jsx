@@ -5,11 +5,13 @@ const MainAbout = () => {
     <div className="about-me">
       <div className="sections">
         <div className="introduction">
+          <p className="update">IMPROVEMENTS TO THIS PAGE COMING (when I have time)</p>
           <h3>Introduction</h3>
           <p>
             My name is Allen. I am currently a first year student attending the University of Waterloo, as a Candidate
             for BASc in Computer Engineering.
           </p>
+          <br />
           <p>Location: Toronto, Canada</p>
           <p>Birthday: November 22 2005</p>
         </div>
@@ -52,10 +54,6 @@ const MainAbout = () => {
           <div className="interests">
             <h4>Interests</h4>
             <p>Software, Hardware, Technology, Space, Design, Business, Management, Sports, History, Medical Science</p>
-          </div>
-          <div className="hobbies">
-            <h4>Hobbies</h4>
-            <p>Traveling, playing sports, playing games</p>
           </div>
         </div>
       </div>
