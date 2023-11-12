@@ -74,10 +74,8 @@ const MainExperiences = () => {
             <h6>Sep 2021 - Feb 2022</h6>
           </div>
           <div className="experience-description">
-            <p>
-              Used Excel to enter and keep track of daily transactions, ensuring up-to-date and accurate data. Used
-              Oracle Transportation Management to optimize and plan delivery routes for truck teams
-            </p>
+            <p>Used Excel to enter and keep track of daily transactions, ensuring up-to-date and accurate data</p>
+            <p>Used Oracle Transportation Management to optimize and plan delivery routes for truck teams</p>
             <p>Collaborated with the inventory management teams to oversee and control inventory levels</p>
             <br />
             <br />

@@ -12,6 +12,8 @@ const MainAbout = () => {
             for BASc in Computer Engineering.
           </p>
           <br />
+          <p>An ambitious individual, with a mission to change the world the best I can. </p>
+          <br />
           <p>Location: Toronto, Canada</p>
           <p>Birthday: November 22 2005</p>
         </div>
@@ -33,7 +35,7 @@ const MainAbout = () => {
             <p>Dev Tools: Git &rarr; Github &rarr; VSCode |</p>
             <p>Misc: STM32 &rarr; STM32CubeIDE |</p>
             <p>Courses: CS12 &rarr; CodeCademy &rarr; ECE150 &rarr; Odin Project &rarr; FreeCodeCamp |</p>
-            <p>Projects: Movie Website &rarr; Python Games &rarr; Fall Detection Device | Object Detection</p>
+            <p>Projects: Movie Website &rarr; Python and C++ Games &rarr; Fall Detection Device | Object Detection</p>
             <p>Experience: UW Formula Electric Firmware Developer |</p>
           </div>
           <div className="coding-resources">
