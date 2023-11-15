@@ -41,7 +41,7 @@ const Footer = () => {
         <div className="middle">
           <div className="socials">
             {/* Email */}
-            <button onClick={() => copyToClipboard("Email Address", "a367zhan@uwaterloo.ca")} className="email">
+            <button onClick={() => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com")} className="email">
               <MdEmail className="icon email" />
             </button>
             {/* LinkedIn */}
