@@ -38,11 +38,11 @@ const MainProjects = () => {
             <h3>Fall Detection Device</h3>
             <p>
               Engineered a fall detection device with a STM32 microcontroller, tailored to the needs and safety of
-              elderly individuals. An accelerometer-based fall detection algorithm was developed, with an 89% detection
-              rate, and 6% false positive rate through extensive testing and multiple iterations. A GSM module was also
-              integrated to facilitate wireless communication, enabling automatic text messaging and calls to reach
-              emergency contacts and services. Schematic and circuit diagrams were crafted for the entire device,
-              optimizing signal flow, ease of assembly, and efficiency
+              elderly individuals. An accelerometer-based fall detection algorithm was developed using a MPU6050, with
+              an 89% detection rate, and 6% false positive rate through extensive testing and multiple iterations. A GSM
+              module was also integrated to facilitate wireless communication, enabling automatic text messaging and
+              calls to reach emergency contacts and services. Schematic and circuit diagrams were crafted for the entire
+              device, optimizing signal flow, ease of assembly, and efficiency
             </p>
             <p>Tech stack: C, C++, STM32, STM32CubeIDE, Accelerometer, GSM Module</p>
             <p>Currently on STM32CubeIDE, will move to Github later</p>

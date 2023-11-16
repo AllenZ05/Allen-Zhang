@@ -32,7 +32,7 @@ const MainAbout = () => {
             <p>Frameworks/Libraries: Vite.js &rarr; Vue.js &rarr; React.js &rarr; PyGame &rarr; PyTorch |</p>
             <p>Other: Node &rarr; npm &rarr; Axios &rarr; Postman &rarr; Firebase &rarr; CVAT |</p>
             <p>Dev Tools: Git &rarr; Github &rarr; VSCode |</p>
-            <p>Misc: STM32 &rarr; STM32CubeIDE |</p>
+            <p>Misc: STM32 &rarr; STM32CubeIDE &rarr; MPU6050 |</p>
             <p>Courses: CS12 &rarr; CodeCademy &rarr; ECE150 &rarr; Odin Project &rarr; FreeCodeCamp |</p>
             <p>Projects: Movie Website &rarr; Python and C++ Games &rarr; Fall Detection Device | Object Detection</p>
             <p>Experience: UW Formula Electric Firmware Developer |</p>
