@@ -45,7 +45,11 @@ const MainProjects = () => {
               device, optimizing signal flow, ease of assembly, and efficiency
             </p>
             <p>Tech stack: C, C++, STM32, STM32CubeIDE, Accelerometer, GSM Module</p>
-            <p>Currently on STM32CubeIDE, will move to Github later</p>
+            <p>
+              <a href="https://github.com/AllenZ05/Fall-Detection-Device" target="_blank" rel="noopener noreferrer">
+                Github Repo
+              </a>
+            </p>
           </div>
         </div>
         <div className="project4 project">
