@@ -58,6 +58,7 @@
   }
 
   .nav.active {
+    display: none;
     top: 0;
   }
 
