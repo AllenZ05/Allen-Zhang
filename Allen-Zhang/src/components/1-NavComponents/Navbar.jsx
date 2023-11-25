@@ -13,7 +13,7 @@ const Navbar = () => {
       <Link to="/">
         <h2>AllenZ05</h2>
       </Link>
-      <ul className={click ? "nav active" : "nav"}>
+      <ul className={click ? "nav" : "nav default"}>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -32,9 +32,9 @@ const Navbar = () => {
       </ul>
       <div className="hamburger-menu" onClick={handleClick}>
         {click ? (
-          <GiHamburgerMenu size="1.5em" style={{ color: "white", margin: "0.5rem" }} />
-        ) : (
           <FaTimes size="1.5em" style={{ color: "white", margin: "0.5rem" }} />
+        ) : (
+          <GiHamburgerMenu size="1.5em" style={{ color: "white", margin: "0.5rem" }} />
         )}
       </div>
     </div>
