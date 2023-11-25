@@ -1,13 +1,19 @@
 import "./Navbar.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+
   return (
     <div className="header">
       <Link to="/">
         <h2>AllenZ05</h2>
       </Link>
-      <ul className="nav">
+      <ul className={click ? "nav active" : "nav"}>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -24,6 +30,13 @@ const Navbar = () => {
           <Link to="/more">More</Link>
         </li>
       </ul>
+      <div className="hamburger-menu" onClick={handleClick}>
+        {click ? (
+          <FaTimes size="1.5em" style={{ color: "white", margin: "0.5rem" }} />
+        ) : (
+          <GiHamburgerMenu size="1.5em" style={{ color: "white", margin: "0.5rem" }} />
+        )}
+      </div>
     </div>
   );
 };
