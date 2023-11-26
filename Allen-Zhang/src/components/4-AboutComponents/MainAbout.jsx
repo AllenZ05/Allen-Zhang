@@ -21,8 +21,8 @@ const MainAbout = () => {
           <h3>Education</h3>
           <div className="uni">
             <h4>University of Waterloo</h4>
-            <h5>Waterloo, ON</h5>
-            <h6>Computer Engineering</h6>
+            <h6>Waterloo, ON</h6>
+            <h5>Computer Engineering</h5>
             <div className="first-year">
               <h6>First Year</h6>
               <p>Term 1 (Sep 2023 - Dec 2023)</p>
@@ -90,7 +90,10 @@ const MainAbout = () => {
           <h3>Misc</h3>
           <div className="interests">
             <h4>Interests</h4>
-            <p>Software, Hardware, Technology, Space, Design, Business, Management, Sports, History, Medical Science</p>
+            <p>
+              Software, Hardware, Technology, Space, Design, Business, Management, Sports, History, Medical Science,
+              Exploring
+            </p>
           </div>
         </div>
       </div>

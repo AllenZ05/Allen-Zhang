@@ -26,9 +26,10 @@
 }
 
 .introduction,
+.education,
 .coding,
 .misc {
-  margin: 0.5rem 3rem 2rem 3rem;
+  margin: 1rem;
 }
 
 .sections h3 {
@@ -56,6 +57,67 @@
 }
 
 .sections p {
+  font-size: 1rem;
   font-weight: 200;
   margin: 0.5rem;
+}
+
+/** Media Queries */
+
+@media only screen and (max-width: 480px) {
+  .sections h3 {
+    font-size: 1.3rem;
+  }
+  .sections h4 {
+    font-size: 1.1rem;
+  }
+  .sections h5 {
+    font-size: 0.9rem;
+  }
+  .sections h6 {
+    font-size: 0.8rem;
+  }
+  .sections p {
+    font-size: 0.75rem;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .sections h3 {
+    font-size: 1.5rem;
+  }
+  .sections h4 {
+    font-size: 1.2rem;
+  }
+  .sections h5 {
+    font-size: 1.1rem;
+  }
+  .sections h6 {
+    font-size: 1rem;
+  }
+  .sections p {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .sections h3 {
+    font-size: 1.7rem;
+  }
+  .sections h4 {
+    font-size: 1.3rem;
+  }
+  .sections h5 {
+    font-size: 1.2rem;
+  }
+  .sections h6 {
+    font-size: 1.1rem;
+  }
+  .sections p {
+    font-size: 0.95rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  /* Same as default */
 }
