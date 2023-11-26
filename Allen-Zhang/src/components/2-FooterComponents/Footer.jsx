@@ -15,7 +15,7 @@ const Footer = () => {
   const copyToClipboard = async (type, text) => {
     try {
       await navigator.clipboard.writeText(text);
-      toast.success(`Copied ${type} to clipboard!`, { style: { width: "20rem", fontSize: "0.85rem" } });
+      toast.success(`Copied ${type} to clipboard!`);
     } catch (err) {
       console.error(`Could not copy ${type}: `, err);
       toast.error(`Failed to copy ${type}`);
@@ -84,6 +84,7 @@ const Footer = () => {
         draggable
         pauseOnHover
         theme="dark"
+        className="my-toast-container"
       />
     </div>
   );
