@@ -1,3 +1,15 @@
+/* TODO */
+.update {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.co-op {
+  font-size: 1.5rem;
+  color: yellow;
+}
+
 .about-me {
   height: 100%;
   width: 100%;
@@ -22,22 +34,28 @@
 .sections h3 {
   font-size: 2rem;
   font-weight: 500;
-  margin: 1.5rem;
+  margin: 1rem;
 }
 
 .sections h4 {
   font-size: 1.5rem;
   font-weight: 300;
-  margin: 1.5rem;
+  margin: 1rem;
+}
+
+.sections h5 {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin: 1rem;
+}
+
+.sections h6 {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin: 1rem;
 }
 
 .sections p {
   font-weight: 200;
-  margin: 0.2rem;
-}
-
-.update {
-  color: red;
-  font-size: 1.5rem;
-  font-weight: 200;
+  margin: 0.5rem;
 }
