@@ -1,5 +1,5 @@
 .my-experiences {
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   margin: 0 auto;
   background: linear-gradient(to bottom, rgb(65, 65, 190), rgb(35, 50, 165) 60%, rgba(0, 0, 0, 0.7)),
@@ -74,7 +74,10 @@
 
 @media only screen and (max-width: 480px) {
   .experience {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
     margin: 1rem auto;
     border: 0.1rem solid blue;
@@ -98,6 +101,10 @@
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .experience {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     grid-template-columns: 1fr;
     padding: 1.5rem; 
     margin: 1.5rem auto; 
@@ -121,6 +128,10 @@
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   .experience {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     grid-template-columns: 1fr;
     padding: 2rem; 
     margin: 2rem auto; 
@@ -143,5 +154,10 @@
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
-  /* Same as default */
+  .experience {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
