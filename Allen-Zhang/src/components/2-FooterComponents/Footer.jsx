@@ -28,11 +28,11 @@ const Footer = () => {
         {/* Left Side */}
         <div className="left-side">
           <div className="initials">
-            <FaCanadianMapleLeaf size="1.1em" style={{ color: "red", margin: "0 1rem 0 0.2rem" }} />
+            <FaCanadianMapleLeaf className="maple-leaf" />
             <p>AZ</p>
           </div>
           <div className="copyright">
-            <AiOutlineCopyrightCircle size="1.1em" style={{ color: "white", margin: "0 1rem 0 0.2rem" }} />
+            <AiOutlineCopyrightCircle className="copy-right" />
             <p>2023 Allen Zhang</p>
           </div>
         </div>

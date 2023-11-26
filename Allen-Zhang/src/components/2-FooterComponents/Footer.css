@@ -20,7 +20,21 @@
 .initials,
 .copyright {
   display: flex;
+  align-items: center;
   margin: 0.1rem;
+}
+
+.maple-leaf, .copy-right {
+  font-size: 1.2em;
+  margin: 0.2rem;
+}
+
+.maple-leaf {
+  color: red;
+}
+
+.copy-right {
+  color: white;
 }
 
 .left-side p {
@@ -105,9 +119,12 @@
   .left-side p {
     font-size: 0.9rem;
   }
+  .maple-leaf, .copy-right {
+    font-size: 0.9em;
+  }
   .icon {
     margin: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.2em;
   }
   .right-side p {
     font-size: 0.9rem;
@@ -115,7 +132,7 @@
   .my-toast-container .Toastify__toast {
     width: 15rem;
     font-size: 0.6rem;
-    padding: 0.2rem; 
+    padding: 0.2rem;
   }
 }
 
@@ -133,9 +150,12 @@
   .left-side p {
     font-size: 1rem;
   }
+  .maple-leaf, .copy-right {
+    font-size: 1em;
+  }
   .icon {
     margin: 0.7rem;
-    font-size: 1.3rem;
+    font-size: 1.3em;
   }
   .right-side p {
     font-size: 1rem;
@@ -143,7 +163,7 @@
   .my-toast-container .Toastify__toast {
     width: 18rem;
     font-size: 0.7rem;
-    padding: 0.3rem; 
+    padding: 0.3rem;
   }
 }
 
@@ -156,9 +176,12 @@
   .left-side p {
     font-size: 1.1rem;
   }
+  .maple-leaf, .copy-right {
+    font-size: 1.1em;
+  }
   .icon {
     margin: 0.9rem;
-    font-size: 1.4rem;
+    font-size: 1.4em;
   }
   .right-side p {
     font-size: 1.1rem;
@@ -166,7 +189,7 @@
   .my-toast-container .Toastify__toast {
     width: 21rem;
     font-size: 0.8rem;
-    padding: 0.4rem; 
+    padding: 0.4rem;
   }
 }
 
