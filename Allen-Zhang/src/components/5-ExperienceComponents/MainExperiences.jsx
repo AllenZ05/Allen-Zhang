@@ -22,13 +22,12 @@ const MainExperiences = () => {
             </p>
             <p>
               Enhanced the braking system, resulting in a 7% performance improvement, leading to faster and smoother
-              braking
+              braking. Currently working on a new and more efficient battery management system
             </p>
             <p>
               Identified and rectified major flaws in the onboarding instructions, improving the process for new team
               members
             </p>
-            <br />
             <br />
             <p>Tech stack: C, Python</p>
             <p>
@@ -62,7 +61,6 @@ const MainExperiences = () => {
               ensuring a positive learning experience
             </p>
             <br />
-            <br />
             <p>Skills: Leadership, Teamwork, Communication, First Aid, Lifesaving, Teaching, Public Relations</p>
           </div>
         </div>
@@ -74,10 +72,9 @@ const MainExperiences = () => {
             <h6>Sep 2021 - Feb 2022</h6>
           </div>
           <div className="experience-description">
-            <p>Used Excel to enter and keep track of daily transactions, ensuring up-to-date and accurate data</p>
-            <p>Used Oracle Transportation Management to optimize and plan delivery routes for truck teams</p>
+            <p>Used Microsoft 365 tools to calculate, input, and keep track of daily transactions, ensuring up-to-date and accurate data</p>
+            <p>Utilized Oracle Transportation Management and Google Maps to optimize and plan delivery routes for truck teams, all around the Golden Horseshoe region</p>
             <p>Collaborated with the inventory management teams to oversee and control inventory levels</p>
-            <br />
             <br />
             <p>Skills: Microsoft Excel, Microsoft Word, Data Entry, Logistics Management, Data Analysis</p>
           </div>
