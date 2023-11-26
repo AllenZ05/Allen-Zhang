@@ -9,7 +9,7 @@ const HeroHome = () => {
       </div>
       <div className="description">
         <h1>Allen Zhang</h1>
-        <p className="desktop-view">View on Desktop for best experience, mobile-friendly updates coming soon!</p>
+        <p className="desktop-view">Now fully responsive on all devices :)</p>
       </div>
     </div>
   );

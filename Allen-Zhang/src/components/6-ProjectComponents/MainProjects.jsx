@@ -8,8 +8,9 @@ const MainProjects = () => {
           <div className="project-content">
             <h3>Personal Website</h3>
             <p>
-              Designed and developed a personal website to learn more about me! Showcases my experiences, projects, and
-              skills. Will also be a place where I store things I write about. You&apos;re on it right now!
+              Designed and developed a fully responsive personal website to learn more about me! Showcases my
+              experiences, projects, and skills. Will also be a place to store things I write about. You&apos;re on
+              it right now!
             </p>
             <p>Tech stack: Vite.js, React.js, JavaScript, HTML/CSS</p>
             <p>
