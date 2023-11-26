@@ -8,9 +8,10 @@ const HeroMore = () => {
           <h2>More</h2>
           <p>Additional content from me</p>
           <br /> <br />
-          <p className="coming-soon">COMING SOON (when I have time)</p>
+          <p className="coming-soon">COMING SOON (when I have time)</p> {/*TODO*/}
         </div>
         <div className="more-content">
+          <h3>Section 1</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem quae ut labore, quod, repellendus eos
             cupiditate blanditiis optio fugit sint voluptatem accusantium quia consectetur iure molestiae. Incidunt
@@ -21,6 +22,7 @@ const HeroMore = () => {
             ex. Quisquam accusamus nam labore fugit at. Sint eius ea rem rerum debitis accusamus odio veniam dolor
             voluptatibus?
           </p>
+          <h3>Section 2</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam autem cupiditate itaque aliquid quae vitae
             explicabo numquam accusantium pariatur, quas nulla officia fugiat impedit modi quam sapiente delectus,
@@ -31,6 +33,7 @@ const HeroMore = () => {
             numquam architecto, labore, sequi fuga reiciendis autem voluptatem pariatur, cupiditate officia nesciunt
             animi aperiam repellat?
           </p>
+          <h3>Section 3</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, fugiat sequi? Corporis magnam ullam
             eveniet ea! Repellat aliquid cum veniam commodi officia ut officiis incidunt ex saepe culpa, maxime quisquam
@@ -40,25 +43,6 @@ const HeroMore = () => {
             nobis at modi iure. Modi sapiente eius repudiandae, quo eveniet vero accusantium nihil, possimus suscipit
             ipsum, eligendi cumque rem reiciendis officiis asperiores blanditiis velit tenetur ipsa! Modi fugit
             blanditiis debitis dolorem! A.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, assumenda a laudantium omnis totam ea
-            sapiente possimus labore facilis, iste eveniet rerum iusto officiis, ipsa optio minima excepturi. Laboriosam
-            facilis tempora similique error excepturi perferendis est atque aut quas veniam placeat repudiandae
-            delectus, iste quod necessitatibus ratione? Debitis officiis eius minima id aliquid, sapiente cumque illo
-            recusandae amet harum quasi tempore repellat totam quisquam nam eum mollitia assumenda aut odio autem ipsam?
-            Tenetur enim ipsum ullam eveniet, iste accusamus, sit recusandae delectus, ad deserunt porro voluptatibus
-            fugit voluptatem ipsam eius quis molestias laudantium debitis. Officiis hic error possimus voluptatibus eum.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita natus molestiae illo sequi, soluta ab
-            delectus, perspiciatis cumque odit blanditiis qui. Veritatis alias fuga quis quidem nulla culpa animi sequi
-            veniam. Minima blanditiis ad laboriosam perspiciatis. Facilis, voluptas eaque. Unde earum velit at quae!
-            Enim quia tenetur quam asperiores nisi fugiat, dolores libero dicta suscipit commodi illum sunt. Accusamus
-            unde sint totam! Odio, consequatur blanditiis rerum corrupti velit numquam fuga, odit dignissimos officia
-            voluptatibus iste suscipit qui, alias at omnis consequuntur reprehenderit nam iusto. Est dolores, autem
-            laborum recusandae iste eveniet doloremque aperiam reiciendis, expedita minus perspiciatis harum nulla
-            officia?
           </p>
         </div>
       </div>
