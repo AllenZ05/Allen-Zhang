@@ -23,10 +23,16 @@
   margin: 0.1rem;
 }
 
+.left-side p {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
 /* Middle */
 .sections .middle {
   height: 100%;
   width: 100%;
+  padding: 1rem;
 }
 
 .socials {
@@ -41,7 +47,7 @@
   border: none;
   cursor: pointer;
 
-  transition: transform 250ms; 
+  transition: transform 250ms;
 }
 
 .socials button:hover,
@@ -70,7 +76,77 @@
   margin: 0.1rem;
 }
 
-.quote p {
-  font-size: 1.1rem;
+.right-side p {
+  font-size: 1.2rem;
   font-weight: 200;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+  .footer .sections {
+    grid-template-columns: 1fr;
+  }
+  .sections .left-side,
+  .sections .middle,
+  .sections .right-side {
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  .left-side p {
+    font-size: 0.9rem;
+  }
+  .icon {
+    margin: 0.5rem;
+    font-size: 1.2rem;
+  }
+  .right-side p {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .footer .sections {
+    grid-template-columns: 1fr;
+  }
+  .sections .left-side,
+  .sections .middle,
+  .sections .right-side {
+    justify-content: center;
+    align-items: center;
+    padding: 0.7rem;
+  }
+  .left-side p {
+    font-size: 1rem;
+  }
+  .icon {
+    margin: 0.7rem;
+    font-size: 1.3rem;
+  }
+  .right-side p {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .sections .left-side,
+  .sections .middle,
+  .sections .right-side {
+    padding: 0.9rem;
+  }
+  .left-side p {
+    font-size: 1.1rem;
+  }
+  .icon {
+    margin: 0.9rem;
+    font-size: 1.4rem;
+  }
+  .right-side p {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  /* Same as default */
 }
