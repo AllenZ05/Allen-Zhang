@@ -13,7 +13,7 @@ const Navbar = () => {
       <Link to="/">
         <h2>AllenZ05</h2>
       </Link>
-      <ul className={click ? "nav open" : "nav default"}>
+      <ul className={click ? "nav active" : "nav"}>
         <li>
           <Link to="/">Home</Link>
         </li>
