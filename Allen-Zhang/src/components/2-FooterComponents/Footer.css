@@ -24,7 +24,8 @@
   margin: 0.1rem;
 }
 
-.maple-leaf, .copy-right {
+.maple-leaf,
+.copy-right {
   font-size: 1.2em;
   margin: 0.2rem;
 }
@@ -103,7 +104,7 @@
   padding: 0.5rem;
 }
 
-/* Media Queries */
+/** Media Queries */
 
 @media only screen and (max-width: 480px) {
   .footer .sections {
@@ -116,19 +117,24 @@
     align-items: center;
     padding: 0.5rem;
   }
+
   .left-side p {
     font-size: 0.9rem;
   }
-  .maple-leaf, .copy-right {
+  .maple-leaf,
+  .copy-right {
     font-size: 0.9em;
   }
+
   .icon {
     margin: 0.5rem;
     font-size: 1.2em;
   }
+
   .right-side p {
     font-size: 0.9rem;
   }
+
   .my-toast-container .Toastify__toast {
     width: 15rem;
     font-size: 0.6rem;
@@ -147,19 +153,24 @@
     align-items: center;
     padding: 0.7rem;
   }
+
   .left-side p {
     font-size: 1rem;
   }
-  .maple-leaf, .copy-right {
+  .maple-leaf,
+  .copy-right {
     font-size: 1em;
   }
+
   .icon {
     margin: 0.7rem;
     font-size: 1.3em;
   }
+
   .right-side p {
     font-size: 1rem;
   }
+
   .my-toast-container .Toastify__toast {
     width: 18rem;
     font-size: 0.7rem;
@@ -173,19 +184,24 @@
   .sections .right-side {
     padding: 0.9rem;
   }
+
   .left-side p {
     font-size: 1.1rem;
   }
-  .maple-leaf, .copy-right {
+  .maple-leaf,
+  .copy-right {
     font-size: 1.1em;
   }
+
   .icon {
     margin: 0.9rem;
     font-size: 1.4em;
   }
+
   .right-side p {
     font-size: 1.1rem;
   }
+
   .my-toast-container .Toastify__toast {
     width: 21rem;
     font-size: 0.8rem;
