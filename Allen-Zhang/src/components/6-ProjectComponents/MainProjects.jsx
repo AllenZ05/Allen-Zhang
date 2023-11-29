@@ -9,8 +9,8 @@ const MainProjects = () => {
             <h3>Personal Website</h3>
             <p>
               Designed and developed a fully responsive personal website to learn more about me! Showcases my
-              experiences, projects, and skills. Will also be a place to store things I write about. You&apos;re on
-              it right now!
+              experiences, projects, and skills. Will also be a place to store things I write about. You&apos;re on it
+              right now!
             </p>
             <p>Tech stack: Vite.js, React.js, JavaScript, HTML/CSS</p>
             <p>
@@ -92,11 +92,13 @@ const MainProjects = () => {
           <div className="project-content">
             <h3>Movie Website</h3>
             <p>
-              Created a responsive and user-friendly movie website to find any movie you want. Integrated data from the
-              TMDb API for up-to-date content including an overview, trailer, genre, ratings, release dates, directors,
-              writers, and more. Implemented an intuitive search bar for effortless movie discovery and selection.
-              Utilized Firebase for user authentication, login management, and storage of liked movies and movie
-              watch-list.
+              Created a dynamic and user-friendly movie website to find any movie you want. It utilizes Vue.js for
+              front-end development and Axios for RESTful API integration with the TMDb API. Advanced features were
+              implemented, such as an intuitive search bar and efficient movie data retrieval encompassing overviews,
+              trailers, genres, ratings, release dates, crew details, and more. Employed Postman for API testing and
+              debugging, ensuring seamless end-to-end HTTP communication. Finally, the backend infrastructure is powered
+              by Firebase, providing secure user authentication and real-time database interactions for storing user
+              preferences.
             </p>
             <p>Tech stack: Vue.js, JavaScript, HTML/CSS, Firebase, Postman, Axios, TMDb API</p>
             <p>
