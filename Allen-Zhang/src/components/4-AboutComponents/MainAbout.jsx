@@ -106,6 +106,7 @@ const MainAbout = () => {
             <p>Food: Idk, there&apos;s a lot</p>
             <p>Travel destination: Idk, so many. Tons of places in the US, China, and Europe</p>
             <p>Movie: Lord of the Rings</p>
+            <p>Artist: Probably NF right now</p>
           </div>
         </div>
       </div>
