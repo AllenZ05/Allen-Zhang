@@ -54,7 +54,7 @@ p {
 
 /* Media Queries */
 
-@media only screen and (max-width: 480px) {
+/* @media only screen and (max-width: 480px) {
   h1 {
     font-size: calc(var(--h1-base-font-size) * 0.65);
   }
@@ -148,4 +148,4 @@ p {
   p {
     font-size: calc(var(--p-base-font-size) * 0.95);
   }
-}
+} */
