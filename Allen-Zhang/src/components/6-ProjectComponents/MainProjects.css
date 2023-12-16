@@ -61,11 +61,9 @@
     border: 0.1rem solid blue;
   }
   .projects-container h3 {
-    font-size: 1.4rem;
     margin: 0.7rem auto;
   }
   .projects-container p {
-    font-size: 0.7rem;
     margin: 0.7rem auto;
   }
 }
@@ -76,11 +74,9 @@
     padding: 1.5rem;
   }
   .projects-container h3 {
-    font-size: 1.6rem;
     margin-bottom: 0.8rem auto;
   }
   .projects-container p {
-    font-size: 0.9rem;
     margin: 0.8rem auto;
   }
 }
@@ -91,11 +87,9 @@
     padding: 2rem;
   }
   .projects-container h3 {
-    font-size: 1.8rem;
     margin: 0.9rem auto;
   }
   .projects-container p {
-    font-size: 1.1rem;
     margin: 0.9rem auto;
   }
 }

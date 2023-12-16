@@ -82,19 +82,13 @@
     margin: 1rem auto;
     border: 0.1rem solid blue;
   }
-  .job-title {
-    font-size: 1.5rem;
+  .experience h3 {
     margin: 1.5rem;
   }
   .experience h5 {
-    font-size: 1rem;
     margin: 1rem;
   }
-  .experience h6 {
-    font-size: 0.8rem;
-  }
   .experience p {
-    font-size: 0.7rem;
     margin: 0.5rem;
   }
 }
@@ -109,19 +103,13 @@
     padding: 1.5rem; 
     margin: 1.5rem auto; 
   }
-  .job-title {
-    font-size: 1.8rem;
+  .experience h3 {
     margin: 2rem;
   }
   .experience h5 {
-    font-size: 1.15rem;
     margin: 1.3rem;
   }
-  .experience h6 {
-    font-size: 1rem;
-  }
   .experience p {
-    font-size: 0.9rem;
     margin: 0.65rem;
   }
 }
@@ -136,19 +124,13 @@
     padding: 2rem; 
     margin: 2rem auto; 
   }
-  .job-title {
-    font-size: 2.1rem;
+  .experience h3 {
     margin: 2.5rem;
   }
   .experience h5 {
-    font-size: 1.3rem;
     margin: 1.6rem;
   }
-  .experience h6 {
-    font-size: 1.1rem;
-  }
   .experience p {
-    font-size: 1rem;
     margin: 0.8rem;
   }
 }

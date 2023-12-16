@@ -1,6 +1,4 @@
-/* App Styles */
-
-/*TODO PUT ALL MEDIA QUERIES HERE */
+/** App Styles */
 
 body {
   background-color: black;
@@ -22,11 +20,132 @@ ul {
   list-style-type: none;
 }
 
-/* .btn {
-    For Future Buttons
-  } 
-  
-  .btn:hover {
-    For Future Buttons
-  } 
-*/
+/* Font Sizes */
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 1rem;
+}
+
+h1 {
+  --h1-base-font-size: 2em;
+}
+h2 {
+  --h2-base-font-size: 1.5em;
+}
+h3 {
+  --h3-base-font-size: 1.17em;
+}
+h4 {
+  --h4-base-font-size: 1em;
+}
+h5 {
+  --h5-base-font-size: 0.83em;
+}
+h6 {
+  --h6-base-font-size: 0.67em;
+}
+p {
+  --p-base-font-size: 1em;
+}
+
+/* Media Queries */
+
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: calc(var(--h1-base-font-size) * 0.65);
+  }
+  h2 {
+    font-size: calc(var(--h2-base-font-size) * 0.65);
+  }
+  h3 {
+    font-size: calc(var(--h3-base-font-size) * 0.65);
+  }
+  h4 {
+    font-size: calc(var(--h4-base-font-size) * 0.65);
+  }
+  h5 {
+    font-size: calc(var(--h5-base-font-size) * 0.65);
+  }
+  h6 {
+    font-size: calc(var(--h6-base-font-size) * 0.65);
+  }
+  p {
+    font-size: calc(var(--p-base-font-size) * 0.65);
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  h1 {
+    font-size: calc(var(--h1-base-font-size) * 0.75);
+  }
+  h2 {
+    font-size: calc(var(--h2-base-font-size) * 0.75);
+  }
+  h3 {
+    font-size: calc(var(--h3-base-font-size) * 0.75);
+  }
+  h4 {
+    font-size: calc(var(--h4-base-font-size) * 0.75);
+  }
+  h5 {
+    font-size: calc(var(--h5-base-font-size) * 0.75);
+  }
+  h6 {
+    font-size: calc(var(--h6-base-font-size) * 0.75);
+  }
+  p {
+    font-size: calc(var(--p-base-font-size) * 0.75);
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  h1 {
+    font-size: calc(var(--h1-base-font-size) * 0.85);
+  }
+  h2 {
+    font-size: calc(var(--h2-base-font-size) * 0.85);
+  }
+  h3 {
+    font-size: calc(var(--h3-base-font-size) * 0.85);
+  }
+  h4 {
+    font-size: calc(var(--h4-base-font-size) * 0.85);
+  }
+  h5 {
+    font-size: calc(var(--h5-base-font-size) * 0.85);
+  }
+  h6 {
+    font-size: calc(var(--h6-base-font-size) * 0.85);
+  }
+  p {
+    font-size: calc(var(--p-base-font-size) * 0.85);
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  h1 {
+    font-size: calc(var(--h1-base-font-size) * 0.95);
+  }
+  h2 {
+    font-size: calc(var(--h2-base-font-size) * 0.95);
+  }
+  h3 {
+    font-size: calc(var(--h3-base-font-size) * 0.95);
+  }
+  h4 {
+    font-size: calc(var(--h4-base-font-size) * 0.95);
+  }
+  h5 {
+    font-size: calc(var(--h5-base-font-size) * 0.95);
+  }
+  h6 {
+    font-size: calc(var(--h6-base-font-size) * 0.95);
+  }
+  p {
+    font-size: calc(var(--p-base-font-size) * 0.95);
+  }
+}
