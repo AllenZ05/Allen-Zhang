@@ -96,7 +96,7 @@ h6 {
 }
 p {
   --p-base-font-size: 1em;
-  font-size: calc(var(--p-base-font-size) * 1.1);
+  font-size: calc(var(--p-base-font-size) * 1.2);
 }
 
 /* Media Queries */
@@ -121,7 +121,7 @@ p {
     font-size: calc(var(--h6-base-font-size) * 2 * 0.80);
   }
   p {
-    font-size: calc(var(--p-base-font-size) * 1.1 * 0.80);
+    font-size: calc(var(--p-base-font-size) * 1.2 * 0.80);
   }
 }
 
@@ -145,7 +145,7 @@ p {
     font-size: calc(var(--h6-base-font-size) * 2 * 0.85);
   }
   p {
-    font-size: calc(var(--p-base-font-size) * 1.1 * 0.85);
+    font-size: calc(var(--p-base-font-size) * 1.2 * 0.85);
   }
 }
 
@@ -169,7 +169,7 @@ p {
     font-size: calc(var(--h6-base-font-size) * 2 * 0.90);
   }
   p {
-    font-size: calc(var(--p-base-font-size) * 1.1 * 0.90);
+    font-size: calc(var(--p-base-font-size) * 1.2 * 0.90);
   }
 }
 
@@ -193,6 +193,6 @@ p {
     font-size: calc(var(--h6-base-font-size) * 2 * 0.95);
   }
   p {
-    font-size: calc(var(--p-base-font-size) * 1.1 * 0.95);
+    font-size: calc(var(--p-base-font-size) * 1.2 * 0.95);
   }
 }
