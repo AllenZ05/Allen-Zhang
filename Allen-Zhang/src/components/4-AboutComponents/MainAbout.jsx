@@ -52,28 +52,34 @@ const MainAbout = () => {
             </div>
           </div>
         </div>
-        <div className="coding">
-          <h3>Coding</h3>
-          <div className="coding-intro">
+        <div className="skills">
+          <h3>Skills</h3>
+          <div className="skills-intro">
             <p>
-              I have always had a ton of interests, and I would be lying if I said I always knew what I wanted to do in
-              the future. However, in May 2023, I decided to pursue Computer Engineering at the University of Waterloo,
-              one of North America&apos;s most innovative and top technology schools.
+              I have always had a ton of interests, and did not know what I wanted to do in the future for the longest
+              time.
             </p>
-            <p>I started coding in Grade 11, as it seemed interesting. And now I basically code everyday.</p>
+            <p>
+              However, in May 2023, I decided to pursue Computer Engineering at the University of Waterloo, one of North
+              America&apos;s most innovative and top technology schools.
+            </p>
           </div>
           <div className="coding-journey">
-            <h4>Coding Journey</h4>
+            <h4>Coding Skills</h4>
             <p>Languages: Python &rarr; Java &rarr; HTML &rarr; CSS &rarr; JS &rarr; C &rarr; C++ &rarr; TS | C#</p>
-            <p>Frameworks/Libraries: Vite.js &rarr; Vue.js &rarr; React.js &rarr; PyGame &rarr; PyTorch | Next.js</p>
-            <p>Other: Node &rarr; npm &rarr; Axios &rarr; Postman &rarr; Firebase &rarr; CVAT |</p>
-            <p>Dev Tools: Git &rarr; Github &rarr; VSCode |</p>
-            <p>Misc: STM32 &rarr; STM32CubeIDE &rarr; MPU6050 |</p>
-            <p>Courses: CS12 &rarr; CodeCademy &rarr; ECE150 &rarr; Odin Project &rarr; FreeCodeCamp |</p>
-            <p>Projects: Movie Website &rarr; Python and C++ Games &rarr; Fall Detection Device | Object Detection</p>
-            <p>Experience: UW Formula Electric Firmware Developer | ???</p>
+            <p>Frameworks/Libraries: Vite.js, Vue.js, React.js, PyGame, PyTorch | Next.js</p>
+            <p>Other: Node, npm, Axios, Postman, Firebase, CVAT </p>
+            <p>Dev Tools: Git, Github, VSCode </p>
+            <p>Misc: STM32, STM32CubeIDE, MPU6050 </p>
+            <p>Courses: CS12, ECE150, Odin Project, FreeCodeCamp | ECE250</p>
+            <p>Projects: Movie Website, Python and C++ Games, Fall Detection Device | Object Detector</p>
+            <p>Experience: UW Formula Electric Firmware Developer &rarr; ???</p>
           </div>
-          <div className="coding-resources">
+          <div className="soft-skills">
+            <h4>Soft Skills</h4>
+            <p>Leadership, Teamwork, Communication, Creativity, Problem-solving</p>
+          </div>
+          {/* <div className="coding-resources">
             <h4>Coding Resources</h4>
             <p>MDN Web Docs: https://developer.mozilla.org/en-US/</p>
             <p>JavaScript Reference: https://javascript.info/</p>
@@ -84,16 +90,22 @@ const MainAbout = () => {
             <p>C++ Learn: https://www.learncpp.com/</p>
             <p>The Odin Project: https://www.theodinproject.com/dashboard</p>
             <p>FreeCodeCamp: https://www.freecodecamp.org/learn</p>
-          </div>
+          </div> */}
         </div>
         <div className="misc">
           <h3>Misc</h3>
           <div className="interests">
-            <h4>Interests</h4>
+            <h5>Interests</h5>
             <p>
               Software, Hardware, Technology, Space, Design, Business, Management, Sports, History, Medical Science,
               Exploring
             </p>
+            <h5>Favorites</h5>
+            <p>Color: Blue</p>
+            <p>Sports Teams: Tampa Bay Lightning, Manchester City</p>
+            <p>Food: Idk, there&apos;s a lot</p>
+            <p>Travel destination: Idk, so many. Tons of places in the US, China, and Europe</p>
+            <p>Movie: Lord of the Rings</p>
           </div>
         </div>
       </div>

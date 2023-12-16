@@ -9,7 +9,7 @@ const HeroAbout = () => {
       </div>
       <div className="description">
         <h2>About me</h2>
-        <p>Hello! :)</p>
+        <p>Hello!</p>
       </div>
     </div>
   );
