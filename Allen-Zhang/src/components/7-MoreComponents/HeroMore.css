@@ -23,13 +23,16 @@
 }
 
 .more-header h2 {
-  font-size: 3rem;
   font-weight: 700;
   padding: 1rem;
+  
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typewriter 2s forwards;
 }
 
 .more-header p {
-  font-size: 1.5rem;
   font-weight: 200;
 }
 
@@ -39,12 +42,10 @@
 }
 
 .more-content h3 {
-  font-size: 2rem;
   margin: 1rem;
 }
 
 .more-content p {
-  font-size: 1rem;
   margin: 1rem;
 }
 

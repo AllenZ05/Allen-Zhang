@@ -39,12 +39,17 @@
 }
 
 .hero-about .description h2 {
-  font-size: 3rem;
   font-weight: 700;
   padding: 1rem;
+ 
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typewriter 2s forwards;
 }
 
 .hero-about .description p {
   font-size: 1.5rem;
   font-weight: 200;
+  animation: scaleUp 1s forwards;
 }
