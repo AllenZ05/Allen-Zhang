@@ -66,7 +66,7 @@ const MainAbout = () => {
           </div>
           <div className="coding-journey">
             <h4>Coding Skills</h4>
-            <p>Languages: Python &rarr; Java &rarr; HTML &rarr; CSS &rarr; JS &rarr; C &rarr; C++ &rarr; TS | C#</p>
+            <p>Languages: Python &rarr; Java &rarr; HTML &rarr; CSS &rarr; JS &rarr; C &rarr; C++ &rarr; TS &rarr; SQL | C#</p>
             <p>Frameworks/Libraries: Vite.js, Vue.js, React.js, PyGame, PyTorch | Next.js</p>
             <p>Other: Node, npm, Axios, Postman, Firebase, CVAT </p>
             <p>Dev Tools: Git, Github, VSCode </p>
