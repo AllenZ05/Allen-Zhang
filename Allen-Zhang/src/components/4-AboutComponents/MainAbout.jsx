@@ -66,13 +66,14 @@ const MainAbout = () => {
           </div>
           <div className="coding-journey">
             <h4>Coding Skills</h4>
-            <p>Languages: Python &rarr; Java &rarr; HTML &rarr; CSS &rarr; JS &rarr; C &rarr; C++ &rarr; TS &rarr; SQL | C#</p>
-            <p>Frameworks/Libraries: Vite.js, Vue.js, React.js, PyGame, PyTorch | Next.js</p>
-            <p>Other: Node, npm, Axios, Postman, Firebase, CVAT </p>
+            <p>Languages: Python, C++, C, JS, TS, SQL, HTML, CSS</p>
+            <p>Frameworks/Libraries: React.js, Next.js, Vite.js, Vue.js, PyTorch, PyGame, Tailwind</p>
+            <p>Other: Node, npm, AWS, Firebase, Axios, Postman, CVAT</p>
             <p>Dev Tools: Git, Github, VSCode </p>
             <p>Misc: STM32, STM32CubeIDE, MPU6050 </p>
             <p>Courses: CS12, ECE150, Odin Project, FreeCodeCamp | ECE250</p>
-            <p>Projects: Movie Website, Python and C++ Games, Fall Detection Device | Object Detector</p>
+            <p>Projects completed: Movie Website, Python and C++ Games, Fall Detection Device</p>
+            <p>Projects under development: Productivity App, Object Detector</p>
             <p>Experience: UW Formula Electric Firmware Developer &rarr; ???</p>
           </div>
           <div className="soft-skills">
