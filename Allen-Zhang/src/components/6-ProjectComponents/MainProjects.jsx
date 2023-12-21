@@ -4,7 +4,38 @@ const MainProjects = () => {
   return (
     <div className="my-projects">
       <div className="projects-container">
+        <br /> <br />
+        <h3>In Development</h3>
         <div className="project1 project">
+          <div className="project-content">
+            <h3>Productivity App (in development)</h3>
+            <p>
+              Developing a productivity app on web and mobile to redefine the way users approach their daily tasks. Will
+              offer a seamless, intuitive experience that harmonizes focus and organization across all your devices. The
+              app will offer many features to enhance time management, project tracking, and personal goal
+              setting, all within a clean, user-friendly interface.
+            </p>
+            <p>Tools currently used: AWS, Next.js, Swift, TypeScript, Tailwind CSS, HTML</p>
+            <p>In development</p>
+          </div>
+        </div>
+        <div className="project2 project">
+          <div className="project-content">
+            <h3>Wildlife and Plant Detector (in development)</h3>
+            <p>
+              Curated a dataset of 1000+ images and conducted meticulous annotations with CVAT, establishing a strong
+              foundation for training a PyTorch-based image detection model. Currently implementing a Kalman filter
+              algorithm to enhance the precision of detection of wildlife and plants. Also developing a web app and a
+              mobile app using React.js and React Native, detailing information device functionality, instructions for
+              usage, and image storage
+            </p>
+            <p>Tools currently used: Python, CVAT, PyTorch, Vite.js, React.js, TypeScript, HTML/CSS, React Native</p>
+            <p>In development</p>
+          </div>
+        </div>
+        <br /> <br />
+        <h3>Complete</h3>
+        <div className="project3 project">
           <div className="project-content">
             <h3>Personal Website</h3>
             <p>
@@ -20,21 +51,7 @@ const MainProjects = () => {
             </p>
           </div>
         </div>
-        <div className="project2 project">
-          <div className="project-content">
-            <h3>Wildlife and Plant Detector (in progress)</h3>
-            <p>
-              Curated a dataset of 1000+ images and conducted meticulous annotations with CVAT, establishing a strong
-              foundation for training a PyTorch-based image detection model. Currently implementing a Kalman filter
-              algorithm to enhance the precision of detection of wildlife and plants. Also developing a web app and a
-              mobile app using React.js and React Native, detailing information device functionality, instructions for
-              usage, and image storage
-            </p>
-            <p>Tools currently used: Python, CVAT, PyTorch, Vite.js, React.js, TypeScript, HTML/CSS, React Native</p>
-            <p>In progress</p>
-          </div>
-        </div>
-        <div className="project3 project">
+        <div className="project4 project">
           <div className="project-content">
             <h3>Fall Detection Device</h3>
             <p>
@@ -53,7 +70,7 @@ const MainProjects = () => {
             </p>
           </div>
         </div>
-        <div className="project4 project">
+        <div className="project5 project">
           <div className="project-content">
             <h3>Minesweeper</h3>
             <p>
@@ -70,7 +87,7 @@ const MainProjects = () => {
             </p>
           </div>
         </div>
-        <div className="project5 project">
+        <div className="project6 project">
           <div className="project-content">
             <h3>Python Games</h3>
             <p>
@@ -88,7 +105,7 @@ const MainProjects = () => {
             </p>
           </div>
         </div>
-        <div className="project6 project">
+        <div className="project7 project">
           <div className="project-content">
             <h3>Movie Website</h3>
             <p>
