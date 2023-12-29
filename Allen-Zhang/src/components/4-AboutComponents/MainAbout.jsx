@@ -14,73 +14,92 @@ const MainAbout = () => {
           <p>An ambitious individual, with a mission to change the world the best I can. </p>
           <p>I currently live in Toronto, Canada</p>
           <br></br>
-          <p className="co-op">CURRENTLY SEEKING SUMMER CO-OPS FOR MAY-AUG 2024</p>
+          <p className="co-op">CURRENTLY SEEKING SUMMER CO-OPS/INTERNSHIPS FOR MAY-AUG 2024</p> {/*TODO*/}
           <p>Interested in software roles, anywhere in Canada or US</p>
+          <p>Free feel to contact me using my socials in the footer (email preferred), always willing to connect and talk!</p>
         </div>
-        <div className="education">
-          <h3>Education</h3>
-          <div className="uni">
-            <h4>University of Waterloo</h4>
-            <h6>Waterloo, ON</h6>
-            <h5>Computer Engineering</h5>
-            <div className="first-year">
-              <h6>First Year</h6>
-              <p>Term 1 (Sep 2023 - Dec 2023)</p>
-              <p>
-                <ul>
-                  <li>Linear Algebra</li>
-                  <li>Calculus 1</li>
-                  <li>Classical Mechanics</li>
-                  <li>Programming</li>
-                  <li>Project Studio</li>
-                  <li>Engineering Profession and Practice</li>
-                  <li>Communication in the Engineering Profession</li>
-                </ul>
-              </p>
-              <br />
-              <p>Term 2 (Jan 2024 - Apr 2024)</p>
-              <p>
-                <ul>
-                  <li>Calculus 2</li>
-                  <li>Electricity and Magnetism</li>
-                  <li>Discrete Mathematics and Logic 1</li>
-                  <li>Digital Circuits and Systems</li>
-                  <li>Linear Circuits</li>
-                  <li>Engineering Economics and Impact on Society</li>
-                </ul>
-              </p>
+        <div className="edu_skills">
+          <div className="education">
+            <h3>Education</h3>
+            <div className="uni">
+              <h4>University of Waterloo</h4>
+              <h6>Waterloo, ON</h6>
+              <h5>Computer Engineering</h5>
+              <div className="first-year">
+                <h6>First Year</h6>
+                <p>Term 1 (Sep 2023 - Dec 2023)</p>
+                <p>
+                  <ul>
+                    <li>Linear Algebra</li>
+                    <li>Calculus 1</li>
+                    <li>Classical Mechanics</li>
+                    <li>Programming</li>
+                    <li>Project Studio</li>
+                    <li>Engineering Profession and Practice</li>
+                    <li>Communication in the Engineering Profession</li>
+                  </ul>
+                </p>
+                <br />
+                <p>Term 2 (Jan 2024 - Apr 2024)</p>
+                <p>
+                  <ul>
+                    <li>Calculus 2</li>
+                    <li>Electricity and Magnetism</li>
+                    <li>Discrete Mathematics and Logic 1</li>
+                    <li>Digital Circuits and Systems</li>
+                    <li>Linear Circuits</li>
+                    <li>Engineering Economics and Impact on Society</li>
+                  </ul>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="skills">
-          <h3>Skills</h3>
-          <div className="skills-intro">
-            <p>
-              I have always had a ton of interests, and did not know what I wanted to do in the future for the longest
-              time.
-            </p>
-            <p>
-              However, in May 2023, I decided to pursue Computer Engineering at the University of Waterloo, one of North
-              America&apos;s most innovative and top technology schools.
-            </p>
-          </div>
-          <div className="coding-journey">
-            <h4>Coding Skills</h4>
-            <p>Languages: Python, C++, Swift, C, JS, TS, SQL, HTML, CSS</p>
-            <p>Frameworks/Libraries: React.js, Next.js, Vite.js, Vue.js, PyTorch, PyGame, Tailwind</p>
-            <p>Other: Node, npm, AWS, Firebase, Axios, Postman, CVAT</p>
-            <p>Dev Tools: Git, Github, VSCode </p>
-            <p>Misc: STM32, STM32CubeIDE, MPU6050 </p>
-            <p>Courses: CS12, ECE150, Odin Project, FreeCodeCamp | ECE250</p>
-            <p>Projects completed: Movie Website, Python and C++ Games, Fall Detection Device</p>
-            <p>Projects under development: Productivity App, Object Detector</p>
-            <p>Experience: UW Formula Electric Firmware Developer &rarr; ???</p>
-          </div>
-          <div className="soft-skills">
-            <h4>Soft Skills</h4>
-            <p>Leadership, Teamwork, Communication, Creativity, Problem-solving</p>
-          </div>
-          {/* <div className="coding-resources">
+          <div className="skills">
+            <h3>Skills</h3>
+            <div className="skills-intro">
+              <p>
+                I have always had a ton of interests, and did not know what I wanted to do in the future for the longest
+                time.
+              </p>
+              <p>
+                However, in May 2023, I decided to pursue Computer Engineering at the University of Waterloo, one of
+                North America&apos;s most innovative and top technology schools.
+              </p>
+            </div>
+            <div className="coding-journey">
+              <h4>Coding Skills</h4>
+              <p>
+                <b>Languages:</b> Python, C++, Swift, C, JS, TS, SQL, HTML, CSS
+              </p>
+              <p>
+                <b>Frameworks/Libraries:</b> React.js, Next.js, Vite.js, Vue.js, PyTorch, PyGame, Tailwind
+              </p>
+              <p>
+                <b>Other:</b> Node, npm, AWS, Firebase, Axios, Postman, CVAT
+              </p>
+              <p>
+                <b>Dev Tools:</b> Git, Github, VSCode{" "}
+              </p>
+              <p>
+                <b>Misc:</b> STM32, STM32CubeIDE, MPU6050{" "}
+              </p>
+              <br />
+              <p>
+                <b>Projects completed:</b> Movie Website, Python and C++ Games, Fall Detection Device
+              </p>
+              <p>
+                <b>Projects under development:</b> Productivity App, Object Detector
+              </p>
+              <p>
+                <b>Experience:</b> UW Formula Electric Firmware Developer &rarr; ???
+              </p>
+              {/* <p><b>Courses:</b> CS12, ECE150, Odin Project, FreeCodeCamp | ECE250</p> */}
+            </div>
+            <div className="soft-skills">
+              <h4>Soft Skills</h4>
+              <p>Leadership, Teamwork, Communication, Creativity, Problem-solving</p>
+            </div>
+            {/* <div className="coding-resources">
             <h4>Coding Resources</h4>
             <p>MDN Web Docs: https://developer.mozilla.org/en-US/</p>
             <p>JavaScript Reference: https://javascript.info/</p>
@@ -92,6 +111,7 @@ const MainAbout = () => {
             <p>The Odin Project: https://www.theodinproject.com/dashboard</p>
             <p>FreeCodeCamp: https://www.freecodecamp.org/learn</p>
           </div> */}
+          </div>
         </div>
         <div className="misc">
           <h3>Misc</h3>
