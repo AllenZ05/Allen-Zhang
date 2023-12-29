@@ -25,7 +25,7 @@
   top: 0;
   left: 0;
   background-color: black;
-  opacity: 0.25;
+  opacity: 0.35;
 }
 
 .hero-home .description {
@@ -44,6 +44,12 @@
 }
 
 .hero-home .description p {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: rgb(240, 240, 240);
   animation: slideIn 1s ease;
+}
+
+.hero-home .description .Typewriter__cursor {
+  font-size: 2rem;
 }

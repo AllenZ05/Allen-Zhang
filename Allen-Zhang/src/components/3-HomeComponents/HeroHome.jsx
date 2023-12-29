@@ -1,6 +1,8 @@
 import "./HeroHome.css";
 import HeroHomebg from "../../assets/heroHome-bg.jpg";
 
+import Typewriter from "typewriter-effect";
+
 const HeroHome = () => {
   return (
     <div className="hero-home">
@@ -9,7 +11,22 @@ const HeroHome = () => {
       </div>
       <div className="description">
         <h1>Allen Zhang</h1>
-        <p>Now fully responsive on all devices :)</p>
+        <p>
+          <Typewriter
+            options={{
+              strings: [
+                "Seeking Summer 2024 Co-ops/Internships!",
+                "Interested in Software Roles!",
+                "Can work anywhere in Canada or US!",
+                "Website is fully responsive on all devices :)",
+              ],
+              autoStart: true,
+              loop: true,
+              delay: 50,
+              deleteSpeed: 25,
+            }}
+          />
+        </p>
       </div>
     </div>
   );
