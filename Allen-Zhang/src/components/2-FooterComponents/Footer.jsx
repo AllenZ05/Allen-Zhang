@@ -42,7 +42,7 @@ const Footer = () => {
           <div className="socials">
             {/* Email */}
             <button onClick={() => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com")} className="email">
-              <MdEmail className="icon email" />
+              <MdEmail className="icon2 email" />
             </button>
             {/* LinkedIn */}
             <a href="https://www.linkedin.com/in/allenzhang-05-/" target="_blank" rel="noopener noreferrer">
@@ -58,7 +58,7 @@ const Footer = () => {
             </a>
             {/* Discord */}
             <button onClick={() => copyToClipboard("Discord Username", "az_05")} className="discord">
-              <BsDiscord className="icon discord" />
+              <BsDiscord className="icon2 discord" />
             </button>
           </div>
         </div>

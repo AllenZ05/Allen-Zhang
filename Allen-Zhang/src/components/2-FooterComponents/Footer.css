@@ -70,10 +70,18 @@
   transform: scale(1.3);
 }
 
-.icon {
+.icon,
+.icon2 {
   color: white;
   margin: 1rem;
+}
+
+.icon {
   font-size: 2em;
+}
+
+.icon2 {
+  font-size: 2.3em;
 }
 
 /* Right Side */
@@ -128,6 +136,11 @@
     font-size: 1.4em;
   }
 
+  .icon2 {
+    margin: 0.5rem;
+    font-size: 1.65em;
+  }
+
   .my-toast-container .Toastify__toast {
     width: 15rem;
     font-size: 0.6rem;
@@ -162,6 +175,11 @@
     font-size: 1.6em;
   }
 
+  .icon2 {
+    margin: 0.7rem;
+    font-size: 1.8em;
+  }
+
   .my-toast-container .Toastify__toast {
     width: 18rem;
     font-size: 0.7rem;
@@ -188,6 +206,11 @@
   .icon {
     margin: 0.9rem;
     font-size: 1.8em;
+  }
+
+  .icon2 {
+    margin: 0.9rem;
+    font-size: 2.05em;
   }
 
   .my-toast-container .Toastify__toast {
