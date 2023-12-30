@@ -12,8 +12,9 @@ const MainProjects = () => {
             <p>
               Developing a productivity app on web and mobile to redefine the way users approach their daily tasks. Will
               offer a seamless, intuitive experience that harmonizes focus and organization across all your devices. The
-              app will offer many features to enhance time management, project tracking, and personal goal
-              setting, all within a clean, user-friendly interface.
+              app will offer many features to enhance time management, project tracking, and personal goal setting, all
+              within a clean, user-friendly interface. AWS is used for secure authentication and reliable data storage,
+              ensuring seamless user data synchronization.
             </p>
             <p>Tools currently used: AWS, Next.js, Swift, TypeScript, Tailwind CSS, HTML</p>
             <p>In development</p>
@@ -25,11 +26,9 @@ const MainProjects = () => {
             <p>
               Curated a dataset of 1000+ images and conducted meticulous annotations with CVAT, establishing a strong
               foundation for training a PyTorch-based image detection model. Currently implementing a Kalman filter
-              algorithm to enhance the precision of detection of wildlife and plants. Also developing a web app and a
-              mobile app using React.js and React Native, detailing information device functionality, instructions for
-              usage, and image storage
+              algorithm to enhance the precision of detection of wildlife and plants.
             </p>
-            <p>Tools currently used: Python, CVAT, PyTorch, Vite.js, React.js, TypeScript, HTML/CSS, React Native</p>
+            <p>Tools currently used: Python, CVAT, PyTorch</p>
             <p>In development</p>
           </div>
         </div>

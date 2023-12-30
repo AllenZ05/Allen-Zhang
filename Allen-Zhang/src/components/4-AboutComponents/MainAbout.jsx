@@ -75,7 +75,7 @@ const MainAbout = () => {
                 <b>Frameworks/Libraries:</b> React.js, Next.js, Vite.js, Vue.js, PyTorch, PyGame, Tailwind
               </p>
               <p>
-                <b>Other:</b> Node, npm, AWS, Firebase, Axios, Postman, CVAT
+                <b>Other:</b> Node, npm, AWS, Firebase, Axios, Postman
               </p>
               <p>
                 <b>Dev Tools:</b> Git, Github, VSCode{" "}
