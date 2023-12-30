@@ -12,10 +12,10 @@ const MainAbout = () => {
             for BASc in Computer Engineering.
           </p>
           <p>An ambitious individual, with a mission to change the world the best I can. </p>
-          <p>I currently live in Toronto, Canada</p>
+          <p>I currently live in Toronto, Canada.</p>
           <br></br>
           <p className="co-op">CURRENTLY SEEKING SUMMER CO-OPS/INTERNSHIPS FOR MAY-AUG 2024</p> {/*TODO*/}
-          <p>Interested in software roles, anywhere in Canada or US</p>
+          <p>Interested in software roles, anywhere in Canada or US.</p>
           <p>Free feel to contact me using my socials in the footer (email preferred), always willing to connect and talk!</p>
         </div>
         <div className="edu_skills">
@@ -69,13 +69,13 @@ const MainAbout = () => {
             <div className="coding-journey">
               <h4>Coding Skills</h4>
               <p>
-                <b>Languages:</b> Python, C++, Swift, C, JS, TS, SQL, HTML, CSS
+                <b>Languages:</b> Python, C++, C, Swift, SQL, JS, TS, HTML, CSS
               </p>
               <p>
                 <b>Frameworks/Libraries:</b> React.js, Next.js, Vite.js, Vue.js, PyTorch, PyGame, Tailwind
               </p>
               <p>
-                <b>Other:</b> Node, npm, AWS, Firebase, Axios, Postman
+                <b>Other:</b> Node, AWS, Firebase, Axios, Postman
               </p>
               <p>
                 <b>Dev Tools:</b> Git, Github, VSCode{" "}
