@@ -10,11 +10,11 @@ const MainProjects = () => {
           <div className="project-content">
             <h3>Productivity App (in development)</h3>
             <p>
-              Developing a productivity app on web and mobile to redefine the way users approach their daily tasks. Will
-              offer a seamless, intuitive experience that harmonizes focus and organization across all your devices. The
-              app will offer many features to enhance time management, project tracking, and personal goal setting, all
-              within a clean, user-friendly interface. AWS is used for secure authentication and reliable data storage,
-              ensuring seamless user data synchronization.
+              Developing a productivity app on web and mobile to boost user productivity. Will offer a seamless,
+              intuitive experience that harmonizes focus and organization across all your devices. The app will offer
+              many features to enhance time management, task/project tracking, note-taking, and personal goal setting,
+              all within a clean, user-friendly interface. AWS is used for secure authentication and reliable data
+              storage, ensuring seamless user data synchronization.
             </p>
             <p>Tools currently used: AWS, Next.js, Swift, TypeScript, Tailwind CSS, HTML</p>
             <p>In development</p>
@@ -26,7 +26,7 @@ const MainProjects = () => {
             <p>
               Curated a dataset of 1000+ images and conducted meticulous annotations with CVAT, establishing a strong
               foundation for training a PyTorch-based image detection model. Currently implementing a Kalman filter
-              algorithm to enhance the precision of detection of wildlife and plants.
+              algorithm enhance the precision of detection of wildlife and plants.
             </p>
             <p>Tools currently used: Python, CVAT, PyTorch</p>
             <p>In development</p>
@@ -56,10 +56,9 @@ const MainProjects = () => {
             <p>
               Engineered a fall detection device with a STM32 microcontroller, tailored to the needs and safety of
               elderly individuals. An accelerometer-based fall detection algorithm was developed using a MPU6050, with
-              an 89% detection rate, and 6% false positive rate through extensive testing and multiple iterations. A GSM
-              module was also integrated to facilitate wireless communication, enabling automatic text messaging and
-              calls to reach emergency contacts and services. Schematic and circuit diagrams were crafted for the entire
-              device, optimizing signal flow, ease of assembly, and efficiency
+              an 91% detection rate, and 6% false positive rate through extensive testing and multiple iterations. A GSM
+              module was also integrated to facilitate wireless communication, enabling automatic alerts to reach
+              emergency contacts and services.
             </p>
             <p>Tech stack: C, C++, STM32, STM32CubeIDE, Accelerometer, GSM Module</p>
             <p>
