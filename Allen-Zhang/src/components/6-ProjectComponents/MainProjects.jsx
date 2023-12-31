@@ -16,7 +16,7 @@ const MainProjects = () => {
               all within a clean, user-friendly interface. AWS is used for secure authentication and reliable data
               storage, ensuring seamless user data synchronization.
             </p>
-            <p>Tools currently used: AWS, Next.js, Swift, TypeScript, Tailwind CSS, HTML</p>
+            <p>Tech Stack: AWS, SQL, Next.js, Swift, TypeScript, Tailwind CSS, HTML</p>
             <p>In development</p>
           </div>
         </div>
@@ -28,7 +28,7 @@ const MainProjects = () => {
               foundation for training a PyTorch-based image detection model. Currently implementing a Kalman filter
               algorithm enhance the precision of detection of wildlife and plants.
             </p>
-            <p>Tools currently used: Python, CVAT, PyTorch</p>
+            <p>Tech Stack: Python, CVAT, PyTorch</p>
             <p>In development</p>
           </div>
         </div>
