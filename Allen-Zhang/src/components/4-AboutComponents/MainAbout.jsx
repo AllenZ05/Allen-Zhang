@@ -101,15 +101,39 @@ const MainAbout = () => {
             </div>
             {/* <div className="coding-resources">
             <h4>Coding Resources</h4>
+            <p>Google: https://www.google.com/</p>
+            <p>Youtube: https://www.youtube.com/</p>
+            <p>LeetCode Premium: https://leetcode.com/</p>
+            <p>ChatGPT 4: https://chat.openai.com/</p>
+
+            <p>VSCode: https://code.visualstudio.com/</p>
+            <p>Git: https://git-scm.com/</p>
+            <p>GitHub: https://github.com/</p>
+
+            <p>Node.js: https://nodejs.org/en</p>
+
             <p>MDN Web Docs: https://developer.mozilla.org/en-US/</p>
-            <p>JavaScript Reference: https://javascript.info/</p>
             <p>W3Schools: https://www.w3schools.com/</p>
+            <p>JavaScript Reference: https://javascript.info/</p>
+            <p>Emmet Cheat Sheet: https://docs.emmet.io/cheat-sheet/</p>
+
             <p>CSS Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/</p>
             <p>CSS Grid: https://css-tricks.com/snippets/css/complete-guide-grid/</p>
-            <p>Emmet Cheat Sheet: https://docs.emmet.io/cheat-sheet/</p>
-            <p>C++ Learn: https://www.learncpp.com/</p>
+
+            <p>Python: https://docs.python.org/3/tutorial/index.html</p>
+            <p>C++ Learn: https://www.learncpp.com/</p> 
+            <p>SQL: https://sqlbolt.com/</p>
+
+            <p>Vite: https://vitejs.dev/</p>
+            <p>React: https://react.dev/</p>
+            <p>Next: https://nextjs.org/</p>
+            <p>Tailwind: https://tailwindcss.com/</p>
+
             <p>The Odin Project: https://www.theodinproject.com/dashboard</p>
             <p>FreeCodeCamp: https://www.freecodecamp.org/learn</p>
+
+            <p>AWS: https://aws.amazon.com/</p>
+            <p>Firebase: https://firebase.google.com/</p>
           </div> */}
           </div>
         </div>
