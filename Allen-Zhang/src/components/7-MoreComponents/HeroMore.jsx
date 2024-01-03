@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import "./HeroMore.css";
 
 const HeroMore = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="hero-more">
       <div className="container">

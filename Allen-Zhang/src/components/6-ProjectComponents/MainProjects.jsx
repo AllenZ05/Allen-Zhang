@@ -1,12 +1,27 @@
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 import "./MainProjects.css";
 
 const MainProjects = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="my-projects">
       <div className="projects-container">
         <br /> <br />
         <h3>In Development</h3>
-        <div className="project1 project">
+        <motion.div
+          className="project1 project"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <div className="project-content">
             <h3>Productivity App (in development)</h3>
             <p>
@@ -19,8 +34,18 @@ const MainProjects = () => {
             <p>Tech Stack: AWS, SQL, Next.js, Swift, TypeScript, Tailwind CSS, HTML</p>
             <p>In development</p>
           </div>
-        </div>
-        <div className="project2 project">
+        </motion.div>
+        <motion.div
+          className="project2 project"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <div className="project-content">
             <h3>Wildlife and Plant Detector (in development)</h3>
             <p>
@@ -31,16 +56,26 @@ const MainProjects = () => {
             <p>Tech Stack: Python, CVAT, PyTorch</p>
             <p>In development</p>
           </div>
-        </div>
+        </motion.div>
         <br /> <br />
         <h3>Complete</h3>
-        <div className="project3 project">
+        <motion.div
+          className="project3 project"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <div className="project-content">
             <h3>Personal Website</h3>
             <p>
               Designed and developed a fully responsive personal website to learn more about me! Showcases my
               experiences, projects, and skills. Will also be a place to store things I write about. You&apos;re on it
-              right now!
+              right now! :D
             </p>
             <p>Tech stack: Vite.js, React.js, JavaScript, HTML/CSS</p>
             <p>
@@ -49,8 +84,18 @@ const MainProjects = () => {
               </a>
             </p>
           </div>
-        </div>
-        <div className="project4 project">
+        </motion.div>
+        <motion.div
+          className="project4 project"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <div className="project-content">
             <h3>Fall Detection Device</h3>
             <p>
@@ -67,8 +112,18 @@ const MainProjects = () => {
               </a>
             </p>
           </div>
-        </div>
-        <div className="project5 project">
+        </motion.div>
+        <motion.div
+          className="project5 project"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <div className="project-content">
             <h3>Minesweeper</h3>
             <p>
@@ -84,8 +139,18 @@ const MainProjects = () => {
               </a>
             </p>
           </div>
-        </div>
-        <div className="project6 project">
+        </motion.div>
+        <motion.div
+          className="project6 project"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <div className="project-content">
             <h3>Python Games</h3>
             <p>
@@ -102,8 +167,18 @@ const MainProjects = () => {
               </a>
             </p>
           </div>
-        </div>
-        <div className="project7 project">
+        </motion.div>
+        <motion.div
+          className="project7 project"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <div className="project-content">
             <h3>Movie Website</h3>
             <p>
@@ -122,7 +197,7 @@ const MainProjects = () => {
               </a>
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,11 +1,39 @@
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 import "./MainAbout.css";
 
 const MainAbout = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const aboutMeVariants = {
+    hidden: {
+      opacity: 0,
+      x: -100,
+      filter: "blur(5px)",
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.7, delay: 0.2},
+    },
+  };
+  const viewportOption = {
+    amount: 0.1,
+    once: true,
+  };
+
   return (
     <div className="about-me">
       <div className="sections">
-        <div className="introduction">
-          <p className="update">IMPROVEMENTS + MORE INFO TO THIS PAGE COMING (when I have time)</p> {/*TODO*/}
+        <motion.div
+          className="introduction"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOption}
+          variants={aboutMeVariants}
+        >
           <h3>Introduction</h3>
           <p>
             My name is Allen. I am currently a first year student attending the University of Waterloo, as a Candidate
@@ -16,10 +44,19 @@ const MainAbout = () => {
           <br></br>
           <p className="co-op">CURRENTLY SEEKING SUMMER CO-OPS/INTERNSHIPS FOR MAY-AUG 2024</p> {/*TODO*/}
           <p>Interested in software roles, anywhere in Canada or US.</p>
-          <p>Free feel to contact me using my socials in the footer (email preferred), always willing to connect and talk!</p>
-        </div>
+          <p>
+            Free feel to contact me using my socials in the footer (email preferred), always willing to connect and
+            talk!
+          </p>
+        </motion.div>
         <div className="edu_skills">
-          <div className="education">
+          <motion.div
+            className="education"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOption}
+            variants={aboutMeVariants}
+          >
             <h3>Education</h3>
             <div className="uni">
               <h4>University of Waterloo</h4>
@@ -53,8 +90,14 @@ const MainAbout = () => {
                 </p>
               </div>
             </div>
-          </div>
-          <div className="skills">
+          </motion.div>
+          <motion.div
+            className="skills"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOption}
+            variants={aboutMeVariants}
+          >
             <h3>Skills</h3>
             <div className="skills-intro">
               <p>
@@ -135,9 +178,15 @@ const MainAbout = () => {
             <p>AWS: https://aws.amazon.com/</p>
             <p>Firebase: https://firebase.google.com/</p>
           </div> */}
-          </div>
+          </motion.div>
         </div>
-        <div className="misc">
+        <motion.div
+          className="misc"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOption}
+          variants={aboutMeVariants}
+        >
           <h3>Misc</h3>
           <div className="interests">
             <h5>Interests</h5>
@@ -153,7 +202,7 @@ const MainAbout = () => {
             <p>Movie: Lord of the Rings</p>
             <p>Artist: Probably NF right now</p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

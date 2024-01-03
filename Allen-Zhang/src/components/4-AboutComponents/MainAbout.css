@@ -1,11 +1,4 @@
 /* TODO */
-.update {
-  color: red;
-  font-size: 1.2rem !important;
-  font-weight: 200;
-}
-
-/* TODO */
 .co-op {
   font-size: 1.5rem !important;
   color: yellow;
@@ -32,6 +25,7 @@
 .skills,
 .misc {
   margin: 1rem;
+  margin-bottom: 4rem;
 }
 
 .edu_skills {

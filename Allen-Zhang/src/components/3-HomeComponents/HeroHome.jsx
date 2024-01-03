@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import "./HeroHome.css";
 import HeroHomebg from "../../assets/heroHome-bg.jpg";
 
 import Typewriter from "typewriter-effect";
 
 const HeroHome = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="hero-home">
       <div className="images">

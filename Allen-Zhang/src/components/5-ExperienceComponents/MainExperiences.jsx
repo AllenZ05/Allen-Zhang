@@ -1,10 +1,25 @@
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 import "./MainExperiences.css";
 
 const MainExperiences = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="my-experiences">
       <div className="experiences-container">
-        <div className="experience1 experience">
+        <motion.div
+          className="experience1 experience"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.3, type: "spring", stiffness: 100 }}
+          variants={{
+            hidden: { opacity: 0, x: -100, rotate: -10 },
+            visible: { opacity: 1, x: 0, rotate: 0 },
+          }}
+        >
           <div className="experience-info">
             <h3 className="job-title">Firmware Developer</h3>
             <h5>University of Waterloo Formula Electric</h5>
@@ -36,8 +51,18 @@ const MainExperiences = () => {
               </a>
             </p>
           </div>
-        </div>
-        <div className="experience2 experience">
+        </motion.div>
+        <motion.div
+          className="experience2 experience"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.3, type: "spring", stiffness: 100 }}
+          variants={{
+            hidden: { opacity: 0, x: -100, rotate: -10 },
+            visible: { opacity: 1, x: 0, rotate: 0 },
+          }}
+        >
           <div className="experience-info">
             <h3 className="job-title">Lifeguard and Swim Instructor</h3>
             <h5>City of Toronto</h5>
@@ -63,8 +88,18 @@ const MainExperiences = () => {
             <br />
             <p>Skills: Leadership, Teamwork, Communication, First Aid, Lifesaving, Teaching, Public Relations</p>
           </div>
-        </div>
-        <div className="experience3 experience">
+        </motion.div>
+        <motion.div
+          className="experience3 experience"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.3, type: "spring", stiffness: 100 }}
+          variants={{
+            hidden: { opacity: 0, x: -100, rotate: -10 },
+            visible: { opacity: 1, x: 0, rotate: 0 },
+          }}
+        >
           <div className="experience-info">
             <h3 className="job-title">Data Entry And Logistics Operator</h3>
             <h5>Somerville Merchandising</h5>
@@ -72,13 +107,19 @@ const MainExperiences = () => {
             <h6>Sep 2021 - Feb 2022</h6>
           </div>
           <div className="experience-description">
-            <p>Used Microsoft 365 tools to calculate, input, and keep track of daily transactions, ensuring up-to-date and accurate data</p>
-            <p>Utilized Oracle Transportation Management and Google Maps to optimize and plan delivery routes for truck teams, all around the Golden Horseshoe region</p>
+            <p>
+              Used Microsoft 365 tools to calculate, input, and keep track of daily transactions, ensuring up-to-date
+              and accurate data
+            </p>
+            <p>
+              Utilized Oracle Transportation Management and Google Maps to optimize and plan delivery routes for truck
+              teams, all around the Golden Horseshoe region
+            </p>
             <p>Collaborated with the inventory management teams to oversee and control inventory levels</p>
             <br />
             <p>Skills: Microsoft Excel, Microsoft Word, Data Entry, Logistics Management, Data Analysis</p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
