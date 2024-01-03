@@ -30,11 +30,11 @@
 }
 
 .experience a:link {
-  color: blue;
+  color: rgb(100, 100, 250);
 }
 
 .experience a:visited {
-  color: purple;
+  color: rgb(190, 30, 190);
 }
 
 .experience a:hover {

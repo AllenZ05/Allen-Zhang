@@ -27,11 +27,11 @@
 }
 
 .project a:link {
-  color: blue;
+  color: rgb(100, 100, 250);
 }
 
 .project a:visited {
-  color: purple;
+  color: rgb(190, 30, 190);
 }
 
 .project a:hover {
