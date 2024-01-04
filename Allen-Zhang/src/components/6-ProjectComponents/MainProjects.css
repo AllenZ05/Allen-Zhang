@@ -2,15 +2,15 @@
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  background: linear-gradient(to bottom, rgb(180, 180, 200) 0%, rgb(85, 35, 165) 90%, rgba(0, 0, 0, 0.9) 100%),
-    linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgb(85, 35, 165) 30%,
-      rgb(85, 35, 165) 90%,
-      rgba(0, 0, 0, 0.8) 100%
-    );
-  background-blend-mode: multiply;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0%,
+      transparent 20%,
+      transparent 80%,
+      rgba(0, 0, 0, 0.3) 100%
+    ),
+    linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.3) 100%),
+    rgb(75, 25, 150);
 }
 
 .projects-container {

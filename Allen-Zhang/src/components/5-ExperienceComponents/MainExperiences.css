@@ -1,22 +1,17 @@
 .my-experiences {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   min-height: 100vh;
   width: 100%;
   padding: 1rem;
   margin: 0 auto;
-  background: linear-gradient(to bottom, rgb(65, 65, 190), rgb(35, 50, 165) 60%, rgba(0, 0, 0, 0.7)),
-    linear-gradient(to right, rgba(0, 0, 0, 0.7), rgb(35, 50, 165) 20%, rgb(35, 50, 165) 80%, rgba(0, 0, 0, 0.7));
-  background-blend-mode: multiply;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 130, 1) 50%,
+    rgba(0, 0, 120, 0.7) 80%,
+    rgba(0, 0, 100, 0.5) 100%
+  );
 }
 
 .experiences-container {
-  /* display: flex; */
-  /* flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   padding: 1rem;
 }
 
