@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { IoCheckmark } from "react-icons/io5";
+import { MdHourglassBottom } from "react-icons/md";
+import CanadaFlag from "../../assets/smaller-images/Canada_Flag.svg";
+import USAFlag from "../../assets/smaller-images/USA_Flag.svg";
+import { FaRocket } from "react-icons/fa6";
+import { RiShining2Fill } from "react-icons/ri";
+
 import "./MainAbout.css";
 
 const MainAbout = () => {
@@ -16,7 +23,7 @@ const MainAbout = () => {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",
-      transition: { duration: 0.7, delay: 0.2},
+      transition: { duration: 0.7, delay: 0.2 },
     },
   };
   const viewportOption = {
@@ -36,14 +43,22 @@ const MainAbout = () => {
         >
           <h3>Introduction</h3>
           <p>
-            My name is Allen. I am currently a first year student attending the University of Waterloo, as a Candidate
-            for BASc in Computer Engineering.
+            <FaRocket className="rocket-icon" /> My name is Allen. I am currently a first year student attending the
+            University of Waterloo, as a Candidate for BASc in Computer Engineering.{" "}
+            <FaRocket className="rocket-icon" />
           </p>
-          <p>An ambitious individual, with a mission to change the world the best I can. </p>
+          <p>
+            <RiShining2Fill className="shining-icon" /> An ambitious individual, with a mission to change the world the
+            best I can. <RiShining2Fill className="shining-icon" />
+          </p>
           <p>I currently live in Toronto, Canada.</p>
           <br></br>
           <p className="co-op">CURRENTLY SEEKING SUMMER CO-OPS/INTERNSHIPS FOR MAY-AUG 2024</p> {/*TODO*/}
-          <p>Interested in software roles, anywhere in Canada or US.</p>
+          <p>
+            Interested in software roles, anywhere in Canada or US.{" "}
+            <img src={CanadaFlag} alt="Canada Flag" className="flag-icon" />
+            <img src={USAFlag} alt="USA Flag" className="flag-icon" />
+          </p>
           <p>
             Free feel to contact me using my socials in the footer (email preferred), always willing to connect and
             talk!
@@ -67,25 +82,51 @@ const MainAbout = () => {
                 <p>Term 1 (Sep 2023 - Dec 2023)</p>
                 <p>
                   <ul>
-                    <li>Linear Algebra</li>
-                    <li>Calculus 1</li>
-                    <li>Classical Mechanics</li>
-                    <li>Programming</li>
-                    <li>Project Studio</li>
-                    <li>Engineering Profession and Practice</li>
-                    <li>Communication in the Engineering Profession</li>
+                    <li>
+                      Linear Algebra <IoCheckmark className="checkmark-icon" />
+                    </li>
+                    <li>
+                      Calculus 1 <IoCheckmark className="checkmark-icon" />
+                    </li>
+                    <li>
+                      Classical Mechanics <IoCheckmark className="checkmark-icon" />
+                    </li>
+                    <li>
+                      Programming <IoCheckmark className="checkmark-icon" />
+                    </li>
+                    <li>
+                      Project Studio <IoCheckmark className="checkmark-icon" />
+                    </li>
+                    <li>
+                      Engineering Profession and Practice <IoCheckmark className="checkmark-icon" />
+                    </li>
+                    <li>
+                      Communication in the Engineering Profession <IoCheckmark className="checkmark-icon" />
+                    </li>
                   </ul>
                 </p>
                 <br />
                 <p>Term 2 (Jan 2024 - Apr 2024)</p>
                 <p>
                   <ul>
-                    <li>Calculus 2</li>
-                    <li>Electricity and Magnetism</li>
-                    <li>Discrete Mathematics and Logic 1</li>
-                    <li>Digital Circuits and Systems</li>
-                    <li>Linear Circuits</li>
-                    <li>Engineering Economics and Impact on Society</li>
+                    <li>
+                      Calculus 2 <MdHourglassBottom className="hourglass-icon" />
+                    </li>
+                    <li>
+                      Electricity and Magnetism <MdHourglassBottom className="hourglass-icon" />
+                    </li>
+                    <li>
+                      Discrete Mathematics and Logic 1 <MdHourglassBottom className="hourglass-icon" />
+                    </li>
+                    <li>
+                      Digital Circuits and Systems <MdHourglassBottom className="hourglass-icon" />
+                    </li>
+                    <li>
+                      Linear Circuits <MdHourglassBottom className="hourglass-icon" />
+                    </li>
+                    <li>
+                      Engineering Economics and Impact on Society <MdHourglassBottom className="hourglass-icon" />
+                    </li>
                   </ul>
                 </p>
               </div>
@@ -110,21 +151,21 @@ const MainAbout = () => {
               </p>
             </div>
             <div className="coding-journey">
-              <h4>Coding Skills</h4>
+              <h4>Technical Skills</h4>
               <p>
-                <b>Languages:</b> Python, C++, C, Swift, SQL, JS, TS, HTML, CSS
+                <b>Languages:</b> Python, C++, C, Swift, SQL/NoSQL, TypeScript, JavaScript, CSS, HTML
               </p>
               <p>
-                <b>Frameworks/Libraries:</b> React.js, Next.js, Vite.js, Vue.js, PyTorch, PyGame, Tailwind
+                <b>Frameworks/Libraries:</b> React.js, Next.js, Vue.js, PyTorch, PyGame, Tailwind
               </p>
               <p>
-                <b>Other:</b> Node, AWS, Firebase, Axios, Postman
+                <b>Build/Development/Environment Tools:</b> AWS, Node.js, Vite.js, Firebase
               </p>
               <p>
-                <b>Dev Tools:</b> Git, Github, VSCode{" "}
+                <b>Developer Tools:</b> Git, Github, VSCode
               </p>
               <p>
-                <b>Misc:</b> STM32, STM32CubeIDE, MPU6050{" "}
+                <b>Misc:</b> STM32, STM32CubeIDE, MPU6050, Microsoft Office, Google Suite, Adobe Suite
               </p>
               <br />
               <p>
