@@ -32,7 +32,7 @@ const MainProjects = () => {
               storage, ensuring seamless user data synchronization.
             </p>
             <p>Tech Stack: AWS, SQL, Next.js, Swift, TypeScript, Tailwind CSS, HTML</p>
-            <p>In development</p>
+            <p>In development: Releasing in late January 2024</p>
           </div>
         </motion.div>
         <motion.div

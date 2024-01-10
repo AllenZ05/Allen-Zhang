@@ -2,13 +2,79 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import "./MainExperiences.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const MainExperiences = () => {
+  const copyToClipboard = async (type, text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success(`Copied ${type} to clipboard!`);
+    } catch (err) {
+      console.error(`Could not copy ${type}: `, err);
+      toast.error(`Failed to copy ${type}`);
+    }
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <div className="my-experiences">
       <div className="experiences-container">
+        {/* Temp Temp Temp */}
+        <motion.div
+          className="experience0 experience"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.3, type: "spring", stiffness: 100 }}
+          variants={{
+            hidden: { opacity: 0, x: -100, rotate: -10 },
+            visible: { opacity: 1, x: 0, rotate: 0 },
+          }}
+        >
+          <div className="experience-info">
+            <h3 className="job-title">???</h3>
+            <br />
+            <h6>Anywhere in Canada or US</h6>
+            <h6>May 2023 - Aug 2023</h6>
+          </div>
+          <div className="experience-description">
+            <br />
+            <p>Seeking Software Co-ops/Internships for Summer 2024!</p>
+            <br />
+            <p>
+              Contact me at{" "}
+              <button
+                onClick={() => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com")}
+                className="email"
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  outline: "none",
+                  fontSize: "1rem",
+                  color: "CornflowerBlue",
+                }}
+              >
+                allen.zhang.y05@gmail.com
+              </button>
+            </p>
+          </div>
+        </motion.div>
+        <ToastContainer
+          position="top-center"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          className="my-toast-container"
+        />
+        {/* Temp Temp Temp */}
         <motion.div
           className="experience1 experience"
           initial="hidden"
