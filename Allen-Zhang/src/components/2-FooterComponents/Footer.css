@@ -77,11 +77,11 @@
 }
 
 .icon {
-  font-size: 2em;
+  font-size: 2.2em;
 }
 
 .icon2 {
-  font-size: 2.3em;
+  font-size: 2.5em;
 }
 
 /* Right Side */
@@ -133,12 +133,12 @@
 
   .icon {
     margin: 0.5rem;
-    font-size: 1.4em;
+    font-size: 1.87em;
   }
 
   .icon2 {
     margin: 0.5rem;
-    font-size: 1.65em;
+    font-size: 2.125em;
   }
 
   .my-toast-container .Toastify__toast {
@@ -172,12 +172,12 @@
 
   .icon {
     margin: 0.7rem;
-    font-size: 1.6em;
+    font-size: 1.98em;
   }
 
   .icon2 {
     margin: 0.7rem;
-    font-size: 1.8em;
+    font-size: 2.25em;
   }
 
   .my-toast-container .Toastify__toast {
@@ -205,12 +205,12 @@
 
   .icon {
     margin: 0.9rem;
-    font-size: 1.8em;
+    font-size: 2.09em;
   }
 
   .icon2 {
     margin: 0.9rem;
-    font-size: 2.05em;
+    font-size: 2.375em;
   }
 
   .my-toast-container .Toastify__toast {

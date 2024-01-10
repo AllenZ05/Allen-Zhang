@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
           <div className="copyright">
             <AiOutlineCopyrightCircle className="copy-right" />
-            <p>2023 Allen Zhang</p>
+            <p>2024 Allen Zhang</p>
           </div>
         </div>
 
