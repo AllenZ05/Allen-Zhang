@@ -33,21 +33,21 @@
 }
 
 .education {
-  width: 40%;
+  width: 30%;
 }
 
 .skills {
-  width: 60%;
+  width: 70%;
 }
 
 .sections h3 {
-  font-weight: 500;
-  margin: 1rem;
+  font-weight: 700;
+  margin: 2rem 1rem 2.5rem 1rem;
 }
 
 .sections h4 {
   font-weight: 300;
-  margin: 1rem;
+  margin: 2rem 1rem 1.5rem 1rem;
 }
 
 .sections h5 {
@@ -63,6 +63,14 @@
 .sections p {
   font-weight: 200;
   margin: 0.5rem;
+}
+
+.terms {
+  margin: 2rem 1rem;
+}
+
+.technical-skills p {
+  margin: 1rem;
 }
 
 .checkmark-icon,
