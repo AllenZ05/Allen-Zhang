@@ -195,6 +195,10 @@ const MainProjects = () => {
               <a href="https://github.com/AllenZ05/Movie-Project" target="_blank" rel="noopener noreferrer">
                 Github Repo
               </a>
+              <br />
+              <a href="https://cs12-summative.web.app/" target="_blank" rel="noopener noreferrer">
+                Website
+              </a>
             </p>
           </div>
         </motion.div>
