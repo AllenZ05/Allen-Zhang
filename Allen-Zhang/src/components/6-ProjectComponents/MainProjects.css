@@ -27,11 +27,13 @@
 }
 
 .project a:link {
-  color: rgb(100, 100, 250);
+  color: rgb(120, 120, 250);
+  font-size: 1.1em;
+  font-weight: 500;
 }
 
 .project a:visited {
-  color: rgb(190, 30, 190);
+  color: rgb(120, 120, 250);
 }
 
 .project a:hover {
@@ -47,7 +49,7 @@
 .projects-container p {
   font-weight: 200;
   text-align: center;
-  margin: 1rem;
+  margin: 2rem 1rem;
 }
 
 /** Media Queries */

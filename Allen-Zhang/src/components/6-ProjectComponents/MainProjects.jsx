@@ -155,12 +155,21 @@ const MainProjects = () => {
             <h3>Python Games</h3>
             <p>
               1. Developed a Snake game, inspired by Google&apos;s snake game. Implemented snake movement, collision
-              detection, score tracking, and sound effects, for an engaging experience. Also designed graphics, refined
-              performance, and created a user-friendly interface with dynamic animations.
+              detection, score tracking, sound effects, and game over screen, for an engaging experience. Also designed
+              graphics, refined performance, and created a user-friendly interface with dynamic animations.
               <br /> <br />
+              <a
+                href="https://github.com/AllenZ05/Python-Games/assets/124856383/2bca3b01-fde5-4ffe-9b3e-ca0c30c525be"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Video Demo
+              </a>
+              <br /> <br /> <br />
               2. In progress
             </p>
             <p>Tech stack: Python, Pygame</p>
+            <br />
             <p>
               <a href="https://github.com/AllenZ05/Python-Games" target="_blank" rel="noopener noreferrer">
                 Github Repo
@@ -183,21 +192,21 @@ const MainProjects = () => {
             <h3>Movie Website</h3>
             <p>
               Created a dynamic and user-friendly movie website to find any movie you want. It utilizes Vue.js for
-              front-end development and Axios for RESTful API integration with the TMDb API. Advanced features were
-              implemented, such as an intuitive search bar and efficient movie data retrieval encompassing overviews,
-              trailers, genres, ratings, release dates, crew details, and more. Employed Postman for API testing and
-              debugging, ensuring seamless end-to-end HTTP communication. Finally, the backend infrastructure is powered
-              by Firebase, providing secure user authentication and real-time database interactions for storing user
-              preferences.
+              front-end development and Axios for RESTful API integration with the TMDb API. Has up-to-date content for
+              all movies and tv shows, including an overview, trailer, genre, ratings, release dates, cast, budget,
+              revenue and more. Implemented an intuitive search bar for effortless movie discovery and selection.
+              Employed Postman for API testing and debugging, ensuring seamless end-to-end HTTP communication. Finally,
+              the backend infrastructure is powered by Firebase, providing secure user authentication and real-time
+              database interactions for storing user preferences.
             </p>
             <p>Tech stack: Vue.js, JavaScript, HTML/CSS, Firebase, Postman, Axios, TMDb API</p>
             <p>
-              <a href="https://github.com/AllenZ05/Movie-Project" target="_blank" rel="noopener noreferrer">
-                Github Repo
-              </a>
-              <br />
               <a href="https://cs12-summative.web.app/" target="_blank" rel="noopener noreferrer">
                 Website
+              </a>
+              <br /> <br />
+              <a href="https://github.com/AllenZ05/Movie-Project" target="_blank" rel="noopener noreferrer">
+                Github Repo
               </a>
             </p>
           </div>
