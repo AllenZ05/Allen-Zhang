@@ -71,6 +71,7 @@ const HeroMore = () => {
             <p>MDN Web Docs: https://developer.mozilla.org/en-US/</p>
             <p>W3Schools: https://www.w3schools.com/</p>
             <p>JavaScript Reference: https://javascript.info/</p>
+            <p>TypeScript: https://www.typescriptlang.org/docs/</p>
             <p>Emmet Cheat Sheet: https://docs.emmet.io/cheat-sheet/</p>
 
             <p>CSS Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/</p>
