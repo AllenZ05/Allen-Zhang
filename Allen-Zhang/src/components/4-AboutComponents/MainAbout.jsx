@@ -32,9 +32,9 @@ const MainAbout = () => {
   };
 
   return (
-    <div className="about-me">
-      <div className="sections">
-        <motion.section
+    <main className="about-me">
+      <section className="sections">
+        <motion.article
           className="introduction"
           initial="hidden"
           whileInView="visible"
@@ -72,9 +72,9 @@ const MainAbout = () => {
             However, in May 2023, I decided to pursue Computer Engineering at the University of Waterloo, one of North
             America&apos;s most innovative and top technology schools.
           </p>
-        </motion.section>
-        <div className="edu_skills">
-          <motion.section
+        </motion.article>
+        <section className="edu_skills">
+          <motion.article
             className="education"
             initial="hidden"
             whileInView="visible"
@@ -142,8 +142,8 @@ const MainAbout = () => {
                 </section>
               </div>
             </div>
-          </motion.section>
-          <motion.section
+          </motion.article>
+          <motion.article
             className="skills"
             initial="hidden"
             whileInView="visible"
@@ -174,9 +174,9 @@ const MainAbout = () => {
               <p>Leadership, Teamwork, Communication, Creativity, Problem-Solving</p>
             </div>
             <br />
-          </motion.section>
-        </div>
-        {/* <motion.section
+          </motion.article>
+        </section>
+        {/* <motion.article
           className="misc"
           initial="hidden"
           whileInView="visible"
@@ -198,9 +198,9 @@ const MainAbout = () => {
             <p>Movie: Lord of the Rings</p>
             <p>Artist: Probably NF right now</p>
           </section>
-        </motion.section> */}
-      </div>
-    </div>
+        </motion.article> */}
+      </section>
+    </main>
   );
 };
 

@@ -30,14 +30,17 @@
 
 .edu_skills {
   display: flex;
+  margin-bottom: 3rem;
 }
 
 .education {
-  width: 30%;
+  width: 35%;
+  margin: 1rem;
 }
 
 .skills {
-  width: 70%;
+  width: 65%;
+  margin: 1rem;
 }
 
 .sections h3 {
