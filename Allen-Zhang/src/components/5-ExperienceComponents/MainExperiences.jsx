@@ -106,8 +106,7 @@ const MainExperiences = () => {
               braking. Currently working on a new and more efficient battery management system
             </p>
             <p>
-              Identified and rectified major flaws in the onboarding instructions, improving the process for new team
-              members
+              Currently designing and implementing a new and vastly improved dashboard 
             </p>
             <br />
             <p>Tech stack: C, Python</p>

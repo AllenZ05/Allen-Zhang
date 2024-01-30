@@ -95,7 +95,7 @@ const MainAbout = () => {
                         Linear Algebra <IoCheckmark className="checkmark-icon" />
                       </li>
                       <li>
-                        Calculus 1 <IoCheckmark className="checkmark-icon" />
+                        Calculus 1 & 2 <IoCheckmark className="checkmark-icon" />
                       </li>
                       <li>
                         Classical Mechanics <IoCheckmark className="checkmark-icon" />
@@ -107,7 +107,7 @@ const MainAbout = () => {
                         Project Studio <IoCheckmark className="checkmark-icon" />
                       </li>
                       <li>
-                        Engineering Essentials <IoCheckmark className="checkmark-icon" />
+                        Engineering Profession and Practice <IoCheckmark className="checkmark-icon" />
                       </li>
                       <li>
                         Communication in Engineering <IoCheckmark className="checkmark-icon" />
@@ -120,13 +120,13 @@ const MainAbout = () => {
                   <p>
                     <ul>
                       <li>
-                        Calculus 2 <MdHourglassBottom className="hourglass-icon" />
+                        Calculus 3 <MdHourglassBottom className="hourglass-icon" />
                       </li>
                       <li>
                         Electricity and Magnetism <MdHourglassBottom className="hourglass-icon" />
                       </li>
                       <li>
-                        Discrete Mathematics and Logic 1 <MdHourglassBottom className="hourglass-icon" />
+                        Discrete Mathematics and Logic <MdHourglassBottom className="hourglass-icon" />
                       </li>
                       <li>
                         Digital Circuits and Systems <MdHourglassBottom className="hourglass-icon" />
@@ -135,7 +135,7 @@ const MainAbout = () => {
                         Linear Circuits <MdHourglassBottom className="hourglass-icon" />
                       </li>
                       <li>
-                        Engineering Economics and Impact on Society <MdHourglassBottom className="hourglass-icon" />
+                        Engineering Economics <MdHourglassBottom className="hourglass-icon" />
                       </li>
                     </ul>
                   </p>
@@ -176,7 +176,7 @@ const MainAbout = () => {
             <br />
           </motion.section>
         </div>
-        <motion.section
+        {/* <motion.section
           className="misc"
           initial="hidden"
           whileInView="visible"
@@ -198,7 +198,7 @@ const MainAbout = () => {
             <p>Movie: Lord of the Rings</p>
             <p>Artist: Probably NF right now</p>
           </section>
-        </motion.section>
+        </motion.section> */}
       </div>
     </div>
   );
