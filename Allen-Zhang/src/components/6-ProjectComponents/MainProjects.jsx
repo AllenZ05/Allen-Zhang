@@ -134,6 +134,14 @@ const MainProjects = () => {
             </p>
             <p>Tech stack: C++</p>
             <p>
+              <a
+                href="https://github.com/AllenZ05/Minesweeper/assets/124856383/08858cc9-1799-4653-a58b-e5750406ee09"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Video Demo
+              </a>
+              <br /> <br />
               <a href="https://github.com/AllenZ05/Minesweeper" target="_blank" rel="noopener noreferrer">
                 Github Repo
               </a>
@@ -152,12 +160,15 @@ const MainProjects = () => {
           }}
         >
           <div className="project-content">
-            <h3>Python Games</h3>
+            <h3>Snake</h3>
             <p>
-              1. Developed a Snake game, inspired by Google&apos;s snake game. Implemented snake movement, collision
+              Developed a Snake game, inspired by Google&apos;s snake game. Implemented snake movement, collision
               detection, score tracking, sound effects, and game over screen, for an engaging experience. Also designed
               graphics, refined performance, and created a user-friendly interface with dynamic animations.
-              <br /> <br />
+              <br />
+            </p>
+            <p>Tech stack: Python, Pygame</p>
+            <p>
               <a
                 href="https://github.com/AllenZ05/Python-Games/assets/124856383/2bca3b01-fde5-4ffe-9b3e-ca0c30c525be"
                 target="_blank"
@@ -165,12 +176,7 @@ const MainProjects = () => {
               >
                 Video Demo
               </a>
-              <br /> <br /> <br />
-              2. In progress
-            </p>
-            <p>Tech stack: Python, Pygame</p>
-            <br />
-            <p>
+              <br /> <br />
               <a href="https://github.com/AllenZ05/Python-Games" target="_blank" rel="noopener noreferrer">
                 Github Repo
               </a>
