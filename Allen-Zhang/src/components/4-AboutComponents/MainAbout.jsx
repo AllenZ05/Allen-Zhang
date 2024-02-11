@@ -52,17 +52,12 @@ const MainAbout = () => {
             best I can. <RiShining2Fill className="shining-icon" />
           </p>
           <p>I currently live in Toronto, Canada.</p>
-          <br></br>
-          <p className="co-op">CURRENTLY SEEKING SUMMER CO-OPS/INTERNSHIPS FOR MAY-AUG 2024</p> {/*TODO*/}
+          <br />
           <p>
-            Interested in software roles, anywhere in Canada or US.{" "}
             <img src={CanadaFlag} alt="Canada Flag" className="flag-icon" />
             <img src={USAFlag} alt="USA Flag" className="flag-icon" />
           </p>
-          <p>
-            Free feel to contact me using my socials in the footer (email preferred), always willing to connect and
-            talk!
-          </p>
+          <p>Free feel to contact me using my socials in the footer, always willing to talk and connect!</p>
           <br />
           <p>
             I have always had a ton of interests, and did not know what I wanted to do in the future for the longest
@@ -126,7 +121,7 @@ const MainAbout = () => {
                         Electricity and Magnetism <MdHourglassBottom className="hourglass-icon" />
                       </li>
                       <li>
-                        Discrete Mathematics and Logic <MdHourglassBottom className="hourglass-icon" />
+                        Discrete Math and Logic <MdHourglassBottom className="hourglass-icon" />
                       </li>
                       <li>
                         Digital Circuits and Systems <MdHourglassBottom className="hourglass-icon" />
@@ -166,7 +161,7 @@ const MainAbout = () => {
                 <b>Developer Tools:</b> Git, Github, VSCode
               </p>
               <p>
-                <b>Misc:</b> STM32, STM32CubeIDE, MPU6050, Microsoft Office, Google Workspace, Adobe Suite
+                <b>Misc:</b> STM32, MPU6050, Microsoft Office, Google Workspace, Adobe Suite, Figma
               </p>
             </div>
             <div className="soft-skills">
