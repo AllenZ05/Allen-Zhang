@@ -39,7 +39,6 @@
 .hero-projects .description h2 {
   font-weight: 700;
   padding: 1rem;
-  
   overflow: hidden;
   white-space: nowrap;
   width: 0;
@@ -47,7 +46,7 @@
 }
 
 .hero-projects .description p {
-  font-size: 1.5rem;
-  font-weight: 200;
+  font-size: 2rem;
   animation: scaleUp 1s forwards;
+  font-family: "Roboto", sans-serif;
 }

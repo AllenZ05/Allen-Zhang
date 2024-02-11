@@ -17,6 +17,17 @@
   object-fit: cover;
 }
 
+@keyframes backgroundHeroHome {
+  0% {
+    opacity: 0.5;
+    background-color: white;
+  }
+  100% {
+    opacity: 0.35;
+    background-color: black;
+  }
+}
+
 .hero-home .images::after {
   content: "";
   position: absolute;
@@ -25,6 +36,7 @@
   top: 0;
   left: 0;
   background-color: black;
+  animation: backgroundHeroHome 3s;
   opacity: 0.35;
 }
 
@@ -39,15 +51,17 @@
 .hero-home .description h1 {
   font-weight: 900;
   padding: 1rem;
-  text-shadow: 2px 2px 10px black; 
+  margin: 1rem;
+  text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
   animation: fadeIn 2s;
 }
 
 .hero-home .description p {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: 400;
-  color: rgb(240, 240, 240);
+  text-shadow: 2px 2px 3px rgba(72, 21, 148, 0.7);
   animation: slideIn 1s ease;
+  font-family: "Roboto", sans-serif;
 }
 
 .hero-home .description .Typewriter__cursor {

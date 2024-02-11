@@ -17,6 +17,15 @@
   object-fit: cover;
 }
 
+@keyframes backgroundHeroAbout {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    background-color: rgba(3, 3, 60, 0.4);
+  }
+}
+
 .hero-about .images::after {
   content: "";
   position: absolute;
@@ -24,8 +33,8 @@
   width: 100%;
   top: 0;
   left: 0;
-  background-color: black;
-  opacity: 0.25;
+  background-color: rgba(3, 3, 60, 0.4);
+  animation: backgroundHeroAbout 3s;
 }
 
 .hero-about .description {
@@ -34,14 +43,12 @@
   top: 50%;
   left: 50%;
   text-align: center;
-
   padding: 1rem;
 }
 
 .hero-about .description h2 {
   font-weight: 700;
   padding: 1rem;
- 
   overflow: hidden;
   white-space: nowrap;
   width: 0;
@@ -49,7 +56,7 @@
 }
 
 .hero-about .description p {
-  font-size: 1.5rem;
-  font-weight: 200;
+  font-size: 2rem;
   animation: scaleUp 1s forwards;
+  font-family: "Roboto", sans-serif;
 }

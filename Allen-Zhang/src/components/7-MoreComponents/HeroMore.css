@@ -1,9 +1,3 @@
-/* TODO */
-.coming-soon {
-  color: red;
-  font-size: 1.2rem !important;
-}
-
 .hero-more {
   height: 100%;
   width: 100%;
@@ -14,7 +8,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   margin: 5rem;
 }
 
@@ -25,7 +18,6 @@
 .more-header h2 {
   font-weight: 700;
   padding: 1rem;
-  
   overflow: hidden;
   white-space: nowrap;
   width: 0;
@@ -33,7 +25,9 @@
 }
 
 .more-header p {
-  font-weight: 200;
+  font-size: 2rem;
+  animation: scaleUp 1s forwards;
+  font-family: "Roboto", sans-serif;
 }
 
 .more-header,

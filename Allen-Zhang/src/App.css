@@ -72,11 +72,11 @@ body {
 
 h1 {
   --h1-base-font-size: 2em;
-  font-size: calc(var(--h1-base-font-size) * 3);
+  font-size: calc(var(--h1-base-font-size) * 4);
 }
 h2 {
   --h2-base-font-size: 1.5em;
-  font-size: calc(var(--h2-base-font-size) * 2.5);
+  font-size: calc(var(--h2-base-font-size) * 3);
 }
 h3 {
   --h3-base-font-size: 1.17em;
@@ -103,25 +103,25 @@ p {
 
 @media only screen and (max-width: 480px) {
   h1 {
-    font-size: calc(var(--h1-base-font-size) * 3 * 0.80);
+    font-size: calc(var(--h1-base-font-size) * 3 * 0.8);
   }
   h2 {
-    font-size: calc(var(--h2-base-font-size) * 2.5 * 0.80);
+    font-size: calc(var(--h2-base-font-size) * 2.5 * 0.8);
   }
   h3 {
-    font-size: calc(var(--h3-base-font-size) * 2 * 0.80);
+    font-size: calc(var(--h3-base-font-size) * 2 * 0.8);
   }
   h4 {
-    font-size: calc(var(--h4-base-font-size) * 2 * 0.80);
+    font-size: calc(var(--h4-base-font-size) * 2 * 0.8);
   }
   h5 {
-    font-size: calc(var(--h5-base-font-size) * 2 * 0.80);
+    font-size: calc(var(--h5-base-font-size) * 2 * 0.8);
   }
   h6 {
-    font-size: calc(var(--h6-base-font-size) * 2 * 0.80);
+    font-size: calc(var(--h6-base-font-size) * 2 * 0.8);
   }
   p {
-    font-size: calc(var(--p-base-font-size) * 1.2 * 0.80);
+    font-size: calc(var(--p-base-font-size) * 1.2 * 0.8);
   }
 }
 
@@ -151,25 +151,25 @@ p {
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   h1 {
-    font-size: calc(var(--h1-base-font-size) * 3 * 0.90);
+    font-size: calc(var(--h1-base-font-size) * 3 * 0.9);
   }
   h2 {
-    font-size: calc(var(--h2-base-font-size) * 2.5 * 0.90);
+    font-size: calc(var(--h2-base-font-size) * 2.5 * 0.9);
   }
   h3 {
-    font-size: calc(var(--h3-base-font-size) * 2 * 0.90);
+    font-size: calc(var(--h3-base-font-size) * 2 * 0.9);
   }
   h4 {
-    font-size: calc(var(--h4-base-font-size) * 2 * 0.90);
+    font-size: calc(var(--h4-base-font-size) * 2 * 0.9);
   }
   h5 {
-    font-size: calc(var(--h5-base-font-size) * 2 * 0.90);
+    font-size: calc(var(--h5-base-font-size) * 2 * 0.9);
   }
   h6 {
-    font-size: calc(var(--h6-base-font-size) * 2 * 0.90);
+    font-size: calc(var(--h6-base-font-size) * 2 * 0.9);
   }
   p {
-    font-size: calc(var(--p-base-font-size) * 1.2 * 0.90);
+    font-size: calc(var(--p-base-font-size) * 1.2 * 0.9);
   }
 }
 

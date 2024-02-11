@@ -11,8 +11,7 @@ const HeroMore = () => {
         <div className="more-header">
           <h2>More</h2>
           <p>Additional content from me</p>
-          <br /> <br />
-          <p className="coming-soon">COMING SOON (when I have time)</p> {/*TODO*/}
+          <br />
         </div>
         <div className="more-content">
           <h3>Section 1</h3>

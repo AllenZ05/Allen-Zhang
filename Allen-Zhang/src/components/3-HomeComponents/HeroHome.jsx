@@ -19,15 +19,14 @@ const HeroHome = () => {
           <Typewriter
             options={{
               strings: [
-                "Seeking Summer 2024 Co-ops/Internships!",
-                "Interested in Software Roles!",
-                "Can work anywhere in Canada or US!",
+                "Computer Engineering Student at the University of Waterloo!",
                 "Website is fully responsive on all devices :)",
+                "Would love to talk and connect with you :D",
               ],
               autoStart: true,
               loop: true,
-              delay: 50,
-              deleteSpeed: 25,
+              delay: 30,
+              deleteSpeed: 10,
             }}
           />
         </p>
