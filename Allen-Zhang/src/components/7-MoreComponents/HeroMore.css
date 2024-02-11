@@ -24,12 +24,6 @@
   animation: typewriter 2s forwards;
 }
 
-.more-header p {
-  font-size: 2rem;
-  animation: scaleUp 1s forwards;
-  font-family: "Roboto", sans-serif;
-}
-
 .more-header,
 .more-content {
   text-align: center;

@@ -10,8 +10,6 @@ const HeroMore = () => {
       <div className="container">
         <div className="more-header">
           <h2>More</h2>
-          <p>Additional content from me</p>
-          <br />
         </div>
         <div className="more-content">
           <h3>Section 1</h3>

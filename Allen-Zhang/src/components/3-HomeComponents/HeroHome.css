@@ -57,10 +57,11 @@
 }
 
 .hero-home .description p {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 400;
   text-shadow: 2px 2px 3px rgba(72, 21, 148, 0.7);
-  animation: slideIn 1s ease;
+  animation: scaleUp 1s ease;
+  
   font-family: "Roboto", sans-serif;
 }
 

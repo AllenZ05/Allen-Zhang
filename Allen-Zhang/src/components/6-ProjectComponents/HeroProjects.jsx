@@ -9,7 +9,6 @@ const HeroProjects = () => {
       </div>
       <div className="description">
         <h2>Projects</h2>
-        <p>My Projects</p>
       </div>
     </div>
   );

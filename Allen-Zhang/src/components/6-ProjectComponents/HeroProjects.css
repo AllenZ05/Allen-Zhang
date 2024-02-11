@@ -44,9 +44,3 @@
   width: 0;
   animation: typewriter 2s forwards;
 }
-
-.hero-projects .description p {
-  font-size: 2rem;
-  animation: scaleUp 1s forwards;
-  font-family: "Roboto", sans-serif;
-}

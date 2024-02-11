@@ -31,15 +31,6 @@ ul {
   }
 }
 
-@keyframes slideIn {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
 @keyframes typewriter {
   from {
     width: 0;
@@ -53,7 +44,7 @@ ul {
 
 @keyframes scaleUp {
   from {
-    transform: scale(0.1);
+    transform: scale(0.01);
   }
   to {
     transform: scale(1);

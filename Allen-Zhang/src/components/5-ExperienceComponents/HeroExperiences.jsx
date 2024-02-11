@@ -9,7 +9,6 @@ const HeroExperiences = () => {
       </div>
       <div className="description">
         <h2>Experiences</h2>
-        <p>My Work Experiences</p>
       </div>
     </div>
   );
