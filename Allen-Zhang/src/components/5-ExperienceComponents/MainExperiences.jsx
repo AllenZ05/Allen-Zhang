@@ -2,28 +2,18 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import "./MainExperiences.css";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const MainExperiences = () => {
-  const copyToClipboard = async (type, text) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      toast.success(`Copied ${type} to clipboard!`);
-    } catch (err) {
-      console.error(`Could not copy ${type}: `, err);
-      toast.error(`Failed to copy ${type}`);
-    }
-  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
     <div className="my-experiences">
       <div className="experiences-container">
-        {/* Temp Temp Temp */}
         <motion.div
-          className="experience0 experience"
+          className="experience1 experience"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -34,30 +24,20 @@ const MainExperiences = () => {
           }}
         >
           <div className="experience-info">
-            <h3 className="job-title">???</h3>
-            <br />
-            <h6>Anywhere in Canada or US</h6>
-            <h6>May 2023 - Aug 2023</h6>
+            <h3 className="job-title">Software Developer</h3>
+            <h5>Dandelion Networks</h5>
+            <h6>Toronto, ON</h6>
+            <h6>May 2024 - Aug 2024</h6>
           </div>
           <div className="experience-description">
             <br />
-            <p>Seeking Software Co-ops/Internships for Summer 2024!</p>
+            <br />
+            <p>Incoming Intern for Summer 2024!</p>
             <br />
             <p>
-              Contact me at{" "}
-              <button
-                onClick={() => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com")}
-                className="email"
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  outline: "none",
-                  fontSize: "1rem",
-                  color: "CornflowerBlue",
-                }}
-              >
-                allen.zhang.y05@gmail.com
-              </button>
+              <a href="https://dandelionnet.io/" target="_blank" rel="noopener noreferrer">
+                Website
+              </a>
             </p>
           </div>
         </motion.div>
@@ -74,9 +54,8 @@ const MainExperiences = () => {
           theme="dark"
           className="my-toast-container"
         />
-        {/* Temp Temp Temp */}
         <motion.div
-          className="experience1 experience"
+          className="experience2 experience"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -105,9 +84,7 @@ const MainExperiences = () => {
               Enhanced the braking system, resulting in a 7% performance improvement, leading to faster and smoother
               braking. Currently working on a new and more efficient battery management system
             </p>
-            <p>
-              Currently designing and implementing a new and vastly improved dashboard 
-            </p>
+            <p>Currently designing and implementing a new and vastly improved dashboard</p>
             <br />
             <p>Tech stack: C, Python</p>
             <p>
@@ -118,7 +95,7 @@ const MainExperiences = () => {
           </div>
         </motion.div>
         <motion.div
-          className="experience2 experience"
+          className="experience3 experience"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -144,6 +121,8 @@ const MainExperiences = () => {
               Displayed exceptional CPR and first aid skills in high-stress emergency situations, providing immediate
               and effective care, resulting in a quick and efficient response team
             </p>
+            <br />
+            <br />
             <h5>Swim Instructor</h5>
             <p>Instructed children from 5 to 14 years old on various swimming skills and techniques</p>
             <p>
@@ -155,7 +134,7 @@ const MainExperiences = () => {
           </div>
         </motion.div>
         <motion.div
-          className="experience3 experience"
+          className="experience4 experience"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
