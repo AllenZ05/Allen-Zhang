@@ -131,6 +131,11 @@ const MainExperiences = () => {
             </p>
             <br />
             <p>Skills: Leadership, Teamwork, Communication, First Aid, Lifesaving, Teaching, Public Relations</p>
+            <p>
+              <a href="https://www.toronto.ca/" target="_blank" rel="noopener noreferrer">
+                Website
+              </a>
+            </p>
           </div>
         </motion.div>
         <motion.div
@@ -162,6 +167,11 @@ const MainExperiences = () => {
             <p>Collaborated with the inventory management teams to oversee and control inventory levels</p>
             <br />
             <p>Skills: Microsoft Excel, Microsoft Word, Data Entry, Logistics Management, Data Analysis</p>
+            <p>
+              <a href="https://somerville.ca/" target="_blank" rel="noopener noreferrer">
+                Website
+              </a>
+            </p>
           </div>
         </motion.div>
       </div>
