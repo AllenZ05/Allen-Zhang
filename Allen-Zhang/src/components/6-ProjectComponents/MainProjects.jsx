@@ -23,7 +23,7 @@ const MainProjects = () => {
           }}
         >
           <div className="project-content">
-            <h3>Productivity App (in development)</h3>
+            <h3>Productivity App</h3>
             <p>
               Developing a productivity app on web and mobile to boost user productivity. Will offer a seamless,
               intuitive experience that harmonizes focus and organization across all your devices. The app will offer
@@ -32,35 +32,14 @@ const MainProjects = () => {
               storage, ensuring seamless user data synchronization.
             </p>
             <p>Tech Stack: AWS, SQL, Next.js, Swift, TypeScript, Tailwind CSS, HTML</p>
-            <p>In development: Releasing in late February 2024</p>
+            <p>In development, set to release in May</p>
           </div>
         </motion.div>
-        <motion.div
-          className="project2 project"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          variants={{
-            hidden: { opacity: 0, y: 50 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
-          <div className="project-content">
-            <h3>Wildlife and Plant Detector (in development)</h3>
-            <p>
-              Curated a dataset of 1000+ images and conducted meticulous annotations with CVAT, establishing a strong
-              foundation for training a PyTorch-based image detection model. Currently implementing a Kalman filter
-              algorithm enhance the precision of detection of wildlife and plants.
-            </p>
-            <p>Tech Stack: Python, CVAT, PyTorch</p>
-            <p>In development</p>
-          </div>
-        </motion.div>
-        <br /> <br />
+        <br />
+        <br />
         <h3>Complete</h3>
         <motion.div
-          className="project3 project"
+          className="project2 project"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -86,7 +65,7 @@ const MainProjects = () => {
           </div>
         </motion.div>
         <motion.div
-          className="project4 project"
+          className="project3 project"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -114,7 +93,7 @@ const MainProjects = () => {
           </div>
         </motion.div>
         <motion.div
-          className="project5 project"
+          className="project4 project"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -149,7 +128,7 @@ const MainProjects = () => {
           </div>
         </motion.div>
         <motion.div
-          className="project6 project"
+          className="project5 project"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -184,7 +163,7 @@ const MainProjects = () => {
           </div>
         </motion.div>
         <motion.div
-          className="project7 project"
+          className="project6 project"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}

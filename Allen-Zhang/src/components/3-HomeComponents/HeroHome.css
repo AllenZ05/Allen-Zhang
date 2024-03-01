@@ -19,8 +19,7 @@
 
 @keyframes backgroundHeroHome {
   0% {
-    opacity: 0.5;
-    background-color: white;
+    opacity: 0;
   }
   100% {
     opacity: 0.35;
