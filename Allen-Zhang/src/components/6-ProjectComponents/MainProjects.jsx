@@ -12,6 +12,27 @@ const MainProjects = () => {
         <br /> <br />
         <h3>In Development</h3>
         <motion.div
+          className="project0 project"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
+          <div className="project-content">
+            <h3>Mobile Game</h3>
+            <p>Developing a mobile game for iOS and Android.</p>
+            <p>Tech Stack: TBD</p>
+            <p>In development, set to release in August 2024</p>
+          </div>
+        </motion.div>
+        <br />
+        <br />
+        <h3>Complete</h3>
+        <motion.div
           className="project1 project"
           initial="hidden"
           whileInView="visible"
@@ -23,21 +44,22 @@ const MainProjects = () => {
           }}
         >
           <div className="project-content">
-            <h3>Productivity App</h3>
+            <h3>Time-CoPilot</h3>
             <p>
-              Developing a productivity app on web and mobile to boost user productivity. Will offer a seamless,
-              intuitive experience that harmonizes focus and organization across all your devices. The app will offer
-              many features to enhance time management, task/project tracking, note-taking, and personal goal setting,
-              all within a clean, user-friendly interface. AWS is used for secure authentication and reliable data
-              storage, ensuring seamless user data synchronization.
+              The Ultimate Productivity App. A seamless, intuitive experience that harmonizes focus and organization
+              across all your devices. Offers many features to enhance time management, schedule planning, task/project
+              tracking, note-taking, personal goal setting, and more, all within a clean, user-friendly interface. Help
+              and Support is offered 24/7 at <a href="mailto:contact@time-copilot.com">contact@time-copilot.com</a>. AWS
+              is used for secure authentication and reliable data storage, ensuring seamless user data synchronization.
             </p>
-            <p>Tech Stack: AWS, SQL, Next.js, Swift, TypeScript, Tailwind CSS, HTML</p>
-            <p>In development, set to release in May</p>
+            <p>Tech Stack: AWS, SQL, Next.js, TypeScript, Tailwind CSS</p>
+            <p>
+              <a href="https://www.time-copilot.com/" target="_blank" rel="noopener noreferrer">
+                Website
+              </a>
+            </p>
           </div>
         </motion.div>
-        <br />
-        <br />
-        <h3>Complete</h3>
         <motion.div
           className="project2 project"
           initial="hidden"
