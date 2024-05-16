@@ -32,7 +32,9 @@ const MainExperiences = () => {
           <div className="experience-description">
             <br />
             <br />
-            <p>Incoming Intern for Summer 2024!</p>
+            <p>Intern for Summer 2024!</p>
+            <br />
+            <p>Tech stack: Nuxt.js, Vue.js, Go</p>
             <br />
             <p>
               <a href="https://dandelionnet.io/" target="_blank" rel="noopener noreferrer">
@@ -69,7 +71,7 @@ const MainExperiences = () => {
             <h3 className="job-title">Firmware Developer</h3>
             <h5>University of Waterloo Formula Electric</h5>
             <h6>Waterloo, ON</h6>
-            <h6>Sep 2023 - Present</h6>
+            <h6>Sep 2023 - Apr 2024</h6>
           </div>
           <div className="experience-description">
             <p>

@@ -25,7 +25,7 @@ const MainProjects = () => {
           <div className="project-content">
             <h3>Mobile Game</h3>
             <p>Developing a mobile game for iOS and Android.</p>
-            <p>Tech Stack: TBD</p>
+            <p>Tech Stack: Unity, C#</p>
             <p>In development, set to release in August 2024</p>
           </div>
         </motion.div>

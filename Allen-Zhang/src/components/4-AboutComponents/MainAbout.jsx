@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { IoCheckmark } from "react-icons/io5";
-import { MdHourglassBottom } from "react-icons/md";
+// import { MdHourglassBottom } from "react-icons/md";
 import CanadaFlag from "../../assets/flag-images/Canada_Flag.svg";
 import USAFlag from "../../assets/flag-images/USA_Flag.svg";
 import { FaRocket } from "react-icons/fa6";
@@ -115,22 +115,22 @@ const MainAbout = () => {
                   <p>
                     <ul>
                       <li>
-                        Calculus 3 <MdHourglassBottom className="hourglass-icon" />
+                        Calculus 3 <IoCheckmark className="checkmark-icon" />
                       </li>
                       <li>
-                        Electricity and Magnetism <MdHourglassBottom className="hourglass-icon" />
+                        Electricity and Magnetism <IoCheckmark className="checkmark-icon" />
                       </li>
                       <li>
-                        Discrete Math and Logic <MdHourglassBottom className="hourglass-icon" />
+                        Discrete Math and Logic <IoCheckmark className="checkmark-icon" />
                       </li>
                       <li>
-                        Digital Circuits and Systems <MdHourglassBottom className="hourglass-icon" />
+                        Digital Circuits and Systems <IoCheckmark className="checkmark-icon" />
                       </li>
                       <li>
-                        Linear Circuits <MdHourglassBottom className="hourglass-icon" />
+                        Linear Circuits <IoCheckmark className="checkmark-icon" />
                       </li>
                       <li>
-                        Engineering Economics <MdHourglassBottom className="hourglass-icon" />
+                        Engineering Economics <IoCheckmark className="checkmark-icon" />
                       </li>
                     </ul>
                   </p>
@@ -149,16 +149,16 @@ const MainAbout = () => {
             <div className="technical-skills">
               <h4>Technical Skills</h4>
               <p>
-                <b>Languages:</b> Python, C++, C, Swift, SQL/NoSQL, TypeScript, JavaScript, CSS, HTML
+                <b>Languages:</b> Python, C++, C, Go, Swift, SQL/NoSQL, TypeScript, JavaScript, CSS, HTML
               </p>
               <p>
-                <b>Frameworks & Libraries:</b> React.js, Next.js, Vue.js, PyTorch, Tailwind
+                <b>Frameworks & Libraries:</b> React.js, Next.js, Vue.js, Nuxt.js, PyTorch, Tailwind
               </p>
               <p>
                 <b>Development Tools & Services:</b> AWS, Node.js, Vite.js, Firebase, Postman
               </p>
               <p>
-                <b>Developer Tools:</b> Git, Github, VSCode
+                <b>Developer Tools:</b> Git, Github, VSCode, Unity 
               </p>
               <p>
                 <b>Misc:</b> STM32, MPU6050, Microsoft Office, Google Workspace, Adobe Suite, Figma
