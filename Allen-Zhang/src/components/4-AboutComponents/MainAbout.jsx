@@ -149,7 +149,7 @@ const MainAbout = () => {
             <div className="technical-skills">
               <h4>Technical Skills</h4>
               <p>
-                <b>Languages:</b> Python, C++, C, Go, Swift, SQL/NoSQL, TypeScript, JavaScript, CSS, HTML
+                <b>Languages:</b> Python, C++, C#, C, Go, Swift, SQL/NoSQL, TypeScript, JavaScript, CSS, HTML
               </p>
               <p>
                 <b>Frameworks & Libraries:</b> React.js, Next.js, Vue.js, Nuxt.js, PyTorch, Tailwind
