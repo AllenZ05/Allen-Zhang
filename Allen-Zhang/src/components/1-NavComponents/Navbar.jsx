@@ -26,9 +26,6 @@ const Navbar = () => {
         <li>
           <Link to="/projects">Projects</Link>
         </li>
-        {/* <li>
-          <Link to="/more">More</Link>
-        </li> */}
       </ul>
       <div className="hamburger-menu" onClick={handleClick}>
         {click ? (
