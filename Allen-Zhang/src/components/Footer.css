@@ -1,52 +1,8 @@
 .footer {
   width: 100%;
-}
-
-.footer .sections {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 0 auto;
-}
-
-/* Left Side */
-.sections .left-side {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-width: 100%;
-  padding: 1rem;
-}
-
-.initials,
-.copyright {
-  display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 0.1rem;
-}
-
-.maple-leaf,
-.copy-right {
-  font-size: 1.2em;
-  margin: 0.2rem;
-}
-
-.maple-leaf {
-  color: red;
-}
-
-.copy-right {
-  color: white;
-}
-
-.left-side p {
-  font-size: 1.2rem;
-  font-weight: 200;
-}
-
-/* Middle */
-.sections .middle {
-  height: 100%;
-  width: 100%;
   padding: 1rem;
 }
 
@@ -54,15 +10,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
-.socials button,
-.socials a {
+.social-button {
   background: none;
   border: none;
   cursor: pointer;
-
-  transition: transform 250ms;
+  transition: transform 250ms ease-in-out; 
 }
 
 .socials button:hover,
@@ -73,35 +28,13 @@
 .footer-icon,
 .footer-icon2 {
   color: white;
-  margin: 1rem;
-}
-
-.footer-icon {
   font-size: 2.2em;
+  margin: 1rem;
+  transition: transform 250ms ease-in-out; 
 }
 
 .footer-icon2 {
   font-size: 2.5em;
-}
-
-/* Right Side */
-.sections .right-side {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  height: 100%;
-  max-width: 100%;
-  padding: 1rem;
-}
-
-.quote {
-  text-align: center;
-  margin: 0.1rem;
-}
-
-.right-side p {
-  font-size: 1.2rem;
-  font-weight: 200;
 }
 
 /* Toast Container */
@@ -115,29 +48,11 @@
 /** Media Queries */
 
 @media only screen and (max-width: 480px) {
-  .footer .sections {
-    grid-template-columns: 1fr;
-  }
-  .sections .left-side,
-  .sections .middle,
-  .sections .right-side {
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-  }
-
-  .maple-leaf,
-  .copy-right {
-    font-size: 0.9em;
-  }
-
   .footer-icon {
-    margin: 0.5rem;
     font-size: 1.9em;
   }
 
   .footer-icon2 {
-    margin: 0.5rem;
     font-size: 2.35em;
   }
 
@@ -146,37 +61,14 @@
     font-size: 0.6rem;
     padding: 0.2rem;
   }
-
-  .left-side p,
-  .right-side p {
-    font-size: 0.9rem;
-  }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
-  .footer .sections {
-    grid-template-columns: 1fr;
-  }
-  .sections .left-side,
-  .sections .middle,
-  .sections .right-side {
-    justify-content: center;
-    align-items: center;
-    padding: 0.7rem;
-  }
-
-  .maple-leaf,
-  .copy-right {
-    font-size: 1em;
-  }
-
   .footer-icon {
-    margin: 0.7rem;
-    font-size: 2.0em;
+    font-size: 2em;
   }
 
   .footer-icon2 {
-    margin: 0.7rem;
     font-size: 2.4em;
   }
 
@@ -185,31 +77,14 @@
     font-size: 0.7rem;
     padding: 0.3rem;
   }
-  .left-side p,
-  .right-side p {
-    font-size: 1rem;
-  }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .sections .left-side,
-  .sections .middle,
-  .sections .right-side {
-    padding: 0.9rem;
-  }
-
-  .maple-leaf,
-  .copy-right {
-    font-size: 1.1em;
-  }
-
   .footer-icon {
-    margin: 0.9rem;
     font-size: 2.1em;
   }
 
   .footer-icon2 {
-    margin: 0.9rem;
     font-size: 2.45em;
   }
 
@@ -218,12 +93,4 @@
     font-size: 0.8rem;
     padding: 0.4rem;
   }
-  .left-side p,
-  .right-side p {
-    font-size: 1.1rem;
-  }
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
-  /* Same as default */
 }
