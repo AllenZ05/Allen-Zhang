@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import "./HeroHome.css";
 import HeroHomebg from "../../assets/heroHome-bg.jpg";
-
 import Typewriter from "typewriter-effect";
 
 const HeroHome = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div className="hero-home">
       <div className="images">
@@ -15,7 +15,7 @@ const HeroHome = () => {
       </div>
       <div className="description">
         <h1>Allen Zhang</h1>
-        <p>
+        <div className="typewriter-container">
           <Typewriter
             options={{
               strings: [
@@ -29,7 +29,7 @@ const HeroHome = () => {
               deleteSpeed: 10,
             }}
           />
-        </p>
+        </div>
       </div>
     </div>
   );

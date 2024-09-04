@@ -55,15 +55,11 @@
   animation: fadeIn 2s;
 }
 
-.hero-home .description p {
+.hero-home .description .typewriter-container {
   font-size: 1.7rem;
+  color: white;
   font-weight: 400;
   text-shadow: 2px 2px 3px rgba(72, 21, 148, 0.7);
   animation: scaleUp 1s ease;
-  
   font-family: "Roboto", sans-serif;
-}
-
-.hero-home .description .Typewriter__cursor {
-  font-size: 2rem;
 }
