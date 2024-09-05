@@ -11,6 +11,7 @@ h4,
 h5,
 h6,
 p,
+li,
 a {
   color: white;
   text-decoration: none;
@@ -31,17 +32,6 @@ ul {
   }
 }
 
-@keyframes typewriter {
-  from {
-    width: 0;
-    border-right: 0.1em solid white;
-  }
-  to {
-    width: 100%;
-    border-right: none;
-  }
-}
-
 @keyframes scaleUp {
   from {
     transform: scale(0.01);
@@ -54,7 +44,7 @@ ul {
 /* Font Sizes */
 
 html {
-  font-size: 16px;
+  font-size: 16px; 
 }
 
 body {
@@ -62,31 +52,38 @@ body {
 }
 
 h1 {
-  --h1-base-font-size: 2em;
-  font-size: calc(var(--h1-base-font-size) * 4);
+  --h1-base-font-size: 2rem;
+  font-size: calc(var(--h1-base-font-size) * 4); 
 }
+
 h2 {
-  --h2-base-font-size: 1.5em;
+  --h2-base-font-size: 1.5rem;
   font-size: calc(var(--h2-base-font-size) * 3);
 }
+
 h3 {
-  --h3-base-font-size: 1.17em;
+  --h3-base-font-size: 1.17rem;
   font-size: calc(var(--h3-base-font-size) * 2);
 }
+
 h4 {
-  --h4-base-font-size: 1em;
+  --h4-base-font-size: 1rem;
   font-size: calc(var(--h4-base-font-size) * 2);
 }
+
 h5 {
-  --h5-base-font-size: 0.83em;
+  --h5-base-font-size: 0.83rem;
   font-size: calc(var(--h5-base-font-size) * 2);
 }
+
 h6 {
-  --h6-base-font-size: 0.67em;
+  --h6-base-font-size: 0.67rem;
   font-size: calc(var(--h6-base-font-size) * 2);
 }
-p {
-  --p-base-font-size: 1em;
+
+p,
+li {
+  --p-base-font-size: 1rem;
   font-size: calc(var(--p-base-font-size) * 1.2);
 }
 
@@ -111,7 +108,8 @@ p {
   h6 {
     font-size: calc(var(--h6-base-font-size) * 2 * 0.8);
   }
-  p {
+  p,
+  li {
     font-size: calc(var(--p-base-font-size) * 1.2 * 0.8);
   }
 }
@@ -135,7 +133,8 @@ p {
   h6 {
     font-size: calc(var(--h6-base-font-size) * 2 * 0.85);
   }
-  p {
+  p,
+  li {
     font-size: calc(var(--p-base-font-size) * 1.2 * 0.85);
   }
 }
@@ -159,7 +158,8 @@ p {
   h6 {
     font-size: calc(var(--h6-base-font-size) * 2 * 0.9);
   }
-  p {
+  p,
+  li {
     font-size: calc(var(--p-base-font-size) * 1.2 * 0.9);
   }
 }
@@ -183,7 +183,8 @@ p {
   h6 {
     font-size: calc(var(--h6-base-font-size) * 2 * 0.95);
   }
-  p {
+  p,
+  li {
     font-size: calc(var(--p-base-font-size) * 1.2 * 0.95);
   }
 }

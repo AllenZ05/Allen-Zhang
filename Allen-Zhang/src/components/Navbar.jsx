@@ -8,23 +8,33 @@ const Navbar = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
+  const closeMenu = () => setClick(false);
+
   return (
     <div className="header">
-      <Link to="/">
+      <Link to="/" onClick={closeMenu}>
         <h2>AllenZ05</h2>
       </Link>
       <ul className={click ? "nav active" : "nav"}>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" onClick={closeMenu}>
+            Home
+          </Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/about" onClick={closeMenu}>
+            About
+          </Link>
         </li>
         <li>
-          <Link to="/experiences">Experiences</Link>
+          <Link to="/experiences" onClick={closeMenu}>
+            Experiences
+          </Link>
         </li>
         <li>
-          <Link to="/projects">Projects</Link>
+          <Link to="/projects" onClick={closeMenu}>
+            Projects
+          </Link>
         </li>
       </ul>
       <div className="hamburger-menu" onClick={handleClick}>

@@ -1,0 +1,140 @@
+main {
+  height: 100%;
+  width: 100%;
+  padding-top: 3rem;
+}
+
+.heading {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  padding: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typewriter 4s forwards;
+  margin: 0 auto;
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 4rem;
+}
+
+.introduction,
+.education,
+.skills {
+  margin: 2rem;
+}
+
+.education-skills {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.education {
+  width: 35%;
+  margin: 1rem;
+}
+
+.skills {
+  width: 65%;
+  margin: 1rem;
+}
+
+.terms {
+  margin: 2rem 1rem;
+}
+
+.term p {
+  font-size: 1.2rem;
+}
+
+.technical-skills p,
+.soft-skills p {
+  margin: 1rem;
+}
+
+/* Icons */
+
+.rocket-icon {
+  vertical-align: middle;
+  color: #ff0000;
+  margin: 0.5rem;
+}
+
+.star-icon {
+  vertical-align: middle;
+  color: #49b4ee;
+  margin: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.flag-icon {
+  vertical-align: middle;
+  margin: 0.5rem;
+}
+
+.check-icon {
+  vertical-align: middle;
+  margin-bottom: 0.2rem;
+  color: #f5f0f0;
+}
+
+/* Text */
+
+h3 {
+  font-weight: 700;
+  margin: 2rem 1rem 2.5rem 1rem;
+}
+
+h4 {
+  font-weight: 300;
+  margin: 2rem 1rem 1.5rem 1rem;
+}
+
+h5 {
+  font-weight: 300;
+  margin: 1rem;
+}
+
+h6 {
+  font-weight: 300;
+  margin: 1rem;
+}
+
+p {
+  font-weight: 200;
+  margin: 0.5rem;
+}
+
+li {
+  font-weight: 200;
+  margin: 0.1rem;
+}
+
+/** Media Queries */
+
+@media only screen and (max-width: 1024px) {
+  .education-skills {
+    display: block;
+  }
+  .education,
+  .skills {
+    width: auto;
+  }
+}
