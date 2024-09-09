@@ -46,8 +46,8 @@ const About = () => {
           <h3>Introduction</h3>
           <p>
             <FaRocket className={styles["rocket-icon"]} />
-            My name is Allen. I am currently a first-year student at the University of Waterloo, pursuing a BASc in
-            Computer Engineering.
+            Heyyy, it&apos;s Allen. I am currently a second-year student at the University of Waterloo, pursuing a BASc
+            in Computer Engineering.
             <FaRocket className={styles["rocket-icon"]} />
           </p>
           <p>
