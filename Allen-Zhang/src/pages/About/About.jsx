@@ -13,6 +13,10 @@ const About = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    document.title = "Allen Zhang | About";
+  }, []);
+
   const sectionVariants = {
     hidden: {
       opacity: 0,
@@ -56,8 +60,8 @@ const About = () => {
             <RiShining2Fill className={styles["star-icon"]} />
           </p>
           <p>
-            {/* <img src={CanadaFlag} alt="Canada Flag" className={styles["flag-icon"]} /> */}
-            I currently live in Toronto, Canada.
+            {/* <img src={CanadaFlag} alt="Canada Flag" className={styles["flag-icon"]} /> */}I currently live in
+            Toronto, Canada.
             {/* <img src={USAFlag} alt="USA Flag" className={styles["flag-icon"]} /> */}
           </p>
           <br />

@@ -12,7 +12,6 @@ const DefaultLayout = ({ children }) => {
   );
 };
 
-// Add PropTypes validation
 DefaultLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };

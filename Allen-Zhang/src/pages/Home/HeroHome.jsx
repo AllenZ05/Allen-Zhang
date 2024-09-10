@@ -8,6 +8,10 @@ const HeroHome = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    document.title = "Allen Zhang";
+  }, []);
+
   return (
     <div className="hero-home">
       <div className="images">

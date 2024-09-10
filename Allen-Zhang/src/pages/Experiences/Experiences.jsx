@@ -10,6 +10,10 @@ const Experiences = () => {
     window.scrollTo(0, 0);
   }, []);
 
+    useEffect(() => {
+      document.title = "Allen Zhang | Experiences";
+    }, []);
+
   return (
     <main>
       <h2 className={styles.heading}>Experiences</h2>
