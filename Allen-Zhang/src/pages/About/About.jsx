@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
-// import CanadaFlag from "../../assets/flag-images/Canada_Flag.svg";
-// import USAFlag from "../../assets/flag-images/USA_Flag.svg";
 import { FaRocket } from "react-icons/fa6";
 import { RiShining2Fill } from "react-icons/ri";
-
 import styles from "./About.module.css";
 
 const About = () => {
+  const [selectedSection, setSelectedSection] = useState("Introduction");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -27,53 +26,55 @@ const About = () => {
       opacity: 1,
       x: 0,
       filter: "blur(0px)",
-      transition: { duration: 0.7, delay: 0.2 },
+      transition: { duration: 0.7, delay: 0.1 },
     },
   };
 
-  const viewportOptions = {
-    amount: 0.1,
-    once: true,
+  const handleSectionChange = (section) => {
+    setSelectedSection(section);
   };
 
-  return (
-    <main>
-      <h2 className={styles.heading}>About Me</h2>
-      <section className={styles.sections}>
-        <motion.article
-          className={styles.introduction}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOptions}
-          variants={sectionVariants}
-        >
-          <h3>Introduction</h3>
-          <p>
-            <FaRocket className={styles["rocket-icon"]} />
-            Heyyy, it&apos;s Allen. I am currently a second-year student at the University of Waterloo, pursuing a BASc
-            in Computer Engineering.
-            <FaRocket className={styles["rocket-icon"]} />
-          </p>
-          <p>
-            <RiShining2Fill className={styles["star-icon"]} />
-            I am an ambitious individual with a mission to make a positive impact on the world.
-            <RiShining2Fill className={styles["star-icon"]} />
-          </p>
-          <p>
-            {/* <img src={CanadaFlag} alt="Canada Flag" className={styles["flag-icon"]} /> */}I currently live in
-            Toronto, Canada.
-            {/* <img src={USAFlag} alt="USA Flag" className={styles["flag-icon"]} /> */}
-          </p>
-          <br />
-          <p>Feel free to connect with me using my social links in the footer!</p>
-          <br />
-        </motion.article>
-        <section className={styles["education-skills"]}>
+  const renderSection = () => {
+    switch (selectedSection) {
+      case "Introduction":
+        return (
           <motion.article
-            className={styles.education}
+            key="introduction"
+            className={styles.sectionContent}
             initial="hidden"
-            whileInView="visible"
-            viewport={viewportOptions}
+            animate="visible"
+            exit="hidden"
+            variants={sectionVariants}
+          >
+            <h3>Introduction</h3>
+            <p>
+              <FaRocket className={styles["rocket-icon"]} />
+              Heyyy, it&apos;s Allen. I am currently a second-year student at the University of Waterloo, pursuing a
+              BASc in Computer Engineering.
+              <FaRocket className={styles["rocket-icon"]} />
+            </p>
+            <p>
+              <RiShining2Fill className={styles["star-icon"]} />
+              I am an ambitious individual with a mission to make a positive impact on the world.
+              <RiShining2Fill className={styles["star-icon"]} />
+            </p>
+            <p>I currently live in Toronto, Canada.</p>
+            <br />
+            <p>
+              <b>Seeking Winter 2025 Internships (Jan - Apr)</b>
+            </p>
+            <br />
+            <p>Feel free to connect with me using my social links in the footer!</p>
+          </motion.article>
+        );
+      case "Education":
+        return (
+          <motion.article
+            key="education"
+            className={styles.sectionContent}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
             variants={sectionVariants}
           >
             <h3>Education</h3>
@@ -135,12 +136,15 @@ const About = () => {
               </div>
             </div>
           </motion.article>
-
+        );
+      case "Skills":
+        return (
           <motion.article
-            className={styles.skills}
+            key="skills"
+            className={styles.sectionContent}
             initial="hidden"
-            whileInView="visible"
-            viewport={viewportOptions}
+            animate="visible"
+            exit="hidden"
             variants={sectionVariants}
           >
             <h3>Skills</h3>
@@ -167,8 +171,36 @@ const About = () => {
               <p>Leadership, Teamwork, Communication, Creativity, Problem-Solving</p>
             </div>
           </motion.article>
-        </section>
-      </section>
+        );
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <main className={styles.aboutMain}>
+      <h2 className={styles.heading}>About Me</h2>
+      <div className={styles.menubar}>
+        <button
+          onClick={() => handleSectionChange("Introduction")}
+          className={selectedSection === "Introduction" ? styles.activeTab : styles.tabButton}
+        >
+          Introduction
+        </button>
+        <button
+          onClick={() => handleSectionChange("Education")}
+          className={selectedSection === "Education" ? styles.activeTab : styles.tabButton}
+        >
+          Education
+        </button>
+        <button
+          onClick={() => handleSectionChange("Skills")}
+          className={selectedSection === "Skills" ? styles.activeTab : styles.tabButton}
+        >
+          Skills
+        </button>
+      </div>
+      {renderSection()}
     </main>
   );
 };
