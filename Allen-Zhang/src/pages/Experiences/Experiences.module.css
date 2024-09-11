@@ -3,7 +3,6 @@ main {
 }
 
 .heading {
-  font-size: 3rem;
   color: #fff;
   font-weight: 700;
   text-align: center;
@@ -13,6 +12,7 @@ main {
   width: 0;
   animation: typewriter 4s forwards;
   margin: 0 auto;
+  margin-bottom: 3rem;
 }
 
 @keyframes typewriter {
@@ -24,146 +24,127 @@ main {
   }
 }
 
-.myExperiences {
-  min-height: 100vh;
-  width: 100%;
-  padding: 1rem;
+.timeline {
+  position: relative;
+  width: 80vw;
   margin: 0 auto;
+  padding: 20px 0;
 }
 
-.experiencesContainer {
-  padding: 1rem;
+.timeline::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: #333;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
 }
 
-.experience {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  margin: 2rem 3rem;
-  padding: 2rem 5rem 1rem 5rem;
-  border: 0.2rem solid blue;
-  text-align: center; 
-}
-
-.experience a:link,
-.experience a:visited {
-  color: rgb(120, 120, 250);
-  font-size: 1.1em;
-  font-weight: 500;
-}
-
-.experience a:hover {
-  color: red;
-}
-
-.experienceInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-  padding: 1rem;
-  height: 100%;
-}
-
-.experienceDescription {
-  margin: 1rem;
-  padding: 1rem;
-}
-
-.jobTitle {
-  font-weight: 500;
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-.experience h5 {
-  font-weight: 300;
+.container {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
   margin-bottom: 2rem;
-  text-align: center;
 }
 
-.experience h6 {
+.left {
+  left: 0;
+}
+
+.right {
+  left: 50%;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #333;
+  border: 4px solid #fff;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.left::after {
+  right: -17px;
+}
+
+.right::after {
+  left: -17px;
+}
+
+.content {
+  padding: 20px 30px;
+  background-color: #222;
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  position: relative;
+}
+
+.externalLink {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.externalLink:hover {
+  color: #007bff;
+}
+
+h3 {
+  font-weight: 700;
+  margin: 2rem 0.5rem;
+}
+
+h4 {
   font-weight: 300;
-  text-align: center;
+  margin: 1rem 0.5rem;
 }
 
-.experience p {
+h5 {
+  font-weight: 300;
+  margin: 0.5rem;
+}
+
+p {
   font-weight: 200;
-  margin: 1rem;
-  text-align: center;
+  margin: 2rem 0.5rem 1rem 0.5rem;
 }
 
 /** Media Queries */
 
-@media only screen and (max-width: 480px) {
-  .experience {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    margin: 1rem auto;
-    border: 0.1rem solid blue;
+/* Mobile View */
+@media screen and (max-width: 1200px) {
+  .timeline::before {
+    left: 31px;
   }
-  .jobTitle {
-    margin: 1.5rem;
+
+  .container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
   }
-  .experience h5 {
-    margin: 1rem;
+
+  .container::before {
+    left: 60px;
+    border: medium solid #222;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #222 transparent transparent;
   }
-  .experience p {
-    margin: 0.5rem;
+
+  .left::after,
+  .right::after {
+    left: 15px;
+  }
+
+  .right {
+    left: 0%;
   }
 }
 
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-  .experience {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 1fr;
-    padding: 1.5rem;
-    margin: 1.5rem auto;
-  }
-  .jobTitle {
-    margin: 2rem;
-  }
-  .experience h5 {
-    margin: 1.3rem;
-  }
-  .experience p {
-    margin: 0.65rem;
-  }
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .experience {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 1fr;
-    padding: 2rem;
-    margin: 2rem auto;
-  }
-  .jobTitle {
-    margin: 2.5rem;
-  }
-  .experience h5 {
-    margin: 1.6rem;
-  }
-  .experience p {
-    margin: 0.8rem;
-  }
-}
-
-@media only screen and (min-width: 1025px) and (max-width: 1200px) {
-  .experience {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}

@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
+import { FiExternalLink } from "react-icons/fi";
 import "react-toastify/dist/ReactToastify.css";
-
 import styles from "./Experiences.module.css";
 
 const Experiences = () => {
@@ -10,138 +10,164 @@ const Experiences = () => {
     window.scrollTo(0, 0);
   }, []);
 
-    useEffect(() => {
-      document.title = "Allen Zhang | Experiences";
-    }, []);
+  useEffect(() => {
+    document.title = "Allen Zhang | Experiences";
+  }, []);
+
+  // Stagger animation for pairs
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  // Individual item animation
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, type: "spring", stiffness: 100 },
+    },
+  };
 
   return (
     <main>
       <h2 className={styles.heading}>Experiences</h2>
-      <div className={styles.myExperiences}>
-        <div className={styles.experiencesContainer}>
+
+      {/* Timeline */}
+      <div className={styles.timeline}>
+        {/* First two experiences */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          {/* Experience 1 */}
           <motion.div
-            className={`${styles.experience} ${styles.experience1}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.3, type: "spring", stiffness: 100 }}
-            variants={{
-              hidden: { opacity: 0, x: -100, rotate: -10 },
-              visible: { opacity: 1, x: 0, rotate: 0 },
-            }}
+            className={`${styles.container} ${styles.left}`}
+            variants={itemVariants}
+            viewport={{ once: true, amount: 0.5 }}
           >
-            <div className={styles.experienceInfo}>
-              <h3 className={styles.jobTitle}>Software Developer</h3>
-              <h5>Dandelion Networks</h5>
-              <h6>Toronto, ON</h6>
-              <h6>May 2024 - Aug 2024</h6>
-            </div>
-            <div className={styles.experienceDescription}>
+            <div className={styles.content}>
+              <h3>Software Developer</h3>
+              <h4>
+                Dandelion Networks
+                <a
+                  href="https://www.dandelionnet.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.externalLink}
+                >
+                  <FiExternalLink />
+                </a>
+              </h4>
+              <h5>Toronto, ON</h5>
+              <h5>May 2024 - Aug 2024</h5>
               <p>Tech stack: Nuxt.js, Vue.js, TypeScript, Go, SQL</p>
-              <p>
-                <a href="https://www.dandelionnet.com/" target="_blank" rel="noopener noreferrer">
-                  Website
-                </a>
-              </p>
             </div>
           </motion.div>
 
-          <ToastContainer
-            position="top-center"
-            autoClose={1500}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-            className={styles.myToastContainer}
-          />
-
+          {/* Experience 2 */}
           <motion.div
-            className={`${styles.experience} ${styles.experience2}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.3, type: "spring", stiffness: 100 }}
-            variants={{
-              hidden: { opacity: 0, x: -100, rotate: -10 },
-              visible: { opacity: 1, x: 0, rotate: 0 },
-            }}
+            className={`${styles.container} ${styles.right}`}
+            variants={itemVariants}
+            viewport={{ once: true, amount: 0.5 }}
           >
-            <div className={styles.experienceInfo}>
-              <h3 className={styles.jobTitle}>Firmware Developer</h3>
-              <h5>University of Waterloo Formula Electric</h5>
-              <h6>Waterloo, ON</h6>
-              <h6>Sep 2023 - Apr 2024</h6>
-            </div>
-            <div className={styles.experienceDescription}>
+            <div className={styles.content}>
+              <h3>Firmware Developer</h3>
+              <h4>
+                University of Waterloo Formula Electric
+                <a
+                  href="https://www.uwfsae.ca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.externalLink}
+                >
+                  <FiExternalLink />
+                </a>
+              </h4>
+              <h5>Waterloo, ON</h5>
+              <h5>Sep 2023 - Apr 2024</h5>
               <p>Tech stack: C, Python</p>
-              <p>
-                <a href="https://www.uwfsae.ca/" target="_blank" rel="noopener noreferrer">
-                  Website
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Second two experiences */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <motion.div
+            className={`${styles.container} ${styles.left}`}
+            variants={itemVariants}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <div className={styles.content}>
+              <h3>Lifeguard and Swim Instructor</h3>
+              <h4>
+                City of Toronto
+                <a
+                  href="https://www.toronto.ca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.externalLink}
+                >
+                  <FiExternalLink />
                 </a>
-              </p>
+              </h4>
+              <h5>Toronto, ON</h5>
+              <h5>Mar 2022 - Sep 2023</h5>
+              <p>Skills: Leadership, Teamwork, Communication, First Aid, Lifesaving, Teaching</p>
             </div>
           </motion.div>
 
           <motion.div
-            className={`${styles.experience} ${styles.experience3}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.3, type: "spring", stiffness: 100 }}
-            variants={{
-              hidden: { opacity: 0, x: -100, rotate: -10 },
-              visible: { opacity: 1, x: 0, rotate: 0 },
-            }}
+            className={`${styles.container} ${styles.right}`}
+            variants={itemVariants}
+            viewport={{ once: true, amount: 0.5 }}
           >
-            <div className={styles.experienceInfo}>
-              <h3 className={styles.jobTitle}>Lifeguard and Swim Instructor</h3>
-              <h5>City of Toronto</h5>
-              <h6>Toronto, ON</h6>
-              <h6>Mar 2022 - Sep 2023</h6>
-            </div>
-            <div className={styles.experienceDescription}>
-              <p>Skills: Leadership, Teamwork, Communication, First Aid, Lifesaving, Teaching, Public Relations</p>
-              <p>
-                <a href="https://www.toronto.ca/" target="_blank" rel="noopener noreferrer">
-                  Website
+            <div className={styles.content}>
+              <h3>Data Analyst And Logistics Operator</h3>
+              <h4>
+                Somerville Merchandising
+                <a
+                  href="https://somerville.ca/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.externalLink}
+                >
+                  <FiExternalLink />
                 </a>
-              </p>
+              </h4>
+              <h5>Toronto, ON</h5>
+              <h5>Sep 2021 - Feb 2022</h5>
+              <p>Skills: Microsoft Office, Data Entry, Data Analysis, Logistics Management</p>
             </div>
           </motion.div>
-
-          <motion.div
-            className={`${styles.experience} ${styles.experience4}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.3, type: "spring", stiffness: 100 }}
-            variants={{
-              hidden: { opacity: 0, x: -100, rotate: -10 },
-              visible: { opacity: 1, x: 0, rotate: 0 },
-            }}
-          >
-            <div className={styles.experienceInfo}>
-              <h3 className={styles.jobTitle}>Data Analyst And Logistics Operator</h3>
-              <h5>Somerville Merchandising</h5>
-              <h6>Toronto, ON</h6>
-              <h6>Sep 2021 - Feb 2022</h6>
-            </div>
-            <div className={styles.experienceDescription}>
-              <p>Skills: Microsoft Office, Data Entry, Data Analyst, Logistics Management</p>
-              <p>
-                <a href="https://somerville.ca/" target="_blank" rel="noopener noreferrer">
-                  Website
-                </a>
-              </p>
-            </div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        className={styles.myToastContainer}
+      />
     </main>
   );
 };
