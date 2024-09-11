@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
+import { MdHourglassBottom } from "react-icons/md";
 import { FaRocket } from "react-icons/fa6";
 import { RiShining2Fill } from "react-icons/ri";
 import styles from "./About.module.css";
@@ -13,7 +14,7 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "Allen Zhang | About";
+    document.title = "AZ05 | About";
   }, []);
 
   const sectionVariants = {
@@ -83,6 +84,9 @@ const About = () => {
               <h6>Waterloo, ON</h6>
               <h5>Computer Engineering</h5>
               <div className={styles.terms}>
+                <br />
+                <br />
+                <p>First Year</p>
                 <section className={styles.term}>
                   <p>Term 1 (Sep 2023 - Dec 2023)</p>
                   <ul>
@@ -109,7 +113,6 @@ const About = () => {
                     </li>
                   </ul>
                 </section>
-                <br />
                 <section className={styles.term}>
                   <p>Term 2 (Jan 2024 - Apr 2024)</p>
                   <ul>
@@ -130,6 +133,32 @@ const About = () => {
                     </li>
                     <li>
                       Engineering Economics <IoCheckmark className={styles["check-icon"]} />
+                    </li>
+                  </ul>
+                </section>
+                <br />
+                <br />
+                <p>Second Year</p>
+                <section className={styles.term}>
+                  <p>Term 1 (Sep 2024 - Dec 2024)</p>
+                  <ul>
+                    <li>
+                      Algorithms and Data Structures <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Advanced Calculus 1 <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Digital Computers <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Numerical Methods <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Electronic Circuits <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Materials Chemistry <MdHourglassBottom className={styles["hourglass-icon"]} />
                     </li>
                   </ul>
                 </section>

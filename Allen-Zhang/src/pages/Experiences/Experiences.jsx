@@ -11,7 +11,7 @@ const Experiences = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "Allen Zhang | Experiences";
+    document.title = "AZ05 | Experiences";
   }, []);
 
   // Stagger animation for pairs
@@ -35,7 +35,7 @@ const Experiences = () => {
   };
 
   return (
-    <main>
+    <main className={styles.experiencesMain}>
       <h2 className={styles.heading}>Experiences</h2>
 
       {/* Timeline */}

@@ -8,7 +8,7 @@
 }
 
 .heading {
-  font-size: 3rem;
+  font-size: calc(var(--h2-base-font-size) * 2);
   color: #fff;
   font-weight: 700;
   text-align: center;
@@ -32,14 +32,14 @@
 .menubar {
   display: flex;
   justify-content: center;
-  margin-bottom: 1.5rem;
   gap: 0.25rem;
   padding: 0.25rem;
   border: 1px solid #333;
   border-radius: 8px;
 }
 
-.tabButton, .activeTab {
+.tabButton,
+.activeTab {
   padding: 0.6rem 1.5rem;
   font-size: 1.1rem;
   background-color: transparent;
@@ -49,46 +49,39 @@
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   outline: none;
-  box-shadow: none ; 
+  box-shadow: none;
 }
 
 .tabButton:hover {
   background-color: #333;
   color: #fff;
-  box-shadow: none ; 
+  box-shadow: none;
 }
 
 .activeTab {
   background-color: #222;
   color: #fff;
   border-radius: 6px;
-  box-shadow: none ; 
+  box-shadow: none;
 }
 
-.tabButton:focus, .activeTab:focus {
+.tabButton:focus,
+.activeTab:focus {
   box-shadow: none;
 }
 
 .sectionContent {
-  width: 80%;
+  width: 90%;
   margin: 1.5rem auto;
   text-align: center;
 }
 
-.terms {
-  margin: 1.5rem 1rem;
-}
-
-.term p {
-  font-size: 1.2rem;
-}
-
-.technical-skills p,
-.soft-skills p {
-  margin: 1rem;
+.technical-skills {
+  margin-bottom: 2rem;
 }
 
 /* Icons */
+
 .rocket-icon {
   vertical-align: middle;
   color: #ff0000;
@@ -105,36 +98,48 @@
 .check-icon {
   vertical-align: middle;
   margin-bottom: 0.2rem;
-  color: #f5f0f0;
+  color: #8BC34A;
+}
+
+.hourglass-icon {
+  vertical-align: middle;
+  margin-bottom: 0.2rem;
+  color: #B0BEC5;
 }
 
 /* Text */
-h3 {
-  font-weight: 700;
-  margin: 2rem 1rem 2.5rem 1rem;
+
+.aboutMain h3 {
+  font-weight: 500;
+  margin: 3rem;
+  font-size: calc(var(--h3-base-font-size) * 1.8);
 }
 
-h4 {
-  font-weight: 300;
-  margin: 2rem 1rem 1.5rem 1rem;
-}
-
-h5 {
-  font-weight: 300;
+.aboutMain h4 {
+  font-weight: 400;
   margin: 1rem;
+  font-size: calc(var(--h4-base-font-size) * 1.8);
 }
 
-h6 {
-  font-weight: 300;
+.aboutMain h5 {
+  font-weight: 400;
+  margin-top: 2rem;
+  font-size: calc(var(--h5-base-font-size) * 1.8);
+}
+
+.aboutMain h6 {
+  font-weight: 400;
+  margin-bottom: 1.75rem;
+  font-size: calc(var(--h6-base-font-size) * 1.8);
+}
+
+.aboutMain p {
+  font-weight: 200;
   margin: 1rem;
+  font-size: calc(var(--p-base-font-size) * 1.25);
 }
 
-p {
+.aboutMain li {
   font-weight: 200;
-  margin: 0.5rem;
-}
-
-li {
-  font-weight: 200;
-  margin: 0.1rem;
+  font-size: calc(var(--li-base-font-size) * 1.2);
 }

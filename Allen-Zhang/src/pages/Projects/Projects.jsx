@@ -8,11 +8,11 @@ const Projects = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "Allen Zhang | Projects";
+    document.title = "AZ05 | Projects";
   }, []);
 
   return (
-    <main>
+    <main className={styles.projectsMain}>
       <h2 className={styles.heading}>Projects</h2>
       <div className={styles.myProjects}>
         <div className={styles.projectsContainer}>

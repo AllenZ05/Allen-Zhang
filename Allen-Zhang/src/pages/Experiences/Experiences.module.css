@@ -1,8 +1,10 @@
-main {
+.experiencesMain {
   padding-top: 3rem;
+  text-align: center;
 }
 
 .heading {
+  font-size: calc(var(--h2-base-font-size) * 2);
   color: #fff;
   font-weight: 700;
   text-align: center;
@@ -97,29 +99,34 @@ main {
   color: #007bff;
 }
 
-h3 {
-  font-weight: 700;
+.experiencesMain h3 {
+  font-weight: 500;
   margin: 2rem 0.5rem;
+  font-size: calc(var(--h3-base-font-size) * 1.8);
 }
 
-h4 {
-  font-weight: 300;
+.experiencesMain h4 {
+  font-weight: 400;
   margin: 1rem 0.5rem;
+  font-size: calc(var(--h4-base-font-size) * 1.6);
 }
 
-h5 {
-  font-weight: 300;
+.experiencesMain h5 {
+  font-weight: 400;
   margin: 0.5rem;
+  font-size: calc(var(--h5-base-font-size) * 1.4);
 }
 
-p {
+.experiencesMain p {
   font-weight: 200;
   margin: 2rem 0.5rem 1rem 0.5rem;
+  font-size: calc(var(--p-base-font-size) * 1.25);
 }
 
 /** Media Queries */
 
 /* Mobile View */
+
 @media screen and (max-width: 1200px) {
   .timeline::before {
     left: 31px;
@@ -148,3 +155,34 @@ p {
   }
 }
 
+/* Sizes */
+
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+  .experiencesMain h3 {
+    font-size: calc(var(--h3-base-font-size) * 1.75);
+  }
+  .experiencesMain h4 {
+    font-size: calc(var(--h4-base-font-size) * 1.55);
+  }
+  .experiencesMain h5 {
+    font-size: calc(var(--h5-base-font-size) * 1.35);
+  }
+  .experiencesMain p {
+    font-size: calc(var(--p-base-font-size) * 1.2);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .experiencesMain h3 {
+    font-size: calc(var(--h3-base-font-size) * 1.7);
+  }
+  .experiencesMain h4 {
+    font-size: calc(var(--h4-base-font-size) * 1.5);
+  }
+  .experiencesMain h5 {
+    font-size: calc(var(--h5-base-font-size) * 1.3);
+  }
+  .experiencesMain p {
+    font-size: calc(var(--p-base-font-size) * 1.15);
+  }
+}
