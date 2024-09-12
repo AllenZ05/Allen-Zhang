@@ -1,13 +1,24 @@
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { FiExternalLink } from "react-icons/fi";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./Experiences.module.css";
 
 const Experiences = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); 
+    };
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize); 
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -19,7 +30,7 @@ const Experiences = () => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.4,
       },
     },
   };
@@ -45,13 +56,13 @@ const Experiences = () => {
           initial="hidden"
           whileInView="visible"
           variants={containerVariants}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }} 
         >
           {/* Experience 1 */}
           <motion.div
             className={`${styles.container} ${styles.left}`}
             variants={itemVariants}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }} 
           >
             <div className={styles.content}>
               <h3>Software Developer</h3>
@@ -103,12 +114,12 @@ const Experiences = () => {
           initial="hidden"
           whileInView="visible"
           variants={containerVariants}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }}
         >
           <motion.div
             className={`${styles.container} ${styles.left}`}
             variants={itemVariants}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }} 
           >
             <div className={styles.content}>
               <h3>Lifeguard and Swim Instructor</h3>
@@ -132,7 +143,7 @@ const Experiences = () => {
           <motion.div
             className={`${styles.container} ${styles.right}`}
             variants={itemVariants}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ once: true, amount: 0.5 }} 
           >
             <div className={styles.content}>
               <h3>Data Analyst And Logistics Operator</h3>

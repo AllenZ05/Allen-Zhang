@@ -2,6 +2,7 @@
   height: 100%;
   width: 100%;
   padding-top: 2rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,13 +99,13 @@
 .check-icon {
   vertical-align: middle;
   margin-bottom: 0.2rem;
-  color: #8BC34A;
+  color: #8bc34a;
 }
 
 .hourglass-icon {
   vertical-align: middle;
   margin-bottom: 0.2rem;
-  color: #B0BEC5;
+  color: #b0bec5;
 }
 
 /* Text */

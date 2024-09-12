@@ -16,7 +16,6 @@ const Projects = () => {
       <h2 className={styles.heading}>Projects</h2>
       <div className={styles.myProjects}>
         <div className={styles.projectsContainer}>
-          <br />
           <motion.div
             className={`${styles.project} ${styles.project0}`}
             initial="hidden"
@@ -34,7 +33,6 @@ const Projects = () => {
               <p>In development</p>
             </div>
           </motion.div>
-          <br />
           <motion.div
             className={`${styles.project} ${styles.project1}`}
             initial="hidden"
