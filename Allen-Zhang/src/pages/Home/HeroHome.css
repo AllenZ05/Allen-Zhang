@@ -53,7 +53,8 @@
   margin: 1rem;
   text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
   animation: fadeIn 2s;
-  font-size: calc(var(--h1-base-font-size) * 3);
+  font-size: calc(var(--h1-base-font-size) * 4);
+  width: 80vw;
 }
 
 .hero-home .description .typewriter-container {
@@ -63,4 +64,24 @@
   text-shadow: 2px 2px 3px rgba(72, 21, 148, 0.7);
   animation: scaleUp 1s ease;
   font-family: "Roboto", sans-serif;
+}
+
+/** Media Queries */
+
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+  .hero-home .description h1 {
+    font-size: calc(var(--h1-base-font-size) * 3.5);
+  }
+  .hero-home .description .typewriter-container {
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hero-home .description h1 {
+    font-size: calc(var(--h1-base-font-size) * 3);
+  }
+  .hero-home .description .typewriter-container {
+    font-size: 1.5rem;
+  }
 }

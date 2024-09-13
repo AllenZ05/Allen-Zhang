@@ -23,8 +23,8 @@ const HeroHome = () => {
           <Typewriter
             options={{
               strings: [
-                "Computer Engineering Student at the University of Waterloo!",
-                "Website is fully responsive on all devices :)",
+                "Computer Engineering Student at the University of Waterloo",
+                "Seeking Winter 2025 Internships!",
                 "Would love to talk and connect with you :D",
               ],
               autoStart: true,
