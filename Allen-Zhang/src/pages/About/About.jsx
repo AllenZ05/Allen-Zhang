@@ -62,7 +62,7 @@ const About = () => {
             <p>I currently live in Toronto, Canada.</p>
             <br />
             <p>
-              <b>Seeking Winter 2025 Internships (Jan - Apr)</b>
+              <b>Seeking Fall 2025 Internships (Sep - Dec)</b>
             </p>
             <br />
             <p>Feel free to connect with me using my social links in the footer!</p>
