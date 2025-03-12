@@ -12,11 +12,11 @@ const Experiences = () => {
     window.scrollTo(0, 0);
 
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); 
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); 
-    window.addEventListener("resize", handleResize); 
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -51,18 +51,43 @@ const Experiences = () => {
 
       {/* Timeline */}
       <div className={styles.timeline}>
-        {/* First two experiences */}
+        {/* Section 1 */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           variants={containerVariants}
-          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }} 
+          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }}
         >
           {/* Experience 1 */}
           <motion.div
             className={`${styles.container} ${styles.left}`}
             variants={itemVariants}
-            viewport={{ once: true, amount: 0.5 }} 
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <div className={styles.content}>
+              <h3>Software Developer</h3>
+              <h4>
+                Hanov Solutions
+                <a
+                  href="https://www.linkedin.com/company/hanov-solutions-inc./"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.externalLink}
+                >
+                  <FiExternalLink />
+                </a>
+              </h4>
+              <h5>Waterloo, ON</h5>
+              <h5>Jan 2025 - Apr 2025</h5>
+              <p>Tech stack: TypeScript, Go, Python, SQL, Vue.js</p>
+            </div>
+          </motion.div>
+
+          {/* Experience 2 */}
+          <motion.div
+            className={`${styles.container} ${styles.right}`}
+            variants={itemVariants}
+            viewport={{ once: true, amount: 0.5 }}
           >
             <div className={styles.content}>
               <h3>Software Developer</h3>
@@ -82,10 +107,18 @@ const Experiences = () => {
               <p>Tech stack: Nuxt.js, Vue.js, TypeScript, Go, SQL</p>
             </div>
           </motion.div>
+        </motion.div>
 
-          {/* Experience 2 */}
+        {/* Section 2 */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }}
+        >
+          {/* Experience 3 */}
           <motion.div
-            className={`${styles.container} ${styles.right}`}
+            className={`${styles.container} ${styles.left}`}
             variants={itemVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
@@ -107,19 +140,12 @@ const Experiences = () => {
               <p>Tech stack: C, Python</p>
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* Second two experiences */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={containerVariants}
-          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }}
-        >
+          {/* Experience 4 */}
           <motion.div
-            className={`${styles.container} ${styles.left}`}
+            className={`${styles.container} ${styles.right}`}
             variants={itemVariants}
-            viewport={{ once: true, amount: 0.5 }} 
+            viewport={{ once: true, amount: 0.5 }}
           >
             <div className={styles.content}>
               <h3>Lifeguard and Swim Instructor</h3>
@@ -139,11 +165,20 @@ const Experiences = () => {
               <p>Skills: Leadership, Teamwork, Communication, First Aid, Lifesaving, Teaching</p>
             </div>
           </motion.div>
+        </motion.div>
 
+        {/* Section 3 */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }}
+        >
+          {/* Experience 5 */}
           <motion.div
-            className={`${styles.container} ${styles.right}`}
+            className={`${styles.container} ${styles.left}`}
             variants={itemVariants}
-            viewport={{ once: true, amount: 0.5 }} 
+            viewport={{ once: true, amount: 0.5 }}
           >
             <div className={styles.content}>
               <h3>Data Analyst And Logistics Operator</h3>
