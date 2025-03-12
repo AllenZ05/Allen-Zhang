@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
-import { MdHourglassBottom } from "react-icons/md";
+// import { MdHourglassBottom } from "react-icons/md";
 import { FaRocket } from "react-icons/fa6";
 import { RiShining2Fill } from "react-icons/ri";
 import styles from "./About.module.css";
@@ -143,22 +143,22 @@ const About = () => {
                   <p>Term 1 (Sep 2024 - Dec 2024)</p>
                   <ul>
                     <li>
-                      Algorithms and Data Structures <MdHourglassBottom className={styles["hourglass-icon"]} />
+                      Algorithms and Data Structures <IoCheckmark className={styles["check-icon"]} />
                     </li>
                     <li>
-                      Advanced Calculus 1 <MdHourglassBottom className={styles["hourglass-icon"]} />
+                      Advanced Calculus 1 <IoCheckmark className={styles["check-icon"]} />
                     </li>
                     <li>
-                      Digital Computers <MdHourglassBottom className={styles["hourglass-icon"]} />
+                      Digital Computers <IoCheckmark className={styles["check-icon"]} />
                     </li>
                     <li>
-                      Numerical Methods <MdHourglassBottom className={styles["hourglass-icon"]} />
+                      Numerical Methods <IoCheckmark className={styles["check-icon"]} />
                     </li>
                     <li>
-                      Electronic Circuits <MdHourglassBottom className={styles["hourglass-icon"]} />
+                      Electronic Circuits <IoCheckmark className={styles["check-icon"]} />
                     </li>
                     <li>
-                      Materials Chemistry <MdHourglassBottom className={styles["hourglass-icon"]} />
+                      Materials Chemistry <IoCheckmark className={styles["check-icon"]} />
                     </li>
                   </ul>
                 </section>
