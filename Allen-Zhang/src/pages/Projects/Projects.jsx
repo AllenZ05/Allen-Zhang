@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { FiExternalLink, FiGithub, FiVideo } from "react-icons/fi";
 import styles from "./Projects.module.css";
 
 const Projects = () => {
@@ -33,6 +34,7 @@ const Projects = () => {
               <p>In development</p>
             </div>
           </motion.div>
+
           <motion.div
             className={`${styles.project} ${styles.project1}`}
             initial="hidden"
@@ -47,11 +49,17 @@ const Projects = () => {
             <div className={styles.projectContent}>
               <h3>Time-CoPilot</h3>
               <p>Tech Stack: AWS, SQL, Next.js, TypeScript, Tailwind CSS</p>
-              <p>
-                <a href="https://www.time-copilot.com/" target="_blank" rel="noopener noreferrer">
-                  Website
+              <div className={styles.projectLinks}>
+                <a
+                  href="https://www.time-copilot.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectButton}
+                  aria-label="Visit website"
+                >
+                  <FiExternalLink /> <span>Website</span>
                 </a>
-              </p>
+              </div>
             </div>
           </motion.div>
 
@@ -69,11 +77,17 @@ const Projects = () => {
             <div className={styles.projectContent}>
               <h3>Personal Website</h3>
               <p>Tech stack: Vite.js, React.js, JavaScript, HTML/CSS</p>
-              <p>
-                <a href="https://github.com/AllenZ05/Personal-Website" target="_blank" rel="noopener noreferrer">
-                  Github Repo
+              <div className={styles.projectLinks}>
+                <a
+                  href="https://github.com/AllenZ05/Personal-Website"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectButton}
+                  aria-label="View GitHub repository"
+                >
+                  <FiGithub /> <span>Repository</span>
                 </a>
-              </p>
+              </div>
             </div>
           </motion.div>
 
@@ -91,11 +105,17 @@ const Projects = () => {
             <div className={styles.projectContent}>
               <h3>Fall Detection Device</h3>
               <p>Tech stack: C, C++, STM32, STM32CubeIDE, Accelerometer, GSM Module</p>
-              <p>
-                <a href="https://github.com/AllenZ05/Fall-Detection-Device" target="_blank" rel="noopener noreferrer">
-                  Github Repo
+              <div className={styles.projectLinks}>
+                <a
+                  href="https://github.com/AllenZ05/Fall-Detection-Device"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectButton}
+                  aria-label="View GitHub repository"
+                >
+                  <FiGithub /> <span>Repository</span>
                 </a>
-              </p>
+              </div>
             </div>
           </motion.div>
 
@@ -113,19 +133,27 @@ const Projects = () => {
             <div className={styles.projectContent}>
               <h3>Minesweeper</h3>
               <p>Tech stack: C++</p>
-              <p>
+              <div className={styles.projectLinks}>
                 <a
                   href="https://github.com/AllenZ05/Minesweeper/assets/124856383/08858cc9-1799-4653-a58b-e5750406ee09"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className={styles.projectButton}
+                  style={{ marginRight: "16px" }}
+                  aria-label="Watch video demonstration"
                 >
-                  Video Demo
+                  <FiVideo /> <span>Demo</span>
                 </a>
-                <br /> <br />
-                <a href="https://github.com/AllenZ05/Minesweeper" target="_blank" rel="noopener noreferrer">
-                  Github Repo
+                <a
+                  href="https://github.com/AllenZ05/Minesweeper"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectButton}
+                  aria-label="View GitHub repository"
+                >
+                  <FiGithub /> <span>Repository</span>
                 </a>
-              </p>
+              </div>
             </div>
           </motion.div>
 
@@ -143,19 +171,27 @@ const Projects = () => {
             <div className={styles.projectContent}>
               <h3>Snake</h3>
               <p>Tech stack: Python, Pygame</p>
-              <p>
+              <div className={styles.projectLinks}>
                 <a
                   href="https://github.com/AllenZ05/Python-Games/assets/124856383/2bca3b01-fde5-4ffe-9b3e-ca0c30c525be"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className={styles.projectButton}
+                  style={{ marginRight: "16px" }}
+                  aria-label="Watch video demonstration"
                 >
-                  Video Demo
+                  <FiVideo /> <span>Demo</span>
                 </a>
-                <br /> <br />
-                <a href="https://github.com/AllenZ05/Python-Games" target="_blank" rel="noopener noreferrer">
-                  Github Repo
+                <a
+                  href="https://github.com/AllenZ05/Python-Games"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectButton}
+                  aria-label="View GitHub repository"
+                >
+                  <FiGithub /> <span>Repository</span>
                 </a>
-              </p>
+              </div>
             </div>
           </motion.div>
 
@@ -173,15 +209,27 @@ const Projects = () => {
             <div className={styles.projectContent}>
               <h3>Movie Website</h3>
               <p>Tech stack: Vue.js, JavaScript, HTML/CSS, Firebase, Postman, Axios, TMDb API</p>
-              <p>
-                <a href="https://cs12-summative.web.app/" target="_blank" rel="noopener noreferrer">
-                  Website
+              <div className={styles.projectLinks}>
+                <a
+                  href="https://cs12-summative.web.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectButton}
+                  style={{ marginRight: "16px" }}
+                  aria-label="Visit website"
+                >
+                  <FiExternalLink /> <span>Website</span>
                 </a>
-                <br /> <br />
-                <a href="https://github.com/AllenZ05/Movie-Project" target="_blank" rel="noopener noreferrer">
-                  Github Repo
+                <a
+                  href="https://github.com/AllenZ05/Movie-Project"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.projectButton}
+                  aria-label="View GitHub repository"
+                >
+                  <FiGithub /> <span>Repository</span>
                 </a>
-              </p>
+              </div>
             </div>
           </motion.div>
         </div>
