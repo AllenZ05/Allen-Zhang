@@ -14,7 +14,7 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "AZ05 | About";
+    document.title = "About | AZ05";
   }, []);
 
   const sectionVariants = {

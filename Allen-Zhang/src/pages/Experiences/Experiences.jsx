@@ -22,7 +22,7 @@ const Experiences = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "AZ05 | Experiences";
+    document.title = "Experiences | AZ05";
   }, []);
 
   // Stagger animation for pairs

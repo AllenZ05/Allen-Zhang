@@ -9,7 +9,7 @@ const Projects = () => {
   }, []);
 
   useEffect(() => {
-    document.title = "AZ05 | Projects";
+    document.title = "Projects | AZ05";
   }, []);
 
   return (
