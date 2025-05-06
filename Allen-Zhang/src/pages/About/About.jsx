@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
-// import { MdHourglassBottom } from "react-icons/md";
+import { MdHourglassBottom } from "react-icons/md";
 import { FaRocket } from "react-icons/fa6";
 import { RiShining2Fill } from "react-icons/ri";
 import styles from "./About.module.css";
@@ -123,7 +123,7 @@ const About = () => {
                       Electricity and Magnetism <IoCheckmark className={styles["check-icon"]} />
                     </li>
                     <li>
-                      Discrete Math and Logic <IoCheckmark className={styles["check-icon"]} />
+                      Discrete Math and Logic 1 <IoCheckmark className={styles["check-icon"]} />
                     </li>
                     <li>
                       Digital Circuits and Systems <IoCheckmark className={styles["check-icon"]} />
@@ -159,6 +159,30 @@ const About = () => {
                     </li>
                     <li>
                       Materials Chemistry <IoCheckmark className={styles["check-icon"]} />
+                    </li>
+                  </ul>
+                </section>
+                <section className={styles.term}>
+                  <p>Term 2 (May 2025 - Aug 2025)</p>
+                  <ul>
+                    <li>
+                      Probability Theory and Statistics 1 <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Signals and Systems <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Discrete Mathematics and Logic 2 <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Embedded Microprocessor Systems <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Systems Programming and Concurrency <MdHourglassBottom className={styles["hourglass-icon"]} />
+                    </li>
+                    <li>
+                      Instrumentation and Prototyping Laboratory{" "}
+                      <MdHourglassBottom className={styles["hourglass-icon"]} />
                     </li>
                   </ul>
                 </section>
