@@ -1,7 +1,6 @@
 import "./Footer.css";
 import { AiFillLinkedin, AiFillInstagram, AiOutlineGithub } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
-import { BsDiscord } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -45,10 +44,6 @@ const Footer = () => {
         <a href="https://github.com/AllenZ05" target="_blank" rel="noopener noreferrer" className="social-button">
           <AiOutlineGithub className="footer-icon" />
         </a>
-        {/* Discord */}
-        <button onClick={() => copyToClipboard("Discord Username", "az_05")} className="social-button">
-          <BsDiscord className="footer-icon2" />
-        </button>
       </div>
 
       {/* Toast Container */}
