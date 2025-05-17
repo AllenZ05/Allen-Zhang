@@ -78,7 +78,7 @@ const Experiences = () => {
                 </a>
               </h4>
               <h5>Toronto, ON</h5>
-              <h5>Incoming Sept 2025 - Dec 2025</h5>
+              <h5>Incoming Sep 2025 - Dec 2025</h5>
               <p></p>
             </div>
           </motion.div>
