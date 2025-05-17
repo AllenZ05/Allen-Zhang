@@ -67,6 +67,31 @@ const Experiences = () => {
             <div className={styles.content}>
               <h3>Software Developer</h3>
               <h4>
+                Shopify
+                <a
+                  href="https://www.shopify.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.externalLink}
+                >
+                  <FiExternalLink />
+                </a>
+              </h4>
+              <h5>Toronto, ON</h5>
+              <h5>Incoming Sept 2025 - Dec 2025</h5>
+              <p></p>
+            </div>
+          </motion.div>
+
+          {/* Experience 2 */}
+          <motion.div
+            className={`${styles.container} ${styles.right}`}
+            variants={itemVariants}
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            <div className={styles.content}>
+              <h3>Software Developer</h3>
+              <h4>
                 Hanov Solutions
                 <a
                   href="https://www.linkedin.com/company/hanov-solutions-inc./"
@@ -82,10 +107,18 @@ const Experiences = () => {
               <p>Tech stack: TypeScript, Go, Python, SQL, Vue.js</p>
             </div>
           </motion.div>
+        </motion.div>
 
-          {/* Experience 2 */}
+        {/* Section 2 */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }}
+        >
+          {/* Experience 3 */}
           <motion.div
-            className={`${styles.container} ${styles.right}`}
+            className={`${styles.container} ${styles.left}`}
             variants={itemVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
@@ -107,18 +140,10 @@ const Experiences = () => {
               <p>Tech stack: Nuxt.js, Vue.js, TypeScript, Go, SQL</p>
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* Section 2 */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={containerVariants}
-          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }}
-        >
-          {/* Experience 3 */}
+          {/* Experience 4 */}
           <motion.div
-            className={`${styles.container} ${styles.left}`}
+            className={`${styles.container} ${styles.right}`}
             variants={itemVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
@@ -140,10 +165,18 @@ const Experiences = () => {
               <p>Tech stack: C, Python</p>
             </div>
           </motion.div>
+        </motion.div>
 
-          {/* Experience 4 */}
+        {/* Section 3 */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }}
+        >
+          {/* Experience 5 */}
           <motion.div
-            className={`${styles.container} ${styles.right}`}
+            className={`${styles.container} ${styles.left}`}
             variants={itemVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
@@ -165,18 +198,10 @@ const Experiences = () => {
               <p>Skills: Leadership, Teamwork, Communication, First Aid, Lifesaving, Teaching</p>
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* Section 3 */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={containerVariants}
-          viewport={{ once: true, amount: isMobile ? 0.4 : 0.5 }}
-        >
-          {/* Experience 5 */}
+          {/* Experience 6 */}
           <motion.div
-            className={`${styles.container} ${styles.left}`}
+            className={`${styles.container} ${styles.right}`}
             variants={itemVariants}
             viewport={{ once: true, amount: 0.5 }}
           >
