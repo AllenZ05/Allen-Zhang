@@ -65,7 +65,7 @@ const Experiences = () => {
             viewport={{ once: true, amount: 0.5 }}
           >
             <div className={styles.content}>
-              <h3>Software Developer</h3>
+              <h3>Software Engineer</h3>
               <h4>
                 Shopify
                 <a
