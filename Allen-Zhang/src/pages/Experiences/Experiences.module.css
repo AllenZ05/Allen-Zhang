@@ -68,40 +68,38 @@
 
 .experienceCard {
   position: relative;
+  --stripe-width: 4px;
   width: calc(50% - 40px);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-medium);
+  background: rgba(20, 20, 30, 0.8);
+  border: none;
+  border-radius: var(--border-radius-small);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: all var(--transition-medium);
   isolation: isolate;
 }
 
-.experienceCard::after {
+.experienceCard::before {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: var(--border-radius);
-  padding: 1px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--stripe-width);
   background: var(--gradient);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity var(--transition-medium);
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  z-index: 1;
+  border-radius: 2px;
+  transition: all var(--transition-medium);
 }
 
 .experienceCard:hover {
-  border-color: transparent;
-  box-shadow: var(--shadow-heavy);
-  background: var(--card-hover-bg);
+  background: rgba(25, 25, 40, 0.9);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  transform: translateY(-2px);
 }
 
-.experienceCard:hover::after {
-  opacity: 1;
+.experienceCard:hover::before {
+  --stripe-width: 6px;
+  box-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
 }
 
 .experienceCard.left {
@@ -112,22 +110,8 @@
   margin-left: auto;
 }
 
-.cardBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: var(--gradient);
-  transition: height var(--transition-medium);
-}
-
-.experienceCard:hover .cardBackground {
-  height: 8px;
-}
-
 .cardContent {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-lg) calc(var(--spacing-lg) + 0.5rem);
   position: relative;
   z-index: 2;
 }
@@ -145,11 +129,12 @@
 }
 
 .position {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 var(--spacing-xs) 0;
-  line-height: 1.3;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
 }
 
 .companyRow {
@@ -159,8 +144,8 @@
 }
 
 .company {
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--text-accent);
   margin: 0;
   display: flex;
@@ -182,42 +167,51 @@
 }
 
 .statusBadge {
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   white-space: nowrap;
+  border: 1px solid;
 }
 
 .statusBadge.upcoming {
-  background: linear-gradient(135deg, #74b9ff, #0984e3);
-  color: #fff;
+  background: rgba(116, 185, 255, 0.15);
+  color: #74b9ff;
+  border-color: rgba(116, 185, 255, 0.3);
 }
 
 .statusBadge.current {
-  background: linear-gradient(135deg, #00b894, #00a085);
-  color: #fff;
+  background: rgba(0, 184, 148, 0.15);
+  color: #00b894;
+  border-color: rgba(0, 184, 148, 0.3);
 }
 
 .locationPeriod {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: var(--spacing-md);
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .location {
   font-size: 0.9rem;
   color: var(--text-secondary);
   font-weight: 500;
+  font-style: italic;
 }
 
 .period {
   font-size: 0.85rem;
   color: var(--text-accent);
   font-weight: 600;
+  background: rgba(79, 172, 254, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
 }
 
 .description {
@@ -273,6 +267,9 @@
   border: 3px solid var(--text-primary);
   border-radius: 50%;
   z-index: 3;
+
+  --node-shift-x: 0;
+  transform: translateX(var(--node-shift-x));
 }
 
 .experienceCard.left .timelineNode {
@@ -284,27 +281,26 @@
 }
 
 .experienceCard:hover .timelineNode {
-  transform: scale(1.2);
+  transform: translateX(var(--node-shift-x)) scale(1.2);
   box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
-}
-
-/* Toast Container */
-.myToastContainer .Toastify__toast {
-  margin: 0 auto;
-  width: 25rem;
-  font-size: 1rem;
-  padding: 0.5rem;
 }
 
 /* Mobile Design */
 @media (max-width: 768px) {
+  .timelineContainer {
+    --line-left: 15px;
+    --line-half: 2px;
+    --card-offset: 40px;
+    overflow-x: hidden;
+  }
+
   .experiencesMain {
     padding: calc(var(--spacing-xl) + 56px) var(--spacing-sm) var(--spacing-md);
     margin-top: 0;
   }
 
   .timelineLine {
-    left: 30px;
+    left: var(--line-left);
     transform: none;
   }
 
@@ -314,12 +310,12 @@
 
   .experienceCard {
     width: 100%;
-    margin-left: 60px !important;
+    margin-left: var(--card-offset) !important;
     margin-right: 0 !important;
   }
 
   .experienceCard.mobile {
-    margin-left: 60px;
+    margin-left: var(--card-offset) !important;
   }
 
   .cardContent {
@@ -339,10 +335,9 @@
   }
 
   .timelineNode {
-    left: -45px !important;
-    top: 25px;
-    width: 14px;
-    height: 14px;
+    left: calc(var(--line-left) - var(--card-offset)) !important;
+    right: auto;
+    transform: translateX(calc(var(--line-half) - 50%));
   }
 
   .skillsTags {
@@ -353,12 +348,6 @@
     font-size: 0.75rem;
     padding: 0.2rem 0.6rem;
   }
-
-  .myToastContainer .Toastify__toast {
-    width: 18rem;
-    font-size: 0.7rem;
-    padding: 0.3rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -367,8 +356,8 @@
     margin-bottom: var(--spacing-lg);
   }
 
-  .experienceCard {
-    margin-left: 50px !important;
+  .timelineContainer {
+    --card-offset: 50px;
   }
 
   .cardHeader {
@@ -379,16 +368,6 @@
 
   .statusBadge {
     align-self: flex-start;
-  }
-
-  .timelineNode {
-    left: -40px !important;
-  }
-
-  .myToastContainer .Toastify__toast {
-    width: 15rem;
-    font-size: 0.6rem;
-    padding: 0.2rem;
   }
 }
 
@@ -409,7 +388,7 @@
     transition: none;
   }
 
-  .experienceCard::after {
+  .experienceCard::before {
     transition: none;
   }
 }

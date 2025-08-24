@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import { FiExternalLink } from "react-icons/fi";
-import "react-toastify/dist/ReactToastify.css";
 import styles from "./Experiences.module.css";
 
 const Experiences = () => {
@@ -31,12 +29,12 @@ const Experiences = () => {
       position: "Software Engineer",
       company: "Shopify",
       location: "Toronto, ON",
-      period: "Incoming Sep 2025 - Dec 2025",
+      period: "Sep 2025 - Dec 2025",
       description: "Upcoming software engineering internship at one of Canada's leading e-commerce platforms.",
       skills: [],
       url: "https://www.shopify.com/",
       gradient: "linear-gradient(135deg, #96bf48 0%, #5eac46 100%)",
-      status: "upcoming",
+      status: "current",
     },
     {
       id: 1,
@@ -49,7 +47,6 @@ const Experiences = () => {
       skills: ["TypeScript", "Go", "Python", "SQL", "Vue.js"],
       url: "https://www.linkedin.com/company/hanov-solutions-inc./",
       gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-      status: "current",
     },
     {
       id: 2,
@@ -206,20 +203,6 @@ const Experiences = () => {
           ))}
         </motion.div>
       </div>
-
-      <ToastContainer
-        position="top-center"
-        autoClose={1500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        className={styles.myToastContainer}
-      />
     </main>
   );
 };
