@@ -311,24 +311,3 @@
     align-self: flex-start;
   }
 }
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  :root {
-    --card-border: rgba(255, 255, 255, 0.3);
-    --text-secondary: #e0e0e0;
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .projectCard,
-  .projectButton,
-  .cardBackground {
-    transition: none;
-  }
-
-  .projectButton::before {
-    display: none;
-  }
-}

@@ -93,6 +93,21 @@
   transition: all var(--transition-medium);
 }
 
+.experienceCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius-small);
+  padding: 1px;
+  background: var(--gradient);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  z-index: 1;
+}
+
 .experienceCard:hover {
   background: rgba(25, 25, 40, 0.9);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
@@ -102,6 +117,10 @@
 .experienceCard:hover::before {
   --stripe-width: 6px;
   box-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
+}
+
+.experienceCard:hover::after {
+  opacity: 1;
 }
 
 .experienceCard.left {
@@ -365,27 +384,5 @@
 
   .statusBadge {
     align-self: flex-start;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  :root {
-    --card-border: rgba(255, 255, 255, 0.3);
-    --text-secondary: #e0e0e0;
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .experienceCard,
-  .skillTag,
-  .timelineNode,
-  .externalLink {
-    transition: none;
-  }
-
-  .experienceCard::before {
-    transition: none;
   }
 }
