@@ -73,7 +73,7 @@
   --stripe-width: 4px;
   width: calc(50% - 40px);
   background: rgba(20, 20, 30, 0.8);
-  border: none;
+  border: 1px solid var(--card-border);
   border-radius: var(--border-radius-small);
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
