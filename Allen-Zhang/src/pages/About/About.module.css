@@ -56,7 +56,7 @@
 .tabButton {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   background: transparent;
   color: var(--text-secondary);
   border: none;
@@ -162,33 +162,20 @@
 }
 
 .introText p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   color: var(--text-secondary);
   margin-bottom: var(--spacing-md);
 }
 
-.rocketIcon {
-  color: #ff4757;
-  margin: 0 0.5rem;
-  font-size: 1.2em;
-  vertical-align: middle;
-}
-
-.starIcon {
-  color: #3742fa;
-  margin: 0 0.5rem;
-  font-size: 1.2em;
-  vertical-align: middle;
-}
-
 .highlightBox {
   background: linear-gradient(135deg, rgba(79, 172, 254, 0.2), rgba(147, 125, 236, 0.2));
-  border: 1px solid rgba(79, 172, 254, 0.3);
+  border: 1px solid rgba(80, 175, 255, 0.3);
   padding: var(--spacing-md);
   border-radius: var(--border-radius-small);
   margin: var(--spacing-lg) 0;
   font-size: 1.2rem;
+  color: var(--text-primary);
 }
 
 /* Education Styles */
@@ -208,7 +195,7 @@
 
 .location {
   display: block;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--text-secondary);
   font-style: italic;
   margin-bottom: var(--spacing-xs);
@@ -221,7 +208,7 @@
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .academicYears {
@@ -258,7 +245,7 @@
 }
 
 .termCard h6 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--text-accent);
   margin-bottom: var(--spacing-md);
@@ -271,7 +258,7 @@
 }
 
 .termCard li {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   margin-bottom: var(--spacing-xs);
   display: flex;
@@ -293,25 +280,13 @@
 
 /* Skills Styles */
 .skillsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
-}
-
-.technicalSkills h4,
-.softSkills h4 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
+  width: 100%;
 }
 
 .skillCategoriesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
 }
 
 .skillCategory {
@@ -342,15 +317,14 @@
 }
 
 .skillCategory h5 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: var(--spacing-md);
   text-align: center;
 }
 
-.skillTags,
-.softSkillTags {
+.skillTags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-xs);
@@ -363,7 +337,7 @@
   border: 1px solid rgba(79, 172, 254, 0.3);
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 500;
   transition: all var(--transition-fast);
   white-space: nowrap;
@@ -372,29 +346,6 @@
 .skillTag:hover {
   background: rgba(79, 172, 254, 0.25);
   border-color: rgba(79, 172, 254, 0.5);
-  transform: translateY(-1px);
-}
-
-.softSkillTags {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.softSkillTag {
-  background: rgba(147, 125, 236, 0.15);
-  color: var(--text-primary);
-  border: 1px solid rgba(147, 125, 236, 0.3);
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all var(--transition-fast);
-  white-space: nowrap;
-}
-
-.softSkillTag:hover {
-  background: rgba(147, 125, 236, 0.25);
-  border-color: rgba(147, 125, 236, 0.5);
   transform: translateY(-1px);
 }
 
@@ -421,7 +372,6 @@
     position: static;
     text-align: center;
     margin-bottom: var(--spacing-md);
-    font-size: 2.5rem;
   }
 
   .termsGrid {
@@ -439,25 +389,11 @@
 
 @media (max-width: 480px) {
   .heading {
-    font-size: 2.5rem;
     margin-bottom: var(--spacing-lg);
-  }
-
-  .cardContent h3 {
-    font-size: 2rem;
-  }
-
-  .universityHeader h4 {
-    font-size: 1.6rem;
-  }
-
-  .yearSection h5 {
-    font-size: 1.5rem;
   }
 
   .skillTag,
   .softSkillTag {
-    font-size: 0.8rem;
     padding: 0.3rem 0.6rem;
   }
 }

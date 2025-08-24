@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
 import { MdHourglassBottom } from "react-icons/md";
 import { FaRocket, FaGraduationCap, FaCode } from "react-icons/fa6";
-import { RiShining2Fill } from "react-icons/ri";
 import styles from "./About.module.css";
 
 const About = () => {
@@ -34,32 +33,35 @@ const About = () => {
   const skillCategories = [
     {
       title: "Languages",
-      skills: ["Python", "C++", "C#", "C", "Go", "Swift", "SQL/NoSQL", "TypeScript", "JavaScript", "CSS", "HTML"],
+      skills: ["Python", "C++", "C#", "C", "Go", "SQL/NoSQL", "Swift", "TypeScript", "JavaScript", "CSS", "HTML"],
       gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     },
     {
       title: "Frameworks & Libraries",
-      skills: ["React.js", "Next.js", "Vue.js", "Nuxt.js", "PyTorch", "Tailwind"],
+      skills: ["Next.js", "React.js", "Nuxt.js", "Vue.js", "PyTorch", "Tailwind CSS"],
       gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
     },
     {
-      title: "Development Tools & Services",
-      skills: ["AWS", "Node.js", "Vite.js", "Firebase", "Postman"],
+      title: "Developer Tools",
+      skills: ["Git", "GitHub", "VS Code", "Node.js", "Vite"],
       gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
     },
     {
-      title: "Developer Tools",
-      skills: ["Git", "GitHub", "VSCode", "Unity"],
+      title: "Cloud Platforms",
+      skills: ["AWS", "Firebase"],
       gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
     },
     {
       title: "Misc",
-      skills: ["STM32", "MPU6050", "Microsoft Office", "Google Workspace", "Adobe Suite", "Figma"],
+      skills: ["Figma", "Microsoft Office", "Google Workspace", "Adobe Suite", "Unity"],
       gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
     },
+    {
+      title: "Soft Skills",
+      skills: ["Leadership", "Teamwork", "Communication", "Creativity", "Problem-Solving"],
+      gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+    },
   ];
-
-  const softSkills = ["Leadership", "Teamwork", "Communication", "Creativity", "Problem-Solving"];
 
   const handleSectionChange = (section) => {
     setSelectedSection(section);
@@ -83,16 +85,10 @@ const About = () => {
               <h3>Introduction</h3>
               <div className={styles.introText}>
                 <p>
-                  <FaRocket className={styles.rocketIcon} />
                   Heyyy, it&apos;s Allen. I am currently a second-year student at the University of Waterloo, pursuing a
                   BASc in Computer Engineering.
-                  <FaRocket className={styles.rocketIcon} />
                 </p>
-                <p>
-                  <RiShining2Fill className={styles.starIcon} />
-                  I am an ambitious individual with a mission to make a positive impact on the world.
-                  <RiShining2Fill className={styles.starIcon} />
-                </p>
+                <p>I am an ambitious individual with a mission to make a positive impact on the world.</p>
                 <p>I currently live in Toronto, Canada.</p>
 
                 <div className={styles.highlightBox}>
@@ -278,40 +274,26 @@ const About = () => {
               <h3>Skills</h3>
 
               <div className={styles.skillsContainer}>
-                <div className={styles.technicalSkills}>
-                  <h4>Technical Skills</h4>
-                  <div className={styles.skillCategoriesGrid}>
-                    {skillCategories.map((category, index) => (
-                      <motion.div
-                        key={category.title}
-                        className={styles.skillCategory}
-                        style={{ "--gradient": category.gradient }}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <h5>{category.title}</h5>
-                        <div className={styles.skillTags}>
-                          {category.skills.map((skill) => (
-                            <span key={skill} className={styles.skillTag}>
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className={styles.softSkills}>
-                  <h4>Soft Skills</h4>
-                  <div className={styles.softSkillTags}>
-                    {softSkills.map((skill) => (
-                      <span key={skill} className={styles.softSkillTag}>
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                <div className={styles.skillCategoriesGrid}>
+                  {skillCategories.map((category, index) => (
+                    <motion.div
+                      key={category.title}
+                      className={styles.skillCategory}
+                      style={{ "--gradient": category.gradient }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <h5>{category.title}</h5>
+                      <div className={styles.skillTags}>
+                        {category.skills.map((skill) => (
+                          <span key={skill} className={styles.skillTag}>
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </div>
