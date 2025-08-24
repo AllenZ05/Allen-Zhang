@@ -20,11 +20,12 @@
   --transition-fast: 0.2s ease;
   --transition-medium: 0.3s ease;
   --transition-slow: 0.5s ease;
+  --app-header-h: 56px;
 }
 
 .projectsMain {
   min-height: 100vh;
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: calc(var(--spacing-lg) + var(--app-header-h)) var(--spacing-md) var(--spacing-lg);
   margin-top: var(--spacing-lg);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 20, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%);
 }
@@ -35,6 +36,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: var(--spacing-xl);
+  scroll-margin-top: calc(var(--app-header-h) + 12px);
   position: relative;
 }
 
@@ -247,7 +249,8 @@
 /* Mobile Design */
 @media (max-width: 768px) {
   .projectsMain {
-    padding: calc(var(--spacing-xl) + 56px) var(--spacing-sm) var(--spacing-md);
+    overflow-x: hidden;
+    padding: calc(var(--spacing-xl) + var(--app-header-h)) var(--spacing-sm) var(--spacing-md);
     margin-top: 0;
   }
 
