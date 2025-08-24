@@ -244,7 +244,7 @@
   font-size: 1.1em;
 }
 
-/* Responsive Design */
+/* Mobile Design */
 @media (max-width: 768px) {
   .projectsMain {
     padding: calc(var(--spacing-xl) + 56px) var(--spacing-sm) var(--spacing-md);
