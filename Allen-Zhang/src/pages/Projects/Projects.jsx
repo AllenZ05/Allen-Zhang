@@ -12,228 +12,216 @@ const Projects = () => {
     document.title = "Projects | AZ05";
   }, []);
 
+  const projects = [
+    {
+      id: 0,
+      title: "Mobile Game",
+      techStack: "C#, Unity",
+      status: "In development",
+      description:
+        "3D mobile game built in Unity with C# scripting, featuring immersive gameplay and dynamic environments.",
+      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      links: [],
+    },
+    {
+      id: 1,
+      title: "Time-CoPilot",
+      techStack: "AWS, Next.js, TypeScript, Tailwind CSS, SQL",
+      description:
+        "Cross-platform productivity app combining calendar, tasks, notes, goals, and AI tools. Powered by AWS and Next.js.",
+      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      links: [
+        {
+          type: "website",
+          url: "https://www.time-copilot.com/",
+          icon: <FiExternalLink />,
+          label: "Website",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "Personal Website",
+      techStack: "React.js, JavaScript, Vite.js, HTML, CSS",
+      description:
+        "A responsive personal website showcasing a bit about me, my experiences, and projects I've worked on. You're on it right now!",
+      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      links: [
+        {
+          type: "repository",
+          url: "https://github.com/AllenZ05/Personal-Website",
+          icon: <FiGithub />,
+          label: "Repository",
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "Fall Detection Device",
+      techStack: "C, C++, STM32, Accelerometer, GSM Module",
+      description:
+        "Wearable IoT device using STM32 + accelerometer to detect falls and send GSM alerts to emergency contacts.",
+      gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      links: [
+        {
+          type: "repository",
+          url: "https://github.com/AllenZ05/Fall-Detection-Device",
+          icon: <FiGithub />,
+          label: "Repository",
+        },
+      ],
+    },
+    {
+      id: 4,
+      title: "Minesweeper",
+      techStack: "C++",
+      description:
+        "A Waterloo-themed twist on Minesweeper; avoid the geese while clearing the board in this classic game remake.",
+      gradient: "linear-gradient(135deg, #000000 0%, #ff4e50 100%)",
+      links: [
+        {
+          type: "demo",
+          url: "https://github.com/AllenZ05/Minesweeper/assets/124856383/08858cc9-1799-4653-a58b-e5750406ee09",
+          icon: <FiVideo />,
+          label: "Demo",
+        },
+        {
+          type: "repository",
+          url: "https://github.com/AllenZ05/Minesweeper",
+          icon: <FiGithub />,
+          label: "Repository",
+        },
+      ],
+    },
+    {
+      id: 5,
+      title: "Snake",
+      techStack: "Python, Pygame",
+      description: "Retro Snake in Pygame with smooth controls, animations, sound effects, and score tracking.",
+      gradient: "linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)",
+      links: [
+        {
+          type: "demo",
+          url: "https://github.com/AllenZ05/Python-Games/assets/124856383/2bca3b01-fde5-4ffe-9b3e-ca0c30c525be",
+          icon: <FiVideo />,
+          label: "Demo",
+        },
+        {
+          type: "repository",
+          url: "https://github.com/AllenZ05/Python-Games",
+          icon: <FiGithub />,
+          label: "Repository",
+        },
+      ],
+    },
+    {
+      id: 6,
+      title: "Movie Website",
+      techStack: "Vue.js, JavaScript, CSS, HTML, Firebase, Postman, TMDb API",
+      description:
+        "Movie discovery site with TMDB API search, detailed movie info, user auth, watchlists, and favourites using Vue.js and Firebase.",
+      gradient: "linear-gradient(135deg, #42e695 0%, #3bb2b8 100%)",
+      links: [
+        {
+          type: "website",
+          url: "https://cs12-summative.web.app/",
+          icon: <FiExternalLink />,
+          label: "Website",
+        },
+        {
+          type: "repository",
+          url: "https://github.com/AllenZ05/Movie-Project",
+          icon: <FiGithub />,
+          label: "Repository",
+        },
+      ],
+    },
+  ];
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
   return (
     <main className={styles.projectsMain}>
-      <h2 className={styles.heading}>Projects</h2>
-      <div className={styles.myProjects}>
-        <div className={styles.projectsContainer}>
-          <motion.div
-            className={`${styles.project} ${styles.project0}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <div className={styles.projectContent}>
-              <h3>Mobile Game</h3>
-              <p>Tech Stack: Unity, C#</p>
-              <p>In development</p>
-            </div>
-          </motion.div>
+      <motion.h2
+        className={styles.heading}
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        Projects
+      </motion.h2>
 
+      <motion.div className={styles.projectsGrid} initial="hidden" animate="visible" variants={containerVariants}>
+        {projects.map((project) => (
           <motion.div
-            className={`${styles.project} ${styles.project1}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
+            key={project.id}
+            className={styles.projectCard}
+            variants={itemVariants}
+            whileHover={{
+              y: -8,
+              transition: { duration: 0.3, ease: "easeOut" },
             }}
+            style={{ "--gradient": project.gradient }}
           >
-            <div className={styles.projectContent}>
-              <h3>Time-CoPilot</h3>
-              <p>Tech Stack: AWS, SQL, Next.js, TypeScript, Tailwind CSS</p>
-              <div className={styles.projectLinks}>
-                <a
-                  href="https://www.time-copilot.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectButton}
-                  aria-label="Visit website"
-                >
-                  <FiExternalLink /> <span>Website</span>
-                </a>
+            <div className={styles.cardBackground}></div>
+            <div className={styles.cardContent}>
+              <div className={styles.cardHeader}>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                {project.status && <span className={styles.statusBadge}>{project.status}</span>}
               </div>
-            </div>
-          </motion.div>
 
-          <motion.div
-            className={`${styles.project} ${styles.project2}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <div className={styles.projectContent}>
-              <h3>Personal Website</h3>
-              <p>Tech stack: Vite.js, React.js, JavaScript, HTML/CSS</p>
-              <div className={styles.projectLinks}>
-                <a
-                  href="https://github.com/AllenZ05/Personal-Website"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectButton}
-                  aria-label="View GitHub repository"
-                >
-                  <FiGithub /> <span>Repository</span>
-                </a>
-              </div>
-            </div>
-          </motion.div>
+              <p className={styles.projectDescription}>{project.description}</p>
 
-          <motion.div
-            className={`${styles.project} ${styles.project3}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <div className={styles.projectContent}>
-              <h3>Fall Detection Device</h3>
-              <p>Tech stack: C, C++, STM32, STM32CubeIDE, Accelerometer, GSM Module</p>
-              <div className={styles.projectLinks}>
-                <a
-                  href="https://github.com/AllenZ05/Fall-Detection-Device"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectButton}
-                  aria-label="View GitHub repository"
-                >
-                  <FiGithub /> <span>Repository</span>
-                </a>
+              <div className={styles.techStack}>
+                <span className={styles.techLabel}>Tech Stack:</span>
+                <span className={styles.techText}>{project.techStack}</span>
               </div>
-            </div>
-          </motion.div>
 
-          <motion.div
-            className={`${styles.project} ${styles.project4}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <div className={styles.projectContent}>
-              <h3>Minesweeper</h3>
-              <p>Tech stack: C++</p>
-              <div className={styles.projectLinks}>
-                <a
-                  href="https://github.com/AllenZ05/Minesweeper/assets/124856383/08858cc9-1799-4653-a58b-e5750406ee09"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectButton}
-                  style={{ marginRight: "16px" }}
-                  aria-label="Watch video demonstration"
-                >
-                  <FiVideo /> <span>Demo</span>
-                </a>
-                <a
-                  href="https://github.com/AllenZ05/Minesweeper"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectButton}
-                  aria-label="View GitHub repository"
-                >
-                  <FiGithub /> <span>Repository</span>
-                </a>
-              </div>
+              {project.links.length > 0 && (
+                <div className={styles.projectLinks}>
+                  {project.links.map((link, index) => (
+                    <motion.a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.projectButton} ${styles[link.type]}`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      aria-label={`${link.label} for ${project.title}`}
+                    >
+                      {link.icon}
+                      <span>{link.label}</span>
+                    </motion.a>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
-
-          <motion.div
-            className={`${styles.project} ${styles.project5}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <div className={styles.projectContent}>
-              <h3>Snake</h3>
-              <p>Tech stack: Python, Pygame</p>
-              <div className={styles.projectLinks}>
-                <a
-                  href="https://github.com/AllenZ05/Python-Games/assets/124856383/2bca3b01-fde5-4ffe-9b3e-ca0c30c525be"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectButton}
-                  style={{ marginRight: "16px" }}
-                  aria-label="Watch video demonstration"
-                >
-                  <FiVideo /> <span>Demo</span>
-                </a>
-                <a
-                  href="https://github.com/AllenZ05/Python-Games"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectButton}
-                  aria-label="View GitHub repository"
-                >
-                  <FiGithub /> <span>Repository</span>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className={`${styles.project} ${styles.project6}`}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            <div className={styles.projectContent}>
-              <h3>Movie Website</h3>
-              <p>Tech stack: Vue.js, JavaScript, HTML/CSS, Firebase, Postman, Axios, TMDb API</p>
-              <div className={styles.projectLinks}>
-                <a
-                  href="https://cs12-summative.web.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectButton}
-                  style={{ marginRight: "16px" }}
-                  aria-label="Visit website"
-                >
-                  <FiExternalLink /> <span>Website</span>
-                </a>
-                <a
-                  href="https://github.com/AllenZ05/Movie-Project"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.projectButton}
-                  aria-label="View GitHub repository"
-                >
-                  <FiGithub /> <span>Repository</span>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+        ))}
+      </motion.div>
     </main>
   );
 };

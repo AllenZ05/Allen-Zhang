@@ -1,115 +1,326 @@
+/* CSS Custom Properties */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-hover-bg: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --text-accent: #4facfe;
+  --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --shadow-heavy: 0 16px 48px rgba(0, 0, 0, 0.3);
+  --border-radius: 16px;
+  --border-radius-small: 8px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
 .projectsMain {
-  padding-top: 2rem;
-  margin-top: 2rem;
+  min-height: 100vh;
+  padding: var(--spacing-lg) var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 20, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%);
 }
 
 .heading {
-  font-size: calc(var(--h2-base-font-size) * 2);
-  color: #fff;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--text-primary);
   font-weight: 700;
   text-align: center;
-  padding: 1rem;
-  white-space: nowrap;
+  margin-bottom: var(--spacing-xl);
+  background: linear-gradient(135deg, #fff 0%, #4facfe 50%, #fff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  border-radius: 2px;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-md) 0;
+}
+
+.projectCard {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
   overflow: hidden;
-  width: 0;
-  animation: typewriter 4s forwards;
-  margin: 0 auto;
-}
-
-@keyframes typewriter {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-.myProjects {
-  min-height: 100vh;
-  width: 100%;
-  padding: 1rem;
-  margin: 0 auto;
-}
-
-.projectsContainer {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-medium);
+  transition: all var(--transition-medium);
+  cursor: pointer;
+  min-height: 320px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.projectCard:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-heavy);
+  background: var(--card-hover-bg);
+}
+
+.cardBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--gradient);
+  transition: height var(--transition-medium);
+}
+
+.projectCard:hover .cardBackground {
+  height: 8px;
+}
+
+.cardContent {
+  padding: var(--spacing-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.statusBadge {
+  background: linear-gradient(135deg, #ff9a56, #ffad56);
+  color: #000;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.projectDescription {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+  flex: 1;
+}
+
+.techStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.techLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.techText {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.projectLinks {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+  padding-top: var(--spacing-md);
+}
+
+.projectButton {
+  display: flex;
   align-items: center;
+  gap: var(--spacing-xs);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius-small);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
 }
 
-.project {
-  margin: 2rem 3rem;
-  border: 0.2rem solid blue;
-  padding: 2rem 5rem 1rem 5rem;
-  text-align: center;
-  width: 70vw;
+.projectButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
 }
 
-.project a:link,
-.project a:visited {
-  color: rgb(120, 120, 250);
+.projectButton:hover::before {
+  left: 100%;
+}
+
+.projectButton.website {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: #000;
+  font-weight: 600;
+}
+
+.projectButton.website:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+}
+
+.projectButton.repository {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.projectButton.repository:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+.projectButton.demo {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: #fff;
+  font-weight: 600;
+}
+
+.projectButton.demo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+}
+
+.projectButton svg {
   font-size: 1.1em;
-  font-weight: 500;
 }
 
-.project a:hover {
-  color: rgb(90, 90, 250);
-}
-
-.projectsMain h3 {
-  font-weight: 500;
-  text-align: center;
-  margin: 1rem 0rem;
-  font-size: calc(var(--h3-base-font-size) * 1.8);
-}
-
-.projectsMain p {
-  font-weight: 200;
-  text-align: center;
-  margin: 2rem 1rem;
-  font-size: calc(var(--p-base-font-size) * 1.25);
-}
-
-/** Media Queries */
-
-@media only screen and (max-width: 480px) {
-  .project {
-    margin: 1rem auto;
-    padding: 1rem;
-    border: 0.1rem solid blue;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .projectsMain {
+    padding: var(--spacing-md) var(--spacing-sm);
   }
-  .projectsMain h3 {
-    margin: 0.7rem auto;
-  }
-  .projectsMain p {
-    margin: 0.7rem auto;
-  }
-}
 
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-  .project {
-    margin: 1.5rem auto;
-    padding: 1.5rem;
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
   }
-  .projectsMain h3 {
-    margin-bottom: 0.8rem auto;
+
+  .projectCard {
+    min-height: 280px;
   }
-  .projectsMain p {
-    margin: 0.8rem auto;
+
+  .cardContent {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .projectTitle {
+    font-size: 1.3rem;
+  }
+
+  .projectDescription {
+    font-size: 0.9rem;
+  }
+
+  .projectLinks {
+    flex-direction: column;
+  }
+
+  .projectButton {
+    justify-content: center;
+    padding: 0.75rem 1rem;
   }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .project {
-    margin: 2rem auto;
-    padding: 2rem;
+@media (max-width: 480px) {
+  .heading {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
   }
-  .projectsMain h3 {
-    margin: 0.9rem auto;
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
   }
-  .projectsMain p {
-    margin: 0.9rem auto;
+
+  .projectCard {
+    min-height: 260px;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  .statusBadge {
+    align-self: flex-start;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --card-border: rgba(255, 255, 255, 0.3);
+    --text-secondary: #e0e0e0;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .projectCard,
+  .projectButton,
+  .cardBackground {
+    transition: none;
+  }
+
+  .projectButton::before {
+    display: none;
   }
 }
