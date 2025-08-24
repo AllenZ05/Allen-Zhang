@@ -96,7 +96,7 @@ const Experiences = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: {
       opacity: 1,
       y: 0,
@@ -131,7 +131,7 @@ const Experiences = () => {
               className={`${styles.experienceCard} ${index % 2 === 0 ? styles.left : styles.right}`}
               variants={itemVariants}
               whileHover={{
-                y: -5,
+                y: -8,
                 transition: { duration: 0.3, ease: "easeOut" },
               }}
               style={{ "--gradient": experience.gradient }}
