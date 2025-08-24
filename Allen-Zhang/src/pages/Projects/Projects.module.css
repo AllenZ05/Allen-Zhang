@@ -3,7 +3,7 @@
   --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --card-bg: rgba(255, 255, 255, 0.03);
   --card-border: rgba(255, 255, 255, 0.1);
-  --card-hover-bg: rgba(255, 255, 255, 0.05);
+  --card-hover-bg: rgba(255, 255, 255, 0.06);
   --text-primary: #ffffff;
   --text-secondary: #b8b8b8;
   --text-accent: #4facfe;
@@ -35,23 +35,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: var(--spacing-xl);
-  background: linear-gradient(135deg, #fff 0%, #4facfe 50%, #fff 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   position: relative;
-}
-
-.heading::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
-  border-radius: 2px;
 }
 
 .projectsGrid {
@@ -65,12 +49,12 @@
 
 .projectCard {
   position: relative;
+  isolation: isolate;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
   overflow: hidden;
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   box-shadow: var(--shadow-medium);
   transition: all var(--transition-medium);
   cursor: pointer;
@@ -79,10 +63,28 @@
   flex-direction: column;
 }
 
+.projectCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius);
+  padding: 1px;
+  background: var(--gradient);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  z-index: 1;
+}
+
 .projectCard:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: transparent;
   box-shadow: var(--shadow-heavy);
   background: var(--card-hover-bg);
+}
+.projectCard:hover::after {
+  opacity: 1;
 }
 
 .cardBackground {
@@ -105,6 +107,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  position: relative;
+  z-index: 2;
 }
 
 .cardHeader {
@@ -243,7 +247,8 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .projectsMain {
-    padding: var(--spacing-md) var(--spacing-sm);
+    padding: calc(var(--spacing-xl) + 56px) var(--spacing-sm) var(--spacing-md);
+    margin-top: 0;
   }
 
   .projectsGrid {

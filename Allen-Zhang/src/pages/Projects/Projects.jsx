@@ -20,7 +20,7 @@ const Projects = () => {
       status: "In development",
       description:
         "3D mobile game built in Unity with C# scripting, featuring immersive gameplay and dynamic environments.",
-      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      gradient: "linear-gradient(135deg, #4b1e82 0%, #994897ff 100%)",
       links: [],
     },
     {
@@ -29,7 +29,7 @@ const Projects = () => {
       techStack: "AWS, Next.js, TypeScript, Tailwind CSS, SQL",
       description:
         "Cross-platform productivity app combining calendar, tasks, notes, goals, and AI tools. Powered by AWS and Next.js.",
-      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      gradient: "linear-gradient(135deg, #7f7fd5 0%, #86a8e7 50%, #91eae4 100%)",
       links: [
         {
           type: "website",
@@ -45,7 +45,7 @@ const Projects = () => {
       techStack: "React.js, JavaScript, Vite.js, HTML, CSS",
       description:
         "A responsive personal website showcasing a bit about me, my experiences, and projects I've worked on. You're on it right now!",
-      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      gradient: "linear-gradient(135deg, #0a5af9ff 0%, #3b82f6 50%, #60a5fa 100%)",
       links: [
         {
           type: "repository",
@@ -61,7 +61,7 @@ const Projects = () => {
       techStack: "C, C++, STM32, Accelerometer, GSM Module",
       description:
         "Wearable IoT device using STM32 + accelerometer to detect falls and send GSM alerts to emergency contacts.",
-      gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+      gradient: "linear-gradient(135deg, #f53346ff 0%, #f68f7dff 100%)",
       links: [
         {
           type: "repository",
@@ -77,7 +77,7 @@ const Projects = () => {
       techStack: "C++",
       description:
         "A Waterloo-themed twist on Minesweeper; avoid the geese while clearing the board in this classic game remake.",
-      gradient: "linear-gradient(135deg, #000000 0%, #ff4e50 100%)",
+      gradient: "linear-gradient(135deg, #232323ff 0%, #e52d27 100%)",
       links: [
         {
           type: "demo",
@@ -97,8 +97,8 @@ const Projects = () => {
       id: 5,
       title: "Snake",
       techStack: "Python, Pygame",
-      description: "Retro Snake in Pygame with smooth controls, animations, sound effects, and score tracking.",
-      gradient: "linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)",
+      description: "Classical Snake in Pygame with smooth controls, animations, sound effects, and score tracking.",
+      gradient: "linear-gradient(135deg, #0b6439ff 0%, #40ee6eff 100%)",
       links: [
         {
           type: "demo",
@@ -120,7 +120,7 @@ const Projects = () => {
       techStack: "Vue.js, JavaScript, CSS, HTML, Firebase, Postman, TMDb API",
       description:
         "Movie discovery site with TMDB API search, detailed movie info, user auth, watchlists, and favourites using Vue.js and Firebase.",
-      gradient: "linear-gradient(135deg, #42e695 0%, #3bb2b8 100%)",
+      gradient: "linear-gradient(135deg, #2f3d4dff 0%, #42b883 100%)",
       links: [
         {
           type: "website",
