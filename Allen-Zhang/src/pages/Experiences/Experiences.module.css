@@ -1,188 +1,415 @@
+/* CSS Custom Properties */
+:root {
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-hover-bg: rgba(255, 255, 255, 0.06);
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --text-accent: #4facfe;
+  --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --shadow-heavy: 0 16px 48px rgba(0, 0, 0, 0.3);
+  --border-radius: 16px;
+  --border-radius-small: 8px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
 .experiencesMain {
-  padding-top: 2rem;
-  margin-top: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  padding: var(--spacing-lg) var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 20, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%);
 }
 
 .heading {
-  font-size: calc(var(--h2-base-font-size) * 2);
-  color: #fff;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--text-primary);
   font-weight: 700;
   text-align: center;
-  padding: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typewriter 4s forwards;
-  margin: 0 auto;
+  margin-bottom: var(--spacing-xl);
 }
 
-@keyframes typewriter {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-.timeline {
+.timelineContainer {
   position: relative;
-  width: 80vw;
-  margin: 2rem auto;
-  padding: 20px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) 0;
 }
 
-.timeline::before {
-  content: "";
+.timelineLine {
   position: absolute;
-  width: 4px;
-  background-color: #333;
   top: 0;
   bottom: 0;
   left: 50%;
-  margin-left: -2px;
+  width: 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(79, 172, 254, 0.2) 0%,
+    rgba(79, 172, 254, 0.8) 50%,
+    rgba(79, 172, 254, 0.2) 100%
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 
-.container {
-  padding: 10px 40px;
+.experiencesGrid {
   position: relative;
-  width: 50%;
-  box-sizing: border-box;
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
 }
 
-.left {
-  left: 0;
+.experienceCard {
+  position: relative;
+  width: calc(50% - 40px);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-medium);
+  transition: all var(--transition-medium);
+  isolation: isolate;
 }
 
-.right {
-  left: 50%;
-}
-
-.container::after {
+.experienceCard::after {
   content: "";
   position: absolute;
-  width: 25px;
-  height: 25px;
-  background-color: #333;
-  border: 4px solid #fff;
-  top: 15px;
-  border-radius: 50%;
+  inset: 0;
+  border-radius: var(--border-radius);
+  padding: 1px;
+  background: var(--gradient);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
   z-index: 1;
 }
 
-.left::after {
-  right: -17px;
+.experienceCard:hover {
+  border-color: transparent;
+  box-shadow: var(--shadow-heavy);
+  background: var(--card-hover-bg);
 }
 
-.right::after {
-  left: -17px;
+.experienceCard:hover::after {
+  opacity: 1;
 }
 
-.content {
-  padding: 20px 30px;
-  background-color: #222;
-  border: 2px solid #007bff;
-  border-radius: 6px;
+.experienceCard.left {
+  margin-right: auto;
+}
+
+.experienceCard.right {
+  margin-left: auto;
+}
+
+.cardBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--gradient);
+  transition: height var(--transition-medium);
+}
+
+.experienceCard:hover .cardBackground {
+  height: 8px;
+}
+
+.cardContent {
+  padding: var(--spacing-lg);
   position: relative;
+  z-index: 2;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.positionInfo {
+  flex: 1;
+}
+
+.position {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+  line-height: 1.3;
+}
+
+.companyRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.company {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-accent);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
 }
 
 .externalLink {
-  margin-left: 0.5rem;
-  font-size: 1.2rem;
-  color: #fff;
-  transition: color 0.3s ease;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
 }
 
 .externalLink:hover {
-  color: #007bff;
+  color: var(--text-accent);
+  transform: translateY(-1px);
 }
 
-.experiencesMain h3 {
+.statusBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.statusBadge.upcoming {
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  color: #fff;
+}
+
+.statusBadge.current {
+  background: linear-gradient(135deg, #00b894, #00a085);
+  color: #fff;
+}
+
+.locationPeriod {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.location {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
   font-weight: 500;
-  margin: 2rem 0.5rem;
-  font-size: calc(var(--h3-base-font-size) * 1.8);
 }
 
-.experiencesMain h4 {
-  font-weight: 400;
-  margin: 1rem 0.5rem;
-  font-size: calc(var(--h4-base-font-size) * 1.6);
+.period {
+  font-size: 0.85rem;
+  color: var(--text-accent);
+  font-weight: 600;
 }
 
-.experiencesMain h5 {
-  font-weight: 400;
-  margin: 0.5rem;
-  font-size: calc(var(--h5-base-font-size) * 1.4);
+.description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-md);
 }
 
-.experiencesMain p {
-  font-weight: 200;
-  margin: 2rem 0.5rem 1rem 0.5rem;
-  font-size: calc(var(--p-base-font-size) * 1.25);
+.skillsSection {
+  margin-top: var(--spacing-md);
 }
 
-/** Media Queries */
+.skillsLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
 
-/* Mobile View */
+.skillsTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
 
-@media screen and (max-width: 1200px) {
-  .timeline::before {
-    left: 31px;
+.skillTag {
+  padding: 0.25rem 0.75rem;
+  background: rgba(79, 172, 254, 0.1);
+  color: var(--text-primary);
+  border: 1px solid rgba(79, 172, 254, 0.3);
+  border-radius: var(--border-radius-small);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.skillTag:hover {
+  background: rgba(79, 172, 254, 0.2);
+  border-color: rgba(79, 172, 254, 0.5);
+  transform: translateY(-1px);
+}
+
+.timelineNode {
+  position: absolute;
+  top: 30px;
+  width: 16px;
+  height: 16px;
+  background: var(--gradient);
+  border: 3px solid var(--text-primary);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.experienceCard.left .timelineNode {
+  right: -48px;
+}
+
+.experienceCard.right .timelineNode {
+  left: -48px;
+}
+
+.experienceCard:hover .timelineNode {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+}
+
+/* Toast Container */
+.myToastContainer .Toastify__toast {
+  margin: 0 auto;
+  width: 25rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+/* Mobile Design */
+@media (max-width: 768px) {
+  .experiencesMain {
+    padding: calc(var(--spacing-xl) + 56px) var(--spacing-sm) var(--spacing-md);
+    margin-top: 0;
   }
 
-  .container {
+  .timelineLine {
+    left: 30px;
+    transform: none;
+  }
+
+  .experiencesGrid {
+    gap: var(--spacing-lg);
+  }
+
+  .experienceCard {
     width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
+    margin-left: 60px !important;
+    margin-right: 0 !important;
   }
 
-  .container::before {
-    left: 60px;
-    border: medium solid #222;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #222 transparent transparent;
+  .experienceCard.mobile {
+    margin-left: 60px;
   }
 
-  .left::after,
-  .right::after {
-    left: 15px;
+  .cardContent {
+    padding: var(--spacing-md);
   }
 
-  .right {
-    left: 0%;
+  .position {
+    font-size: 1.2rem;
+  }
+
+  .company {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .timelineNode {
+    left: -45px !important;
+    top: 25px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .skillsTags {
+    gap: 0.4rem;
+  }
+
+  .skillTag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .myToastContainer .Toastify__toast {
+    width: 18rem;
+    font-size: 0.7rem;
+    padding: 0.3rem;
   }
 }
 
-/* Sizes */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
+  }
 
-@media only screen and (min-width: 769px) and (max-width: 1200px) {
-  .experiencesMain h3 {
-    font-size: calc(var(--h3-base-font-size) * 1.75);
+  .experienceCard {
+    margin-left: 50px !important;
   }
-  .experiencesMain h4 {
-    font-size: calc(var(--h4-base-font-size) * 1.55);
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
   }
-  .experiencesMain h5 {
-    font-size: calc(var(--h5-base-font-size) * 1.35);
+
+  .statusBadge {
+    align-self: flex-start;
   }
-  .experiencesMain p {
-    font-size: calc(var(--p-base-font-size) * 1.2);
+
+  .timelineNode {
+    left: -40px !important;
+  }
+
+  .myToastContainer .Toastify__toast {
+    width: 15rem;
+    font-size: 0.6rem;
+    padding: 0.2rem;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .experiencesMain h3 {
-    font-size: calc(var(--h3-base-font-size) * 1.7);
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --card-border: rgba(255, 255, 255, 0.3);
+    --text-secondary: #e0e0e0;
   }
-  .experiencesMain h4 {
-    font-size: calc(var(--h4-base-font-size) * 1.5);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .experienceCard,
+  .skillTag,
+  .timelineNode,
+  .externalLink {
+    transition: none;
   }
-  .experiencesMain h5 {
-    font-size: calc(var(--h5-base-font-size) * 1.3);
-  }
-  .experiencesMain p {
-    font-size: calc(var(--p-base-font-size) * 1.15);
+
+  .experienceCard::after {
+    transition: none;
   }
 }
