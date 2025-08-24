@@ -1,24 +1,12 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import styles from "./Experiences.module.css";
 
 const Experiences = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
-
   useEffect(() => {
     document.title = "Experiences | AZ05";
   }, []);
@@ -140,9 +128,7 @@ const Experiences = () => {
           {experiences.map((experience, index) => (
             <motion.div
               key={experience.id}
-              className={`${styles.experienceCard} ${index % 2 === 0 ? styles.left : styles.right} ${
-                isMobile ? styles.mobile : ""
-              }`}
+              className={`${styles.experienceCard} ${index % 2 === 0 ? styles.left : styles.right}`}
               variants={itemVariants}
               whileHover={{
                 y: -5,
