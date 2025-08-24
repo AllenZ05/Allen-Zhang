@@ -18,10 +18,11 @@ const Experiences = () => {
       company: "Shopify",
       location: "Toronto, ON",
       period: "Sep 2025 - Dec 2025",
-      description: "Upcoming software engineering internship at one of Canada's leading e-commerce platforms.",
+      description:
+        "SWE on the Shop Team at Canada’s leading tech company, building impactful features used daily by millions of merchants and buyers worldwide.",
       skills: [],
       url: "https://www.shopify.com/",
-      gradient: "linear-gradient(135deg, #96bf48 0%, #5eac46 100%)",
+      gradient: "linear-gradient(135deg, #5bf02eff 0%, #024c28ff 100%)",
       status: "current",
     },
     {
@@ -31,10 +32,10 @@ const Experiences = () => {
       location: "Waterloo, ON",
       period: "Jan 2025 - Apr 2025",
       description:
-        "Full-stack development using modern technologies including TypeScript, Go, Python, and Vue.js for enterprise solutions.",
-      skills: ["TypeScript", "Go", "Python", "SQL", "Vue.js"],
+        "Delivered full-stack solutions by modernizing systems while developing new features, including AI-driven tools.",
+      skills: ["TypeScript", "Go", "Python", "Vue.js", "SQL"],
       url: "https://www.linkedin.com/company/hanov-solutions-inc./",
-      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      gradient: "linear-gradient(135deg, #937decff 0%, #6a11cb 100%)",
     },
     {
       id: 2,
@@ -43,22 +44,22 @@ const Experiences = () => {
       location: "Toronto, ON",
       period: "May 2024 - Aug 2024",
       description:
-        "Developed web applications using Nuxt.js and Vue.js framework, integrated backend services with Go and SQL databases.",
-      skills: ["Nuxt.js", "Vue.js", "TypeScript", "Go", "SQL"],
+        "Led end-to-end blockchain app development across frontend, backend, and database, streamlining workflows and improving reliability.",
+      skills: ["Go", "Nuxt.js", "Vue.js", "TypeScript", "SQL"],
       url: "https://www.dandelionnet.com/",
-      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      gradient: "linear-gradient(180deg, #de975aff 0%, #121f80ff 100%)",
     },
     {
       id: 3,
-      position: "Firmware Developer",
+      position: "Software Developer",
       company: "University of Waterloo Formula Electric",
       location: "Waterloo, ON",
       period: "Sep 2023 - Apr 2024",
       description:
-        "Developed embedded firmware for electric race car systems using C and Python for data acquisition and control systems.",
-      skills: ["C", "Python", "Embedded Systems", "Firmware Development"],
+        "Built embedded C firmware, reengineered the dashboard, and validated electric race car systems with Python HIL testing.",
+      skills: ["C", "Python", "Git", "Hardware Testing", "Embedded Systems"],
       url: "https://www.uwfsae.ca/",
-      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      gradient: "linear-gradient(180deg, #f6d567ff 0%, #79580cff 100%)",
     },
     {
       id: 4,
@@ -66,11 +67,10 @@ const Experiences = () => {
       company: "City of Toronto",
       location: "Toronto, ON",
       period: "Mar 2022 - Sep 2023",
-      description:
-        "Ensured pool safety, taught swimming lessons, and developed leadership skills while working with diverse community members.",
-      skills: ["Leadership", "Teamwork", "Communication", "First Aid", "Lifesaving", "Teaching"],
+      description: "Lifeguarded pools and waterparks across Toronto and taught swimming lessons to children ages 5-14.",
+      skills: ["Leadership", "Teamwork", "Communication", "First Aid + CPR", "Public Relations"],
       url: "https://www.toronto.ca/",
-      gradient: "linear-gradient(135deg, #74b9ff 0%, #0984e3 100%)",
+      gradient: "linear-gradient(135deg, #d8b0b0ff 0%, #e95a5dff 100%)",
     },
     {
       id: 5,
@@ -79,10 +79,10 @@ const Experiences = () => {
       location: "Toronto, ON",
       period: "Sep 2021 - Feb 2022",
       description:
-        "Analyzed business data and managed logistics operations, gaining experience in data processing and supply chain management.",
-      skills: ["Microsoft Office", "Data Entry", "Data Analysis", "Logistics Management"],
+        "Analyzed company and business data while coordinating logistics operations, including shipment planning and delivery handling.",
+      skills: ["Microsoft Office", "Data Analysis", "Data Entry", "Logistics Management", "Inventory Control"],
       url: "https://somerville.ca/",
-      gradient: "linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%)",
+      gradient: "linear-gradient(135deg, #708dc0ff 0%, #16346aff 100%)",
     },
   ];
 
