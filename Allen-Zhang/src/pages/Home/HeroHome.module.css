@@ -1,15 +1,15 @@
-.hero-home {
+.heroHome {
   height: 100%;
   width: 100%;
 }
 
-.hero-home .images {
+.heroHome .images {
   height: 100vh;
   width: 100%;
   position: relative;
 }
 
-.hero-home .images .background-img {
+.heroHome .images .backgroundImg {
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -27,7 +27,7 @@
   }
 }
 
-.hero-home .images::after {
+.heroHome .images::after {
   content: "";
   position: absolute;
   height: 100%;
@@ -39,7 +39,7 @@
   opacity: 0.35;
 }
 
-.hero-home .description {
+.heroHome .description {
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -47,7 +47,7 @@
   text-align: center;
 }
 
-.hero-home .description h1 {
+.heroHome .description h1 {
   font-weight: 900;
   padding: 1rem;
   margin: 1rem;
@@ -57,7 +57,7 @@
   width: 80vw;
 }
 
-.hero-home .description .typewriter-container {
+.heroHome .description .typewriterContainer {
   font-size: 1.7rem;
   color: white;
   font-weight: 400;
@@ -66,22 +66,22 @@
   font-family: "Roboto", sans-serif;
 }
 
-/** Media Queries */
+/* Media Queries */
 
 @media only screen and (min-width: 769px) and (max-width: 1200px) {
-  .hero-home .description h1 {
+  .heroHome .description h1 {
     font-size: calc(var(--h1-base-font-size) * 3.5);
   }
-  .hero-home .description .typewriter-container {
+  .heroHome .description .typewriterContainer {
     font-size: 1.6rem;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .hero-home .description h1 {
+  .heroHome .description h1 {
     font-size: calc(var(--h1-base-font-size) * 3);
   }
-  .hero-home .description .typewriter-container {
+  .heroHome .description .typewriterContainer {
     font-size: 1.5rem;
   }
 }

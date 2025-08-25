@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./HeroHome.css";
+import styles from "./HeroHome.module.css";
 import HeroHomebg from "../../assets/heroHome-bg.jpg";
 import Typewriter from "typewriter-effect";
 
@@ -13,13 +13,13 @@ const HeroHome = () => {
   }, []);
 
   return (
-    <div className="hero-home">
-      <div className="images">
-        <img className="background-img" src={HeroHomebg} alt="Background Image" />
+    <div className={styles.heroHome}>
+      <div className={styles.images}>
+        <img className={styles.backgroundImg} src={HeroHomebg} alt="Background Image" />
       </div>
-      <div className="description">
+      <div className={styles.description}>
         <h1>Allen Zhang</h1>
-        <div className="typewriter-container">
+        <div className={styles.typewriterContainer}>
           <Typewriter
             options={{
               strings: [
