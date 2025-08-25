@@ -8,6 +8,8 @@
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
   --transition-fast: 0.2s ease;
   --transition-medium: 0.3s ease;
 }
@@ -29,7 +31,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-2xl);
 }
 
 .socialButton {
@@ -43,44 +45,33 @@
   overflow: hidden;
 }
 
-.socialButton:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.footerIcon,
-.footerIcon2 {
+.footerIcon {
   color: var(--text-secondary);
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   transition: all var(--transition-medium);
   position: relative;
   z-index: 1;
 }
 
-.footerIcon2 {
-  font-size: 2.5rem;
-}
-
-.socialButton:hover .footerIcon,
-.socialButton:hover .footerIcon2 {
-  transform: scale(1.1);
+.socialButton:hover .footerIcon {
+  transform: scale(1.2) translateY(-3px);
 }
 
 /* --- Platform-specific hover colors --- */
-.socialButton.email:hover .footerIcon2 {
-  color: #ea4335; /* Gmail red */
+.socialButton.email:hover .footerIcon {
+  color: #ff0000;
 }
 
 .socialButton.linkedin:hover .footerIcon {
-  color: #0077b5; /* LinkedIn blue */
+  color: #0a66c2;
 }
 
 .socialButton.instagram:hover .footerIcon {
-  color: #e1306c; /* Instagram magenta */
+  color: #d62976;
 }
 
 .socialButton.github:hover .footerIcon {
-  color: #f0f6fc; /* GitHub white */
+  color: #ffffff;
 }
 
 /* Toast Container */
@@ -118,16 +109,12 @@
   }
 
   .socials {
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
     padding: var(--spacing-xs);
   }
 
   .footerIcon {
-    font-size: 1.8rem;
-  }
-
-  .footerIcon2 {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
 
   .myToastContainer .Toastify__toast {
@@ -140,15 +127,11 @@
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .socials {
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
   }
 
   .footerIcon {
-    font-size: 2rem;
-  }
-
-  .footerIcon2 {
-    font-size: 2.3rem;
+    font-size: 2.2rem;
   }
 
   .myToastContainer .Toastify__toast {
@@ -158,14 +141,9 @@
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .footerIcon {
-    font-size: 2.1rem;
+  .socials {
+    gap: var(--spacing-xl);
   }
-
-  .footerIcon2 {
-    font-size: 2.4rem;
-  }
-
   .myToastContainer .Toastify__toast {
     max-width: 400px;
   }

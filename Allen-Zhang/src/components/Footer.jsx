@@ -1,6 +1,6 @@
 import styles from "./Footer.module.css";
-import { AiFillLinkedin, AiFillInstagram, AiOutlineGithub } from "react-icons/ai";
-import { MdEmail } from "react-icons/md";
+import { FaGoogle, FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa6";
+
 import { ToastContainer, toast } from "react-toastify";
 import { motion } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,28 +18,28 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      icon: <MdEmail className={styles.footerIcon2} />,
+      icon: <FaGoogle className={styles.footerIcon} />,
       action: () => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com"),
       label: "Copy email to clipboard",
       type: "button",
       platform: "email",
     },
     {
-      icon: <AiFillLinkedin className={styles.footerIcon} />,
+      icon: <FaLinkedinIn className={styles.footerIcon} />,
       href: "https://www.linkedin.com/in/allenzhang-05-/",
       label: "Visit LinkedIn profile",
       type: "link",
       platform: "linkedin",
     },
     {
-      icon: <AiFillInstagram className={styles.footerIcon} />,
+      icon: <FaInstagram className={styles.footerIcon} />,
       href: "https://www.instagram.com/allenz05/",
       label: "Visit Instagram profile",
       type: "link",
       platform: "instagram",
     },
     {
-      icon: <AiOutlineGithub className={styles.footerIcon} />,
+      icon: <FaGithub className={styles.footerIcon} />,
       href: "https://github.com/AllenZ05",
       label: "Visit GitHub profile",
       type: "link",
