@@ -59,7 +59,7 @@
 
 /* --- Platform-specific hover colors --- */
 .socialButton.email:hover .footerIcon {
-  color: #ff0000;
+  color: #ea4335;
 }
 
 .socialButton.linkedin:hover .footerIcon {
