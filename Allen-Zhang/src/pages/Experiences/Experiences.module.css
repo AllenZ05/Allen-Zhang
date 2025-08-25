@@ -23,7 +23,7 @@
 }
 
 .experiencesMain {
-  min-height: 100vh;
+  min-height: 100dvh;
   padding: calc(var(--spacing-lg) + var(--app-header-h)) var(--spacing-md) var(--spacing-lg);
   margin-top: var(--spacing-lg);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 20, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%);
