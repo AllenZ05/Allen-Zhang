@@ -2,6 +2,7 @@ import styles from "./Footer.module.css";
 import { AiFillLinkedin, AiFillInstagram, AiOutlineGithub } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
+import { motion } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 
 const Footer = () => {
@@ -15,41 +16,67 @@ const Footer = () => {
     }
   };
 
-  return (
-    <div className={styles.footer}>
-      <div className={styles.socials}>
-        {/* Email */}
-        <button
-          onClick={() => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com")}
-          className={styles.socialButton}
-        >
-          <MdEmail className={styles.footerIcon2} />
-        </button>
-        {/* LinkedIn */}
-        <a
-          href="https://www.linkedin.com/in/allenzhang-05-/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.socialButton}
-        >
-          <AiFillLinkedin className={styles.footerIcon} />
-        </a>
-        {/* Instagram */}
-        <a
-          href="https://www.instagram.com/allenz05/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.socialButton}
-        >
-          <AiFillInstagram className={styles.footerIcon} />
-        </a>
-        {/* GitHub */}
-        <a href="https://github.com/AllenZ05" target="_blank" rel="noopener noreferrer" className={styles.socialButton}>
-          <AiOutlineGithub className={styles.footerIcon} />
-        </a>
-      </div>
+  const socialLinks = [
+    {
+      icon: <MdEmail className={styles.footerIcon2} />,
+      action: () => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com"),
+      label: "Copy email to clipboard",
+      type: "button",
+    },
+    {
+      icon: <AiFillLinkedin className={styles.footerIcon} />,
+      href: "https://www.linkedin.com/in/allenzhang-05-/",
+      label: "Visit LinkedIn profile",
+      type: "link",
+    },
+    {
+      icon: <AiFillInstagram className={styles.footerIcon} />,
+      href: "https://www.instagram.com/allenz05/",
+      label: "Visit Instagram profile",
+      type: "link",
+    },
+    {
+      icon: <AiOutlineGithub className={styles.footerIcon} />,
+      href: "https://github.com/AllenZ05",
+      label: "Visit GitHub profile",
+      type: "link",
+    },
+  ];
 
-      {/* Toast Container */}
+  return (
+    <footer className={styles.footer}>
+      <motion.div
+        className={styles.socials}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
+        {socialLinks.map((social, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+          >
+            {social.type === "button" ? (
+              <button onClick={social.action} className={styles.socialButton} aria-label={social.label}>
+                {social.icon}
+              </button>
+            ) : (
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialButton}
+                aria-label={social.label}
+              >
+                {social.icon}
+              </a>
+            )}
+          </motion.div>
+        ))}
+      </motion.div>
+
       <ToastContainer
         position="top-center"
         autoClose={1500}
@@ -63,7 +90,7 @@ const Footer = () => {
         theme="dark"
         className={styles.myToastContainer}
       />
-    </div>
+    </footer>
   );
 };
 
