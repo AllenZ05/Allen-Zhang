@@ -43,10 +43,6 @@
   overflow: hidden;
 }
 
-.socialButton::before {
-  display: none;
-}
-
 .socialButton:hover {
   transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.05);
@@ -67,24 +63,23 @@
 
 .socialButton:hover .footerIcon,
 .socialButton:hover .footerIcon2 {
-  color: var(--text-accent);
   transform: scale(1.1);
 }
 
-/* Individual social platform colors on hover */
-.socialButton:nth-child(1):hover .footerIcon2 {
+/* --- Platform-specific hover colors --- */
+.socialButton.email:hover .footerIcon2 {
   color: #ea4335; /* Gmail red */
 }
 
-.socialButton:nth-child(2):hover .footerIcon {
+.socialButton.linkedin:hover .footerIcon {
   color: #0077b5; /* LinkedIn blue */
 }
 
-.socialButton:nth-child(3):hover .footerIcon {
+.socialButton.instagram:hover .footerIcon {
   color: #e1306c; /* Instagram magenta */
 }
 
-.socialButton:nth-child(4):hover .footerIcon {
+.socialButton.github:hover .footerIcon {
   color: #f0f6fc; /* GitHub white */
 }
 
@@ -116,7 +111,7 @@
   background: var(--text-accent);
 }
 
-/* Mobile Design */
+/* Media Queries */
 @media only screen and (max-width: 480px) {
   .footer {
     padding: var(--spacing-md) var(--spacing-sm);

@@ -22,24 +22,28 @@ const Footer = () => {
       action: () => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com"),
       label: "Copy email to clipboard",
       type: "button",
+      platform: "email",
     },
     {
       icon: <AiFillLinkedin className={styles.footerIcon} />,
       href: "https://www.linkedin.com/in/allenzhang-05-/",
       label: "Visit LinkedIn profile",
       type: "link",
+      platform: "linkedin",
     },
     {
       icon: <AiFillInstagram className={styles.footerIcon} />,
       href: "https://www.instagram.com/allenz05/",
       label: "Visit Instagram profile",
       type: "link",
+      platform: "instagram",
     },
     {
       icon: <AiOutlineGithub className={styles.footerIcon} />,
       href: "https://github.com/AllenZ05",
       label: "Visit GitHub profile",
       type: "link",
+      platform: "github",
     },
   ];
 
@@ -59,7 +63,11 @@ const Footer = () => {
             transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
           >
             {social.type === "button" ? (
-              <button onClick={social.action} className={styles.socialButton} aria-label={social.label}>
+              <button
+                onClick={social.action}
+                className={`${styles.socialButton} ${styles[social.platform]}`}
+                aria-label={social.label}
+              >
                 {social.icon}
               </button>
             ) : (
@@ -67,7 +75,7 @@ const Footer = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.socialButton}
+                className={`${styles.socialButton} ${styles[social.platform]}`}
                 aria-label={social.label}
               >
                 {social.icon}
