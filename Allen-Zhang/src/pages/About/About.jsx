@@ -79,7 +79,7 @@ const About = () => {
             variants={sectionVariants}
           >
             <div className={styles.cardIcon}>
-              <FaRocket />
+              <FaRocket aria-hidden="true" />
             </div>
             <div className={styles.cardContent}>
               <h3>Introduction</h3>
@@ -110,7 +110,7 @@ const About = () => {
             variants={sectionVariants}
           >
             <div className={styles.cardIcon}>
-              <FaGraduationCap />
+              <FaGraduationCap aria-hidden="true" />
             </div>
             <div className={styles.cardContent}>
               <h3>Education</h3>
@@ -128,31 +128,31 @@ const About = () => {
                       <h6>Term 1 (Sep 2023 - Dec 2023)</h6>
                       <ul>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Linear Algebra
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Calculus 1 & 2
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Classical Mechanics
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Programming
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Project Studio
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Engineering Profession and Practice
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Communication in Engineering
                         </li>
                       </ul>
@@ -162,27 +162,27 @@ const About = () => {
                       <h6>Term 2 (Jan 2024 - Apr 2024)</h6>
                       <ul>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Calculus 3
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Electricity and Magnetism
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Discrete Math and Logic 1
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Digital Circuits and Systems
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Linear Circuits
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Engineering Economics
                         </li>
                       </ul>
@@ -197,27 +197,27 @@ const About = () => {
                       <h6>Term 1 (Sep 2024 - Dec 2024)</h6>
                       <ul>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Algorithms and Data Structures
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Advanced Calculus 1
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Digital Computers
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Numerical Methods
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Electronic Circuits
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Materials Chemistry
                         </li>
                       </ul>
@@ -227,27 +227,27 @@ const About = () => {
                       <h6>Term 2 (May 2025 - Aug 2025)</h6>
                       <ul>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} />
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
                           Probability Theory and Statistics 1
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} />
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
                           Signals and Systems
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} />
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
                           Discrete Mathematics and Logic 2
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} />
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
                           Embedded Microprocessor Systems
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} />
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
                           Systems Programming and Concurrency
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} />
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
                           Instrumentation and Prototyping Laboratory
                         </li>
                       </ul>
@@ -268,7 +268,7 @@ const About = () => {
             variants={sectionVariants}
           >
             <div className={styles.cardIcon}>
-              <FaCode />
+              <FaCode aria-hidden="true" />
             </div>
             <div className={styles.cardContent}>
               <h3>Skills</h3>
