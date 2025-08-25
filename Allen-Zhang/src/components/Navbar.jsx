@@ -1,4 +1,4 @@
-import "./Navbar.css";
+import styles from "./Navbar.module.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -11,11 +11,11 @@ const Navbar = () => {
   const closeMenu = () => setClick(false);
 
   return (
-    <div className="header">
+    <div className={styles.header}>
       <Link to="/" onClick={closeMenu}>
         <h2>AllenZ05</h2>
       </Link>
-      <ul className={click ? "nav active" : "nav"}>
+      <ul className={click ? `${styles.nav} ${styles.active}` : styles.nav}>
         <li>
           <Link to="/" onClick={closeMenu}>
             Home
@@ -37,7 +37,7 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-      <div className="hamburger-menu" onClick={handleClick}>
+      <div className={styles.hamburgerMenu} onClick={handleClick}>
         {click ? (
           <FaTimes size="1.5em" style={{ color: "white", margin: "0.5rem" }} />
         ) : (

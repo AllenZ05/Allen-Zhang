@@ -36,11 +36,11 @@
   color: blue;
 }
 
-.hamburger-menu {
+.hamburgerMenu {
   display: none;
 }
 
-/** Media Queries */
+/* Media Queries */
 
 @media screen and (max-width: 1024px) {
   .nav {
@@ -76,7 +76,7 @@
     position: relative;
   }
 
-  .hamburger-menu {
+  .hamburgerMenu {
     display: block;
   }
 }

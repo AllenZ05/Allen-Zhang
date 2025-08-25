@@ -1,4 +1,4 @@
-import "./Footer.css";
+import styles from "./Footer.module.css";
 import { AiFillLinkedin, AiFillInstagram, AiOutlineGithub } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
@@ -16,33 +16,36 @@ const Footer = () => {
   };
 
   return (
-    <div className="footer">
-      <div className="socials">
+    <div className={styles.footer}>
+      <div className={styles.socials}>
         {/* Email */}
-        <button onClick={() => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com")} className="social-button">
-          <MdEmail className="footer-icon2" />
+        <button
+          onClick={() => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com")}
+          className={styles.socialButton}
+        >
+          <MdEmail className={styles.footerIcon2} />
         </button>
         {/* LinkedIn */}
         <a
           href="https://www.linkedin.com/in/allenzhang-05-/"
           target="_blank"
           rel="noopener noreferrer"
-          className="social-button"
+          className={styles.socialButton}
         >
-          <AiFillLinkedin className="footer-icon" />
+          <AiFillLinkedin className={styles.footerIcon} />
         </a>
         {/* Instagram */}
         <a
           href="https://www.instagram.com/allenz05/"
           target="_blank"
           rel="noopener noreferrer"
-          className="social-button"
+          className={styles.socialButton}
         >
-          <AiFillInstagram className="footer-icon" />
+          <AiFillInstagram className={styles.footerIcon} />
         </a>
         {/* GitHub */}
-        <a href="https://github.com/AllenZ05" target="_blank" rel="noopener noreferrer" className="social-button">
-          <AiOutlineGithub className="footer-icon" />
+        <a href="https://github.com/AllenZ05" target="_blank" rel="noopener noreferrer" className={styles.socialButton}>
+          <AiOutlineGithub className={styles.footerIcon} />
         </a>
       </div>
 
@@ -58,7 +61,7 @@ const Footer = () => {
         draggable
         pauseOnHover
         theme="dark"
-        className="my-toast-container"
+        className={styles.myToastContainer}
       />
     </div>
   );
