@@ -52,9 +52,18 @@
   padding: 1rem;
   margin: 1rem;
   text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
-  animation: fadeIn 2s;
+  animation: fadeInH1 2s;
   font-size: calc(var(--h1-base-font-size) * 4);
   width: 80vw;
+}
+
+@keyframes fadeInH1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .heroHome .description .typewriterContainer {
@@ -62,8 +71,17 @@
   color: white;
   font-weight: 400;
   text-shadow: 2px 2px 3px rgba(72, 21, 148, 0.7);
-  animation: scaleUp 1s ease;
+  animation: scaleUpTypewriter 1s ease;
   font-family: "Roboto", sans-serif;
+}
+
+@keyframes scaleUpTypewriter {
+  from {
+    transform: scale(0.01);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 /* Mobile Design */
