@@ -1,18 +1,41 @@
 import styles from "./Footer.module.css";
 import { FaGoogle, FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa6";
-
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { motion } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
 
 const Footer = () => {
+  const [toastWidth, setToastWidth] = useState(null);
+
+  // Detect screen size and update toast width
+  useEffect(() => {
+    const updateToastWidth = () => {
+      if (window.innerWidth >= 500) {
+        setToastWidth("450px");
+      } else if (window.innerWidth >= 481) {
+        setToastWidth("350px");
+      } else {
+        setToastWidth(null);
+      }
+    };
+
+    updateToastWidth();
+    window.addEventListener("resize", updateToastWidth);
+    return () => window.removeEventListener("resize", updateToastWidth);
+  }, []);
+
   const copyToClipboard = async (type, text) => {
     try {
       await navigator.clipboard.writeText(text);
-      toast.success(`Copied ${type} to clipboard!`);
+      toast.success(`Copied ${type} to clipboard!`, {
+        toastId: "copy-success",
+      });
     } catch (err) {
       console.error(`Could not copy ${type}: `, err);
-      toast.error(`Failed to copy ${type}`);
+      toast.error(`Failed to copy ${type}`, {
+        toastId: "copy-error",
+      });
     }
   };
 
@@ -97,6 +120,7 @@ const Footer = () => {
         pauseOnHover
         theme="dark"
         className={styles.myToastContainer}
+        style={toastWidth ? { width: toastWidth } : {}}
       />
     </footer>
   );
