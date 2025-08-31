@@ -85,8 +85,8 @@ const About = () => {
               <h3>Introduction</h3>
               <div className={styles.introText}>
                 <p>
-                  Heyyy, it&apos;s Allen. I am currently a second-year student at the University of Waterloo, pursuing a
-                  BASc in Computer Engineering.
+                  Heyyy, it&apos;s Allen. I am currently a Software Engineer Intern at Shopify and a second-year student
+                  at the University of Waterloo, pursuing a BASc in Computer Engineering.
                 </p>
                 <p>I am an ambitious individual with a mission to make a positive impact on the world.</p>
                 <p>I currently live in Toronto, Canada.</p>

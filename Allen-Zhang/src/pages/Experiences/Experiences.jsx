@@ -14,7 +14,7 @@ const Experiences = () => {
   const experiences = [
     {
       id: 0,
-      position: "Software Engineer",
+      position: "Software Engineer Intern",
       company: "Shopify",
       location: "Toronto, ON",
       period: "Sep 2025 - Dec 2025",
@@ -27,7 +27,7 @@ const Experiences = () => {
     },
     {
       id: 1,
-      position: "Software Developer",
+      position: "Software Developer Intern",
       company: "Hanov Solutions",
       location: "Waterloo, ON",
       period: "Jan 2025 - Apr 2025",
@@ -39,7 +39,7 @@ const Experiences = () => {
     },
     {
       id: 2,
-      position: "Software Developer",
+      position: "Software Developer Intern",
       company: "Dandelion Networks",
       location: "Toronto, ON",
       period: "May 2024 - Aug 2024",
