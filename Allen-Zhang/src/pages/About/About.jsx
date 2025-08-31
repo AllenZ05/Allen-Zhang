@@ -121,6 +121,7 @@ const About = () => {
               </div>
 
               <div className={styles.academicYears}>
+                {/* First Year */}
                 <div className={styles.yearSection}>
                   <h5>First Year</h5>
                   <div className={styles.termsGrid}>
@@ -185,11 +186,16 @@ const About = () => {
                           <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Engineering Economics
                         </li>
+                        <li>
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Tactics for Workplace Success
+                        </li>
                       </ul>
                     </div>
                   </div>
                 </div>
 
+                {/* Second Year */}
                 <div className={styles.yearSection}>
                   <h5>Second Year</h5>
                   <div className={styles.termsGrid}>
@@ -220,6 +226,10 @@ const About = () => {
                           <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Materials Chemistry
                         </li>
+                        <li>
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Strategies for Career Success
+                        </li>
                       </ul>
                     </div>
 
@@ -227,28 +237,98 @@ const About = () => {
                       <h6>Term 2 (May 2025 - Aug 2025)</h6>
                       <ul>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Probability Theory and Statistics 1
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Signals and Systems
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Discrete Mathematics and Logic 2
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Embedded Microprocessor Systems
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Systems Programming and Concurrency
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Instrumentation and Prototyping Laboratory
+                        </li>
+                        <li>
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Professionalism and Ethics in Engineering
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Third Year */}
+                <div className={styles.yearSection}>
+                  <h5>Third Year</h5>
+                  <div className={styles.termsGrid}>
+                    <div className={styles.termCard}>
+                      <h6>Term 1 (Jan 2026 - Apr 2026)</h6>
+                      <ul>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Communication Systems
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Digital Hardware Systems
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Real-Time Operating Systems
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Analog Control Systems
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 1
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 2
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className={styles.termCard}>
+                      <h6>Term 2 (Sep 2026 - Dec 2026)</h6>
+                      <ul>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Probability Theory and Statistics 2
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 1
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 2
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 3
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 4
+                        </li>
+                        <li>
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 5
                         </li>
                       </ul>
                     </div>
