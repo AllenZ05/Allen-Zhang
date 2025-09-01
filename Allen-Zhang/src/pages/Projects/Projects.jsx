@@ -154,10 +154,13 @@ const Projects = () => {
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
         type: "spring",
-        stiffness: 100,
-        damping: 15,
+        stiffness: 60,
+        damping: 25,
+        opacity: { duration: 0.6, ease: "easeOut" },
+        scale: { duration: 0.8, ease: [0.23, 1, 0.32, 1] },
+        y: { duration: 0.8, ease: [0.23, 1, 0.32, 1] },
       },
     },
   };

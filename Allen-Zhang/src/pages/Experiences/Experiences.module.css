@@ -76,9 +76,16 @@
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius-small);
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  transition: all var(--transition-medium);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium),
+    border-color var(--transition-medium), background-color var(--transition-medium);
   isolation: isolate;
+  will-change: transform;
+  transform: translate3d(0, 0, 0) scale(1);
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
 }
 
 .experienceCard::before {
@@ -90,7 +97,8 @@
   width: var(--stripe-width);
   background: var(--gradient);
   border-radius: 2px;
-  transition: all var(--transition-medium);
+  transition: width var(--transition-medium), box-shadow var(--transition-medium);
+  will-change: width;
 }
 
 .experienceCard::after {
@@ -104,8 +112,11 @@
   opacity: 0;
   transition: opacity var(--transition-medium);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
+  -webkit-mask-composite: xor;
   z-index: 1;
+  will-change: opacity;
 }
 
 .experienceCard:hover {

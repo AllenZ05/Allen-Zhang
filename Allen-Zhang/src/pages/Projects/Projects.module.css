@@ -57,12 +57,19 @@
   border-radius: var(--border-radius);
   overflow: hidden;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow: var(--shadow-medium);
-  transition: all var(--transition-medium);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium),
+    border-color var(--transition-medium), background-color var(--transition-medium);
   cursor: pointer;
   min-height: 320px;
   display: flex;
   flex-direction: column;
+  will-change: transform;
+  transform: translate3d(0, 0, 0) scale(1);
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
 }
 
 .projectCard::after {
@@ -76,8 +83,11 @@
   opacity: 0;
   transition: opacity var(--transition-medium);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
+  -webkit-mask-composite: xor;
   z-index: 1;
+  will-change: opacity;
 }
 
 .projectCard:hover {
