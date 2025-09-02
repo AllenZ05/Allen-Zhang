@@ -286,6 +286,25 @@
   margin-bottom: var(--spacing-md);
 }
 
+.descriptionLink {
+  color: var(--text-accent);
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  border-bottom: 1px solid rgba(79, 172, 254, 0.3);
+}
+
+.descriptionLink:hover {
+  color: #60a5fa;
+  border-bottom-color: #60a5fa;
+  transform: translateY(-1px);
+}
+
+.descriptionLink:active {
+  transform: translateY(0);
+}
+
 .skillsSection {
   margin-top: var(--spacing-md);
 }

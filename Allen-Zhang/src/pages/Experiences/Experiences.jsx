@@ -18,8 +18,16 @@ const Experiences = () => {
       company: "Shopify",
       location: "Toronto, ON",
       period: "Sep 2025 - Dec 2025",
-      description:
-        "SWE on the Shop Team at Canada’s leading tech company, building impactful features used daily by millions of merchants and buyers worldwide.",
+      description: (
+        <>
+          SWE on the{" "}
+          <a href="https://shop.app/" target="_blank" rel="noopener noreferrer" className={styles.descriptionLink}>
+            Shop Team
+          </a>{" "}
+          at Canada&apos;s leading tech company, building impactful features used daily by millions of merchants and
+          buyers worldwide.
+        </>
+      ),
       skills: [],
       url: "https://www.shopify.com/",
       gradient: "linear-gradient(135deg, #5bf02eff 0%, #024c28ff 100%)",
