@@ -28,7 +28,7 @@ const Experiences = () => {
           buyers worldwide.
         </>
       ),
-      skills: [],
+      skills: ["Ruby", "Ruby on Rails", "React Native", "GraphQL", "Google Cloud Platform"],
       url: "https://www.shopify.com/",
       gradient: "linear-gradient(135deg, #5bf02eff 0%, #024c28ff 100%)",
       status: "current",
