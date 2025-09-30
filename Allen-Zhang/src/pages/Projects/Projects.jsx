@@ -27,6 +27,7 @@ const Projects = () => {
       id: 1,
       title: "Time-CoPilot",
       techStack: "AWS, Next.js, TypeScript, Tailwind CSS, NoSQL",
+      status: "In development",
       description:
         "Cross-platform productivity app combining calendar, tasks, notes, goals, and AI tools. Powered by AWS and Next.js.",
       gradient: "linear-gradient(135deg, #7f7fd5 0%, #86a8e7 50%, #91eae4 100%)",
