@@ -179,6 +179,20 @@
   margin-bottom: var(--spacing-md);
 }
 
+.introLink {
+  color: var(--text-accent);
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  border-bottom: 1px solid rgba(79, 172, 254, 0.3);
+}
+
+.introLink:hover {
+  color: #60a5fa;
+  border-bottom-color: #60a5fa;
+}
+
 .highlightBox {
   background: linear-gradient(135deg, rgba(79, 172, 254, 0.2), rgba(147, 125, 236, 0.2));
   border: 1px solid rgba(80, 175, 255, 0.3);

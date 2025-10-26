@@ -15,6 +15,23 @@ const Projects = () => {
   const projects = [
     {
       id: 0,
+      title: "TimeCoPilot",
+      techStack: "AWS, Next.js, TypeScript, Tailwind CSS, NoSQL",
+      status: "In development",
+      description:
+        "The ultimate productivity platform that unifies your calendars, goals, tasks, and notes in an AI-powered context-aware workspace, proactively helping you plan and execute what matters most.",
+      gradient: "linear-gradient(135deg, #7f7fd5 0%, #86a8e7 50%, #91eae4 100%)",
+      links: [
+        {
+          type: "website",
+          url: "https://www.timecopilot.app/",
+          icon: <FiExternalLink />,
+          label: "Website",
+        },
+      ],
+    },
+    {
+      id: 1,
       title: "Mobile Game",
       techStack: "C#, Unity",
       status: "In development",
@@ -22,23 +39,6 @@ const Projects = () => {
         "3D mobile game built in Unity with C# scripting, featuring immersive gameplay and dynamic environments.",
       gradient: "linear-gradient(135deg, #4b1e82 0%, #994897ff 100%)",
       links: [],
-    },
-    {
-      id: 1,
-      title: "Time-CoPilot",
-      techStack: "AWS, Next.js, TypeScript, Tailwind CSS, NoSQL",
-      status: "In development",
-      description:
-        "Cross-platform productivity app combining calendar, tasks, notes, goals, and AI tools. Powered by AWS and Next.js.",
-      gradient: "linear-gradient(135deg, #7f7fd5 0%, #86a8e7 50%, #91eae4 100%)",
-      links: [
-        {
-          type: "website",
-          url: "https://www.time-copilot.com/",
-          icon: <FiExternalLink />,
-          label: "Website",
-        },
-      ],
     },
     {
       id: 2,

@@ -20,12 +20,11 @@ const Experiences = () => {
       period: "Sep 2025 - Dec 2025",
       description: (
         <>
-          SWE on the{" "}
+          Building products for millions of merchants and buyers worldwide on Shopify&apos;s{" "}
           <a href="https://shop.app/" target="_blank" rel="noopener noreferrer" className={styles.descriptionLink}>
             Shop Team
-          </a>{" "}
-          at Canada&apos;s leading tech company, building impactful features used daily by millions of merchants and
-          buyers worldwide.
+          </a>
+          .
         </>
       ),
       skills: ["Ruby", "Ruby on Rails", "React Native", "GraphQL", "Google Cloud Platform"],
