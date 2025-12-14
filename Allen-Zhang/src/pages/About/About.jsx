@@ -379,7 +379,7 @@ const About = () => {
                         </li>
                         <li>
                           <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 1
+                          Conflict Resolution
                         </li>
                       </ul>
                     </div>
