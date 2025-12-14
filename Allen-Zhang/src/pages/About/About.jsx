@@ -99,12 +99,12 @@ const About = () => {
     },
     {
       title: "Developer Tools",
-      skills: ["Git", "GitHub", "Node.js", "Vite"],
+      skills: ["Git", "GitHub", "Node.js", "Grafana", "Vite"],
       gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
     },
     {
-      title: "Cloud Platforms",
-      skills: ["Amazon Web Services", "Google Cloud Platform", "Firebase"],
+      title: "Cloud & Services",
+      skills: ["Amazon Web Services", "Google Cloud Platform", "Apache Kafka", "Firebase", "Cloudflare", "Stripe"],
       gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
     },
     {
@@ -118,7 +118,6 @@ const About = () => {
       gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
     },
   ];
-
   const handleSectionChange = (section) => {
     setSelectedSection(section);
   };
@@ -376,11 +375,11 @@ const About = () => {
                         </li>
                         <li>
                           <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 1
+                          Customer Experience Design
                         </li>
                         <li>
                           <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 2
+                          Elective 1
                         </li>
                       </ul>
                     </div>

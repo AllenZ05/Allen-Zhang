@@ -16,7 +16,7 @@ const Projects = () => {
     {
       id: 0,
       title: "TimeCoPilot",
-      techStack: "AWS, Next.js, TypeScript, Tailwind CSS, NoSQL",
+      techStack: "AWS, Next.js, TypeScript, Tailwind CSS, NoSQL, Cloudflare, Stripe",
       status: "In development",
       description:
         "The ultimate productivity platform that unifies your calendars, goals, tasks, and notes in an AI-powered context-aware workspace, proactively helping you plan and execute what matters most.",

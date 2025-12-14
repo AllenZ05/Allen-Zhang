@@ -20,14 +20,14 @@ const Experiences = () => {
       period: "Sep 2025 - Dec 2025",
       description: (
         <>
-          Building products for millions of merchants and buyers worldwide on Shopify&apos;s{" "}
+          Shipped products and features for millions of merchants and shoppers worldwide on Shopify&apos;s{" "}
           <a href="https://shop.app/" target="_blank" rel="noopener noreferrer" className={styles.descriptionLink}>
             Shop Team
           </a>
           .
         </>
       ),
-      skills: ["Ruby", "Ruby on Rails", "React Native", "GraphQL", "Google Cloud Platform"],
+      skills: ["Ruby", "Ruby on Rails", "React Native", "GraphQL", "Google Cloud Platform", "Apache Kafka", "Grafana"],
       url: "https://www.shopify.com/",
       gradient: "linear-gradient(135deg, #5bf02eff 0%, #024c28ff 100%)",
       status: "current",
