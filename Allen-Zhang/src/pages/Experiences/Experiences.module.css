@@ -326,7 +326,7 @@
   width: 16px;
   height: 16px;
   background: var(--gradient);
-  border: 3px solid var(--text-primary);
+  border: 3px solid var(--bg-primary);
   border-radius: 50%;
   z-index: 3;
 
