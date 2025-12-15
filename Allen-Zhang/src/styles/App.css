@@ -59,9 +59,9 @@
 /* Light Theme */
 [data-theme="light"] {
   /* Backgrounds */
-  --bg-primary: #f8fafc;
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #f8fafc;
+  --bg-primary: #f0f7ff;
+  --bg-secondary: #f8fbff;
+  --bg-tertiary: #f0f7ff;
   --bg-card: #ffffff;
 
   /* Text */
@@ -78,7 +78,7 @@
   /* Borders & Surfaces */
   --border-color: rgba(59, 130, 246, 0.1);
   --border-color-hover: rgba(59, 130, 246, 0.15);
-  --surface-glass: rgba(255, 255, 255, 0.9);
+  --surface-glass: rgba(220, 235, 255, 0.85);
   --surface-glass-light: transparent;
 
   /* Shimmer effect for hover states */

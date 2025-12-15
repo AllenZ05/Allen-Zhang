@@ -107,9 +107,17 @@
   will-change: opacity;
 }
 
+:global([data-theme="light"]) .experienceCard::after {
+  padding: 2px;
+}
+
 .experienceCard:hover {
   background: var(--bg-tertiary);
   box-shadow: var(--shadow-lg);
+}
+
+:global([data-theme="light"]) .experienceCard:hover {
+  background: var(--bg-card);
 }
 
 .experienceCard:hover::before {

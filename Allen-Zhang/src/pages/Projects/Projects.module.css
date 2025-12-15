@@ -77,11 +77,20 @@
   will-change: opacity;
 }
 
+:global([data-theme="light"]) .projectCard::after {
+  padding: 2px;
+}
+
 .projectCard:hover {
   border-color: transparent;
   box-shadow: var(--shadow-lg);
   background: var(--bg-tertiary);
 }
+
+:global([data-theme="light"]) .projectCard:hover {
+  background: var(--bg-card);
+}
+
 .projectCard:hover::after {
   opacity: 1;
 }
