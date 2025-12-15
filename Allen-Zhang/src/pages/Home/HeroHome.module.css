@@ -10,11 +10,31 @@
 }
 
 .heroHome .images .backgroundImg {
+  position: absolute;
   height: 100%;
   width: 100%;
   background-size: cover;
   background-position: center;
   object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+/* Dark image shows by default */
+.heroHome .images .darkBg {
+  opacity: 1;
+}
+
+.heroHome .images .lightBg {
+  opacity: 0;
+}
+
+/* In light theme, swap visibility */
+:global([data-theme="light"]) .heroHome .images .darkBg {
+  opacity: 0;
+}
+
+:global([data-theme="light"]) .heroHome .images .lightBg {
+  opacity: 1;
 }
 
 @keyframes backgroundHeroHome {
