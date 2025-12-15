@@ -1,15 +1,9 @@
-/* CSS Custom Properties */
-:root {
-  --text-primary: #ffffff;
-  --text-secondary: #b8b8b8;
-  --text-accent: #4facfe;
+.header {
   --border-radius-small: 8px;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
-  --transition-fast: 0.2s ease;
-  --transition-medium: 0.3s ease;
   --app-header-h: 56px;
 }
 
@@ -24,10 +18,10 @@
   top: 0;
   z-index: 1000;
 
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--surface-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
 
   transition: all var(--transition-medium);
 }
@@ -108,7 +102,7 @@
 
 .nav li a:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--surface-glass-light);
   transform: translateY(-1px);
 }
 
@@ -122,6 +116,43 @@
   border: 1px solid rgba(79, 172, 254, 0.3) !important;
 }
 
+/* Nav Actions Container */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* Theme Toggle Button */
+.themeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--surface-glass-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.themeToggle:hover {
+  background: var(--border-color);
+  border-color: var(--border-color-hover);
+  transform: translateY(-1px);
+}
+
+.themeIcon {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.themeToggle:hover .themeIcon {
+  color: var(--text-accent);
+}
+
 .hamburgerMenu {
   display: none;
   background: none;
@@ -133,7 +164,7 @@
 }
 
 .hamburgerMenu:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--border-color);
 }
 
 .hamburgerIcon {
@@ -154,7 +185,7 @@
     left: -100%;
     width: 100%;
     height: 100dvh;
-    background: rgba(0, 0, 0, 0.95);
+    background: var(--surface-glass);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 

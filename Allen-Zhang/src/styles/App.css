@@ -1,7 +1,108 @@
 /** App Styles */
 
+/* Theme Design System */
+
+/* Dark Theme (Default) */
+:root,
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0f;
+  --bg-tertiary: #121218;
+  --bg-card: #0d0d12;
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --text-muted: #71717a;
+  --text-accent: #4facfe;
+
+  /* Accents */
+  --accent-primary: #4facfe;
+  --accent-secondary: #a855f7;
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+
+  /* Borders & Surfaces */
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color-hover: rgba(255, 255, 255, 0.2);
+  --surface-glass: rgba(0, 0, 0, 0.85);
+  --surface-glass-light: rgba(255, 255, 255, 0.05);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(79, 172, 254, 0.3);
+
+  /* Hero/Space Theme */
+  --hero-bg-1: #0f0c29;
+  --hero-bg-2: #302b63;
+  --hero-bg-3: #24243e;
+  --hero-particle: rgba(255, 255, 255, 0.8);
+  --hero-glow: rgba(79, 172, 254, 0.4);
+
+  /* Status Colors */
+  --status-success: #22c55e;
+  --status-warning: #f59e0b;
+  --status-error: #ef4444;
+  --status-info: #3b82f6;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+
+  /* Text */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-accent: #2563eb;
+
+  /* Accents */
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+
+  /* Borders & Surfaces */
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-color-hover: rgba(0, 0, 0, 0.15);
+  --surface-glass: rgba(255, 255, 255, 0.95);
+  --surface-glass-light: rgba(0, 0, 0, 0.02);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
+
+  /* Hero/Sky Theme */
+  --hero-bg-1: #dbeafe;
+  --hero-bg-2: #c7d2fe;
+  --hero-bg-3: #e0e7ff;
+  --hero-particle: rgba(59, 130, 246, 0.6);
+  --hero-glow: rgba(59, 130, 246, 0.3);
+
+  /* Status Colors */
+  --status-success: #16a34a;
+  --status-warning: #d97706;
+  --status-error: #dc2626;
+  --status-info: #2563eb;
+}
+
+/* Base Styles */
+
 body {
-  background-color: black;
+  background-color: var(--bg-primary);
+  transition: background-color var(--transition-medium), color var(--transition-medium);
 }
 
 h1,
@@ -13,15 +114,18 @@ h6,
 p,
 li,
 a {
-  color: white;
+  color: var(--text-primary);
   text-decoration: none;
+  transition: color var(--transition-medium);
 }
 
 ul {
   list-style-type: none;
 }
 
-/* Font Sizes */
+/* ============================================
+   FONT SIZES
+   ============================================ */
 
 html {
   font-size: 16px;

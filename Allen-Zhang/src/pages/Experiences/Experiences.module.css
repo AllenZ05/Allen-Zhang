@@ -1,14 +1,4 @@
-/* CSS Custom Properties */
-:root {
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --card-border: rgba(255, 255, 255, 0.1);
-  --card-hover-bg: rgba(255, 255, 255, 0.06);
-  --text-primary: #ffffff;
-  --text-secondary: #b8b8b8;
-  --text-accent: #4facfe;
-  --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.2);
-  --shadow-heavy: 0 16px 48px rgba(0, 0, 0, 0.3);
+.experiencesMain {
   --border-radius: 16px;
   --border-radius-small: 8px;
   --spacing-xs: 0.5rem;
@@ -16,9 +6,6 @@
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
-  --transition-fast: 0.2s ease;
-  --transition-medium: 0.3s ease;
-  --transition-slow: 0.5s ease;
   --app-header-h: 56px;
 }
 
@@ -26,7 +13,8 @@
   min-height: 100dvh;
   padding: calc(var(--spacing-lg) + var(--app-header-h)) var(--spacing-md) var(--spacing-lg);
   margin-top: var(--spacing-lg);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 20, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%);
+  background: var(--bg-primary);
+  transition: background-color var(--transition-medium);
 }
 
 .heading {
@@ -72,12 +60,12 @@
   position: relative;
   --stripe-width: 4px;
   width: calc(50% - 40px);
-  background: rgba(20, 20, 30, 0.8);
-  border: 1px solid var(--card-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-small);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-md);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium),
     border-color var(--transition-medium), background-color var(--transition-medium);
   isolation: isolate;
@@ -120,8 +108,8 @@
 }
 
 .experienceCard:hover {
-  background: rgba(25, 25, 40, 0.9);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  background: var(--bg-tertiary);
+  box-shadow: var(--shadow-lg);
 }
 
 .experienceCard:hover::before {
@@ -260,7 +248,7 @@
   align-items: center;
   margin-bottom: var(--spacing-md);
   padding: var(--spacing-xs) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .location {

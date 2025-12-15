@@ -1,14 +1,4 @@
-/* CSS Custom Properties */
-:root {
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --card-border: rgba(255, 255, 255, 0.1);
-  --card-hover-bg: rgba(255, 255, 255, 0.06);
-  --text-primary: #ffffff;
-  --text-secondary: #b8b8b8;
-  --text-accent: #4facfe;
-  --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.2);
-  --shadow-heavy: 0 16px 48px rgba(0, 0, 0, 0.3);
+.aboutMain {
   --border-radius: 16px;
   --border-radius-small: 8px;
   --spacing-xs: 0.5rem;
@@ -16,9 +6,6 @@
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
-  --transition-fast: 0.2s ease;
-  --transition-medium: 0.3s ease;
-  --transition-slow: 0.5s ease;
   --app-header-h: 56px;
 }
 
@@ -26,10 +13,11 @@
   min-height: 100dvh;
   padding: calc(var(--spacing-lg) + var(--app-header-h)) var(--spacing-md) var(--spacing-lg);
   margin-top: var(--spacing-lg);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 20, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%);
+  background: var(--bg-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: background-color var(--transition-medium);
 }
 
 .heading {
@@ -46,12 +34,13 @@
   justify-content: center;
   gap: var(--spacing-xs);
   padding: var(--spacing-xs);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface-glass-light);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   margin-bottom: var(--spacing-xl);
+  transition: background-color var(--transition-medium), border-color var(--transition-medium);
 }
 
 .tabButton {
@@ -80,7 +69,7 @@
 }
 
 .tabButton:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--border-color);
   color: var(--text-primary);
 }
 
@@ -102,12 +91,12 @@
 }
 
 .sectionCard {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-md);
   padding: var(--spacing-xl);
   position: relative;
   isolation: isolate;
@@ -208,7 +197,7 @@
   text-align: center;
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .universityHeader h4 {
@@ -257,15 +246,15 @@
 }
 
 .termCard {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface-glass-light);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-small);
   padding: var(--spacing-lg);
   transition: all var(--transition-medium);
 }
 
 .termCard:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--border-color);
   transform: translateY(-2px);
 }
 
@@ -315,8 +304,8 @@
 }
 
 .skillCategory {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface-glass-light);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-small);
   padding: var(--spacing-lg);
   position: relative;
@@ -342,9 +331,9 @@
 }
 
 .skillCategory:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--border-color);
   transform: translateY(-3px);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-md);
 }
 
 .skillCategory h5 {

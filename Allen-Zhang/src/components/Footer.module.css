@@ -1,8 +1,4 @@
-/* CSS Custom Properties */
-:root {
-  --text-primary: #ffffff;
-  --text-secondary: #b8b8b8;
-  --text-accent: #4facfe;
+.footer {
   --border-radius-small: 8px;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
@@ -10,8 +6,6 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
-  --transition-fast: 0.2s ease;
-  --transition-medium: 0.3s ease;
 }
 
 .footer {
@@ -20,11 +14,12 @@
   justify-content: center;
   align-items: center;
   padding: var(--spacing-lg) var(--spacing-md);
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--surface-glass);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-color);
   margin-top: auto;
+  transition: background-color var(--transition-medium), border-color var(--transition-medium);
 }
 
 .socials {
@@ -71,7 +66,7 @@
 }
 
 .socialButton.github:hover .footerIcon {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 /* Toast Container */
@@ -79,11 +74,12 @@
   margin: 0 auto;
   font-size: 1rem;
   padding: var(--spacing-sm);
-  background: rgba(0, 0, 0, 0.9);
+  background: var(--surface-glass);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius-small);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-md);
+  color: var(--text-primary);
 }
 
 .myToastContainer .Toastify__toast--success {
