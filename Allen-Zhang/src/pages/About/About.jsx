@@ -129,9 +129,9 @@ const About = () => {
           <motion.div
             key="introduction"
             className={styles.sectionCard}
+            variants={sectionVariants}
             initial="hidden"
             animate="visible"
-            variants={sectionVariants}
           >
             <div className={styles.cardIcon}>
               <FaRocket aria-hidden="true" />
@@ -186,9 +186,9 @@ const About = () => {
           <motion.div
             key="education"
             className={styles.sectionCard}
+            variants={sectionVariants}
             initial="hidden"
             animate="visible"
-            variants={sectionVariants}
           >
             <div className={styles.cardIcon}>
               <FaGraduationCap aria-hidden="true" />
@@ -424,9 +424,9 @@ const About = () => {
           <motion.div
             key="skills"
             className={styles.sectionCard}
+            variants={sectionVariants}
             initial="hidden"
             animate="visible"
-            variants={sectionVariants}
           >
             <div className={styles.cardIcon}>
               <FaCode aria-hidden="true" />

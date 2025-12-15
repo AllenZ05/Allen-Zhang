@@ -61,11 +61,12 @@
   --stripe-width: 4px;
   width: calc(50% - 40px);
   background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  border: none;
   border-radius: var(--border-radius-small);
+  overflow: hidden;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  box-shadow: var(--shadow-md);
+  box-shadow: inset 0 0 0 1px var(--border-color), var(--shadow-md);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium),
     border-color var(--transition-medium), background-color var(--transition-medium);
   isolation: isolate;
@@ -84,7 +85,7 @@
   bottom: 0;
   width: var(--stripe-width);
   background: var(--gradient);
-  border-radius: 2px;
+  border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
   transition: width var(--transition-medium), box-shadow var(--transition-medium);
   will-change: width;
 }
@@ -108,7 +109,7 @@
 }
 
 :global([data-theme="light"]) .experienceCard::after {
-  padding: 2px;
+  padding: 1.5px;
 }
 
 .experienceCard:hover {

@@ -100,13 +100,11 @@
   padding: var(--spacing-xl);
   position: relative;
   isolation: isolate;
-  transition: transform var(--transition-medium), box-shadow var(--transition-medium),
-    border-color var(--transition-medium), background-color var(--transition-medium);
+  transition: transform 0.15s ease-out, box-shadow var(--transition-medium), border-color var(--transition-medium),
+    background-color var(--transition-medium);
   will-change: transform;
-  transform: translate3d(0, 0, 0) scale(1);
-  -webkit-transform: translate3d(0, 0, 0) scale(1);
+  transform-style: preserve-3d;
   transform-origin: center center;
-  -webkit-transform-origin: center center;
 }
 
 .sectionCard::after {
@@ -258,6 +256,10 @@
   transform: translateY(-2px);
 }
 
+:global([data-theme="light"]) .termCard:hover {
+  background: rgba(59, 130, 246, 0.06);
+}
+
 .termCard h6 {
   font-size: 1.3rem;
   font-weight: 600;
@@ -334,6 +336,10 @@
   background: var(--border-color);
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+}
+
+:global([data-theme="light"]) .skillCategory:hover {
+  background: rgba(59, 130, 246, 0.06);
 }
 
 .skillCategory h5 {
