@@ -112,8 +112,12 @@
 
 .activeLink {
   color: var(--text-accent) !important;
-  background: rgba(79, 172, 254, 0.15) !important;
-  border: 1px solid rgba(79, 172, 254, 0.3) !important;
+  background: var(--accent-bg) !important;
+  border: 1px solid var(--accent-border) !important;
+}
+
+:global([data-theme="light"]) .activeLink {
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
 }
 
 /* Nav Actions Container */
@@ -151,6 +155,16 @@
 
 .themeToggle:hover .themeIcon {
   color: var(--text-accent);
+}
+
+:global([data-theme="light"]) .themeToggle {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:global([data-theme="light"]) .themeToggle:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .hamburgerMenu {
@@ -231,7 +245,7 @@
   }
 
   .nav li a:hover {
-    background: rgba(79, 172, 254, 0.2);
+    background: var(--accent-bg-hover);
     transform: translateY(-2px);
   }
 

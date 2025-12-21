@@ -54,20 +54,26 @@
   --transition-fast: 0.15s ease;
   --transition-medium: 0.3s ease;
   --transition-slow: 0.5s ease;
+
+  /* Dark mode accent colors for components */
+  --accent-bg: rgba(79, 172, 254, 0.15);
+  --accent-bg-hover: rgba(79, 172, 254, 0.25);
+  --accent-border: rgba(79, 172, 254, 0.3);
+  --accent-border-hover: rgba(79, 172, 254, 0.5);
 }
 
 /* Light Theme */
 [data-theme="light"] {
   /* Backgrounds */
-  --bg-primary: #f0f7ff;
-  --bg-secondary: #f8fbff;
-  --bg-tertiary: #f0f7ff;
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
   --bg-card: #ffffff;
 
   /* Text */
   --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #94a3b8;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
   --text-accent: #2563eb;
 
   /* Accents */
@@ -76,19 +82,19 @@
   --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
 
   /* Borders & Surfaces */
-  --border-color: rgba(59, 130, 246, 0.1);
-  --border-color-hover: rgba(59, 130, 246, 0.15);
-  --surface-glass: rgba(220, 235, 255, 0.85);
-  --surface-glass-light: transparent;
+  --border-color: rgba(15, 23, 42, 0.08);
+  --border-color-hover: rgba(15, 23, 42, 0.15);
+  --surface-glass: rgba(255, 255, 255, 0.9);
+  --surface-glass-light: rgba(241, 245, 249, 0.8);
 
   /* Shimmer effect for hover states */
-  --shimmer-gradient: linear-gradient(90deg, transparent, rgba(147, 197, 253, 0.25), transparent);
+  --shimmer-gradient: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
 
-  /* Shadows - Subtle neutral */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.06);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.15);
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.2);
 
   /* Hero/Sky Theme */
   --hero-bg-1: #dbeafe;
@@ -102,6 +108,12 @@
   --status-warning: #d97706;
   --status-error: #dc2626;
   --status-info: #2563eb;
+
+  /* Light mode specific accent colors for components */
+  --accent-bg: rgba(59, 130, 246, 0.08);
+  --accent-bg-hover: rgba(59, 130, 246, 0.12);
+  --accent-border: rgba(59, 130, 246, 0.2);
+  --accent-border-hover: rgba(59, 130, 246, 0.35);
 }
 
 /* Base Styles */
@@ -129,9 +141,7 @@ ul {
   list-style-type: none;
 }
 
-/* ============================================
-   FONT SIZES
-   ============================================ */
+/* Font Sizes */
 
 html {
   font-size: 16px;

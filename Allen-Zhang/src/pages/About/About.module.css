@@ -78,10 +78,14 @@
 }
 
 .activeTab {
-  background: rgba(79, 172, 254, 0.2) !important;
+  background: var(--accent-bg-hover) !important;
   color: var(--text-primary) !important;
-  border: 1px solid rgba(79, 172, 254, 0.3);
+  border: 1px solid var(--accent-border);
   box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
+}
+
+:global([data-theme="light"]) .activeTab {
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
 
 .contentContainer {
@@ -129,6 +133,19 @@
   opacity: 1;
 }
 
+:global([data-theme="light"]) .sectionCard {
+  box-shadow: var(--shadow-md);
+}
+
+:global([data-theme="light"]) .sectionCard:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+:global([data-theme="light"]) .sectionCard::after {
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.4));
+}
+
 .cardIcon {
   position: absolute;
   top: var(--spacing-lg);
@@ -172,7 +189,7 @@
   position: relative;
   font-weight: 500;
   transition: all var(--transition-fast);
-  border-bottom: 1px solid rgba(79, 172, 254, 0.3);
+  border-bottom: 1px solid var(--accent-border);
 }
 
 .introLink:hover {
@@ -180,14 +197,23 @@
   border-bottom-color: #60a5fa;
 }
 
+:global([data-theme="light"]) .introLink:hover {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
 .highlightBox {
   background: linear-gradient(135deg, rgba(79, 172, 254, 0.2), rgba(147, 125, 236, 0.2));
-  border: 1px solid rgba(80, 175, 255, 0.3);
+  border: 1px solid var(--accent-border);
   padding: var(--spacing-md);
   border-radius: var(--border-radius-small);
   margin: var(--spacing-lg) 0;
   font-size: 1.2rem;
   color: var(--text-primary);
+}
+
+:global([data-theme="light"]) .highlightBox {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
 }
 
 /* Education Styles */
@@ -215,12 +241,17 @@
 
 .program {
   display: inline-block;
-  background: rgba(79, 172, 254, 0.2);
+  background: var(--accent-bg);
   color: var(--text-accent);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: 600;
   font-size: 1.1rem;
+}
+
+:global([data-theme="light"]) .program {
+  background: rgba(59, 130, 246, 0.12);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
 }
 
 .academicYears {
@@ -358,9 +389,9 @@
 }
 
 .skillTag {
-  background: rgba(79, 172, 254, 0.15);
+  background: var(--accent-bg);
   color: var(--text-primary);
-  border: 1px solid rgba(79, 172, 254, 0.3);
+  border: 1px solid var(--accent-border);
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -370,9 +401,20 @@
 }
 
 .skillTag:hover {
-  background: rgba(79, 172, 254, 0.25);
-  border-color: rgba(79, 172, 254, 0.5);
+  background: var(--accent-bg-hover);
+  border-color: var(--accent-border-hover);
   transform: translateY(-1px);
+}
+
+:global([data-theme="light"]) .skillTag {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+:global([data-theme="light"]) .skillTag:hover {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
 }
 
 /* Mobile Design */
