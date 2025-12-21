@@ -1,48 +1,54 @@
 import styles from "./Footer.module.css";
-import { FaGoogle, FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa6";
-import { useState, useEffect } from "react";
+import { FaLinkedinIn, FaInstagram, FaGithub, FaCheck, FaXmark } from "react-icons/fa6";
+import PropTypes from "prop-types";
+import { HiOutlineMail } from "react-icons/hi";
 import { ToastContainer, toast } from "react-toastify";
 import { motion } from "framer-motion";
+import { useTheme } from "../context/useTheme";
 import "react-toastify/dist/ReactToastify.css";
 
+const CustomToast = ({ type, message }) => (
+  <div className={styles.customToast}>
+    <div className={`${styles.toastIcon} ${styles[type]}`}>{type === "success" ? <FaCheck /> : <FaXmark />}</div>
+    <div className={styles.toastContent}>
+      <span className={styles.toastTitle}>{type === "success" ? "Copied!" : "Error"}</span>
+      <span className={styles.toastMessage}>{message}</span>
+    </div>
+  </div>
+);
+
+CustomToast.propTypes = {
+  type: PropTypes.oneOf(["success", "error"]).isRequired,
+  message: PropTypes.string.isRequired,
+};
+
 const Footer = () => {
-  const [toastWidth, setToastWidth] = useState(null);
+  const { theme } = useTheme();
 
-  // Detect screen size and update toast width
-  useEffect(() => {
-    const updateToastWidth = () => {
-      if (window.innerWidth >= 500) {
-        setToastWidth("450px");
-      } else if (window.innerWidth >= 481) {
-        setToastWidth("350px");
-      } else {
-        setToastWidth(null);
-      }
-    };
-
-    updateToastWidth();
-    window.addEventListener("resize", updateToastWidth);
-    return () => window.removeEventListener("resize", updateToastWidth);
-  }, []);
-
-  const copyToClipboard = async (type, text) => {
+  const copyToClipboard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
-      toast.success(`Copied ${type} to clipboard!`, {
+      toast(<CustomToast type="success" message="Email copied to clipboard" />, {
         toastId: "copy-success",
+        className: styles.toastWrapper,
+        bodyClassName: styles.toastBody,
+        progressClassName: styles.toastProgress,
       });
     } catch (err) {
-      console.error(`Could not copy ${type}: `, err);
-      toast.error(`Failed to copy ${type}`, {
+      console.error("Could not copy email: ", err);
+      toast(<CustomToast type="error" message="Failed to copy email" />, {
         toastId: "copy-error",
+        className: styles.toastWrapperError,
+        bodyClassName: styles.toastBody,
+        progressClassName: styles.toastProgressError,
       });
     }
   };
 
   const socialLinks = [
     {
-      icon: <FaGoogle className={styles.footerIcon} />,
-      action: () => copyToClipboard("Email Address", "allen.zhang.y05@gmail.com"),
+      icon: <HiOutlineMail className={styles.footerIcon} />,
+      action: () => copyToClipboard("allen.zhang.y05@gmail.com"),
       label: "Copy email to clipboard",
       type: "button",
       platform: "email",
@@ -110,17 +116,17 @@ const Footer = () => {
 
       <ToastContainer
         position="top-center"
-        autoClose={1500}
+        autoClose={1200}
         hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
+        newestOnTop
+        closeOnClick={false}
         rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        className={styles.myToastContainer}
-        style={toastWidth ? { width: toastWidth } : {}}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme={theme}
+        closeButton={false}
+        icon={false}
       />
     </footer>
   );
