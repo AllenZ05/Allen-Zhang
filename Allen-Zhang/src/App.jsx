@@ -4,13 +4,11 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Experiences from "./pages/Experiences/Experiences";
 import Projects from "./pages/Projects/Projects";
-import CursorGlow from "./components/CursorGlow";
 import "./styles/App.css";
 
 function App() {
   return (
     <>
-      <CursorGlow />
       <Routes>
         <Route
           path="/"
