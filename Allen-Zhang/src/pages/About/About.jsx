@@ -140,16 +140,7 @@ const About = () => {
               <h3>Introduction</h3>
               <div className={styles.introText}>
                 <p>
-                  Heyyy, it&apos;s Allen. I am currently a Software Engineer Intern at{" "}
-                  <a
-                    href="https://www.shopify.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.introLink}
-                  >
-                    Shopify
-                  </a>{" "}
-                  and a second-year student at the{" "}
+                  Heyyy, it&apos;s Allen. I am currently a third-year Computer Engineering student at the{" "}
                   <a
                     href="https://uwaterloo.ca/"
                     target="_blank"
@@ -167,14 +158,32 @@ const About = () => {
                   >
                     Computer Engineering
                   </a>
+                  . Incoming Software Engineer Intern at{" "}
+                  <a
+                    href="https://www.apple.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.introLink}
+                  >
+                    Apple
+                  </a>{" "}
+                  for Summer 2026, and previously a Software Engineer Intern at{" "}
+                  <a
+                    href="https://www.shopify.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.introLink}
+                  >
+                    Shopify
+                  </a>
                   .
                 </p>
                 <p>I am an ambitious individual with a mission to make a positive impact on the world.</p>
                 <p>I currently live in Toronto, Canada.</p>
 
-                <div className={styles.highlightBox}>
-                  <strong>Seeking Summer 2026 Internships (May - Aug)</strong>
-                </div>
+                {/* <div className={styles.highlightBox}>
+                  <strong>Seeking Winter 2027 Internships (Jan - Apr)!</strong>
+                </div> */}
 
                 <p>Feel free to connect with me using my social links in the footer!</p>
               </div>

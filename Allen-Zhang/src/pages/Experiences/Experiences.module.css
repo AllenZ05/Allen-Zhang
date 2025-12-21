@@ -248,6 +248,18 @@
   box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
 }
 
+:global([data-theme="light"]) .statusBadge.upcoming {
+  background: rgba(59, 130, 246, 0.12);
+  color: #2563eb;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+:global([data-theme="light"]) .statusBadge.upcoming:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
 .statusBadge.current {
   background: rgba(0, 184, 148, 0.15);
   color: #00b894;

@@ -15,6 +15,18 @@ const Experiences = () => {
     {
       id: 0,
       position: "Software Engineer Intern",
+      company: "Apple",
+      location: "Cupertino, CA",
+      period: "May 2026 - Aug 2026",
+      description: "Device Compute Team",
+      skills: [],
+      url: "https://www.apple.com/",
+      gradient: "linear-gradient(135deg, #a1a1aa 0%, #27272a 100%)",
+      status: "upcoming",
+    },
+    {
+      id: 1,
+      position: "Software Engineer Intern",
       company: "Shopify",
       location: "Toronto, ON",
       period: "Sep 2025 - Dec 2025",
@@ -30,10 +42,9 @@ const Experiences = () => {
       skills: ["Ruby", "Ruby on Rails", "React Native", "GraphQL", "Google Cloud Platform", "Apache Kafka", "Grafana"],
       url: "https://www.shopify.com/",
       gradient: "linear-gradient(135deg, #5bf02eff 0%, #024c28ff 100%)",
-      status: "current",
     },
     {
-      id: 1,
+      id: 2,
       position: "Software Developer Intern",
       company: "Hanov Solutions",
       location: "Waterloo, ON",
@@ -45,7 +56,7 @@ const Experiences = () => {
       gradient: "linear-gradient(135deg, #937decff 0%, #6a11cb 100%)",
     },
     {
-      id: 2,
+      id: 3,
       position: "Software Developer Intern",
       company: "Dandelion Networks",
       location: "Toronto, ON",
@@ -57,7 +68,7 @@ const Experiences = () => {
       gradient: "linear-gradient(180deg, #de975aff 0%, #121f80ff 100%)",
     },
     {
-      id: 3,
+      id: 4,
       position: "Software Developer",
       company: "University of Waterloo Formula Electric",
       location: "Waterloo, ON",
@@ -69,7 +80,7 @@ const Experiences = () => {
       gradient: "linear-gradient(180deg, #f6d567ff 0%, #79580cff 100%)",
     },
     {
-      id: 4,
+      id: 5,
       position: "Lifeguard and Swim Instructor",
       company: "City of Toronto",
       location: "Toronto, ON",
@@ -80,7 +91,7 @@ const Experiences = () => {
       gradient: "linear-gradient(135deg, #d8b0b0ff 0%, #e95a5dff 100%)",
     },
     {
-      id: 5,
+      id: 6,
       position: "Data Analyst and Logistics Operator",
       company: "Somerville Merchandising",
       location: "Toronto, ON",

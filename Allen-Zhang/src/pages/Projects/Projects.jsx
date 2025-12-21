@@ -32,11 +32,10 @@ const Projects = () => {
     },
     {
       id: 1,
-      title: "Mobile Game",
-      techStack: "C#, Unity",
+      title: "HockeyLensPro",
+      techStack: "Next.js, React.js, TypeScript, Tailwind CSS, Supabase, NHL API",
       status: "In development",
-      description:
-        "3D mobile game built in Unity with C# scripting, featuring immersive gameplay and dynamic environments.",
+      description: "Beautiful NHL stats, charts, and comparisons. ",
       gradient: "linear-gradient(135deg, #4b1e82 0%, #994897ff 100%)",
       links: [],
     },
