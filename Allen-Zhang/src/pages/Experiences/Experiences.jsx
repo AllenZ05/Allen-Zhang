@@ -22,7 +22,7 @@ const Experiences = () => {
       skills: [],
       url: "https://www.apple.com/",
       gradient: "linear-gradient(135deg, #a1a1aa 0%, #27272a 100%)",
-      status: "upcoming",
+      status: "incoming",
     },
     {
       id: 1,
@@ -185,7 +185,7 @@ const Experiences = () => {
                   </div>
                   {experience.status && (
                     <span className={`${styles.statusBadge} ${styles[experience.status]}`}>
-                      {experience.status === "upcoming" ? "Upcoming" : "Current"}
+                      {experience.status === "incoming" ? "Incoming" : "Current"}
                     </span>
                   )}
                 </div>

@@ -232,25 +232,25 @@
   left: 100%;
 }
 
-.statusBadge.upcoming {
+.statusBadge.incoming {
   background: rgba(116, 185, 255, 0.15);
   color: #74b9ff;
   border-color: rgba(116, 185, 255, 0.3);
 }
 
-.statusBadge.upcoming:hover {
+.statusBadge.incoming:hover {
   background: rgba(116, 185, 255, 0.25);
   border-color: rgba(116, 185, 255, 0.5);
   box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
 }
 
-:global([data-theme="light"]) .statusBadge.upcoming {
+:global([data-theme="light"]) .statusBadge.incoming {
   background: rgba(59, 130, 246, 0.12);
   color: #2563eb;
   border-color: rgba(59, 130, 246, 0.3);
 }
 
-:global([data-theme="light"]) .statusBadge.upcoming:hover {
+:global([data-theme="light"]) .statusBadge.incoming:hover {
   background: rgba(59, 130, 246, 0.2);
   border-color: rgba(59, 130, 246, 0.5);
   box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
