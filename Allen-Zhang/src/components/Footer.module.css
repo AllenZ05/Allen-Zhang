@@ -13,13 +13,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--spacing-lg) var(--spacing-md);
-  background: var(--surface-glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-top: 1px solid var(--border-color);
+  padding: var(--spacing-xl) var(--spacing-md);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: auto;
-  transition: background-color var(--transition-medium), border-color var(--transition-medium);
+  transition: all var(--transition-medium);
+  position: relative;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+}
+
+:global([data-theme="light"]) .footer {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.5) 100%);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+:global([data-theme="light"]) .footer::before {
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.15) 50%, transparent 100%);
 }
 
 .socials {
@@ -30,43 +51,52 @@
 }
 
 .socialButton {
+  display: inline-block;
   background: none;
   border: none;
   cursor: pointer;
   padding: var(--spacing-xs);
   border-radius: 50%;
-  transition: all var(--transition-medium);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  overflow: hidden;
+  text-decoration: none;
+}
+
+.socialButton:hover {
+  transform: translateY(-4px) scale(1.15);
 }
 
 .footerIcon {
   color: var(--text-secondary);
   font-size: 2.5rem;
-  transition: all var(--transition-medium);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   z-index: 1;
 }
 
-.socialButton:hover .footerIcon {
-  transform: scale(1.2) translateY(-3px);
-}
-
-/* --- Platform-specific hover colors --- */
+/* --- Platform-specific hover colors with glow --- */
 .socialButton.email:hover .footerIcon {
   color: #ea4335;
+  filter: drop-shadow(0 0 12px rgba(234, 67, 53, 0.6));
 }
 
 .socialButton.linkedin:hover .footerIcon {
   color: #0a66c2;
+  filter: drop-shadow(0 0 12px rgba(10, 102, 194, 0.6));
 }
 
 .socialButton.instagram:hover .footerIcon {
   color: #d62976;
+  filter: drop-shadow(0 0 12px rgba(214, 41, 118, 0.6));
 }
 
 .socialButton.github:hover .footerIcon {
   color: var(--text-primary);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+}
+
+:global([data-theme="light"]) .socialButton.github:hover .footerIcon {
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.3));
 }
 
 /* Custom Toast Styles */
@@ -186,12 +216,11 @@
 /* Media Queries */
 @media only screen and (max-width: 480px) {
   .footer {
-    padding: var(--spacing-md) var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-sm);
   }
 
   .socials {
-    gap: var(--spacing-md);
-    padding: var(--spacing-xs);
+    gap: var(--spacing-lg);
   }
 
   .footerIcon {
@@ -215,16 +244,10 @@
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .socials {
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
   }
 
   .footerIcon {
     font-size: 2.2rem;
-  }
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .socials {
-    gap: var(--spacing-xl);
   }
 }

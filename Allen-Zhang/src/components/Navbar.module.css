@@ -202,6 +202,8 @@
 /* Mobile Design */
 @media screen and (max-width: 1024px) {
   .header {
+    display: flex;
+    justify-content: space-between;
     padding: var(--spacing-sm) var(--spacing-md);
   }
 
