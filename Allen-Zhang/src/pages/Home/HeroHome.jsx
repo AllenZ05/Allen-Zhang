@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import styles from "./HeroHome.module.css";
-import HeroHomebgDark from "../../assets/heroHome-bg.jpg";
-import HeroHomebgLight from "../../assets/heroHome-bg-light.jpg";
 import Typewriter from "typewriter-effect";
 
 const HeroHome = () => {
@@ -16,8 +14,8 @@ const HeroHome = () => {
   return (
     <div className={styles.heroHome}>
       <div className={styles.images}>
-        <img className={`${styles.backgroundImg} ${styles.darkBg}`} src={HeroHomebgDark} alt="" />
-        <img className={`${styles.backgroundImg} ${styles.lightBg}`} src={HeroHomebgLight} alt="" />
+        <img className={`${styles.backgroundImg} ${styles.darkBg}`} src="/heroHome-bg.jpg" alt="" />
+        <img className={`${styles.backgroundImg} ${styles.lightBg}`} src="/heroHome-bg-light.jpg" alt="" />
       </div>
       <div className={styles.description}>
         <h1>Allen Zhang</h1>
