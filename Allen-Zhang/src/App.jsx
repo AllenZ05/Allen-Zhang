@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Experiences from "./pages/Experiences/Experiences";
 import Projects from "./pages/Projects/Projects";
+import NotFound from "./pages/NotFound/NotFound";
 import "./styles/App.css";
 
 function App() {
@@ -46,6 +47,14 @@ function App() {
             element={
               <PageTransition>
                 <Projects />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <PageTransition>
+                <NotFound />
               </PageTransition>
             }
           />
