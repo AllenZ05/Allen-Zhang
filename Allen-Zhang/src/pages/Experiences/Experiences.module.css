@@ -116,10 +116,6 @@
   box-shadow: var(--shadow-lg);
 }
 
-:global([data-theme="light"]) .experienceCard::after {
-  padding: 1.5px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(139, 92, 246, 0.5));
-}
 
 .experienceCard:hover {
   background: var(--bg-tertiary);

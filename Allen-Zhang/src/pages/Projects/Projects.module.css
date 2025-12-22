@@ -81,10 +81,6 @@
   box-shadow: var(--shadow-md);
 }
 
-:global([data-theme="light"]) .projectCard::after {
-  padding: 1.5px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(139, 92, 246, 0.5));
-}
 
 .projectCard:hover {
   box-shadow: var(--shadow-lg);
