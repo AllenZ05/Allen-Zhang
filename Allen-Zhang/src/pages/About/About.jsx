@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { IoCheckmark } from "react-icons/io5";
 import { MdHourglassBottom } from "react-icons/md";
 import { FaRocket, FaGraduationCap, FaCode } from "react-icons/fa6";
@@ -7,6 +7,25 @@ import styles from "./About.module.css";
 
 const About = () => {
   const [selectedSection, setSelectedSection] = useState("Introduction");
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const card = cardRef.current;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -2;
+    const rotateY = ((x - centerX) / centerX) * 2;
+    setTilt({ rotateX, rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ rotateX: 0, rotateY: 0 });
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -15,28 +34,6 @@ const About = () => {
   useEffect(() => {
     document.title = "About | AZ05";
   }, []);
-
-  const sectionVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.95,
-      filter: "blur(3px)",
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.8,
-        opacity: { duration: 0.6, ease: "easeOut" },
-        scale: { duration: 0.8, ease: [0.23, 1, 0.32, 1] },
-        y: { duration: 0.8, ease: [0.23, 1, 0.32, 1] },
-        filter: { duration: 0.7, ease: "easeOut" },
-      },
-    },
-  };
 
   const skillsContainerVariants = {
     hidden: {},
@@ -119,6 +116,7 @@ const About = () => {
     },
   ];
   const handleSectionChange = (section) => {
+    setTilt({ rotateX: 0, rotateY: 0 });
     setSelectedSection(section);
   };
 
@@ -128,10 +126,19 @@ const About = () => {
         return (
           <motion.div
             key="introduction"
+            ref={cardRef}
             className={styles.sectionCard}
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotateX: tilt.rotateX,
+              rotateY: tilt.rotateY,
+            }}
+            transition={{ duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
           >
             <div className={styles.cardIcon}>
               <FaRocket aria-hidden="true" />
@@ -194,10 +201,19 @@ const About = () => {
         return (
           <motion.div
             key="education"
+            ref={cardRef}
             className={styles.sectionCard}
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotateX: tilt.rotateX,
+              rotateY: tilt.rotateY,
+            }}
+            transition={{ duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
           >
             <div className={styles.cardIcon}>
               <FaGraduationCap aria-hidden="true" />
@@ -432,10 +448,19 @@ const About = () => {
         return (
           <motion.div
             key="skills"
+            ref={cardRef}
             className={styles.sectionCard}
-            variants={sectionVariants}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotateX: tilt.rotateX,
+              rotateY: tilt.rotateY,
+            }}
+            transition={{ duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
           >
             <div className={styles.cardIcon}>
               <FaCode aria-hidden="true" />
@@ -502,7 +527,9 @@ const About = () => {
         ))}
       </div>
 
-      <div className={styles.contentContainer}>{renderSection()}</div>
+      <div className={styles.contentContainer} style={{ perspective: 1000 }}>
+        {renderSection()}
+      </div>
     </main>
   );
 };
