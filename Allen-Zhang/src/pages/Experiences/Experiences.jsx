@@ -145,7 +145,13 @@ const Experiences = () => {
       <div className={styles.timelineContainer}>
         <div className={styles.timelineLine}></div>
 
-        <motion.div className={styles.experiencesGrid} initial="hidden" animate="visible" variants={containerVariants}>
+        <motion.div
+          className={styles.experiencesGrid}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
           {experiences.map((experience, index) => (
             <motion.div
               key={experience.id}

@@ -176,7 +176,13 @@ const Projects = () => {
         Projects
       </motion.h2>
 
-      <motion.div className={styles.projectsGrid} initial="hidden" animate="visible" variants={containerVariants}>
+      <motion.div
+        className={styles.projectsGrid}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={containerVariants}
+      >
         {projects.map((project) => (
           <motion.div
             key={project.id}
