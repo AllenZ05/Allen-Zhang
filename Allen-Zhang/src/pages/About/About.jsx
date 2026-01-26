@@ -404,7 +404,7 @@ const About = () => {
                         </li>
                         <li>
                           <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Conflict Resolution
+                          Research in the Workplace
                         </li>
                       </ul>
                     </div>
