@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { IoCheckmark } from "react-icons/io5";
@@ -29,10 +31,6 @@ const About = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    document.title = "About | AZ05";
   }, []);
 
   const skillsContainerVariants = {
@@ -227,74 +225,67 @@ const About = () => {
               </div>
 
               <div className={styles.academicYears}>
-                {/* First Year */}
+                {/* Third Year */}
                 <div className={styles.yearSection}>
-                  <h5>First Year</h5>
+                  <h5>Third Year</h5>
                   <div className={styles.termsGrid}>
                     <div className={styles.termCard}>
-                      <h6>Term 1 (Sep 2023 - Dec 2023)</h6>
+                      <span className={styles.currentBadge}>Current</span>
+                      <h6>3A (Jan 2026 - Apr 2026)</h6>
                       <ul>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Linear Algebra
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Communication Systems
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Calculus 1 & 2
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Digital Hardware Systems
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Classical Mechanics
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Real-Time Operating Systems
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Programming
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Analog Control Systems
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Project Studio
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Customer Experience Design
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Engineering Profession and Practice
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Communication in Engineering
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Research in the Workplace
                         </li>
                       </ul>
                     </div>
 
                     <div className={styles.termCard}>
-                      <h6>Term 2 (Jan 2024 - Apr 2024)</h6>
+                      <h6>3B (Sep 2026 - Dec 2026)</h6>
                       <ul>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Calculus 3
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Probability Theory and Statistics 2
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Electricity and Magnetism
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 1
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Discrete Math and Logic 1
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 2
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Digital Circuits and Systems
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 3
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Linear Circuits
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 4
                         </li>
                         <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Engineering Economics
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Tactics for Workplace Success
+                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          Elective 5
                         </li>
                       </ul>
                     </div>
@@ -306,7 +297,7 @@ const About = () => {
                   <h5>Second Year</h5>
                   <div className={styles.termsGrid}>
                     <div className={styles.termCard}>
-                      <h6>Term 1 (Sep 2024 - Dec 2024)</h6>
+                      <h6>2A (Sep 2024 - Dec 2024)</h6>
                       <ul>
                         <li>
                           <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
@@ -340,7 +331,7 @@ const About = () => {
                     </div>
 
                     <div className={styles.termCard}>
-                      <h6>Term 2 (May 2025 - Aug 2025)</h6>
+                      <h6>2B (May 2025 - Aug 2025)</h6>
                       <ul>
                         <li>
                           <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
@@ -375,66 +366,74 @@ const About = () => {
                   </div>
                 </div>
 
-                {/* Third Year */}
+                {/* First Year */}
                 <div className={styles.yearSection}>
-                  <h5>Third Year</h5>
+                  <h5>First Year</h5>
                   <div className={styles.termsGrid}>
                     <div className={styles.termCard}>
-                      <h6>Term 1 (Jan 2026 - Apr 2026)</h6>
+                      <h6>1A (Sep 2023 - Dec 2023)</h6>
                       <ul>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Communication Systems
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Linear Algebra
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Digital Hardware Systems
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Calculus 1 & 2
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Real-Time Operating Systems
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Classical Mechanics
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Analog Control Systems
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Programming
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Customer Experience Design
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Project Studio
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Research in the Workplace
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Engineering Profession and Practice
+                        </li>
+                        <li>
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Communication in Engineering
                         </li>
                       </ul>
                     </div>
 
                     <div className={styles.termCard}>
-                      <h6>Term 2 (Sep 2026 - Dec 2026)</h6>
+                      <h6>1B (Jan 2024 - Apr 2024)</h6>
                       <ul>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Probability Theory and Statistics 2
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Calculus 3
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 1
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Electricity and Magnetism
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 2
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Discrete Math and Logic 1
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 3
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Digital Circuits and Systems
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 4
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Linear Circuits
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 5
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Engineering Economics
+                        </li>
+                        <li>
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                          Tactics for Workplace Success
                         </li>
                       </ul>
                     </div>

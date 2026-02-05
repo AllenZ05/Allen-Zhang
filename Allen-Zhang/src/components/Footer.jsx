@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./Footer.module.css";
 import { FaLinkedinIn, FaInstagram, FaGithub, FaCheck, FaXmark } from "react-icons/fa6";
 import PropTypes from "prop-types";
@@ -5,7 +7,6 @@ import { HiOutlineMail } from "react-icons/hi";
 import { ToastContainer, toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useTheme } from "../context/useTheme";
-import "react-toastify/dist/ReactToastify.css";
 
 const CustomToast = ({ type, message }) => (
   <div className={styles.customToast}>

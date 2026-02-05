@@ -1,3 +1,13 @@
+@import "react-toastify/dist/ReactToastify.css";
+
+/** Global Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /** App Styles */
 
 /* Theme Design System */
@@ -181,4 +191,21 @@ p {
 
 li {
   --li-base-font-size: 1rem;
+}
+
+/* Toastify Overrides */
+.Toastify__toast-container {
+  padding: 16px !important;
+}
+
+.Toastify__toast {
+  min-height: auto !important;
+}
+
+.Toastify__bounce-enter--top-center {
+  animation-duration: 0.3s !important;
+}
+
+.Toastify__bounce-exit--top-center {
+  animation-duration: 0.2s !important;
 }

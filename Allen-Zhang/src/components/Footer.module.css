@@ -195,24 +195,6 @@
   height: 3px !important;
 }
 
-/* Override default toast styles */
-:global(.Toastify__toast-container) {
-  padding: 16px !important;
-}
-
-:global(.Toastify__toast) {
-  min-height: auto !important;
-}
-
-/* Speed up enter/exit animations */
-:global(.Toastify__bounce-enter--top-center) {
-  animation-duration: 0.3s !important;
-}
-
-:global(.Toastify__bounce-exit--top-center) {
-  animation-duration: 0.2s !important;
-}
-
 /* Media Queries */
 @media only screen and (max-width: 480px) {
   .footer {

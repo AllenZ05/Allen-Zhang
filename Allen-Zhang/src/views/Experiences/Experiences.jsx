@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { FiExternalLink } from "react-icons/fi";
@@ -7,10 +9,6 @@ const Experiences = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    document.title = "Experiences | AZ05";
-  }, []);
-
   const experiences = [
     {
       id: 0,

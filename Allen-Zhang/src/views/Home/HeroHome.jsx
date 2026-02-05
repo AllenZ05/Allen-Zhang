@@ -1,4 +1,7 @@
+"use client";
+
 import { useEffect } from "react";
+import Image from "next/image";
 import styles from "./HeroHome.module.css";
 import Typewriter from "typewriter-effect";
 
@@ -7,15 +10,25 @@ const HeroHome = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    document.title = "Allen Zhang";
-  }, []);
-
   return (
     <div className={styles.heroHome}>
       <div className={styles.images}>
-        <img className={`${styles.backgroundImg} ${styles.darkBg}`} src="/heroHome-bg.jpg" alt="" />
-        <img className={`${styles.backgroundImg} ${styles.lightBg}`} src="/heroHome-bg-light.jpg" alt="" />
+        <Image
+          className={`${styles.backgroundImg} ${styles.darkBg}`}
+          src="/heroHome-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+        />
+        <Image
+          className={`${styles.backgroundImg} ${styles.lightBg}`}
+          src="/heroHome-bg-light.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          priority
+        />
       </div>
       <div className={styles.description}>
         <h1>Allen Zhang</h1>

@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { FiExternalLink, FiGithub, FiVideo } from "react-icons/fi";
@@ -6,10 +8,6 @@ import styles from "./Projects.module.css";
 const Projects = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    document.title = "Projects | AZ05";
   }, []);
 
   const projects = [

@@ -1,13 +1,10 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import { motion } from "framer-motion";
 import styles from "./NotFound.module.css";
 
 const NotFound = () => {
-  useEffect(() => {
-    document.title = "404 | Page Not Found";
-  }, []);
-
   return (
     <main className={styles.notFoundMain}>
       <motion.div
@@ -45,7 +42,7 @@ const NotFound = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <Link to="/" className={styles.homeButton}>
+          <Link href="/" className={styles.homeButton}>
             Back to Home
           </Link>
         </motion.div>

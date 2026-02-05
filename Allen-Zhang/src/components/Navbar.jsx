@@ -1,6 +1,9 @@
+"use client";
+
 import styles from "./Navbar.module.css";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaTimes } from "react-icons/fa";
 import { FiSun, FiMoon } from "react-icons/fi";
@@ -9,13 +12,14 @@ import { useTheme } from "../context/useTheme";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  const isActive = (path) => location.pathname === path;
+  const normalizePath = (path) => (path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path);
+  const isActive = (path) => normalizePath(pathname) === normalizePath(path);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -32,7 +36,7 @@ const Navbar = () => {
   // Close menu on route change
   useEffect(() => {
     closeMenu();
-  }, [location.pathname]);
+  }, [pathname]);
 
   const menuVariants = {
     closed: {
@@ -78,7 +82,7 @@ const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <Link to="/" onClick={closeMenu} className={styles.logo}>
+      <Link href="/" onClick={closeMenu} className={styles.logo}>
         <h2>AllenZ05</h2>
       </Link>
 
@@ -91,7 +95,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + index * 0.1 }}
           >
-            <Link to={link.path} className={isActive(link.path) ? styles.activeLink : ""}>
+            <Link href={link.path} className={isActive(link.path) ? styles.activeLink : ""}>
               {link.label}
             </Link>
           </motion.li>
@@ -104,7 +108,7 @@ const Navbar = () => {
           <motion.ul className={styles.mobileNav} variants={menuVariants} initial="closed" animate="open" exit="closed">
             {navLinks.map((link, index) => (
               <motion.li key={link.path} custom={index} variants={linkVariants} initial="closed" animate="open">
-                <Link to={link.path} onClick={closeMenu} className={isActive(link.path) ? styles.activeLink : ""}>
+                <Link href={link.path} onClick={closeMenu} className={isActive(link.path) ? styles.activeLink : ""}>
                   {link.label}
                 </Link>
               </motion.li>
