@@ -230,8 +230,10 @@ const About = () => {
                   <h5>Third Year</h5>
                   <div className={styles.termsGrid}>
                     <div className={styles.termCard}>
-                      <span className={styles.currentBadge}>Current</span>
-                      <h6>3A (Jan 2026 - Apr 2026)</h6>
+                      <div className={styles.termHeader}>
+                        <h6>3A (Jan 2026 - Apr 2026)</h6>
+                        <span className={styles.currentBadge}>Current</span>
+                      </div>
                       <ul>
                         <li>
                           <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />

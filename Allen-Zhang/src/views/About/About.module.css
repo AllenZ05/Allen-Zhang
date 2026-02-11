@@ -300,25 +300,33 @@
   text-align: center;
 }
 
+.termHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.termHeader h6 {
+  margin-bottom: 0;
+  text-align: left;
+}
+
 .currentBadge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
   color: #00b894;
   background: rgba(0, 184, 148, 0.15);
   border: 1px solid rgba(0, 184, 148, 0.3);
-  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.2);
-  position: absolute;
-  top: var(--spacing-sm);
-  right: var(--spacing-sm);
-  overflow: hidden;
   transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
 }
 
 .currentBadge::before {
@@ -334,8 +342,9 @@
 
 .currentBadge:hover {
   transform: translateY(-1px) scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.35);
+  background: rgba(0, 184, 148, 0.25);
   border-color: rgba(0, 184, 148, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
 }
 
 .currentBadge:hover::before {
@@ -346,10 +355,10 @@
   color: #16a34a;
   background: rgba(22, 163, 74, 0.12);
   border-color: rgba(22, 163, 74, 0.3);
-  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
 }
 
 :global([data-theme="light"]) .currentBadge:hover {
+  background: rgba(22, 163, 74, 0.2);
   box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
   border-color: rgba(22, 163, 74, 0.5);
 }
@@ -513,6 +522,12 @@
 @media (max-width: 480px) {
   .heading {
     margin-bottom: var(--spacing-lg);
+  }
+
+  .termHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
   }
 
   .skillTag {
