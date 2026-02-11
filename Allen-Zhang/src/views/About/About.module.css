@@ -111,6 +111,13 @@
   transform-origin: center center;
 }
 
+@media (max-width: 1200px) {
+  .sectionCard {
+    transform-style: flat;
+    will-change: auto;
+  }
+}
+
 .sectionCard::after {
   content: "";
   position: absolute;

@@ -10,9 +10,11 @@ import styles from "./About.module.css";
 const About = () => {
   const [selectedSection, setSelectedSection] = useState("Introduction");
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+  const [isTiltEnabled, setIsTiltEnabled] = useState(false);
   const cardRef = useRef(null);
 
   const handleMouseMove = (e) => {
+    if (!isTiltEnabled) return;
     if (!cardRef.current) return;
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
@@ -26,11 +28,28 @@ const About = () => {
   };
 
   const handleMouseLeave = () => {
+    if (!isTiltEnabled) return;
     setTilt({ rotateX: 0, rotateY: 0 });
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1201px)");
+
+    const updateTiltState = (event) => {
+      setIsTiltEnabled(event.matches);
+      if (!event.matches) {
+        setTilt({ rotateX: 0, rotateY: 0 });
+      }
+    };
+
+    updateTiltState(mediaQuery);
+    mediaQuery.addEventListener("change", updateTiltState);
+
+    return () => mediaQuery.removeEventListener("change", updateTiltState);
   }, []);
 
   const skillsContainerVariants = {
@@ -131,8 +150,8 @@ const About = () => {
               opacity: 1,
               y: 0,
               scale: 1,
-              rotateX: tilt.rotateX,
-              rotateY: tilt.rotateY,
+              rotateX: isTiltEnabled ? tilt.rotateX : 0,
+              rotateY: isTiltEnabled ? tilt.rotateY : 0,
             }}
             transition={{ duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } }}
             onMouseMove={handleMouseMove}
@@ -206,8 +225,8 @@ const About = () => {
               opacity: 1,
               y: 0,
               scale: 1,
-              rotateX: tilt.rotateX,
-              rotateY: tilt.rotateY,
+              rotateX: isTiltEnabled ? tilt.rotateX : 0,
+              rotateY: isTiltEnabled ? tilt.rotateY : 0,
             }}
             transition={{ duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } }}
             onMouseMove={handleMouseMove}
@@ -456,8 +475,8 @@ const About = () => {
               opacity: 1,
               y: 0,
               scale: 1,
-              rotateX: tilt.rotateX,
-              rotateY: tilt.rotateY,
+              rotateX: isTiltEnabled ? tilt.rotateX : 0,
+              rotateY: isTiltEnabled ? tilt.rotateY : 0,
             }}
             transition={{ duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } }}
             onMouseMove={handleMouseMove}
@@ -528,7 +547,7 @@ const About = () => {
         ))}
       </div>
 
-      <div className={styles.contentContainer} style={{ perspective: 1000 }}>
+      <div className={styles.contentContainer} style={{ perspective: isTiltEnabled ? 1000 : "none" }}>
         {renderSection()}
       </div>
     </main>
