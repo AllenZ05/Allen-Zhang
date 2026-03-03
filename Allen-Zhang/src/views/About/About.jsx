@@ -13,6 +13,12 @@ const About = () => {
   const [isTiltEnabled, setIsTiltEnabled] = useState(false);
   const cardRef = useRef(null);
 
+  const tiltMultipliers = {
+    Introduction: 3,
+    Education: 1,
+    Skills: 2,
+  };
+
   const handleMouseMove = (e) => {
     if (!isTiltEnabled) return;
     if (!cardRef.current) return;
@@ -22,8 +28,9 @@ const About = () => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -2;
-    const rotateY = ((x - centerX) / centerX) * 2;
+    const multiplier = tiltMultipliers[selectedSection] || 1;
+    const rotateX = ((y - centerY) / centerY) * -multiplier;
+    const rotateY = ((x - centerX) / centerX) * multiplier;
     setTilt({ rotateX, rotateY });
   };
 

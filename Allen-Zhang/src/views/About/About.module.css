@@ -308,19 +308,23 @@
 }
 
 .termHeader {
+  position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
+  justify-content: center;
+  align-items: center;
   margin-bottom: var(--spacing-md);
 }
 
 .termHeader h6 {
   margin-bottom: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .currentBadge {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   padding: 0.3rem 0.8rem;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -332,7 +336,6 @@
   background: rgba(0, 184, 148, 0.15);
   border: 1px solid rgba(0, 184, 148, 0.3);
   transition: all var(--transition-fast);
-  position: relative;
   overflow: hidden;
 }
 
@@ -348,7 +351,7 @@
 }
 
 .currentBadge:hover {
-  transform: translateY(-1px) scale(1.05);
+  transform: translateY(calc(-50% - 1px)) scale(1.05);
   background: rgba(0, 184, 148, 0.25);
   border-color: rgba(0, 184, 148, 0.5);
   box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
@@ -533,8 +536,20 @@
 
   .termHeader {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--spacing-xs);
+    padding-top: var(--spacing-lg);
+  }
+
+  .termHeader .currentBadge {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .termHeader .currentBadge:hover {
+    transform: translateX(50%) translateY(-1px) scale(1.05);
   }
 
   .skillTag {
