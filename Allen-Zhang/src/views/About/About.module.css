@@ -68,13 +68,15 @@
   transition: left 0.6s ease;
 }
 
-.tabButton:hover {
-  background: var(--border-color);
-  color: var(--text-primary);
-}
+@media (hover: hover) {
+  .tabButton:hover {
+    background: var(--border-color);
+    color: var(--text-primary);
+  }
 
-.tabButton:hover::before {
-  left: 100%;
+  .tabButton:hover::before {
+    left: 100%;
+  }
 }
 
 .activeTab {
@@ -538,7 +540,7 @@
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-xs);
-    padding-top: var(--spacing-lg);
+    padding-top: calc(var(--spacing-lg) + var(--spacing-sm));
   }
 
   .termHeader .currentBadge {
@@ -546,6 +548,7 @@
     top: 0;
     right: 50%;
     transform: translateX(50%);
+    margin-bottom: var(--spacing-xs);
   }
 
   .termHeader .currentBadge:hover {
