@@ -37,7 +37,7 @@ const HeroHome = () => {
             options={{
               strings: [
                 "Computer Engineering Student at the University of Waterloo",
-                "Incoming Software Engineer Intern at Apple for Summer 2026!",
+                "Software Engineer Intern at Apple",
                 "Would love to talk and connect with you :D",
               ],
               autoStart: true,

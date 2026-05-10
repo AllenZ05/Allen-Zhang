@@ -60,7 +60,7 @@ export default function RootLayout({ children }) {
       name: "University of Waterloo",
       url: "https://uwaterloo.ca/",
     },
-    jobTitle: "Computer Engineering Student",
+    jobTitle: "Software Engineer Intern at Apple",
   };
 
   return (
@@ -79,10 +79,7 @@ export default function RootLayout({ children }) {
           })();`}
         </Script>
 
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-FESWP1E6XM"
-          strategy="afterInteractive"
-        />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-FESWP1E6XM" strategy="afterInteractive" />
         <Script id="ga" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);} 

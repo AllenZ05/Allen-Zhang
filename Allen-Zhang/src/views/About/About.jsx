@@ -171,7 +171,7 @@ const About = () => {
               <h3>Introduction</h3>
               <div className={styles.introText}>
                 <p>
-                  Heyyy, it&apos;s Allen. I am currently a third-year Computer Engineering student at the{" "}
+                  Heyyy, it&apos;s Allen. I am a third-year Computer Engineering student at the{" "}
                   <a
                     href="https://uwaterloo.ca/"
                     target="_blank"
@@ -189,7 +189,7 @@ const About = () => {
                   >
                     Computer Engineering
                   </a>
-                  . Incoming Software Engineer Intern at{" "}
+                  . Currently a Software Engineer Intern at{" "}
                   <a
                     href="https://www.apple.com/"
                     target="_blank"
@@ -197,8 +197,8 @@ const About = () => {
                     className={styles.introLink}
                   >
                     Apple
-                  </a>{" "}
-                  for Summer 2026, and previously a Software Engineer Intern at{" "}
+                  </a>
+                  , and previously a Software Engineer Intern at{" "}
                   <a
                     href="https://www.shopify.com/"
                     target="_blank"
@@ -210,7 +210,7 @@ const About = () => {
                   .
                 </p>
                 <p>I am an ambitious individual with a mission to make a positive impact on the world.</p>
-                <p>I currently live in Toronto, Canada.</p>
+                <p>Usually in Toronto, the Bay Area, or Waterloo.</p>
 
                 {/* <div className={styles.highlightBox}>
                   <strong>Seeking Winter 2027 Internships (Jan - Apr)!</strong>
@@ -258,31 +258,30 @@ const About = () => {
                     <div className={styles.termCard}>
                       <div className={styles.termHeader}>
                         <h6>3A (Jan 2026 - Apr 2026)</h6>
-                        <span className={styles.currentBadge}>Current</span>
                       </div>
                       <ul>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Communication Systems
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Digital Hardware Systems
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Real-Time Operating Systems
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Analog Control Systems
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Customer Experience Design
                         </li>
                         <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
                           Research in the Workplace
                         </li>
                       </ul>

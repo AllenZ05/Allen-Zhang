@@ -35,7 +35,14 @@ const Projects = () => {
       status: "In development",
       description: "Beautiful NHL stats, charts, and comparisons. ",
       gradient: "linear-gradient(135deg, #4b1e82 0%, #994897ff 100%)",
-      links: [],
+      links: [
+        {
+          type: "website",
+          url: "https://hockeylenspro.vercel.app/",
+          icon: <FiExternalLink />,
+          label: "Website",
+        },
+      ],
     },
     {
       id: 2,

@@ -20,7 +20,7 @@ const Experiences = () => {
       skills: [],
       url: "https://www.apple.com/",
       gradient: "linear-gradient(135deg, #a1a1aa 0%, #27272a 100%)",
-      status: "incoming",
+      status: "current",
     },
     {
       id: 1,
