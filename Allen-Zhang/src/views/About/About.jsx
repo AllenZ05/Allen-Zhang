@@ -213,7 +213,11 @@ const About = () => {
                 <p>Usually in Toronto, the Bay Area, or Waterloo.</p>
 
                 <div className={styles.highlightBox}>
-                  <strong>Seeking Winter 2027 Internships (Jan - Apr)!</strong>
+                  <strong>Seeking Winter 2027 Tech Internships (Jan – Apr)</strong>
+                  <span>
+                    Preferably in NYC or the Bay Area. Excited about Big Tech, high-growth startups, and anywhere
+                    building cool things.
+                  </span>
                 </div>
 
                 <p>Feel free to connect with me using my social links in the footer!</p>
