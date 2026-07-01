@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FaCode, FaGraduationCap, FaRocket } from "react-icons/fa6";
 import { IoCheckmark } from "react-icons/io5";
 import { MdHourglassBottom } from "react-icons/md";
-import { FaRocket, FaGraduationCap, FaCode } from "react-icons/fa6";
 import styles from "./About.module.css";
 
 const About = () => {
@@ -212,9 +212,9 @@ const About = () => {
                 <p>I am an ambitious individual with a mission to make a positive impact on the world.</p>
                 <p>Usually in Toronto, the Bay Area, or Waterloo.</p>
 
-                {/* <div className={styles.highlightBox}>
+                <div className={styles.highlightBox}>
                   <strong>Seeking Winter 2027 Internships (Jan - Apr)!</strong>
-                </div> */}
+                </div>
 
                 <p>Feel free to connect with me using my social links in the footer!</p>
               </div>
