@@ -1,7 +1,7 @@
+// Next.js-specific rules only. Formatting and general JS/React linting are
+// handled by Biome (see biome.json); this covers the Next.js-only checks
+// (next/image, sync scripts, fonts, etc.) that Biome has no equivalent for.
 import nextPlugin from "@next/eslint-plugin-next";
-import react from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
 
 export default [
   {
@@ -17,39 +17,13 @@ export default [
           jsx: true,
         },
       },
-      globals: {
-        window: "readonly",
-        document: "readonly",
-        navigator: "readonly",
-        console: "readonly",
-        setTimeout: "readonly",
-        clearTimeout: "readonly",
-        setInterval: "readonly",
-        clearInterval: "readonly",
-        requestAnimationFrame: "readonly",
-        cancelAnimationFrame: "readonly",
-      },
-    },
-    settings: {
-      react: {
-        version: "detect",
-      },
     },
     plugins: {
       "@next/next": nextPlugin,
-      react,
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
     },
     rules: {
       ...nextPlugin.configs.recommended.rules,
       ...nextPlugin.configs["core-web-vitals"].rules,
-      ...react.configs.recommended.rules,
-      ...react.configs["jsx-runtime"].rules,
-      ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": "off",
-      "react/prop-types": "off",
-      "react-hooks/set-state-in-effect": "off",
     },
   },
 ];
