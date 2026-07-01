@@ -198,8 +198,8 @@ const Experiences = () => {
                 {experience.skills.length > 0 && (
                   <div className={styles.skillsSection}>
                     <div className={styles.skillsTags}>
-                      {experience.skills.map((skill, skillIndex) => (
-                        <span key={skillIndex} className={styles.skillTag}>
+                      {experience.skills.map((skill) => (
+                        <span key={skill} className={styles.skillTag}>
                           {skill}
                         </span>
                       ))}

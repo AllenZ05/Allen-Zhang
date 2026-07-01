@@ -1,14 +1,14 @@
 "use client";
 
-import styles from "./Navbar.module.css";
-import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { FiSun, FiMoon } from "react-icons/fi";
-import { motion, AnimatePresence } from "framer-motion";
+import { FiMoon, FiSun } from "react-icons/fi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { useTheme } from "../context/useTheme";
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,8 +34,9 @@ const Navbar = () => {
   }, [isOpen]);
 
   // Close menu on route change
+  // biome-ignore lint/correctness/useExhaustiveDependencies: pathname is intentionally the trigger to close the menu on navigation
   useEffect(() => {
-    closeMenu();
+    setIsOpen(false);
   }, [pathname]);
 
   const menuVariants = {
@@ -119,6 +120,7 @@ const Navbar = () => {
 
       <div className={styles.navActions}>
         <motion.button
+          type="button"
           className={styles.themeToggle}
           onClick={toggleTheme}
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
@@ -139,7 +141,7 @@ const Navbar = () => {
           </motion.div>
         </motion.button>
 
-        <button className={styles.hamburgerMenu} onClick={toggleMenu} aria-label="Toggle navigation menu">
+        <button type="button" className={styles.hamburgerMenu} onClick={toggleMenu} aria-label="Toggle navigation menu">
           <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
             {isOpen ? (
               <FaTimes className={styles.hamburgerIcon} />

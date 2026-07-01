@@ -215,9 +215,9 @@ const Projects = () => {
 
               {project.links.length > 0 && (
                 <div className={styles.projectLinks}>
-                  {project.links.map((link, index) => (
+                  {project.links.map((link) => (
                     <motion.a
-                      key={index}
+                      key={link.url}
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"

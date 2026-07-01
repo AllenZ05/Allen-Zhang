@@ -1,12 +1,12 @@
 "use client";
 
-import styles from "./Footer.module.css";
-import { FaLinkedinIn, FaInstagram, FaGithub, FaCheck, FaXmark } from "react-icons/fa6";
+import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import { FaCheck, FaGithub, FaInstagram, FaLinkedinIn, FaXmark } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
 import { ToastContainer, toast } from "react-toastify";
-import { motion } from "framer-motion";
 import { useTheme } from "../context/useTheme";
+import styles from "./Footer.module.css";
 
 const CustomToast = ({ type, message }) => (
   <div className={styles.customToast}>
@@ -87,13 +87,14 @@ const Footer = () => {
       >
         {socialLinks.map((social, index) => (
           <motion.div
-            key={index}
+            key={social.platform}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
           >
             {social.type === "button" ? (
               <button
+                type="button"
                 onClick={social.action}
                 className={`${styles.socialButton} ${styles[social.platform]}`}
                 aria-label={social.label}
