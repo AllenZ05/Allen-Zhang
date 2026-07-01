@@ -69,12 +69,7 @@
 
 /* Light mode: darker overlay to reduce brightness */
 :global([data-theme="light"]) .heroHome .images::after {
-  background: linear-gradient(
-    180deg,
-    rgba(15, 23, 42, 0.3) 0%,
-    rgba(30, 41, 59, 0.4) 50%,
-    rgba(15, 23, 42, 0.35) 100%
-  );
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(30, 41, 59, 0.4) 50%, rgba(15, 23, 42, 0.35) 100%);
   animation: backgroundHeroHomeLight 3s;
   opacity: 1;
 }

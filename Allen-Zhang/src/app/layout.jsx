@@ -1,11 +1,11 @@
 import "./globals.css";
 import Script from "next/script";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
-import Providers from "./providers";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 import ClientLayout from "./ClientLayout";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, OG_IMAGE, SOCIALS } from "./siteConfig";
+import Providers from "./providers";
+import { OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL, SOCIALS } from "./siteConfig";
 
 export const metadata = {
   title: {

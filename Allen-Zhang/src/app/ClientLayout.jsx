@@ -1,8 +1,8 @@
 "use client";
 
-import PropTypes from "prop-types";
 import { AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import PropTypes from "prop-types";
 import PageTransition from "../components/PageTransition";
 
 const ClientLayout = ({ children }) => {

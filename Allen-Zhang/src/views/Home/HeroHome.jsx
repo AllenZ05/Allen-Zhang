@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import Image from "next/image";
-import styles from "./HeroHome.module.css";
+import { useEffect } from "react";
 import Typewriter from "typewriter-effect";
+import styles from "./HeroHome.module.css";
 
 const HeroHome = () => {
   useEffect(() => {

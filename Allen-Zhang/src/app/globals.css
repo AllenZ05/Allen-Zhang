@@ -130,7 +130,9 @@
 
 body {
   background: var(--bg-primary);
-  transition: background var(--transition-medium), color var(--transition-medium);
+  transition:
+    background var(--transition-medium),
+    color var(--transition-medium);
 }
 
 h1,

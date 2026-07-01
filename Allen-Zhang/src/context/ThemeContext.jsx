@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useLayoutEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { createContext, useLayoutEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
