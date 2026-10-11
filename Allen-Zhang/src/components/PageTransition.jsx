@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import PropTypes from "prop-types";
 
 const pageVariants = {
   initial: {
@@ -41,10 +40,6 @@ const PageTransition = ({ children }) => {
       {children}
     </motion.div>
   );
-};
-
-PageTransition.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default PageTransition;

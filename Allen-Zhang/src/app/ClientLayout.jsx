@@ -2,7 +2,6 @@
 
 import { AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import PropTypes from "prop-types";
 import PageTransition from "../components/PageTransition";
 
 const ClientLayout = ({ children }) => {
@@ -13,10 +12,6 @@ const ClientLayout = ({ children }) => {
       <PageTransition key={pathname}>{children}</PageTransition>
     </AnimatePresence>
   );
-};
-
-ClientLayout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default ClientLayout;

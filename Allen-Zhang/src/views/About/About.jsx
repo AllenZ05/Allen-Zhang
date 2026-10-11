@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaCode, FaGraduationCap, FaRocket } from "react-icons/fa6";
 import { IoCheckmark } from "react-icons/io5";
 import { MdHourglassBottom } from "react-icons/md";
+import { educationYears, skillCategories } from "../../data/about";
 import styles from "./About.module.css";
 
 const About = () => {
@@ -84,86 +85,32 @@ const About = () => {
     },
   };
 
-  const skillCategories = [
-    {
-      title: "Languages",
-      skills: [
-        "Python",
-        "C++",
-        "C#",
-        "C",
-        "Go",
-        "Ruby",
-        "Swift",
-        "SQL/NoSQL",
-        "TypeScript",
-        "JavaScript",
-        "CSS",
-        "HTML",
-      ],
-      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-    },
-    {
-      title: "Frameworks & Libraries",
-      skills: [
-        "Next.js",
-        "React.js",
-        "React Native",
-        "Nuxt.js",
-        "Vue.js",
-        "Ruby on Rails",
-        "GraphQL",
-        "Tailwind CSS",
-        "PyTorch",
-      ],
-      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-    },
-    {
-      title: "Developer Tools",
-      skills: ["Git", "GitHub", "Node.js", "Grafana", "Vite"],
-      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-    },
-    {
-      title: "Cloud & Services",
-      skills: ["Amazon Web Services", "Google Cloud Platform", "Apache Kafka", "Firebase", "Cloudflare", "Stripe"],
-      gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
-    },
-    {
-      title: "Misc",
-      skills: ["Figma", "Microsoft Office", "Google Workspace", "Adobe Suite", "Unity"],
-      gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
-    },
-    {
-      title: "Soft Skills",
-      skills: ["Leadership", "Teamwork", "Communication", "Creativity", "Problem-Solving"],
-      gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-    },
-  ];
   const handleSectionChange = (section) => {
     setTilt({ rotateX: 0, rotateY: 0 });
     setSelectedSection(section);
+  };
+
+  const cardMotionProps = {
+    ref: cardRef,
+    className: styles.sectionCard,
+    initial: { opacity: 0, y: 30, scale: 0.95 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotateX: isTiltEnabled ? tilt.rotateX : 0,
+      rotateY: isTiltEnabled ? tilt.rotateY : 0,
+    },
+    transition: { duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } },
+    onMouseMove: handleMouseMove,
+    onMouseLeave: handleMouseLeave,
   };
 
   const renderSection = () => {
     switch (selectedSection) {
       case "Introduction":
         return (
-          <motion.div
-            key="introduction"
-            ref={cardRef}
-            className={styles.sectionCard}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              rotateX: isTiltEnabled ? tilt.rotateX : 0,
-              rotateY: isTiltEnabled ? tilt.rotateY : 0,
-            }}
-            transition={{ duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
+          <motion.div key="introduction" {...cardMotionProps}>
             <div className={styles.cardIcon}>
               <FaRocket aria-hidden="true" />
             </div>
@@ -227,22 +174,7 @@ const About = () => {
         );
       case "Education":
         return (
-          <motion.div
-            key="education"
-            ref={cardRef}
-            className={styles.sectionCard}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              rotateX: isTiltEnabled ? tilt.rotateX : 0,
-              rotateY: isTiltEnabled ? tilt.rotateY : 0,
-            }}
-            transition={{ duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
+          <motion.div key="education" {...cardMotionProps}>
             <div className={styles.cardIcon}>
               <FaGraduationCap aria-hidden="true" />
             </div>
@@ -255,243 +187,37 @@ const About = () => {
               </div>
 
               <div className={styles.academicYears}>
-                {/* Third Year */}
-                <div className={styles.yearSection}>
-                  <h5>Third Year</h5>
-                  <div className={styles.termsGrid}>
-                    <div className={styles.termCard}>
-                      <div className={styles.termHeader}>
-                        <h6>3A (Jan 2026 - Apr 2026)</h6>
-                      </div>
-                      <ul>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Communication Systems
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Digital Hardware Systems
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Real-Time Operating Systems
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Analog Control Systems
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Customer Experience Design
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Research in the Workplace
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className={styles.termCard}>
-                      <h6>3B (Sep 2026 - Dec 2026)</h6>
-                      <ul>
-                        <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Probability Theory and Statistics 2
-                        </li>
-                        <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 1
-                        </li>
-                        <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 2
-                        </li>
-                        <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 3
-                        </li>
-                        <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 4
-                        </li>
-                        <li>
-                          <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
-                          Elective 5
-                        </li>
-                      </ul>
+                {educationYears.map((year) => (
+                  <div key={year.year} className={styles.yearSection}>
+                    <h5>{year.year}</h5>
+                    <div className={styles.termsGrid}>
+                      {year.terms.map((term) => (
+                        <div key={term.name} className={styles.termCard}>
+                          <h6>{term.name}</h6>
+                          <ul>
+                            {term.courses.map((course) => (
+                              <li key={course}>
+                                {term.upcoming ? (
+                                  <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
+                                ) : (
+                                  <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
+                                )}
+                                {course}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </div>
-
-                {/* Second Year */}
-                <div className={styles.yearSection}>
-                  <h5>Second Year</h5>
-                  <div className={styles.termsGrid}>
-                    <div className={styles.termCard}>
-                      <h6>2A (Sep 2024 - Dec 2024)</h6>
-                      <ul>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Algorithms and Data Structures
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Advanced Calculus 1
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Digital Computers
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Numerical Methods
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Electronic Circuits
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Materials Chemistry
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Strategies for Career Success
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className={styles.termCard}>
-                      <h6>2B (May 2025 - Aug 2025)</h6>
-                      <ul>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Probability Theory and Statistics 1
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Signals and Systems
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Discrete Mathematics and Logic 2
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Embedded Microprocessor Systems
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Systems Programming and Concurrency
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Instrumentation and Prototyping Laboratory
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Professionalism and Ethics in Engineering
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* First Year */}
-                <div className={styles.yearSection}>
-                  <h5>First Year</h5>
-                  <div className={styles.termsGrid}>
-                    <div className={styles.termCard}>
-                      <h6>1A (Sep 2023 - Dec 2023)</h6>
-                      <ul>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Linear Algebra
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Calculus 1 & 2
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Classical Mechanics
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Programming
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Project Studio
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Engineering Profession and Practice
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Communication in Engineering
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className={styles.termCard}>
-                      <h6>1B (Jan 2024 - Apr 2024)</h6>
-                      <ul>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Calculus 3
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Electricity and Magnetism
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Discrete Math and Logic 1
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Digital Circuits and Systems
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Linear Circuits
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Engineering Economics
-                        </li>
-                        <li>
-                          <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
-                          Tactics for Workplace Success
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </motion.div>
         );
       case "Skills":
         return (
-          <motion.div
-            key="skills"
-            ref={cardRef}
-            className={styles.sectionCard}
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              rotateX: isTiltEnabled ? tilt.rotateX : 0,
-              rotateY: isTiltEnabled ? tilt.rotateY : 0,
-            }}
-            transition={{ duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-          >
+          <motion.div key="skills" {...cardMotionProps}>
             <div className={styles.cardIcon}>
               <FaCode aria-hidden="true" />
             </div>
@@ -534,14 +260,14 @@ const About = () => {
 
   return (
     <main className={styles.aboutMain}>
-      <motion.h2
+      <motion.h1
         className={styles.heading}
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
         About Me
-      </motion.h2>
+      </motion.h1>
 
       <div className={styles.tabNavigation}>
         {["Introduction", "Education", "Skills"].map((tab) => (

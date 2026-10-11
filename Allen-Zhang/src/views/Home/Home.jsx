@@ -2,9 +2,9 @@ import HeroHome from "./HeroHome";
 
 const Home = () => {
   return (
-    <div>
+    <main>
       <HeroHome />
-    </div>
+    </main>
   );
 };
 

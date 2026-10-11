@@ -1,150 +1,192 @@
 .heroHome {
-  height: 100%;
-  width: 100%;
-}
-
-.heroHome .images {
-  height: 100dvh;
-  width: 100%;
   position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 1.5rem;
 }
 
-.heroHome .images .backgroundImg {
+/* Background: subtle accent glow + faint grid, no images */
+
+.backdrop {
   position: absolute;
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  object-fit: cover;
-  transition: opacity 0.5s ease;
+  inset: 0;
+  pointer-events: none;
 }
 
-/* Dark image shows by default */
-.heroHome .images .darkBg {
-  opacity: 1;
-}
-
-.heroHome .images .lightBg {
-  opacity: 0;
-}
-
-/* In light theme, swap visibility */
-:global([data-theme="light"]) .heroHome .images .darkBg {
-  opacity: 0;
-}
-
-:global([data-theme="light"]) .heroHome .images .lightBg {
-  opacity: 1;
-}
-
-@keyframes backgroundHeroHome {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.35;
-  }
-}
-
-@keyframes backgroundHeroHomeLight {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.heroHome .images::after {
-  content: "";
+.glow {
   position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background-color: black;
-  animation: backgroundHeroHome 3s;
-  opacity: 0.35;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 55% at 50% -10%, var(--hero-glow), transparent 70%);
+  opacity: 0.55;
 }
 
-/* Light mode: darker overlay to reduce brightness */
-:global([data-theme="light"]) .heroHome .images::after {
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(30, 41, 59, 0.4) 50%, rgba(15, 23, 42, 0.35) 100%);
-  animation: backgroundHeroHomeLight 3s;
-  opacity: 1;
-}
-
-.heroHome .description {
+.grid {
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
+  opacity: 0.5;
+}
+
+/* Content */
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  max-width: 56rem;
 }
 
-.heroHome .description h1 {
-  font-weight: 900;
-  padding: 1rem;
-  margin: 1rem;
-  color: #ffffff;
-  text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.7);
-  animation: fadeInH1 2s;
-  font-size: calc(var(--h1-base-font-size) * 4);
-  width: 80vw;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--surface-glass-light);
+  color: var(--text-secondary);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
 }
 
-@keyframes fadeInH1 {
-  from {
-    opacity: 0;
-  }
-  to {
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--status-success);
+  box-shadow: 0 0 8px var(--status-success);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
     opacity: 1;
   }
-}
-
-.heroHome .description .typewriterContainer {
-  font-size: 1.7rem;
-  color: white;
-  font-weight: 400;
-  text-shadow: 2px 2px 3px rgba(72, 21, 148, 0.7);
-  animation: scaleUpTypewriter 1s ease;
-  font-family: "Roboto", sans-serif;
-}
-
-/* Light mode: adjust text for readability */
-:global([data-theme="light"]) .heroHome .description h1 {
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-:global([data-theme="light"]) .heroHome .description .typewriterContainer {
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
-}
-
-@keyframes scaleUpTypewriter {
-  from {
-    transform: scale(0.01);
-  }
-  to {
-    transform: scale(1);
+  50% {
+    opacity: 0.4;
   }
 }
 
-/* Mobile Design */
-
-@media only screen and (min-width: 769px) and (max-width: 1200px) {
-  .heroHome .description h1 {
-    font-size: calc(var(--h1-base-font-size) * 3.5);
-  }
-  .heroHome .description .typewriterContainer {
-    font-size: 1.6rem;
-  }
+.name {
+  font-size: clamp(3.25rem, 10vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(180deg, var(--text-primary) 55%, var(--text-muted) 130%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
+
+.roleLine {
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  color: var(--text-secondary);
+  margin-bottom: 2.75rem;
+}
+
+.roleLine span {
+  display: inline-block;
+}
+
+/* CTAs */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primaryCta,
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.primaryCta {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+  color: var(--bg-primary);
+}
+
+.ctaIcon {
+  transition: transform var(--transition-fast);
+}
+
+.primaryCta:hover .ctaIcon {
+  transform: translateX(3px);
+}
+
+.secondaryCta {
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  background: var(--surface-glass-light);
+}
+
+.secondaryCta:hover {
+  border-color: var(--border-color-hover);
+  background: var(--accent-bg);
+  transform: translateY(-2px);
+}
+
+/* Mobile */
 
 @media only screen and (max-width: 768px) {
-  .heroHome .description h1 {
-    font-size: calc(var(--h1-base-font-size) * 3);
+  .badge {
+    font-size: 0.72rem;
+    margin-bottom: 1.5rem;
   }
-  .heroHome .description .typewriterContainer {
-    font-size: 1.5rem;
+
+  .roleLine {
+    min-height: 3.2rem;
+    margin-bottom: 2.25rem;
+    padding: 0 0.5rem;
+  }
+
+  .actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    width: 100%;
+    max-width: 20rem;
+    justify-content: center;
   }
 }

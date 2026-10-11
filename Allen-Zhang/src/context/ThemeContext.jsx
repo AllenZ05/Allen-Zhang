@@ -1,27 +1,35 @@
 "use client";
 
-import PropTypes from "prop-types";
 import { createContext, useLayoutEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("dark");
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
+    try {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark" || savedTheme === "light") {
+        setTheme(savedTheme);
+      }
+    } catch {
+      // Theme switching still works when browser storage is unavailable.
     }
+    setIsInitialized(true);
   }, []);
 
   useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
+    if (!isInitialized) return;
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.style.colorScheme = theme;
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      // Keep the preference in memory for this visit.
+    }
+  }, [theme, isInitialized]);
 
   // Intentionally do not auto-switch with system preference.
 
@@ -38,10 +46,6 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
-};
-
-ThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default ThemeContext;

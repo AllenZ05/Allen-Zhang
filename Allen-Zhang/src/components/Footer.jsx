@@ -1,55 +1,37 @@
 "use client";
 
-import { motion } from "framer-motion";
-import PropTypes from "prop-types";
-import { FaCheck, FaGithub, FaInstagram, FaLinkedinIn, FaXmark } from "react-icons/fa6";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
-import { ToastContainer, toast } from "react-toastify";
-import { useTheme } from "../context/useTheme";
 import styles from "./Footer.module.css";
 
-const CustomToast = ({ type, message }) => (
-  <div className={styles.customToast}>
-    <div className={`${styles.toastIcon} ${styles[type]}`}>{type === "success" ? <FaCheck /> : <FaXmark />}</div>
-    <div className={styles.toastContent}>
-      <span className={styles.toastTitle}>{type === "success" ? "Copied!" : "Error"}</span>
-      <span className={styles.toastMessage}>{message}</span>
-    </div>
-  </div>
-);
-
-CustomToast.propTypes = {
-  type: PropTypes.oneOf(["success", "error"]).isRequired,
-  message: PropTypes.string.isRequired,
-};
+const EMAIL = "allen.zhang.y05@gmail.com";
 
 const Footer = () => {
-  const { theme } = useTheme();
+  const [copyState, setCopyState] = useState(null); // null | "copied" | "error"
+  const resetTimer = useRef(null);
 
-  const copyToClipboard = async (text) => {
+  useEffect(() => {
+    return () => clearTimeout(resetTimer.current);
+  }, []);
+
+  const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText(text);
-      toast(<CustomToast type="success" message="Email copied to clipboard" />, {
-        toastId: "copy-success",
-        className: styles.toastWrapper,
-        bodyClassName: styles.toastBody,
-        progressClassName: styles.toastProgress,
-      });
+      await navigator.clipboard.writeText(EMAIL);
+      setCopyState("copied");
     } catch (err) {
       console.error("Could not copy email: ", err);
-      toast(<CustomToast type="error" message="Failed to copy email" />, {
-        toastId: "copy-error",
-        className: styles.toastWrapperError,
-        bodyClassName: styles.toastBody,
-        progressClassName: styles.toastProgressError,
-      });
+      setCopyState("error");
     }
+    clearTimeout(resetTimer.current);
+    resetTimer.current = setTimeout(() => setCopyState(null), 1600);
   };
 
   const socialLinks = [
     {
       icon: <HiOutlineMail className={styles.footerIcon} />,
-      action: () => copyToClipboard("allen.zhang.y05@gmail.com"),
+      action: copyEmail,
       label: "Copy email to clipboard",
       type: "button",
       platform: "email",
@@ -88,6 +70,7 @@ const Footer = () => {
         {socialLinks.map((social, index) => (
           <motion.div
             key={social.platform}
+            className={styles.socialWrapper}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
@@ -112,24 +95,28 @@ const Footer = () => {
                 {social.icon}
               </a>
             )}
+
+            {social.platform === "email" && (
+              <AnimatePresence>
+                {copyState && (
+                  <motion.span
+                    className={`${styles.copyTooltip} ${copyState === "error" ? styles.copyTooltipError : ""}`}
+                    initial={{ opacity: 0, y: 6, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.9 }}
+                    transition={{ duration: 0.2 }}
+                    role="status"
+                  >
+                    {copyState === "copied" ? "Copied!" : "Copy failed"}
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            )}
           </motion.div>
         ))}
       </motion.div>
 
-      <ToastContainer
-        position="top-center"
-        autoClose={1200}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable={false}
-        pauseOnHover={false}
-        theme={theme}
-        closeButton={false}
-        icon={false}
-      />
+      <p className={styles.copyright}>© {new Date().getFullYear()} Allen Zhang</p>
     </footer>
   );
 };

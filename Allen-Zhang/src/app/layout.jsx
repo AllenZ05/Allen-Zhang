@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import BackToTop from "../components/BackToTop";
 import Footer from "../components/Footer";
@@ -48,6 +49,18 @@ export const viewport = {
   initialScale: 1,
 };
 
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export default function RootLayout({ children }) {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -64,13 +77,19 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en" data-theme="dark" style={{ colorScheme: "dark" }} suppressHydrationWarning>
+    <html
+      lang="en"
+      data-theme="dark"
+      style={{ colorScheme: "dark" }}
+      className={`${geist.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <Script id="theme-init" strategy="beforeInteractive">
           {`(() => {
             try {
               const savedTheme = localStorage.getItem("theme");
-              const theme = savedTheme || "dark";
+              const theme = savedTheme === "light" ? "light" : "dark";
               document.documentElement.setAttribute("data-theme", theme);
               document.documentElement.style.colorScheme = theme;
             } catch {

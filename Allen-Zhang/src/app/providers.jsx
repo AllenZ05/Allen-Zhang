@@ -1,14 +1,14 @@
 "use client";
 
-import PropTypes from "prop-types";
+import { MotionConfig } from "framer-motion";
 import { ThemeProvider } from "../context/ThemeContext";
 
 const Providers = ({ children }) => {
-  return <ThemeProvider>{children}</ThemeProvider>;
-};
-
-Providers.propTypes = {
-  children: PropTypes.node.isRequired,
+  return (
+    <MotionConfig reducedMotion="user">
+      <ThemeProvider>{children}</ThemeProvider>
+    </MotionConfig>
+  );
 };
 
 export default Providers;

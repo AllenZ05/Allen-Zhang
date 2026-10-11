@@ -38,12 +38,12 @@
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 4px;
+  width: 2px;
   background: linear-gradient(
     180deg,
-    rgba(80, 175, 255, 0.7) 0%,
-    rgba(80, 175, 255, 0.5) 50%,
-    rgba(80, 175, 255, 0.3) 100%
+    rgba(80, 175, 255, 0.5) 0%,
+    rgba(80, 175, 255, 0.25) 50%,
+    rgba(80, 175, 255, 0.08) 100%
   );
   transform: translateX(-50%);
   border-radius: 2px;
@@ -63,7 +63,7 @@
   background: var(--bg-card);
   border: none;
   border-radius: var(--border-radius-small);
-  overflow: hidden;
+  overflow: visible;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   box-shadow:
@@ -177,7 +177,22 @@
   color: var(--text-primary);
   margin: 0 0 var(--spacing-xs) 0;
   line-height: 1.2;
-  letter-spacing: 0.5px;
+}
+
+/* Cursor spotlight (position set by JS via --mx / --my) */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), var(--accent-bg), transparent 65%);
+  transition: opacity var(--transition-medium);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.experienceCard:hover .spotlight {
+  opacity: 1;
 }
 
 .companyRow {
@@ -280,6 +295,8 @@
 
 .locationPeriod {
   display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--spacing-md);
@@ -288,19 +305,17 @@
 }
 
 .location {
-  font-size: 1rem;
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-style: italic;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
 .period {
-  font-size: 0.95rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
   color: var(--text-accent);
-  font-weight: 600;
-  background: var(--accent-bg);
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  letter-spacing: 0.02em;
 }
 
 .description {
@@ -310,28 +325,22 @@
   margin-bottom: var(--spacing-md);
 }
 
-.descriptionLink {
+.description a {
   color: var(--text-accent);
   text-decoration: none;
-  position: relative;
   font-weight: 500;
   transition: all var(--transition-fast);
   border-bottom: 1px solid var(--accent-border);
 }
 
-.descriptionLink:hover {
+.description a:hover {
   color: #60a5fa;
   border-bottom-color: #60a5fa;
-  transform: translateY(-1px);
 }
 
-:global([data-theme="light"]) .descriptionLink:hover {
+:global([data-theme="light"]) .description a:hover {
   color: #2563eb;
   border-bottom-color: #2563eb;
-}
-
-.descriptionLink:active {
-  transform: translateY(0);
 }
 
 .skillsSection {
@@ -345,12 +354,12 @@
 }
 
 .skillTag {
-  padding: 0.25rem 0.75rem;
-  background: var(--accent-bg);
-  color: var(--text-primary);
-  border: 1px solid var(--accent-border);
-  border-radius: var(--border-radius-small);
-  font-size: 0.9rem;
+  padding: 0.25rem 0.7rem;
+  background: var(--surface-glass-light);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  font-size: 0.8rem;
   font-weight: 500;
   transition: all var(--transition-fast);
 }
@@ -403,7 +412,7 @@
 @media (max-width: 768px) {
   .timelineContainer {
     --line-left: 18px;
-    --line-half: 2px;
+    --line-half: 1px;
     --card-offset: 56px;
   }
 
@@ -435,7 +444,7 @@
   .timelineNode {
     left: calc(var(--line-left) - var(--card-offset)) !important;
     right: auto;
-    transform: translateX(calc(var(--line-half) - 50%));
+    --node-shift-x: calc(var(--line-half) - 50%);
     top: 25px;
     width: 14px;
     height: 14px;

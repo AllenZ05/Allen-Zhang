@@ -266,9 +266,10 @@
 
 .location {
   display: block;
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  font-style: italic;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
   margin-bottom: var(--spacing-xs);
 }
 
@@ -326,8 +327,10 @@
 }
 
 .termCard h6 {
-  font-size: 1.3rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 1.05rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   color: var(--text-accent);
   margin-bottom: var(--spacing-md);
   text-align: center;
@@ -491,20 +494,21 @@
 }
 
 .skillTag {
-  background: var(--accent-bg);
-  color: var(--text-primary);
-  border: 1px solid var(--accent-border);
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  background: var(--surface-glass-light);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
   font-weight: 500;
   transition: all var(--transition-fast);
   white-space: nowrap;
 }
 
 .skillTag:hover {
-  background: var(--accent-bg-hover);
-  border-color: var(--accent-border-hover);
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--text-primary);
   transform: translateY(-1px);
 }
 

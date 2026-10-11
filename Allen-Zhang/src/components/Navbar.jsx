@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -12,6 +12,7 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuButtonRef = useRef(null);
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
 
@@ -31,6 +32,27 @@ const Navbar = () => {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [isOpen]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1025px)");
+    const closeOnDesktop = (event) => {
+      if (event.matches) setIsOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
   }, [isOpen]);
 
   // Close menu on route change
@@ -96,7 +118,11 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 + index * 0.1 }}
           >
-            <Link href={link.path} className={isActive(link.path) ? styles.activeLink : ""}>
+            <Link
+              href={link.path}
+              className={isActive(link.path) ? styles.activeLink : ""}
+              aria-current={isActive(link.path) ? "page" : undefined}
+            >
               {link.label}
             </Link>
           </motion.li>
@@ -106,10 +132,22 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
-          <motion.ul className={styles.mobileNav} variants={menuVariants} initial="closed" animate="open" exit="closed">
+          <motion.ul
+            id="mobile-navigation"
+            className={styles.mobileNav}
+            variants={menuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+          >
             {navLinks.map((link, index) => (
               <motion.li key={link.path} custom={index} variants={linkVariants} initial="closed" animate="open">
-                <Link href={link.path} onClick={closeMenu} className={isActive(link.path) ? styles.activeLink : ""}>
+                <Link
+                  href={link.path}
+                  onClick={closeMenu}
+                  className={isActive(link.path) ? styles.activeLink : ""}
+                  aria-current={isActive(link.path) ? "page" : undefined}
+                >
                   {link.label}
                 </Link>
               </motion.li>
@@ -141,7 +179,15 @@ const Navbar = () => {
           </motion.div>
         </motion.button>
 
-        <button type="button" className={styles.hamburgerMenu} onClick={toggleMenu} aria-label="Toggle navigation menu">
+        <button
+          ref={menuButtonRef}
+          type="button"
+          className={styles.hamburgerMenu}
+          onClick={toggleMenu}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
+          aria-controls={isOpen ? "mobile-navigation" : undefined}
+        >
           <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
             {isOpen ? (
               <FaTimes className={styles.hamburgerIcon} />
