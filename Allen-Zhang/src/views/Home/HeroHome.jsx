@@ -3,8 +3,8 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FiArrowRight, FiMail } from "react-icons/fi";
-import { emailHref, profile, roleLabel } from "../../data/profile";
+import { FiArrowRight } from "react-icons/fi";
+import { profile, roleLabel } from "../../data/profile";
 import styles from "./HeroHome.module.css";
 
 const secondaryLines = [profile.education, "Would love to talk and connect with you :D"];
@@ -60,10 +60,6 @@ export default function HeroHome() {
           <Link href="/experiences/" className={styles.secondaryCta}>
             Experiences
           </Link>
-          <a href={emailHref} className={styles.secondaryCta}>
-            <FiMail aria-hidden="true" />
-            Contact
-          </a>
         </div>
       </div>
     </section>

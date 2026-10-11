@@ -1,11 +1,16 @@
+.homeMain {
+  display: flex;
+  flex: 1;
+}
+
 .heroHome {
   position: relative;
-  min-height: 100dvh;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 7rem 1.5rem 4rem;
+  padding: 7rem 1.5rem 3rem;
 }
 
 /* Background: subtle accent glow + faint grid, no images */

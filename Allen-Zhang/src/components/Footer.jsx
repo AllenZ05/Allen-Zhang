@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
-import { FiCopy, FiMail } from "react-icons/fi";
+import { HiOutlineMail } from "react-icons/hi";
 import { emailHref, profile } from "../data/profile";
 import { useHydrated } from "../lib/useHydrated";
 import styles from "./Footer.module.css";
@@ -19,41 +19,22 @@ export default function Footer() {
     clearTimeout(resetTimer.current);
     try {
       await navigator.clipboard.writeText(profile.email);
-      setCopyState("Email copied!");
+      setCopyState("copied");
       resetTimer.current = setTimeout(() => setCopyState(""), 3000);
     } catch {
-      setCopyState("Select the email address to copy it, or click it to send an email.");
+      setCopyState("error");
     }
   };
 
   const socials = [
-    { name: "LinkedIn", key: "linkedin", icon: <FaLinkedinIn /> },
-    { name: "Instagram", key: "instagram", icon: <FaInstagram /> },
-    { name: "GitHub", key: "github", icon: <FaGithub /> },
+    { name: "Email", key: "email", icon: <HiOutlineMail />, href: emailHref },
+    { name: "LinkedIn", key: "linkedin", icon: <FaLinkedinIn />, href: profile.socials.linkedin },
+    { name: "Instagram", key: "instagram", icon: <FaInstagram />, href: profile.socials.instagram },
+    { name: "GitHub", key: "github", icon: <FaGithub />, href: profile.socials.github },
   ];
 
   return (
     <footer id="contact" className={styles.footer}>
-      <motion.div
-        className={styles.contactRow}
-        initial={false}
-        whileInView={reducedMotion ? { opacity: 1, y: 0 } : { opacity: [0, 1], y: [20, 0] }}
-        viewport={{ once: true }}
-        transition={{ duration: reducedMotion ? 0 : 0.5 }}
-      >
-        <a href={emailHref} className={styles.emailLink}>
-          <FiMail aria-hidden="true" />
-          {profile.email}
-        </a>
-        {hydrated && (
-          <button type="button" className={styles.copyButton} onClick={copyEmail} aria-label="Copy email address">
-            <FiCopy aria-hidden="true" />
-          </button>
-        )}
-      </motion.div>
-      <p className={styles.copyStatus} role="status">
-        {copyState}
-      </p>
       <div className={styles.socials}>
         {socials.map((social, index) => (
           <motion.div
@@ -64,20 +45,44 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: reducedMotion ? 0 : 0.5, delay: reducedMotion ? 0 : index * 0.1 }}
           >
-            <a
-              href={profile.socials[social.key]}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.socialButton} ${styles[social.key]}`}
-              aria-label={`Visit ${social.name} profile`}
-            >
-              <span className={styles.footerIcon} aria-hidden="true">
-                {social.icon}
-              </span>
-              <span className="sr-only">Visit {social.name} profile</span>
-            </a>
+            {social.key === "email" && hydrated ? (
+              <button
+                type="button"
+                onClick={copyEmail}
+                className={`${styles.socialButton} ${styles.email}`}
+                aria-label="Copy email address"
+                title="Copy email address"
+              >
+                <span className={styles.footerIcon} aria-hidden="true">
+                  {social.icon}
+                </span>
+              </button>
+            ) : (
+              <a
+                href={social.href}
+                target={social.key === "email" ? undefined : "_blank"}
+                rel={social.key === "email" ? undefined : "noopener noreferrer"}
+                className={`${styles.socialButton} ${styles[social.key]}`}
+                aria-label={social.key === "email" ? "Email Allen Zhang" : `Visit ${social.name} profile`}
+              >
+                <span className={styles.footerIcon} aria-hidden="true">
+                  {social.icon}
+                </span>
+                <span className="sr-only">
+                  {social.key === "email" ? "Email Allen Zhang" : `Visit ${social.name} profile`}
+                </span>
+              </a>
+            )}
           </motion.div>
         ))}
+        <p className={styles.copyStatus} role="status">
+          {copyState === "copied" && "Email copied!"}
+          {copyState === "error" && (
+            <>
+              Copy manually: <a href={emailHref}>{profile.email}</a>
+            </>
+          )}
+        </p>
       </div>
       <p className={styles.copyright}>
         © {new Date().getFullYear()} {profile.name}

@@ -81,18 +81,54 @@ test("project previews load, close with Escape, and return focus", async ({ page
   }
 });
 
-test("clipboard denial leaves a visible, usable email address", async ({ page }) => {
+test("email address appears as a fallback when clipboard access is denied", async ({ page }) => {
   await page.addInitScript(() =>
     Object.defineProperty(navigator, "clipboard", { value: { writeText: () => Promise.reject(new Error("Denied")) } }),
   );
   await page.goto("/");
-  await expect(page.getByRole("link", { name: "Contact", exact: true })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: "allen.zhang.y05@gmail.com" })).toHaveCount(0);
+  await page.getByRole("button", { name: "Copy email address" }).click();
+  await expect(page.getByRole("status")).toContainText("Copy manually:");
+  await expect(page.getByRole("link", { name: "allen.zhang.y05@gmail.com" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "allen.zhang.y05@gmail.com" })).toHaveAttribute(
     "href",
     "mailto:allen.zhang.y05@gmail.com",
   );
+});
+
+test("home footer fits the viewport, centers its four icons, and copies email", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.addInitScript(() =>
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText: async (text) => { window.copiedEmail = text; } },
+    }),
+  );
+  for (const [width, height] of [[1440, 900], [1366, 768], [390, 844]]) {
+    await page.setViewportSize({ width, height });
+    await page.goto("/");
+    await expect(page.getByRole("button", { name: "Copy email address" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Contact", exact: true })).toHaveCount(0);
+    const footer = page.getByRole("contentinfo");
+    const bounds = await footer.boundingBox();
+    expect(bounds.y + bounds.height).toBeLessThanOrEqual(height + 1);
+    const icons = footer.locator("svg");
+    await expect(icons).toHaveCount(4);
+    for (const icon of await icons.all()) {
+      const offset = await icon.evaluate((svg) => {
+        const iconRect = svg.getBoundingClientRect();
+        const buttonRect = svg.closest("button, a").getBoundingClientRect();
+        return {
+          x: Math.abs(iconRect.x + iconRect.width / 2 - buttonRect.x - buttonRect.width / 2),
+          y: Math.abs(iconRect.y + iconRect.height / 2 - buttonRect.y - buttonRect.height / 2),
+        };
+      });
+      expect(offset.x).toBeLessThan(1);
+      expect(offset.y).toBeLessThan(1);
+    }
+  }
   await page.getByRole("button", { name: "Copy email address" }).click();
-  await expect(page.getByRole("status")).toContainText("Select the email address");
-  await expect(page.getByRole("link", { name: "allen.zhang.y05@gmail.com" })).toBeVisible();
+  await expect(page.getByRole("status")).toHaveText("Email copied!");
+  expect(await page.evaluate(() => window.copiedEmail)).toBe("allen.zhang.y05@gmail.com");
 });
 
 test("reduced motion preserves a stable role and disables page entrance", async ({ page }) => {
@@ -133,6 +169,9 @@ test("exported content and mobile navigation work without JavaScript", async ({ 
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto("http://127.0.0.1:4175/");
+  await expect(page.getByRole("link", { name: "Email Allen Zhang", exact: true })).toHaveAttribute(
+    "href", "mailto:allen.zhang.y05@gmail.com",
+  );
   await expect(page.getByRole("heading", { name: "Allen Zhang", exact: true })).toHaveCSS("opacity", "1");
   await page.getByRole("navigation").getByRole("link", { name: "About", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Education", exact: true })).toBeVisible();
