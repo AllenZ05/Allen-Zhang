@@ -72,20 +72,16 @@
 
 .cover {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   background: var(--bg-tertiary);
   border-bottom: 1px solid var(--border-color);
   overflow: hidden;
 }
 
 .coverImage {
-  object-fit: cover;
-  object-position: top;
-  transition: transform var(--transition-slow);
-}
-
-.projectCard:hover .coverImage {
-  transform: scale(1.03);
+  object-fit: contain;
+  object-position: center;
+  padding: var(--spacing-sm);
 }
 
 .coverFallback {
