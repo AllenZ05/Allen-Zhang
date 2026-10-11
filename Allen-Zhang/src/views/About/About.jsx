@@ -136,7 +136,16 @@ const About = () => {
                   >
                     Computer Engineering
                   </a>
-                  . Currently a Software Engineer Intern at{" "}
+                  . Incoming Software Engineer Intern at{" "}
+                  <a
+                    href="https://www.rippling.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.introLink}
+                  >
+                    Rippling
+                  </a>
+                  , and previously a Software Engineer Intern at{" "}
                   <a
                     href="https://www.apple.com/"
                     target="_blank"
@@ -144,8 +153,8 @@ const About = () => {
                     className={styles.introLink}
                   >
                     Apple
-                  </a>
-                  , and previously a Software Engineer Intern at{" "}
+                  </a>{" "}
+                  and{" "}
                   <a
                     href="https://www.shopify.com/"
                     target="_blank"
@@ -157,10 +166,10 @@ const About = () => {
                   .
                 </p>
                 <p>I am an ambitious individual with a mission to make a positive impact on the world.</p>
-                <p>Usually in Toronto, the Bay Area, or Waterloo.</p>
+                <p>Usually the Bay Area, New York City, Toronto, or Waterloo.</p>
 
                 <div className={styles.highlightBox}>
-                  <strong>Seeking Winter 2027 Tech Internships (Jan – Apr)</strong>
+                  <strong>Seeking Summer or Fall 2027 Tech Internships</strong>
                   <span>
                     Preferably in NYC or the Bay Area. Excited about Big Tech, high-growth startups, and anywhere
                     building cool things.

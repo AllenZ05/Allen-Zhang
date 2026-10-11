@@ -7,8 +7,8 @@ import { FiArrowRight } from "react-icons/fi";
 import styles from "./HeroHome.module.css";
 
 const roles = [
+  "Incoming Software Engineer Intern at Rippling",
   "Computer Engineering Student at the University of Waterloo",
-  "Software Engineer Intern at Apple",
   "Would love to talk and connect with you :D",
 ];
 
@@ -43,7 +43,7 @@ const HeroHome = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <span className={styles.badgeDot} />
-          Open to Winter 2027 internships
+          Open to Summer or Fall 2027 internships
         </motion.div>
 
         <motion.h1

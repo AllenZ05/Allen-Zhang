@@ -1,8 +1,21 @@
 // Experience content for the Experiences page. Add new roles at the top.
 // `description` may contain JSX (links are styled by the page's CSS).
 // Optional `status`: "current" or "incoming" renders a badge.
+// Omit `location` or `description` until those details are available.
 
 export const experiences = [
+  {
+    id: 7,
+    position: "Software Engineer Intern",
+    company: "Rippling",
+    location: "San Francisco, CA",
+    period: "Jan 2027 - Apr 2027",
+    description: "Device Management AI Team",
+    skills: [],
+    url: "https://www.rippling.com/",
+    gradient: "linear-gradient(180deg, #fdb71c 0%, #7a005d 100%)",
+    status: "incoming",
+  },
   {
     id: 0,
     position: "Software Engineer Intern",
@@ -10,10 +23,9 @@ export const experiences = [
     location: "Cupertino, CA",
     period: "May 2026 - Aug 2026",
     description: "Device Compute Team",
-    skills: [],
+    skills: ["Python", "Go", "Swift", "AI", "AI Agents"],
     url: "https://www.apple.com/",
     gradient: "linear-gradient(135deg, #a1a1aa 0%, #27272a 100%)",
-    status: "current",
   },
   {
     id: 1,

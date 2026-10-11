@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
       name: "University of Waterloo",
       url: "https://uwaterloo.ca/",
     },
-    jobTitle: "Software Engineer Intern at Apple",
+    jobTitle: "Incoming Software Engineer Intern at Rippling",
   };
 
   return (

@@ -1,7 +1,7 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://allenzhang05.com";
 export const SITE_NAME = "Allen Zhang";
 export const SITE_DESCRIPTION =
-  "Allen Zhang is a Software Engineer Intern at Apple and a Computer Engineering student at the University of Waterloo. Explore projects, experience, and ways to connect.";
+  "Allen Zhang is an incoming Software Engineer Intern at Rippling and a Computer Engineering student at the University of Waterloo, seeking Summer or Fall 2027 internships.";
 
 export const OG_IMAGE = "/heroHome-bg.jpg";
 

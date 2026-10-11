@@ -90,11 +90,11 @@ const Experiences = () => {
                 </div>
 
                 <div className={styles.locationPeriod}>
-                  <span className={styles.location}>{experience.location}</span>
+                  {experience.location && <span className={styles.location}>{experience.location}</span>}
                   <span className={styles.period}>{experience.period}</span>
                 </div>
 
-                <p className={styles.description}>{experience.description}</p>
+                {experience.description && <p className={styles.description}>{experience.description}</p>}
 
                 {experience.skills.length > 0 && (
                   <div className={styles.skillsSection}>
