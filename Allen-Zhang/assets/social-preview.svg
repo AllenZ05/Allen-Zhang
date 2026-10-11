@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#245578" stop-opacity=".5"/><stop offset="1" stop-color="#08090a" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#ffffff" stroke-opacity=".045"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#08090a"/>
+  <ellipse cx="620" cy="-40" rx="700" ry="600" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <g font-family="Arial, sans-serif">
+    <text x="80" y="101" fill="#9ca6b5" font-size="25" letter-spacing="2">ALLENZ05 / PERSONAL WEBSITE</text>
+    <text x="74" y="302" fill="#f7f8f8" font-size="108" font-weight="700" letter-spacing="-5">Allen Zhang</text>
+    <text x="80" y="378" fill="#b2b9c4" font-size="35">Software Engineer</text>
+    <text x="80" y="430" fill="#b2b9c4" font-size="29">Computer Engineering · University of Waterloo</text>
+    <path d="M80 506H1120" stroke="#ffffff" stroke-opacity=".12"/>
+    <text x="80" y="558" fill="#4facfe" font-size="25">allenzhang05.com</text>
+    <text x="1120" y="558" text-anchor="end" fill="#92969f" font-size="22">Experience / Projects / About</text>
+  </g>
+</svg>

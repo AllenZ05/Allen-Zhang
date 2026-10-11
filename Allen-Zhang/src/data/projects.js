@@ -1,5 +1,5 @@
 // Project content for the Projects page. Add new projects here — no component changes needed.
-// `image` is a path under /public (cover screenshot); omit it to fall back to the gradient.
+// `image` is a small thumbnail; `preview` optionally points to the full-size original.
 // Link `type` must be one of: "website", "repository", "demo".
 
 export const projects = [
@@ -9,9 +9,10 @@ export const projects = [
     techStack: "AWS, Next.js, TypeScript, Tailwind CSS, NoSQL, Cloudflare, Stripe",
     status: "In development",
     description:
-      "The ultimate productivity platform that unifies your calendars, goals, tasks, and notes in an AI-powered context-aware workspace, proactively helping you plan and execute what matters most.",
+      "An AI-powered workspace bringing calendars, goals, tasks, and notes together to help plan your day and keep track of what matters.",
     gradient: "linear-gradient(135deg, #7f7fd5 0%, #86a8e7 50%, #91eae4 100%)",
-    image: "/projects/timecopilot.jpg",
+    image: "/projects/timecopilot-thumb.webp",
+    preview: "/projects/timecopilot.jpg",
     links: [{ type: "website", url: "https://www.timecopilot.app/", label: "Website" }],
   },
   {
@@ -19,9 +20,11 @@ export const projects = [
     title: "HockeyLensPro",
     techStack: "Next.js, React.js, TypeScript, Tailwind CSS, Supabase, NHL API",
     status: "In development",
-    description: "Beautiful NHL stats, charts, and comparisons.",
+    description:
+      "An NHL dashboard for exploring player and team statistics, visualizing performance, and comparing careers using NHL API data.",
     gradient: "linear-gradient(135deg, #4b1e82 0%, #994897ff 100%)",
-    image: "/projects/hockeylenspro.jpg",
+    image: "/projects/hockeylenspro-thumb.webp",
+    preview: "/projects/hockeylenspro.jpg",
     links: [{ type: "website", url: "https://hockeylenspro.vercel.app/", label: "Website" }],
   },
   {
@@ -31,7 +34,9 @@ export const projects = [
     description:
       "A responsive personal website showcasing a bit about me, my experiences, and projects I've worked on. You're on it right now!",
     gradient: "linear-gradient(135deg, #0a5af9ff 0%, #3b82f6 50%, #60a5fa 100%)",
-    image: "/projects/personal-website.png",
+    image: "/projects/personal-website-thumb.webp",
+    preview: "/projects/personal-website-preview.webp",
+    imageAlt: "Allen Zhang’s homepage with internship availability and contact links",
     links: [{ type: "repository", url: "https://github.com/AllenZ05/Allen-Zhang", label: "Repository" }],
   },
   {
@@ -41,7 +46,9 @@ export const projects = [
     description:
       "Wearable IoT device using STM32 + accelerometer to detect falls and send GSM alerts to emergency contacts.",
     gradient: "linear-gradient(135deg, #f53346ff 0%, #f68f7dff 100%)",
-    image: "/projects/fall-detection-device.jpg",
+    image: "/projects/fall-detection-diagram.svg",
+    imageAlt:
+      "Fall detection system: an accelerometer feeds an STM32 microcontroller, which sends alerts through a GSM module to emergency contacts",
     links: [{ type: "repository", url: "https://github.com/AllenZ05/Fall-Detection-Device", label: "Repository" }],
   },
   {
@@ -51,7 +58,8 @@ export const projects = [
     description:
       "A Waterloo-themed twist on Minesweeper; avoid the geese while clearing the board in this classic game remake.",
     gradient: "linear-gradient(135deg, #232323ff 0%, #e52d27 100%)",
-    image: "/projects/minesweeper.jpg",
+    image: "/projects/minesweeper-thumb.webp",
+    preview: "/projects/minesweeper.jpg",
     links: [
       {
         type: "demo",
@@ -67,7 +75,8 @@ export const projects = [
     techStack: "Python, Pygame",
     description: "Classical Snake in Pygame with smooth controls, animations, sound effects, and score tracking.",
     gradient: "linear-gradient(135deg, #0b6439ff 0%, #40ee6eff 100%)",
-    image: "/projects/snake.jpg",
+    image: "/projects/snake-thumb.webp",
+    preview: "/projects/snake.jpg",
     links: [
       {
         type: "demo",
@@ -84,7 +93,8 @@ export const projects = [
     description:
       "Movie discovery site with TMDB API search, detailed movie info, user auth, watchlists, and favourites using Vue.js and Firebase.",
     gradient: "linear-gradient(135deg, #2f3d4dff 0%, #42b883 100%)",
-    image: "/projects/movie-website.jpg",
+    image: "/projects/movie-website-thumb.webp",
+    preview: "/projects/movie-website.jpg",
     links: [
       { type: "website", url: "https://cs12-summative.web.app/", label: "Website" },
       { type: "repository", url: "https://github.com/AllenZ05/Movie-Project", label: "Repository" },

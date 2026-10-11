@@ -43,7 +43,7 @@ export const skillCategories = [
   },
 ];
 
-// Terms with `upcoming: true` render hourglass icons instead of checkmarks.
+// An explicit status distinguishes active/upcoming courses from completed courses.
 export const educationYears = [
   {
     year: "Third Year",
@@ -61,7 +61,7 @@ export const educationYears = [
       },
       {
         name: "3B (Sep 2026 - Dec 2026)",
-        upcoming: true,
+        status: "in-progress",
         courses: [
           "Computer Architecture",
           "Compilers",

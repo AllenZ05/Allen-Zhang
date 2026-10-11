@@ -1,121 +1,98 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FaCode, FaGraduationCap, FaRocket } from "react-icons/fa6";
 import { IoCheckmark } from "react-icons/io5";
 import { MdHourglassBottom } from "react-icons/md";
 import { educationYears, skillCategories } from "../../data/about";
+import { emailHref, profile } from "../../data/profile";
+import { useHydrated } from "../../lib/useHydrated";
 import styles from "./About.module.css";
 
 const About = () => {
   const [selectedSection, setSelectedSection] = useState("Introduction");
-  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
-  const [isTiltEnabled, setIsTiltEnabled] = useState(false);
-  const cardRef = useRef(null);
-
-  const tiltMultipliers = {
-    Introduction: 3,
-    Education: 1,
-    Skills: 2,
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isTiltEnabled) return;
-    if (!cardRef.current) return;
-    const card = cardRef.current;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const multiplier = tiltMultipliers[selectedSection] || 1;
-    const rotateX = ((y - centerY) / centerY) * -multiplier;
-    const rotateY = ((x - centerX) / centerX) * multiplier;
-    setTilt({ rotateX, rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    if (!isTiltEnabled) return;
-    setTilt({ rotateX: 0, rotateY: 0 });
-  };
+  const hydrated = useHydrated();
+  const [verticalTabs, setVerticalTabs] = useState(false);
+  const [tiltEnabled, setTiltEnabled] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springX = useSpring(rotateX, { stiffness: 250, damping: 28 });
+  const springY = useSpring(rotateY, { stiffness: 250, damping: 28 });
+  const tabRefs = useRef([]);
+  const tabs = ["Introduction", "Education", "Skills"];
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const query = window.matchMedia("(max-width: 768px)");
+    const update = () => setVerticalTabs(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
   }, []);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1201px)");
-
-    const updateTiltState = (event) => {
-      setIsTiltEnabled(event.matches);
-      if (!event.matches) {
-        setTilt({ rotateX: 0, rotateY: 0 });
-      }
-    };
-
-    updateTiltState(mediaQuery);
-    mediaQuery.addEventListener("change", updateTiltState);
-
-    return () => mediaQuery.removeEventListener("change", updateTiltState);
+    const query = window.matchMedia(
+      "(min-width: 1201px) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+    );
+    const update = () => setTiltEnabled(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
   }, []);
 
-  const skillsContainerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
+  const resetTilt = () => {
+    rotateX.set(0);
+    rotateY.set(0);
   };
 
-  const skillItemVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        opacity: { duration: 0.4, ease: "easeOut" },
-        scale: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
-        y: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
-      },
-    },
-  };
-
-  const handleSectionChange = (section) => {
-    setTilt({ rotateX: 0, rotateY: 0 });
+  const selectSection = (section) => {
+    resetTilt();
     setSelectedSection(section);
   };
 
   const cardMotionProps = {
-    ref: cardRef,
     className: styles.sectionCard,
-    initial: { opacity: 0, y: 30, scale: 0.95 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotateX: isTiltEnabled ? tilt.rotateX : 0,
-      rotateY: isTiltEnabled ? tilt.rotateY : 0,
+    "data-enter": true,
+    style: {
+      "--enter-scale": 0.95,
+      transformPerspective: 1000,
+      rotateX: tiltEnabled && !reducedMotion ? springX : 0,
+      rotateY: tiltEnabled && !reducedMotion ? springY : 0,
     },
-    transition: { duration: 0.4, rotateX: { duration: 0.1 }, rotateY: { duration: 0.1 } },
-    onMouseMove: handleMouseMove,
-    onMouseLeave: handleMouseLeave,
+    onMouseMove: (event) => {
+      if (!tiltEnabled || reducedMotion) return;
+      // Measure the stationary panel, so the card's own tilt cannot move its target.
+      const rect = event.currentTarget.parentElement.getBoundingClientRect();
+      const strength = { Introduction: 3, Education: 1, Skills: 2 }[selectedSection];
+      rotateX.set(((event.clientY - rect.top) / rect.height - 0.5) * -2 * strength);
+      rotateY.set(((event.clientX - rect.left) / rect.width - 0.5) * 2 * strength);
+    },
+    onMouseLeave: resetTilt,
   };
 
-  const renderSection = () => {
-    switch (selectedSection) {
+  const handleTabKey = (event, index) => {
+    let next;
+    if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = tabs.length - 1;
+    else if (event.key === (verticalTabs ? "ArrowDown" : "ArrowRight")) next = (index + 1) % tabs.length;
+    else if (event.key === (verticalTabs ? "ArrowUp" : "ArrowLeft")) next = (index + tabs.length - 1) % tabs.length;
+    if (next === undefined) return;
+    event.preventDefault();
+    selectSection(tabs[next]);
+    tabRefs.current[next]?.focus();
+  };
+
+  const renderSection = (section) => {
+    switch (section) {
       case "Introduction":
         return (
-          <motion.div key="introduction" {...cardMotionProps}>
+          <motion.div {...cardMotionProps}>
             <div className={styles.cardIcon}>
               <FaRocket aria-hidden="true" />
             </div>
             <div className={styles.cardContent}>
-              <h3>Introduction</h3>
+              <h2>Introduction</h2>
               <div className={styles.introText}>
                 <p>
                   Heyyy, it&apos;s Allen. I am a third-year Computer Engineering student at the{" "}
@@ -136,14 +113,15 @@ const About = () => {
                   >
                     Computer Engineering
                   </a>
-                  . Incoming Software Engineer Intern at{" "}
+                  . {profile.role.status === "incoming" ? "Incoming " : ""}
+                  {profile.role.title} at{" "}
                   <a
-                    href="https://www.rippling.com/"
+                    href={profile.role.companyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.introLink}
                   >
-                    Rippling
+                    {profile.role.company}
                   </a>
                   , and previously a Software Engineer Intern at{" "}
                   <a
@@ -169,26 +147,41 @@ const About = () => {
                 <p>Usually the Bay Area, New York City, Toronto, or Waterloo.</p>
 
                 <div className={styles.highlightBox}>
-                  <strong>Seeking Summer or Fall 2027 Tech Internships</strong>
+                  <strong>Seeking {profile.availability} Tech Internships</strong>
                   <span>
                     Preferably in NYC or the Bay Area. Excited about Big Tech, high-growth startups, and anywhere
                     building cool things.
                   </span>
                 </div>
 
-                <p>Feel free to connect with me using my social links in the footer!</p>
+                <p>
+                  Feel free to{" "}
+                  <a href={emailHref} className={styles.introLink}>
+                    email me
+                  </a>{" "}
+                  or connect on{" "}
+                  <a
+                    href={profile.socials.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.introLink}
+                  >
+                    LinkedIn
+                  </a>
+                  !
+                </p>
               </div>
             </div>
           </motion.div>
         );
       case "Education":
         return (
-          <motion.div key="education" {...cardMotionProps}>
+          <motion.div {...cardMotionProps}>
             <div className={styles.cardIcon}>
               <FaGraduationCap aria-hidden="true" />
             </div>
             <div className={styles.cardContent}>
-              <h3>Education</h3>
+              <h2>Education</h2>
               <div className={styles.universityHeader}>
                 <h4>University of Waterloo</h4>
                 <span className={styles.location}>Waterloo, ON</span>
@@ -203,10 +196,15 @@ const About = () => {
                       {year.terms.map((term) => (
                         <div key={term.name} className={styles.termCard}>
                           <h6>{term.name}</h6>
+                          {term.status && (
+                            <p className={styles.termStatus}>
+                              {term.status === "in-progress" ? "In progress" : "Upcoming"}
+                            </p>
+                          )}
                           <ul>
                             {term.courses.map((course) => (
                               <li key={course}>
-                                {term.upcoming ? (
+                                {term.status ? (
                                   <MdHourglassBottom className={styles.hourglassIcon} aria-hidden="true" />
                                 ) : (
                                   <IoCheckmark className={styles.checkIcon} aria-hidden="true" />
@@ -226,26 +224,25 @@ const About = () => {
         );
       case "Skills":
         return (
-          <motion.div key="skills" {...cardMotionProps}>
+          <motion.div {...cardMotionProps}>
             <div className={styles.cardIcon}>
               <FaCode aria-hidden="true" />
             </div>
             <div className={styles.cardContent}>
-              <h3>Skills</h3>
+              <h2>Skills</h2>
 
               <div className={styles.skillsContainer}>
-                <motion.div
-                  className={styles.skillCategoriesGrid}
-                  initial="hidden"
-                  animate="visible"
-                  variants={skillsContainerVariants}
-                >
-                  {skillCategories.map((category) => (
-                    <motion.div
+                <div className={styles.skillCategoriesGrid}>
+                  {skillCategories.map((category, index) => (
+                    <div
                       key={category.title}
                       className={styles.skillCategory}
-                      style={{ "--gradient": category.gradient }}
-                      variants={skillItemVariants}
+                      data-enter
+                      style={{
+                        "--gradient": category.gradient,
+                        "--enter-delay": `${0.1 + index * 0.1}s`,
+                        "--enter-scale": 0.95,
+                      }}
                     >
                       <h5>{category.title}</h5>
                       <div className={styles.skillTags}>
@@ -255,9 +252,9 @@ const About = () => {
                           </span>
                         ))}
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
-                </motion.div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -268,32 +265,61 @@ const About = () => {
   };
 
   return (
-    <main className={styles.aboutMain}>
-      <motion.h1
-        className={styles.heading}
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
+    <main id="main-content" tabIndex={-1} className={styles.aboutMain}>
+      <h1 className={styles.heading} data-enter style={{ "--enter-distance": "-30px", "--enter-delay": "0.2s" }}>
         About Me
-      </motion.h1>
-
-      <div className={styles.tabNavigation}>
-        {["Introduction", "Education", "Skills"].map((tab) => (
-          <motion.button
+      </h1>
+      {hydrated ? (
+        <div
+          className={styles.tabNavigation}
+          role="tablist"
+          aria-label="About sections"
+          aria-orientation={verticalTabs ? "vertical" : "horizontal"}
+        >
+          {tabs.map((tab, index) => (
+            <motion.button
+              key={tab}
+              type="button"
+              role="tab"
+              id={`tab-${tab.toLowerCase()}`}
+              aria-selected={selectedSection === tab}
+              aria-controls={`panel-${tab.toLowerCase()}`}
+              tabIndex={selectedSection === tab ? 0 : -1}
+              ref={(element) => {
+                tabRefs.current[index] = element;
+              }}
+              onClick={() => selectSection(tab)}
+              onKeyDown={(event) => handleTabKey(event, index)}
+              className={`${styles.tabButton} ${selectedSection === tab ? styles.activeTab : ""}`}
+              whileHover={reducedMotion ? undefined : { scale: 1.05 }}
+              whileTap={reducedMotion ? undefined : { scale: 0.95 }}
+            >
+              {tab}
+            </motion.button>
+          ))}
+        </div>
+      ) : (
+        <nav className={styles.tabNavigation} aria-label="About sections">
+          {tabs.map((tab) => (
+            <a key={tab} href={`#panel-${tab.toLowerCase()}`} className={styles.tabButton}>
+              {tab}
+            </a>
+          ))}
+        </nav>
+      )}
+      <div className={styles.contentContainer}>
+        {tabs.map((tab) => (
+          <section
             key={tab}
-            onClick={() => handleSectionChange(tab)}
-            className={`${styles.tabButton} ${selectedSection === tab ? styles.activeTab : ""}`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            id={`panel-${tab.toLowerCase()}`}
+            role={hydrated ? "tabpanel" : undefined}
+            aria-labelledby={hydrated ? `tab-${tab.toLowerCase()}` : undefined}
+            tabIndex={hydrated ? 0 : undefined}
+            hidden={hydrated && selectedSection !== tab}
           >
-            {tab}
-          </motion.button>
+            {renderSection(tab)}
+          </section>
         ))}
-      </div>
-
-      <div className={styles.contentContainer} style={{ perspective: isTiltEnabled ? 1000 : "none" }}>
-        {renderSection()}
       </div>
     </main>
   );

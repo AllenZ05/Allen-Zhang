@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Fall Detection Device</title>
+  <desc id="desc">System overview: accelerometer to STM32 microcontroller to GSM module to emergency contacts.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#1e2533"/><stop offset="1" stop-color="#101318"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M2 2 7 5 2 8" fill="none" stroke="#f5a98b" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1200" height="900" rx="28" fill="url(#bg)"/>
+  <g font-family="Arial, sans-serif">
+    <text x="80" y="100" fill="#f5a98b" font-size="22" letter-spacing="4">EMBEDDED SYSTEMS</text>
+    <text x="80" y="179" fill="#f7f8f8" font-size="58" font-weight="700">Fall Detection Device</text>
+    <text x="80" y="227" fill="#b1b8c6" font-size="27">From motion sensing to an emergency alert.</text>
+    <g fill="#202a38" stroke="#495366" stroke-width="2">
+      <rect x="80" y="310" width="460" height="190" rx="20"/>
+      <rect x="660" y="310" width="460" height="190" rx="20"/>
+      <rect x="660" y="610" width="460" height="190" rx="20"/>
+      <rect x="80" y="610" width="460" height="190" rx="20"/>
+    </g>
+    <g fill="none" stroke="#f5a98b" stroke-width="4" marker-end="url(#arrow)">
+      <path d="M555 405H638"/><path d="M890 515V588"/><path d="M645 705H562"/>
+    </g>
+    <g fill="#f5a98b" font-size="22"><text x="110" y="352">01 / SENSE</text><text x="690" y="352">02 / DETECT</text><text x="690" y="652">03 / SEND</text><text x="110" y="652">04 / ALERT</text></g>
+    <g fill="#f7f8f8" font-size="36" font-weight="700"><text x="110" y="412">Accelerometer</text><text x="690" y="412">STM32</text><text x="690" y="712">GSM module</text><text x="110" y="712">Emergency contacts</text></g>
+    <g fill="#b1b8c6" font-size="25"><text x="110" y="458">Measure movement</text><text x="690" y="458">Process sensor data</text><text x="690" y="758">Transmit an alert</text><text x="110" y="758">Receive the notification</text></g>
+  </g>
+</svg>

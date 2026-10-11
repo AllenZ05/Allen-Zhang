@@ -96,28 +96,6 @@
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
 }
 
-/* "Copied!" tooltip above the email button */
-.copyTooltip {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
-  translate: -50% 0;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  background: var(--bg-tertiary);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  color: var(--status-success);
-  font-family: var(--font-mono), monospace;
-  font-size: 0.75rem;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.copyTooltipError {
-  border-color: rgba(239, 68, 68, 0.4);
-  color: var(--status-error);
-}
-
 .copyright {
   font-family: var(--font-mono), monospace;
   font-size: 0.75rem;
@@ -143,4 +121,48 @@
   .footerIcon {
     font-size: 1.3rem;
   }
+}
+
+.contactRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.emailLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  min-height: 44px;
+}
+.emailLink:hover {
+  color: var(--text-accent);
+  text-decoration: underline;
+}
+.copyButton {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--surface-glass-light);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.copyButton:hover {
+  background: var(--accent-bg);
+  color: var(--text-primary);
+}
+.copyStatus {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-align: center;
+  max-width: 32rem;
+}
+.copyStatus:empty {
+  display: none;
 }

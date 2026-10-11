@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FiExternalLink, FiGithub, FiVideo } from "react-icons/fi";
+import Modal from "../../components/Modal";
 import { projects } from "../../data/projects";
 import { handleSpotlightMove } from "../../lib/spotlight";
 import styles from "./Projects.module.css";
@@ -14,73 +15,51 @@ const linkIcons = {
   demo: <FiVideo />,
 };
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.23, 1, 0.32, 1] },
-  },
-};
-
 const Projects = () => {
+  const [preview, setPreview] = useState(null);
+  const reducedMotion = useReducedMotion();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <main className={styles.projectsMain}>
-      <motion.h1
-        className={styles.heading}
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
+    <main id="main-content" tabIndex={-1} className={styles.projectsMain}>
+      <h1 className={styles.heading} data-enter style={{ "--enter-distance": "-30px", "--enter-delay": "0.2s" }}>
         Projects
-      </motion.h1>
+      </h1>
 
-      <motion.div
-        className={styles.projectsGrid}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={containerVariants}
-      >
-        {projects.map((project) => (
+      <div className={styles.projectsGrid}>
+        {projects.map((project, index) => (
           <motion.article
             key={project.id}
             className={styles.projectCard}
-            variants={itemVariants}
+            data-enter
             onMouseMove={handleSpotlightMove}
-            whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
-            style={{ "--gradient": project.gradient }}
+            whileHover={reducedMotion ? undefined : { y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
+            style={{ "--gradient": project.gradient, "--enter-delay": `${index * 0.08}s`, "--enter-distance": "32px" }}
           >
-            <div className={styles.cover}>
-              {project.image ? (
-                <Image
-                  src={project.image}
-                  alt={`${project.title} preview`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className={styles.coverImage}
-                />
-              ) : (
-                <div className={styles.coverFallback} />
-              )}
-            </div>
+            <a
+              href={project.preview || project.image}
+              className={styles.cover}
+              aria-label={`Enlarge ${project.title} preview`}
+              onClick={(event) => {
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+                event.preventDefault();
+                setPreview(project);
+              }}
+            >
+              <Image
+                src={project.image}
+                alt={project.imageAlt || `${project.title} preview`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1131px) 50vw, 33vw"
+                className={styles.coverImage}
+              />
+            </a>
 
             <div className={styles.cardContent}>
               <div className={styles.cardHeader}>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <h2 className={styles.projectTitle}>{project.title}</h2>
                 {project.status && <span className={styles.statusBadge}>{project.status}</span>}
               </div>
 
@@ -110,7 +89,23 @@ const Projects = () => {
             <div className={styles.spotlight} aria-hidden="true" />
           </motion.article>
         ))}
-      </motion.div>
+      </div>
+      <Modal
+        open={Boolean(preview)}
+        onClose={() => setPreview(null)}
+        title={preview ? `${preview.title} preview` : "Project preview"}
+        id="project-preview"
+      >
+        {preview && (
+          <Image
+            src={preview.preview || preview.image}
+            alt={preview.imageAlt || `${preview.title} preview`}
+            width={1600}
+            height={1200}
+            className={styles.fullPreview}
+          />
+        )}
+      </Modal>
     </main>
   );
 };

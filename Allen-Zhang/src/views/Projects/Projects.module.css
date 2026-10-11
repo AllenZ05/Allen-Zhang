@@ -72,16 +72,26 @@
 
 .cover {
   position: relative;
+  display: block;
   aspect-ratio: 4 / 3;
   background: var(--bg-tertiary);
   border-bottom: 1px solid var(--border-color);
   overflow: hidden;
+  cursor: zoom-in;
 }
 
 .coverImage {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  padding: var(--spacing-sm);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .coverImage {
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .cover:hover .coverImage {
+    transform: scale(1.025);
+  }
 }
 
 .coverFallback {
@@ -208,4 +218,22 @@
     align-items: flex-start;
     gap: var(--spacing-xs);
   }
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient);
+  opacity: 0.08;
+}
+.cover:focus-visible {
+  outline-offset: -4px;
+}
+.fullPreview {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100dvh - 10rem);
+  object-fit: contain;
 }

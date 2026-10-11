@@ -1,3 +1,5 @@
+import { profile } from "./profile";
+
 // Experience content for the Experiences page. Add new roles at the top.
 // `description` may contain JSX (links are styled by the page's CSS).
 // Optional `status`: "current" or "incoming" renders a badge.
@@ -6,15 +8,15 @@
 export const experiences = [
   {
     id: 7,
-    position: "Software Engineer Intern",
-    company: "Rippling",
-    location: "San Francisco, CA",
-    period: "Jan 2027 - Apr 2027",
-    description: "Device Management AI Team",
+    position: profile.role.title,
+    company: profile.role.company,
+    location: profile.role.location,
+    period: profile.role.period,
+    description: profile.role.team,
     skills: [],
-    url: "https://www.rippling.com/",
+    url: profile.role.companyUrl,
     gradient: "linear-gradient(180deg, #fdb71c 0%, #7a005d 100%)",
-    status: "incoming",
+    status: profile.role.status,
   },
   {
     id: 0,

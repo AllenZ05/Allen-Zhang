@@ -109,20 +109,9 @@
   position: relative;
   isolation: isolate;
   transition:
-    transform 0.15s ease-out,
     box-shadow var(--transition-medium),
     border-color var(--transition-medium),
     background-color var(--transition-medium);
-  will-change: transform;
-  transform-style: preserve-3d;
-  transform-origin: center center;
-}
-
-@media (max-width: 1200px) {
-  .sectionCard {
-    transform-style: flat;
-    will-change: auto;
-  }
 }
 
 .sectionCard::after {
@@ -179,7 +168,7 @@
   z-index: 2;
 }
 
-.cardContent h3 {
+.cardContent h2 {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -241,7 +230,7 @@
 .highlightBox span {
   font-size: 1.05rem;
   font-weight: 500;
-  opacity: 0.85;
+  opacity: 1;
 }
 
 :global([data-theme="light"]) .highlightBox {
@@ -334,72 +323,6 @@
   color: var(--text-accent);
   margin-bottom: var(--spacing-md);
   text-align: center;
-}
-
-.termHeader {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: var(--spacing-md);
-}
-
-.termHeader h6 {
-  margin-bottom: 0;
-  text-align: center;
-}
-
-.currentBadge {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0.3rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  white-space: nowrap;
-  color: #00b894;
-  background: rgba(0, 184, 148, 0.15);
-  border: 1px solid rgba(0, 184, 148, 0.3);
-  transition: all var(--transition-fast);
-  overflow: hidden;
-}
-
-.currentBadge::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-  transition: left 0.6s ease;
-}
-
-.currentBadge:hover {
-  transform: translateY(calc(-50% - 1px)) scale(1.05);
-  background: rgba(0, 184, 148, 0.25);
-  border-color: rgba(0, 184, 148, 0.5);
-  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
-}
-
-.currentBadge:hover::before {
-  left: 100%;
-}
-
-:global([data-theme="light"]) .currentBadge {
-  color: #16a34a;
-  background: rgba(22, 163, 74, 0.12);
-  border-color: rgba(22, 163, 74, 0.3);
-}
-
-:global([data-theme="light"]) .currentBadge:hover {
-  background: rgba(22, 163, 74, 0.2);
-  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
-  border-color: rgba(22, 163, 74, 0.5);
 }
 
 .termCard ul {
@@ -566,26 +489,23 @@
     margin-bottom: var(--spacing-lg);
   }
 
-  .termHeader {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-xs);
-    padding-top: calc(var(--spacing-lg) + var(--spacing-sm));
-  }
-
-  .termHeader .currentBadge {
-    position: absolute;
-    top: 0;
-    right: 50%;
-    transform: translateX(50%);
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .termHeader .currentBadge:hover {
-    transform: translateX(50%) translateY(-1px) scale(1.05);
-  }
-
   .skillTag {
     padding: 0.3rem 0.6rem;
   }
+}
+
+.contentContainer > section {
+  scroll-margin-top: 7rem;
+}
+.contentContainer > section + section:not([hidden]) {
+  margin-top: 2rem;
+}
+.contentContainer:has([role="tabpanel"]) > section {
+  margin-top: 0;
+}
+.termStatus {
+  text-align: center;
+  margin: -0.5rem 0 1rem;
+  color: var(--text-accent);
+  font-size: 0.85rem;
 }

@@ -1,38 +1,30 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { FaTimes } from "react-icons/fa";
-import { FiMoon, FiSun } from "react-icons/fi";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { useEffect, useState } from "react";
+import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
 import { useTheme } from "../context/useTheme";
+import { useHydrated } from "../lib/useHydrated";
+import Modal from "./Modal";
 import styles from "./Navbar.module.css";
 
-const Navbar = () => {
+const navLinks = [
+  { path: "/", label: "Home" },
+  { path: "/about/", label: "About" },
+  { path: "/experiences/", label: "Experiences" },
+  { path: "/projects/", label: "Projects" },
+];
+
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const menuButtonRef = useRef(null);
   const pathname = usePathname();
+  const hydrated = useHydrated();
+  const reducedMotion = useReducedMotion();
   const { theme, toggleTheme } = useTheme();
-
-  const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
-
-  const normalizePath = (path) => (path !== "/" && path.endsWith("/") ? path.slice(0, -1) : path);
-  const isActive = (path) => normalizePath(pathname) === normalizePath(path);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
+  const normalize = (path) => path.replace(/\/$/, "") || "/";
 
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 1025px)");
@@ -43,162 +35,69 @@ const Navbar = () => {
     return () => desktop.removeEventListener("change", closeOnDesktop);
   }, []);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const closeOnEscape = (event) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
-        menuButtonRef.current?.focus();
-      }
-    };
-    window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [isOpen]);
-
-  // Close menu on route change
-  // biome-ignore lint/correctness/useExhaustiveDependencies: pathname is intentionally the trigger to close the menu on navigation
+  // biome-ignore lint/correctness/useExhaustiveDependencies: navigation closes the menu, including browser Back.
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  const menuVariants = {
-    closed: {
-      opacity: 0,
-      transition: {
-        duration: 0.2,
-        ease: "easeInOut",
-      },
-    },
-    open: {
-      opacity: 1,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const linkVariants = {
-    closed: { opacity: 0, y: 20 },
-    open: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.1 + i * 0.08,
-        duration: 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    }),
-  };
-
-  const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/experiences", label: "Experiences" },
-    { path: "/projects", label: "Projects" },
-  ];
+  const links = navLinks.map(({ path, label }, index) => (
+    <li key={path} data-enter style={{ "--enter-delay": `${index * 0.08}s`, "--enter-distance": "-12px" }}>
+      <Link
+        href={path}
+        onClick={closeMenu}
+        className={normalize(pathname) === normalize(path) ? styles.activeLink : undefined}
+        aria-current={normalize(pathname) === normalize(path) ? "page" : undefined}
+      >
+        {label}
+      </Link>
+    </li>
+  ));
 
   return (
-    <motion.nav
-      className={styles.header}
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      <Link href="/" onClick={closeMenu} className={styles.logo}>
-        <h2>AllenZ05</h2>
-      </Link>
-
-      {/* Desktop Navigation */}
-      <ul className={styles.desktopNav}>
-        {navLinks.map((link, index) => (
-          <motion.li
-            key={link.path}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 + index * 0.1 }}
-          >
-            <Link
-              href={link.path}
-              className={isActive(link.path) ? styles.activeLink : ""}
-              aria-current={isActive(link.path) ? "page" : undefined}
+    <>
+      <nav className={styles.header} aria-label="Main navigation">
+        <Link href="/" className={styles.logo}>
+          <span>AllenZ05</span>
+        </Link>
+        <ul className={styles.desktopNav}>{links}</ul>
+        {hydrated && (
+          <div className={styles.navActions}>
+            <button
+              type="button"
+              className={styles.themeToggle}
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
-              {link.label}
-            </Link>
-          </motion.li>
-        ))}
-      </ul>
-
-      {/* Mobile Navigation */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.ul
-            id="mobile-navigation"
-            className={styles.mobileNav}
-            variants={menuVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
-          >
-            {navLinks.map((link, index) => (
-              <motion.li key={link.path} custom={index} variants={linkVariants} initial="closed" animate="open">
-                <Link
-                  href={link.path}
-                  onClick={closeMenu}
-                  className={isActive(link.path) ? styles.activeLink : ""}
-                  aria-current={isActive(link.path) ? "page" : undefined}
-                >
-                  {link.label}
-                </Link>
-              </motion.li>
-            ))}
-          </motion.ul>
+              <motion.span
+                key={theme}
+                className={styles.themeSymbol}
+                initial={reducedMotion ? false : { rotate: -90, scale: 0.6 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{ duration: reducedMotion ? 0 : 0.3 }}
+                aria-hidden="true"
+              >
+                {theme === "dark" ? <FiSun className={styles.themeIcon} /> : <FiMoon className={styles.themeIcon} />}
+              </motion.span>
+            </button>
+            <button
+              type="button"
+              className={styles.hamburgerMenu}
+              onClick={() => setIsOpen(true)}
+              aria-label="Open navigation menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+            >
+              <FiMenu className={styles.hamburgerIcon} aria-hidden="true" />
+            </button>
+          </div>
         )}
-      </AnimatePresence>
-
-      <div className={styles.navActions}>
-        <motion.button
-          type="button"
-          className={styles.themeToggle}
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          initial={{ opacity: 0, rotate: -180 }}
-          animate={{ opacity: 1, rotate: 0 }}
-          transition={{ delay: 0.5, duration: 0.4 }}
-        >
-          <motion.div
-            key={theme}
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {theme === "dark" ? <FiSun className={styles.themeIcon} /> : <FiMoon className={styles.themeIcon} />}
-          </motion.div>
-        </motion.button>
-
-        <button
-          ref={menuButtonRef}
-          type="button"
-          className={styles.hamburgerMenu}
-          onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
-          aria-expanded={isOpen}
-          aria-controls={isOpen ? "mobile-navigation" : undefined}
-        >
-          <motion.div animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-            {isOpen ? (
-              <FaTimes className={styles.hamburgerIcon} />
-            ) : (
-              <GiHamburgerMenu className={styles.hamburgerIcon} />
-            )}
-          </motion.div>
-        </button>
-      </div>
-    </motion.nav>
+        {!hydrated && <ul className={styles.fallbackNav}>{links}</ul>}
+      </nav>
+      <Modal open={isOpen} onClose={closeMenu} title="Navigation" id="mobile-navigation" className={styles.menuDialog}>
+        <nav aria-label="Mobile navigation">
+          <ul className={styles.mobileNav}>{links}</ul>
+        </nav>
+      </Modal>
+    </>
   );
-};
-
-export default Navbar;
+}

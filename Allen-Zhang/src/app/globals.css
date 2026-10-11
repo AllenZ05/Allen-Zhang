@@ -22,7 +22,7 @@
   /* Text */
   --text-primary: #f7f8f8;
   --text-secondary: #a1a5ad;
-  --text-muted: #6e7178;
+  --text-muted: #92969f;
   --text-accent: #4facfe;
 
   /* Accents */
@@ -117,8 +117,8 @@
   --hero-glow: rgba(59, 130, 246, 0.3);
 
   /* Status Colors */
-  --status-success: #16a34a;
-  --status-warning: #d97706;
+  --status-success: #147838;
+  --status-warning: #995006;
   --status-error: #dc2626;
   --status-info: #2563eb;
 
@@ -228,4 +228,82 @@ p {
 
 li {
   --li-base-font-size: 1rem;
+}
+
+.page-content {
+  width: 100%;
+  min-height: 100%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+main {
+  scroll-margin-top: 6rem;
+}
+main:focus {
+  outline: none;
+}
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 1rem;
+  z-index: 1100;
+  padding: 0.8rem 1rem;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-radius: 8px;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .page-content {
+    animation: page-entrance 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  /* CSS entrances finish even without JavaScript. Independent translate/scale
+     leave transform available for the cards' interactive hover and tilt. */
+  [data-enter] {
+    animation: content-entrance 600ms cubic-bezier(0.23, 1, 0.32, 1) var(--enter-delay, 0s) backwards;
+  }
+}
+@keyframes page-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes content-entrance {
+  from {
+    opacity: 0;
+    translate: 0 var(--enter-distance, 24px);
+    scale: var(--enter-scale, 1);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-motion-card]:hover {
+    transform: none !important;
+  }
+  a:hover,
+  button:hover {
+    transform: none;
+  }
 }

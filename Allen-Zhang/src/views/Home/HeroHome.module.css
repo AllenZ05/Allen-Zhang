@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 0 1.5rem;
+  padding: 7rem 1.5rem 4rem;
 }
 
 /* Background: subtle accent glow + faint grid, no images */
@@ -67,17 +67,7 @@
   border-radius: 50%;
   background: var(--status-success);
   box-shadow: 0 0 8px var(--status-success);
-  animation: pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
+  flex-shrink: 0;
 }
 
 .name {
@@ -100,7 +90,7 @@
   justify-content: center;
   font-size: clamp(1.05rem, 2.5vw, 1.35rem);
   color: var(--text-secondary);
-  margin-bottom: 2.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .roleLine span {
@@ -174,7 +164,7 @@
 
   .roleLine {
     min-height: 3.2rem;
-    margin-bottom: 2.25rem;
+    margin-bottom: 0.75rem;
     padding: 0 0.5rem;
   }
 
@@ -188,5 +178,36 @@
     width: 100%;
     max-width: 20rem;
     justify-content: center;
+  }
+}
+
+.education {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  text-wrap: balance;
+  display: grid;
+}
+
+.rotatingLine {
+  display: grid;
+  place-items: center;
+  min-height: 3.2em;
+}
+
+.rotatingLine > span {
+  grid-area: 1 / 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .badgeDot {
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+    box-shadow: 0 0 14px var(--status-success);
   }
 }

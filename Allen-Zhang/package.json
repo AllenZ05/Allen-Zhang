@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "biome check src && eslint src --max-warnings 0",
-    "format": "biome check --write src"
+    "format": "biome check --write src",
+    "test:e2e": "playwright test",
+    "preview": "node scripts/serve.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.31.0",
@@ -19,6 +21,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.5.1",
     "@next/eslint-plugin-next": "^16.4.0",
+    "@playwright/test": "^1.64.0",
     "@types/react": "^19.2.11",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.2"

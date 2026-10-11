@@ -1,11 +1,12 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FiArrowUp } from "react-icons/fi";
 import styles from "./BackToTop.module.css";
 
 const BackToTop = () => {
+  const reducedMotion = useReducedMotion();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -17,14 +18,15 @@ const BackToTop = () => {
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    toggleVisibility();
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: reducedMotion ? "instant" : "smooth",
     });
   };
 

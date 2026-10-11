@@ -1,52 +1,25 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import styles from "./NotFound.module.css";
 
 const NotFound = () => {
   return (
-    <main className={styles.notFoundMain}>
-      <motion.div
-        className={styles.content}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <motion.h1
-          className={styles.errorCode}
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+    <main id="main-content" tabIndex={-1} className={styles.notFoundMain}>
+      <div className={styles.content}>
+        <h1 className={styles.errorCode} data-enter style={{ "--enter-delay": "0.2s", "--enter-scale": 0.8 }}>
           404
-        </motion.h1>
-        <motion.h2
-          className={styles.title}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
+        </h1>
+        <h2 className={styles.title} data-enter style={{ "--enter-delay": "0.4s" }}>
           Page Not Found
-        </motion.h2>
-        <motion.p
-          className={styles.description}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
+        </h2>
+        <p className={styles.description} data-enter style={{ "--enter-delay": "0.5s" }}>
           The page you&apos;re looking for does not exist.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
+        </p>
+        <div data-enter style={{ "--enter-delay": "0.6s" }}>
           <Link href="/" className={styles.homeButton}>
             Back to Home
           </Link>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </main>
   );
 };

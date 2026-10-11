@@ -4,36 +4,18 @@ import Script from "next/script";
 import BackToTop from "../components/BackToTop";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { roleLabel } from "../data/profile";
 import ClientLayout from "./ClientLayout";
 import Providers from "./providers";
-import { OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL, SOCIALS } from "./siteConfig";
+import { pageMetadata, SITE_DESCRIPTION, SITE_NAME, SITE_URL, SOCIALS } from "./siteConfig";
 
 export const metadata = {
   title: {
     default: SITE_NAME,
     template: "%s | AZ05",
   },
-  description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
-  openGraph: {
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    type: "website",
-    images: [
-      {
-        url: OG_IMAGE,
-        alt: `${SITE_NAME} - Personal Website`,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    images: [OG_IMAGE],
-  },
+  ...pageMetadata(null, SITE_DESCRIPTION, "/"),
   icons: {
     icon: [
       { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -73,7 +55,7 @@ export default function RootLayout({ children }) {
       name: "University of Waterloo",
       url: "https://uwaterloo.ca/",
     },
-    jobTitle: "Incoming Software Engineer Intern at Rippling",
+    jobTitle: roleLabel,
   };
 
   return (
@@ -109,6 +91,9 @@ export default function RootLayout({ children }) {
           {JSON.stringify(jsonLd)}
         </Script>
 
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <Providers>
           <Navbar />
           <ClientLayout>{children}</ClientLayout>

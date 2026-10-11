@@ -1,67 +1,47 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { experiences } from "../../data/experiences";
 import { handleSpotlightMove } from "../../lib/spotlight";
 import styles from "./Experiences.module.css";
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
-  },
-};
-
 const Experiences = () => {
+  const reducedMotion = useReducedMotion();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <main className={styles.experiencesMain}>
-      <motion.h1
-        className={styles.heading}
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
+    <main id="main-content" tabIndex={-1} className={styles.experiencesMain}>
+      <h1 className={styles.heading} data-enter style={{ "--enter-distance": "-30px", "--enter-delay": "0.2s" }}>
         Experiences
-      </motion.h1>
+      </h1>
 
       <div className={styles.timelineContainer}>
         <div className={styles.timelineLine}></div>
 
-        <motion.div
-          className={styles.experiencesGrid}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
+        <div className={styles.experiencesGrid}>
           {experiences.map((experience, index) => (
             <motion.div
               key={experience.id}
               className={`${styles.experienceCard} ${index % 2 === 0 ? styles.left : styles.right}`}
-              variants={itemVariants}
+              data-enter
               onMouseMove={handleSpotlightMove}
-              whileHover={{
-                y: -8,
-                transition: { duration: 0.3, ease: "easeOut" },
+              whileHover={
+                reducedMotion
+                  ? undefined
+                  : {
+                      y: -8,
+                      transition: { duration: 0.3, ease: "easeOut" },
+                    }
+              }
+              style={{
+                "--gradient": experience.gradient,
+                "--enter-delay": `${index * 0.2}s`,
+                "--enter-distance": "50px",
               }}
-              style={{ "--gradient": experience.gradient }}
             >
               <div className={styles.cardContent}>
                 <div className={styles.cardHeader}>
@@ -113,7 +93,7 @@ const Experiences = () => {
               <div className={styles.timelineNode}></div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </main>
   );
