@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FiExternalLink, FiGithub, FiVideo } from "react-icons/fi";
 import Modal from "../../components/Modal";
 import { projects } from "../../data/projects";
@@ -18,13 +18,10 @@ const linkIcons = {
 const Projects = () => {
   const [preview, setPreview] = useState(null);
   const reducedMotion = useReducedMotion();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
-    <main id="main-content" tabIndex={-1} className={styles.projectsMain}>
-      <h1 className={styles.heading} data-enter style={{ "--enter-distance": "-30px", "--enter-delay": "0.2s" }}>
+    <main id="main-content" tabIndex={-1} className="page-main">
+      <h1 className="page-heading" data-enter style={{ "--enter-distance": "-30px", "--enter-delay": "0.2s" }}>
         Projects
       </h1>
 

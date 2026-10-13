@@ -87,9 +87,12 @@ export default function RootLayout({ children }) {
           gtag('js', new Date());
           gtag('config', 'G-FESWP1E6XM');`}
         </Script>
-        <Script id="json-ld" type="application/ld+json" strategy="afterInteractive">
-          {JSON.stringify(jsonLd)}
-        </Script>
+        {/* Structured data is not executable, so it belongs in the static HTML rather than next/script. */}
+        <script
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static JSON with "<" escaped, per Next.js JSON-LD guidance.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+        />
 
         <a href="#main-content" className="skip-link">
           Skip to content

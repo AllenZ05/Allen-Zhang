@@ -233,3 +233,14 @@ test("mobile layouts fit in both themes", async ({ page }) => {
   }
   expect(errors).toEqual([]);
 });
+
+test("new pages start at the top and Back restores the previous scroll position", async ({ page }) => {
+  await page.goto("/experiences/");
+  await page.evaluate(() => window.scrollTo(0, 900));
+  await page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Projects", exact: true }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Projects");
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  await page.goBack();
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Experiences");
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(900);
+});

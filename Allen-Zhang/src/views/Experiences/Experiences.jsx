@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { experiences } from "../../data/experiences";
 import { handleSpotlightMove } from "../../lib/spotlight";
@@ -9,13 +8,10 @@ import styles from "./Experiences.module.css";
 
 const Experiences = () => {
   const reducedMotion = useReducedMotion();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
-    <main id="main-content" tabIndex={-1} className={styles.experiencesMain}>
-      <h1 className={styles.heading} data-enter style={{ "--enter-distance": "-30px", "--enter-delay": "0.2s" }}>
+    <main id="main-content" tabIndex={-1} className="page-main">
+      <h1 className="page-heading" data-enter style={{ "--enter-distance": "-30px", "--enter-delay": "0.2s" }}>
         Experiences
       </h1>
 
@@ -46,9 +42,9 @@ const Experiences = () => {
               <div className={styles.cardContent}>
                 <div className={styles.cardHeader}>
                   <div className={styles.positionInfo}>
-                    <h3 className={styles.position}>{experience.position}</h3>
+                    <h2 className={styles.position}>{experience.position}</h2>
                     <div className={styles.companyRow}>
-                      <h4 className={styles.company}>
+                      <h3 className={styles.company}>
                         {experience.company}
                         <a
                           href={experience.url}
@@ -59,7 +55,7 @@ const Experiences = () => {
                         >
                           <FiExternalLink />
                         </a>
-                      </h4>
+                      </h3>
                     </div>
                   </div>
                   {experience.status && (

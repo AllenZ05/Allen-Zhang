@@ -11,7 +11,7 @@ export const projects = [
       "An AI-powered workspace bringing calendars, goals, tasks, and notes together to help plan your day and keep track of what matters.",
     gradient: "linear-gradient(135deg, #7f7fd5 0%, #86a8e7 50%, #91eae4 100%)",
     image: "/projects/timecopilot-thumb.webp",
-    preview: "/projects/timecopilot.jpg",
+    preview: "/projects/timecopilot.webp",
     links: [{ type: "website", url: "https://www.timecopilot.app/", label: "Website" }],
   },
   {
@@ -22,7 +22,7 @@ export const projects = [
       "An NHL dashboard for exploring player and team statistics, visualizing performance, and comparing careers using NHL API data.",
     gradient: "linear-gradient(135deg, #4b1e82 0%, #994897ff 100%)",
     image: "/projects/hockeylenspro-thumb.webp",
-    preview: "/projects/hockeylenspro.jpg",
+    preview: "/projects/hockeylenspro.webp",
     links: [{ type: "website", url: "https://hockeylenspro.vercel.app/", label: "Website" }],
   },
   {
@@ -92,7 +92,7 @@ export const projects = [
       "Movie discovery site with TMDB API search, detailed movie info, user auth, watchlists, and favourites using Vue.js and Firebase.",
     gradient: "linear-gradient(135deg, #2f3d4dff 0%, #42b883 100%)",
     image: "/projects/movie-website-thumb.webp",
-    preview: "/projects/movie-website.jpg",
+    preview: "/projects/movie-website.webp",
     links: [
       { type: "website", url: "https://cs12-summative.web.app/", label: "Website" },
       { type: "repository", url: "https://github.com/AllenZ05/Movie-Project", label: "Repository" },

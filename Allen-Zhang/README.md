@@ -39,6 +39,3 @@ npm run test:e2e
 The checks cover navigation, themes, mobile dialog focus, About tabs, project previews, contact fallback, reduced motion, static content without JavaScript, and layout widths. They start and stop a local static server on port 4175. Analytics requests are blocked during the tests.
 
 GitHub Actions runs lint, build, and these browser checks on pushes and pull requests. The workflow belongs in `.github/workflows/website.yml` at the **parent repository root**, alongside `Allen-Zhang/`.
-
-
-See [the October 2026 review](docs/review-2026-10-10.md) for the modernization checkpoint and follow-up work.

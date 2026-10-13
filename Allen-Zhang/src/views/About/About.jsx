@@ -144,7 +144,7 @@ const About = () => {
                   .
                 </p>
                 <p>I am an ambitious individual with a mission to make a positive impact on the world.</p>
-                <p>Usually the Bay Area, New York City, Toronto, or Waterloo.</p>
+                <p>Usually in the Bay Area, New York City, Toronto, or Waterloo.</p>
 
                 <div className={styles.highlightBox}>
                   <strong>Seeking {profile.availability} Tech Internships</strong>
@@ -183,7 +183,7 @@ const About = () => {
             <div className={styles.cardContent}>
               <h2>Education</h2>
               <div className={styles.universityHeader}>
-                <h4>University of Waterloo</h4>
+                <h3>University of Waterloo</h3>
                 <span className={styles.location}>Waterloo, ON</span>
                 <span className={styles.program}>Computer Engineering</span>
               </div>
@@ -191,11 +191,11 @@ const About = () => {
               <div className={styles.academicYears}>
                 {educationYears.map((year) => (
                   <div key={year.year} className={styles.yearSection}>
-                    <h5>{year.year}</h5>
+                    <h4>{year.year}</h4>
                     <div className={styles.termsGrid}>
                       {year.terms.map((term) => (
                         <div key={term.name} className={styles.termCard}>
-                          <h6>{term.name}</h6>
+                          <h5>{term.name}</h5>
                           {term.status && (
                             <span className={styles.termBadge}>
                               {term.status === "in-progress" ? "In progress" : "Upcoming"}
@@ -244,7 +244,7 @@ const About = () => {
                         "--enter-scale": 0.95,
                       }}
                     >
-                      <h5>{category.title}</h5>
+                      <h3>{category.title}</h3>
                       <div className={styles.skillTags}>
                         {category.skills.map((skill) => (
                           <span key={skill} className={styles.skillTag}>
@@ -265,8 +265,8 @@ const About = () => {
   };
 
   return (
-    <main id="main-content" tabIndex={-1} className={styles.aboutMain}>
-      <h1 className={styles.heading} data-enter style={{ "--enter-distance": "-30px", "--enter-delay": "0.2s" }}>
+    <main id="main-content" tabIndex={-1} className={`page-main ${styles.aboutMain}`}>
+      <h1 className="page-heading" data-enter style={{ "--enter-distance": "-30px", "--enter-delay": "0.2s" }}>
         About Me
       </h1>
       {hydrated ? (

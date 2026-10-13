@@ -1,12 +1,4 @@
 .footer {
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-}
-
-.footer {
   width: 100%;
   flex-shrink: 0;
   display: flex;
