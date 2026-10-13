@@ -48,31 +48,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  width: 100%;
   max-width: 56rem;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.9rem;
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
-  background: var(--surface-glass-light);
-  color: var(--text-secondary);
-  font-family: var(--font-mono), monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.02em;
-  margin-bottom: 2rem;
-}
-
-.badgeDot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--status-success);
-  box-shadow: 0 0 8px var(--status-success);
-  flex-shrink: 0;
 }
 
 .name {
@@ -89,17 +66,34 @@
 }
 
 .roleLine {
-  min-height: 2.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  display: grid;
+  place-items: center;
   font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  line-height: 1.6;
   color: var(--text-secondary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 2.5rem;
 }
 
-.roleLine span {
+.typedLine,
+.lineSizer {
+  grid-area: 1 / 1;
+  width: 100%;
+}
+
+/* Reserve the longest message's height at every width, including while deleting. */
+.lineSizer {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cursor {
   display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 0.15em;
+  vertical-align: -0.1em;
+  background: var(--text-accent);
 }
 
 /* CTAs */
@@ -162,17 +156,6 @@
 /* Mobile */
 
 @media only screen and (max-width: 768px) {
-  .badge {
-    font-size: 0.72rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .roleLine {
-    min-height: 3.2rem;
-    margin-bottom: 0.75rem;
-    padding: 0 0.5rem;
-  }
-
   .actions {
     width: 100%;
     flex-direction: column;
@@ -186,33 +169,20 @@
   }
 }
 
-.education {
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
-  text-wrap: balance;
-  display: grid;
-}
-
-.rotatingLine {
-  display: grid;
-  place-items: center;
-  min-height: 3.2em;
-}
-
-.rotatingLine > span {
-  grid-area: 1 / 1;
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .badgeDot {
-    animation: pulse 2s ease-in-out infinite;
+  .cursor {
+    animation: blink 1s steps(1, end) infinite;
   }
 }
 
-@keyframes pulse {
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    visibility: hidden;
+  }
+}
+
+@keyframes blink {
   50% {
-    opacity: 0.45;
-    box-shadow: 0 0 14px var(--status-success);
+    opacity: 0;
   }
 }

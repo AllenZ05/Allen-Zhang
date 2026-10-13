@@ -131,18 +131,19 @@ test("home footer fits the viewport, centers its four icons, and copies email", 
   expect(await page.evaluate(() => window.copiedEmail)).toBe("allen.zhang.y05@gmail.com");
 });
 
-test("reduced motion preserves a stable role and disables page entrance", async ({ page }) => {
+test("reduced motion preserves a stable introduction and disables page entrance", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(page.getByText("Incoming Software Engineer Intern at Rippling", { exact: true })).toBeVisible();
+  const typewriter = page.locator("[data-typewriter]");
+  await expect(typewriter).toHaveText("Computer Engineering student at the University of Waterloo");
   await expect(page.locator(".page-content")).toHaveCSS("animation-name", "none");
   await expect(page.getByRole("heading", { name: "Allen Zhang", exact: true })).toHaveCSS("animation-name", "none");
   await page.clock.install();
   await page.clock.fastForward(10000);
-  await expect(page.getByText("Incoming Software Engineer Intern at Rippling", { exact: true })).toBeVisible();
+  await expect(typewriter).toHaveText("Computer Engineering student at the University of Waterloo");
 });
 
-test("normal motion includes entrances, rotating copy, and About-card tilt", async ({ page }) => {
+test("normal motion includes typing and deleting all hero messages, stable controls, and About-card tilt", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
@@ -150,8 +151,40 @@ test("normal motion includes entrances, rotating copy, and About-card tilt", asy
     "animation-name",
     "content-entrance",
   );
-  await expect(page.getByText("Would love to talk and connect with you :D", { exact: true })).toBeVisible({ timeout: 6000 });
-  await expect(page.getByText("Incoming Software Engineer Intern at Rippling", { exact: true })).toBeVisible();
+  await page.getByRole("button", { name: "Copy email address" }).waitFor();
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+    await Promise.all(document.getAnimations()
+      .filter((animation) => animation.effect.getComputedTiming().iterations !== Infinity)
+      .map((animation) => animation.finished.catch(() => {})));
+  });
+  await page.clock.install();
+  await page.clock.runFor(1000);
+  const typewriter = page.locator("[data-typewriter]");
+  const aboutLink = page.getByRole("link", { name: "About Me", exact: true });
+  const initialY = (await aboutLink.boundingBox()).y;
+  const samples = [];
+  for (let i = 0; i < 35; i++) {
+    await page.clock.runFor(800);
+    samples.push(await typewriter.textContent());
+    expect(Math.abs((await aboutLink.boundingBox()).y - initialY)).toBeLessThan(1);
+  }
+  const expectedMessages = [
+    "Computer Engineering student at the University of Waterloo",
+    "Incoming Software Engineer Intern at Rippling",
+    "Open to Summer or Fall 2027 internships",
+    "Would love to talk and connect with you :D",
+  ];
+  const completedMessages = [...new Set(samples.filter((text) => expectedMessages.includes(text)))];
+  expect(completedMessages).toEqual(expectedMessages);
+  expect(samples.some((text, i) => i > 0 && text.length > 0 && text.length < samples[i - 1].length && samples[i - 1].startsWith(text))).toBe(true);
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(typewriter).toHaveText("Computer Engineering student at the University of Waterloo");
+  await page.clock.runFor(10000);
+  await expect(typewriter).toHaveText("Computer Engineering student at the University of Waterloo");
+  await page.clock.resume();
+  await page.emulateMedia({ reducedMotion: "no-preference" });
 
   await page.goto("/about/");
   const panel = page.getByRole("tabpanel", { name: "Introduction" });
@@ -169,6 +202,7 @@ test("exported content and mobile navigation work without JavaScript", async ({ 
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto("http://127.0.0.1:4175/");
+  await expect(page.locator("[data-typewriter]")).toHaveText("Computer Engineering student at the University of Waterloo");
   await expect(page.getByRole("link", { name: "Email Allen Zhang", exact: true })).toHaveAttribute(
     "href", "mailto:allen.zhang.y05@gmail.com",
   );

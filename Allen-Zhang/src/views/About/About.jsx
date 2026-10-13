@@ -197,9 +197,9 @@ const About = () => {
                         <div key={term.name} className={styles.termCard}>
                           <h6>{term.name}</h6>
                           {term.status && (
-                            <p className={styles.termStatus}>
+                            <span className={styles.termBadge}>
                               {term.status === "in-progress" ? "In progress" : "Upcoming"}
-                            </p>
+                            </span>
                           )}
                           <ul>
                             {term.courses.map((course) => (

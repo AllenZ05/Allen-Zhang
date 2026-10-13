@@ -7,7 +7,6 @@ export const projects = [
     id: 0,
     title: "TimeCoPilot",
     techStack: "AWS, Next.js, TypeScript, Tailwind CSS, NoSQL, Cloudflare, Stripe",
-    status: "In development",
     description:
       "An AI-powered workspace bringing calendars, goals, tasks, and notes together to help plan your day and keep track of what matters.",
     gradient: "linear-gradient(135deg, #7f7fd5 0%, #86a8e7 50%, #91eae4 100%)",
@@ -19,7 +18,6 @@ export const projects = [
     id: 1,
     title: "HockeyLensPro",
     techStack: "Next.js, React.js, TypeScript, Tailwind CSS, Supabase, NHL API",
-    status: "In development",
     description:
       "An NHL dashboard for exploring player and team statistics, visualizing performance, and comparing careers using NHL API data.",
     gradient: "linear-gradient(135deg, #4b1e82 0%, #994897ff 100%)",
@@ -36,7 +34,7 @@ export const projects = [
     gradient: "linear-gradient(135deg, #0a5af9ff 0%, #3b82f6 50%, #60a5fa 100%)",
     image: "/projects/personal-website-thumb.webp",
     preview: "/projects/personal-website-preview.webp",
-    imageAlt: "Allen Zhang’s homepage with internship availability and contact links",
+    imageAlt: "Allen Zhang’s homepage with a typing introduction and social links",
     links: [{ type: "repository", url: "https://github.com/AllenZ05/Allen-Zhang", label: "Repository" }],
   },
   {

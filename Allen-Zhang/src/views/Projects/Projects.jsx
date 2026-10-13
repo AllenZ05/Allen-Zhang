@@ -58,10 +58,7 @@ const Projects = () => {
             </a>
 
             <div className={styles.cardContent}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.projectTitle}>{project.title}</h2>
-                {project.status && <span className={styles.statusBadge}>{project.status}</span>}
-              </div>
+              <h2 className={styles.projectTitle}>{project.title}</h2>
 
               <p className={styles.projectDescription}>{project.description}</p>
 
