@@ -1,56 +1,20 @@
-.notFoundMain {
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-primary);
-  padding: 2rem;
-}
+/* Layout, backdrop, and buttons come from the home hero (HeroHome.module.css, HeroBackdrop). */
 
-.content {
-  text-align: center;
-  max-width: 500px;
-}
-
-.errorCode {
+.code {
   font-size: clamp(6rem, 20vw, 10rem);
-  font-weight: 900;
-  color: var(--text-primary);
-  line-height: 1;
-  margin: 0 0 1rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .title {
-  font-size: clamp(1.5rem, 5vw, 2rem);
-  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 650;
   color: var(--text-primary);
-  margin: 0 0 1rem 0;
+  margin-bottom: 0.75rem;
 }
 
 .description {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin: 0 0 2rem 0;
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
   line-height: 1.6;
-}
-
-.homeButton {
-  display: inline-block;
-  padding: 0.875rem 2rem;
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.homeButton:active {
-  scale: 0.97;
-}
-
-.homeButton:hover {
-  transform: translateY(-2px);
-  opacity: 0.85;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
 }

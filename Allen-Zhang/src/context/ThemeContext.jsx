@@ -2,6 +2,7 @@
 
 import { createContext, useLayoutEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
+import { fadeWholePage } from "../lib/fadeWholePage";
 
 const ThemeContext = createContext();
 
@@ -47,7 +48,7 @@ export const ThemeProvider = ({ children }) => {
     followSystem.current = false;
     // Cross-fade the whole page at once rather than letting each part change colour at its own speed.
     // flushSync applies the theme inside the transition so the new snapshot is captured in the new theme.
-    if (document.startViewTransition) document.startViewTransition(() => flushSync(() => setTheme(nextTheme)));
+    if (document.startViewTransition) fadeWholePage(() => flushSync(() => setTheme(nextTheme)));
     else setTheme(nextTheme);
     try {
       localStorage.setItem("theme", nextTheme);

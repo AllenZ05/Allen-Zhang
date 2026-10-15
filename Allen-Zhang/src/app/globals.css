@@ -291,9 +291,69 @@ main:focus {
     animation: content-entrance 600ms cubic-bezier(0.23, 1, 0.32, 1) var(--enter-delay, 0s) backwards;
   }
 }
-/* View transitions (theme switch, project preview): a slightly slower, gentler cross-fade than the default. */
+/* Page changes: the root (navbar, footer, background) stays still. Pages slide the way the nav
+   highlight moves (ClientLayout sets data-nav): the old page slips out quickly, then the new one
+   glides in from the other side, so the two barely overlap. Unknown pages (404) just fade. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
+  animation: none;
+}
+html[data-nav="forward"] {
+  --nav-shift: 1;
+}
+html[data-nav="back"] {
+  --nav-shift: -1;
+}
+::view-transition-old(.page-exit) {
+  animation: page-out 120ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+::view-transition-new(.page-enter) {
+  animation: page-in 360ms cubic-bezier(0.32, 0.72, 0, 1) 90ms both;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    translate: calc(var(--nav-shift, 0) * -24px) 0;
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    translate: calc(var(--nav-shift, 0) * 32px) 0;
+  }
+}
+/* The slide replaces the page container's own rise; headings and cards still play their entrances,
+   starting a little sooner than on first load (keeping their stagger) so the page is never blank. */
+html[data-nav] .page-content {
+  animation-duration: 0s;
+  animation-delay: 0s;
+}
+html[data-nav] .page-content [data-enter] {
+  animation-delay: calc(var(--enter-delay, 0s) - 0.15s);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(.page-exit),
+  ::view-transition-new(.page-enter) {
+    animation: none;
+  }
+}
+/* The navbar is its own layer above the page: during page changes it shows its live state with no
+   fade (the highlight pill slides on its own); theme switches cross-fade it with everything else. */
+::view-transition-group(navbar) {
+  z-index: 1;
+}
+html:not([data-fade])::view-transition-old(navbar) {
+  display: none;
+}
+html:not([data-fade])::view-transition-new(navbar) {
+  animation: none;
+}
+/* Theme switches and project previews cross-fade the whole page instead (fadeWholePage sets data-fade). */
+html[data-fade]::view-transition-old(root),
+html[data-fade]::view-transition-new(root),
+html[data-fade]::view-transition-old(navbar),
+html[data-fade]::view-transition-new(navbar) {
+  animation: revert;
   animation-duration: 350ms;
 }
 /* The project image travels between its card and the preview on a fast-out, soft-landing curve. */

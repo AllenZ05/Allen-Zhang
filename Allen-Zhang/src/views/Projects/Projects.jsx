@@ -7,6 +7,7 @@ import { flushSync } from "react-dom";
 import { FiExternalLink, FiGithub, FiVideo } from "react-icons/fi";
 import Modal from "../../components/Modal";
 import { projects } from "../../data/projects";
+import { fadeWholePage } from "../../lib/fadeWholePage";
 import { SPRING } from "../../lib/motion";
 import { handleSpotlightMove } from "../../lib/spotlight";
 import styles from "./Projects.module.css";
@@ -31,14 +32,12 @@ const Projects = () => {
       return;
     }
     thumbnail.style.viewTransitionName = thumbnailName.before;
-    document
-      .startViewTransition(() => {
-        thumbnail.style.viewTransitionName = thumbnailName.after;
-        flushSync(update);
-      })
-      .finished.finally(() => {
-        thumbnail.style.viewTransitionName = "";
-      });
+    fadeWholePage(() => {
+      thumbnail.style.viewTransitionName = thumbnailName.after;
+      flushSync(update);
+    }).finished.finally(() => {
+      thumbnail.style.viewTransitionName = "";
+    });
   };
   const openPreview = (project, cover) => {
     activeCover.current = cover;

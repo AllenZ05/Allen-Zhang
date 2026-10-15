@@ -355,3 +355,37 @@ test("cards already on screen appear even if the browser's first visibility repo
   await page.goto("/experiences/");
   await expect(page.locator("[data-reveal]").first()).toHaveCSS("opacity", "1", { timeout: 3000 });
 });
+
+test("the 404 page explains the problem and leads back home", async ({ page }) => {
+  await page.goto("/this-page-does-not-exist/");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("404");
+  await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
+  await page.getByRole("link", { name: "Back to Home" }).click();
+  await expect(page.getByRole("heading", { name: "Allen Zhang", exact: true })).toBeVisible();
+});
+
+test("page changes slide the way the nav highlight moves, with the navbar on its own layer", async ({ page }) => {
+  await page.goto("/");
+  const nav = page.getByRole("navigation", { name: "Main navigation" });
+  // A CSS Modules name would be renamed at build time and miss the transition rules in globals.css.
+  await expect(nav).toHaveCSS("view-transition-name", "navbar");
+  await nav.getByRole("link", { name: "Projects", exact: true }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-nav", "forward");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Projects");
+  await nav.getByRole("link", { name: "About", exact: true }).click();
+  await expect(page.locator("html")).toHaveAttribute("data-nav", "back");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("About Me");
+});
+
+test("the first painted frame already has the right theme, with no dark flash", async ({ page }) => {
+  // next/script's beforeInteractive ran after the first paint; the inline <head> script must not.
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.addInitScript(() => {
+    requestAnimationFrame(() => {
+      const root = document.documentElement;
+      window.firstFrame = { theme: root.getAttribute("data-theme"), js: root.hasAttribute("data-js") };
+    });
+  });
+  await page.goto("/projects/");
+  await expect.poll(() => page.evaluate(() => window.firstFrame)).toEqual({ theme: "light", js: true });
+});

@@ -43,6 +43,23 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+// Sets the theme (saved choice, else the system's) and marks that JavaScript is running, so CSS can
+// hide not-yet-revealed content (see useReveal) only when it will actually be revealed.
+const themeInitScript = `(() => {
+  const root = document.documentElement;
+  root.setAttribute("data-js", "");
+  let savedTheme = null;
+  try {
+    savedTheme = localStorage.getItem("theme");
+  } catch {
+    // Storage can be blocked; fall back to the system theme.
+  }
+  const systemTheme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  const theme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : systemTheme;
+  root.setAttribute("data-theme", theme);
+  root.style.colorScheme = theme;
+})();`;
+
 export default function RootLayout({ children }) {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -66,24 +83,16 @@ export default function RootLayout({ children }) {
       className={`${geist.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        {/* A plain inline script runs while the HTML is parsed, before the first paint. next/script's
+            beforeInteractive is queued until Next's JavaScript loads, so the page painted in the
+            default dark theme first and cards flickered before their reveal. */}
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: static first-paint script with no user input.
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+      </head>
       <body>
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`(() => {
-            // Lets CSS hide not-yet-revealed content only when JavaScript is running (see useReveal).
-            document.documentElement.setAttribute("data-js", "");
-            let savedTheme = null;
-            try {
-              savedTheme = localStorage.getItem("theme");
-            } catch {
-              // Storage can be blocked; fall back to the system theme.
-            }
-            const systemTheme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-            const theme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : systemTheme;
-            document.documentElement.setAttribute("data-theme", theme);
-            document.documentElement.style.colorScheme = theme;
-          })();`}
-        </Script>
-
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-FESWP1E6XM" strategy="afterInteractive" />
         <Script id="ga" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];

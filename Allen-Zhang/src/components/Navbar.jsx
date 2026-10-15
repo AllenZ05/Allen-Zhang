@@ -72,7 +72,14 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={styles.header} data-scrolled={scrolled || undefined} aria-label="Main navigation">
+      {/* Its own view-transition layer above the sliding pages (globals.css). Set inline: CSS Modules
+          would rename it, and the global rules for "navbar" would no longer match. */}
+      <nav
+        className={styles.header}
+        style={{ viewTransitionName: "navbar" }}
+        data-scrolled={scrolled || undefined}
+        aria-label="Main navigation"
+      >
         <Link href="/" className={styles.logo}>
           <span>AllenZ05</span>
         </Link>
