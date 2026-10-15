@@ -35,6 +35,8 @@ const Experiences = () => {
               style={{
                 "--gradient": experience.gradient,
                 "--enter-distance": "50px",
+                // The timeline unfolds one role at a time.
+                "--reveal-step": "0.18s",
               }}
             >
               <div className={styles.cardContent}>
@@ -103,7 +105,7 @@ const Experiences = () => {
             onMouseMove={handleSpotlightMove}
             whileHover={reducedMotion ? undefined : { y: -6 }}
             transition={SPRING}
-            style={{ "--gradient": team.gradient, "--enter-distance": "32px" }}
+            style={{ "--gradient": team.gradient, "--enter-distance": "32px", "--reveal-step": "0.11s" }}
           >
             <div className={styles.cardContent}>
               <div className={styles.cardHeader}>

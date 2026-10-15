@@ -60,7 +60,7 @@ const Projects = () => {
             onMouseMove={handleSpotlightMove}
             whileHover={reducedMotion ? undefined : { y: -6 }}
             transition={SPRING}
-            style={{ "--gradient": project.gradient, "--enter-distance": "32px" }}
+            style={{ "--gradient": project.gradient, "--enter-distance": "32px", "--reveal-step": "0.11s" }}
           >
             <a
               href={project.preview || project.image}

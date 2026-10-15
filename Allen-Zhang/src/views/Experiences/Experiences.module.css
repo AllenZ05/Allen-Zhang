@@ -21,27 +21,20 @@
   border-radius: 2px;
 }
 
-/* The line fills down as you read: the fill reaches each point as it crosses the middle of the screen. */
-@supports (animation-timeline: view()) {
+/* The line fills with the page's scroll progress, like the scrollbar: empty at the top, full at the
+   bottom, and in between its lit tip stays around the middle of the screen on any screen size. */
+@supports (animation-timeline: scroll()) {
   @media (prefers-reduced-motion: no-preference) {
-    .timelineLine {
-      view-timeline-name: --timeline-line;
-    }
     .timelineLine::after {
       content: "";
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: linear-gradient(
-        180deg,
-        var(--accent-primary),
-        color-mix(in srgb, var(--accent-primary) 35%, transparent)
-      );
+      background: var(--accent-primary);
       box-shadow: 0 0 12px var(--accent-border-hover);
       transform-origin: top;
       animation: timeline-fill linear both;
-      animation-timeline: --timeline-line;
-      animation-range: cover 50vh cover calc(100% - 50vh);
+      animation-timeline: scroll(root block);
     }
   }
 }

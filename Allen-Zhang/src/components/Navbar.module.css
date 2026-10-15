@@ -212,6 +212,10 @@
     scale: 0.85;
   }
 }
+.menuDialog.closeInstantly,
+.menuDialog.closeInstantly::backdrop {
+  transition: none;
+}
 .menuDialog::backdrop {
   background: rgb(0 0 0 / 0);
   transition:

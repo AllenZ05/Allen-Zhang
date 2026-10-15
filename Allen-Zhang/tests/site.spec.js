@@ -389,3 +389,58 @@ test("the first painted frame already has the right theme, with no dark flash", 
   await page.goto("/projects/");
   await expect.poll(() => page.evaluate(() => window.firstFrame)).toEqual({ theme: "light", js: true });
 });
+
+test("following a link from the phone menu closes it at once, so only the page transition moves", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  const menu = page.getByRole("dialog", { name: "Navigation", exact: true });
+  await expect(menu).toBeVisible();
+  await menu.getByRole("link", { name: "Projects" }).click();
+  // An animated close here would be drawn under the outgoing page and blink.
+  expect(await page.locator("#mobile-navigation").evaluate((el) => getComputedStyle(el).display)).toBe("none");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Projects");
+});
+
+test("quick repeated theme clicks queue their fades instead of cutting one short", async ({ page }) => {
+  // Starting a view transition while one runs skips it, which left the page half-switched.
+  await page.addInitScript(() => {
+    window.overlaps = 0;
+    const start = Document.prototype.startViewTransition;
+    if (!start) return;
+    let active = 0;
+    Document.prototype.startViewTransition = function (...args) {
+      if (active > 0) window.overlaps += 1;
+      active += 1;
+      const transition = start.apply(this, args);
+      transition.finished.finally(() => {
+        active -= 1;
+      });
+      return transition;
+    };
+  });
+  await page.emulateMedia({ colorScheme: "dark", reducedMotion: "no-preference" });
+  await page.goto("/");
+  await page.getByRole("button", { name: /^Switch to/ }).waitFor();
+  await page.evaluate(() => {
+    for (let i = 0; i < 3; i++) setTimeout(() => document.querySelector('button[aria-label^="Switch to"]').click(), i * 90);
+  });
+  const html = page.locator("html");
+  await expect(html).toHaveAttribute("data-theme", "light");
+  await expect(html).not.toHaveAttribute("data-fade", "");
+  expect(await page.evaluate(() => window.overlaps)).toBe(0);
+  expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe("light");
+});
+
+test("the Experiences timeline fills with scroll: empty at the top, fully lit at the bottom, even on a tall screen", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.setViewportSize({ width: 2000, height: 1343 });
+  await page.goto("/experiences/");
+  if (!(await page.evaluate(() => CSS.supports("animation-timeline: scroll()")))) return;
+  const line = page.locator('[class*="timelineLine"]');
+  const fill = () => line.evaluate((el) => Number(getComputedStyle(el, "::after").scale.split(" ")[1] ?? 1));
+  await expect.poll(fill).toBeLessThan(0.02);
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await expect.poll(fill).toBe(1);
+});

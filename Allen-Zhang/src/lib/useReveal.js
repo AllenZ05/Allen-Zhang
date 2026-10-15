@@ -10,7 +10,10 @@ export function useReveal(routeKey) {
   useEffect(() => {
     let index = 0;
     const reveal = (element, baseDelay = 0) => {
-      element.style.setProperty("--reveal-delay", `${baseDelay + Math.min(index, 5) * 0.08}s`);
+      // Cards set their own spacing with --reveal-step (globals.css); the order is capped so a long
+      // batch never waits too long.
+      element.style.setProperty("--reveal-base", `${baseDelay}s`);
+      element.style.setProperty("--reveal-order", String(Math.min(index, 5)));
       element.setAttribute("data-revealed", "");
       index += 1;
     };

@@ -27,7 +27,18 @@ export default function Navbar() {
   const hydrated = useHydrated();
   const reducedMotion = useReducedMotion();
   const { theme, toggleTheme } = useTheme();
+  // Following a link closes the menu at once, so the page transition is the only motion (otherwise
+  // the outgoing page is drawn over the shrinking menu); the X button and Escape keep the animation.
+  const [closeInstantly, setCloseInstantly] = useState(false);
   const closeMenu = () => setIsOpen(false);
+  const followLink = () => {
+    setCloseInstantly(true);
+    setIsOpen(false);
+  };
+  const openMenu = () => {
+    setCloseInstantly(false);
+    setIsOpen(true);
+  };
   const normalize = (path) => path.replace(/\/$/, "") || "/";
 
   useEffect(() => {
@@ -60,7 +71,7 @@ export default function Navbar() {
       <li key={path} data-enter style={{ "--enter-delay": `${index * 0.08}s`, "--enter-distance": "-12px" }}>
         <Link
           href={path}
-          onClick={closeMenu}
+          onClick={followLink}
           className={active ? styles.activeLink : undefined}
           aria-current={active ? "page" : undefined}
         >
@@ -118,7 +129,7 @@ export default function Navbar() {
             <button
               type="button"
               className={styles.hamburgerMenu}
-              onClick={() => setIsOpen(true)}
+              onClick={openMenu}
               aria-label="Open navigation menu"
               aria-expanded={isOpen}
               aria-controls="mobile-navigation"
@@ -129,7 +140,13 @@ export default function Navbar() {
         )}
         {!hydrated && <ul className={styles.fallbackNav}>{links}</ul>}
       </nav>
-      <Modal open={isOpen} onClose={closeMenu} title="Navigation" id="mobile-navigation" className={styles.menuDialog}>
+      <Modal
+        open={isOpen}
+        onClose={closeMenu}
+        title="Navigation"
+        id="mobile-navigation"
+        className={`${styles.menuDialog} ${closeInstantly ? styles.closeInstantly : ""}`}
+      >
         <nav aria-label="Mobile navigation">
           <ul className={styles.mobileNav}>{links}</ul>
         </nav>

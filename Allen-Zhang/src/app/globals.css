@@ -305,21 +305,21 @@ html[data-nav="back"] {
   --nav-shift: -1;
 }
 ::view-transition-old(.page-exit) {
-  animation: page-out 120ms cubic-bezier(0.4, 0, 1, 1) both;
+  animation: page-out 140ms cubic-bezier(0.4, 0, 1, 1) both;
 }
 ::view-transition-new(.page-enter) {
-  animation: page-in 360ms cubic-bezier(0.32, 0.72, 0, 1) 90ms both;
+  animation: page-in 440ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
 }
 @keyframes page-out {
   to {
     opacity: 0;
-    translate: calc(var(--nav-shift, 0) * -24px) 0;
+    translate: calc(var(--nav-shift, 0) * -32px) 0;
   }
 }
 @keyframes page-in {
   from {
     opacity: 0;
-    translate: calc(var(--nav-shift, 0) * 32px) 0;
+    translate: calc(var(--nav-shift, 0) * 56px) 0;
   }
 }
 /* The slide replaces the page container's own rise; headings and cards still play their entrances,
@@ -330,6 +330,9 @@ html[data-nav] .page-content {
 }
 html[data-nav] .page-content [data-enter] {
   animation-delay: calc(var(--enter-delay, 0s) - 0.15s);
+  /* Titles travel with the sliding page and only fade, so all motion runs one way. !important beats
+     the inline --enter-distance that first-load entrances use. */
+  --enter-distance: 0px !important;
 }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(.page-exit),
@@ -346,6 +349,24 @@ html:not([data-fade])::view-transition-old(navbar) {
   display: none;
 }
 html:not([data-fade])::view-transition-new(navbar) {
+  animation: none;
+}
+/* During a whole-page cross-fade, per-element colour transitions would leave the incoming layer
+   half-switched (muddy backgrounds, vanishing text); the cross-fade does all the animating. */
+html[data-fade] *,
+html[data-fade] *::before,
+html[data-fade] *::after {
+  transition: none !important;
+}
+/* The home page's typing line keeps typing during a theme fade; as its own live layer it can't
+   double up against the frozen snapshot of itself. */
+html[data-fade] [data-typewriter] {
+  view-transition-name: hero-typed;
+}
+::view-transition-old(hero-typed) {
+  display: none;
+}
+::view-transition-new(hero-typed) {
   animation: none;
 }
 /* Theme switches and project previews cross-fade the whole page instead (fadeWholePage sets data-fade). */
@@ -385,7 +406,8 @@ html[data-fade]::view-transition-new(navbar) {
     opacity: 0;
   }
   [data-reveal][data-revealed] {
-    animation: content-entrance 700ms cubic-bezier(0.23, 1, 0.32, 1) var(--reveal-delay, 0s) backwards;
+    animation: content-entrance 700ms cubic-bezier(0.23, 1, 0.32, 1)
+      calc(var(--reveal-base, 0s) + var(--reveal-order, 0) * var(--reveal-step, 0.08s)) backwards;
   }
 }
 @keyframes content-entrance {

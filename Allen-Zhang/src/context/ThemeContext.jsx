@@ -13,6 +13,12 @@ export const ThemeProvider = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false);
   // Follow the system theme until the visitor picks one with the toggle.
   const followSystem = useRef(true);
+  // The theme most recently asked for, the one on screen, and whether a cross-fade is running.
+  // Clicks during a fade only move the target; it is applied when the fade ends, so fades never
+  // cut each other off (which left the page half-switched for a moment).
+  const targetTheme = useRef("dark");
+  const appliedTheme = useRef("dark");
+  const fading = useRef(false);
 
   useLayoutEffect(() => {
     let savedTheme = null;
@@ -41,15 +47,26 @@ export const ThemeProvider = ({ children }) => {
     if (!isInitialized) return;
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.style.colorScheme = theme;
+    appliedTheme.current = theme;
+    if (!fading.current) targetTheme.current = theme;
   }, [theme, isInitialized]);
 
+  // Cross-fade the whole page at once rather than letting each part change colour at its own speed.
+  // flushSync applies the theme inside the transition so the new snapshot is captured in the new theme.
+  const fadeToTarget = () => {
+    fading.current = true;
+    fadeWholePage(() => flushSync(() => setTheme(targetTheme.current))).finished.finally(() => {
+      fading.current = false;
+      if (appliedTheme.current !== targetTheme.current) fadeToTarget();
+    });
+  };
+
   const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
+    const nextTheme = targetTheme.current === "dark" ? "light" : "dark";
+    targetTheme.current = nextTheme;
     followSystem.current = false;
-    // Cross-fade the whole page at once rather than letting each part change colour at its own speed.
-    // flushSync applies the theme inside the transition so the new snapshot is captured in the new theme.
-    if (document.startViewTransition) fadeWholePage(() => flushSync(() => setTheme(nextTheme)));
-    else setTheme(nextTheme);
+    if (!document.startViewTransition) setTheme(nextTheme);
+    else if (!fading.current) fadeToTarget();
     try {
       localStorage.setItem("theme", nextTheme);
     } catch {
