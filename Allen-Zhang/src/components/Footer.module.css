@@ -55,6 +55,10 @@
   text-decoration: none;
 }
 
+.socialButton:active {
+  scale: 0.95;
+}
+
 .socialButton:hover {
   transform: translateY(-3px);
   border-color: var(--border-color-hover);

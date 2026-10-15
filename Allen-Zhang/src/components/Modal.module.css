@@ -38,6 +38,10 @@
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 1.3rem;
+  transition: scale 100ms ease-out;
+}
+.close:active {
+  scale: 0.95;
 }
 @keyframes appear {
   from {

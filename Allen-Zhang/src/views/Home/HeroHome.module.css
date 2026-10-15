@@ -133,9 +133,16 @@
   font-weight: 600;
   transition:
     transform var(--transition-fast),
+    scale 100ms ease-out,
     background var(--transition-fast),
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
+}
+
+/* Press feedback: dip the instant a button is pressed, not on release. */
+.primaryCta:active,
+.secondaryCta:active {
+  scale: 0.97;
 }
 
 .primaryCta {

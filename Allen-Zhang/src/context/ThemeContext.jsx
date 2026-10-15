@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useLayoutEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 
 const ThemeContext = createContext();
 
@@ -44,7 +45,10 @@ export const ThemeProvider = ({ children }) => {
   const toggleTheme = () => {
     const nextTheme = theme === "dark" ? "light" : "dark";
     followSystem.current = false;
-    setTheme(nextTheme);
+    // Cross-fade the whole page at once rather than letting each part change colour at its own speed.
+    // flushSync applies the theme inside the transition so the new snapshot is captured in the new theme.
+    if (document.startViewTransition) document.startViewTransition(() => flushSync(() => setTheme(nextTheme)));
+    else setTheme(nextTheme);
     try {
       localStorage.setItem("theme", nextTheme);
     } catch {

@@ -2,10 +2,12 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { FiExternalLink, FiGithub, FiVideo } from "react-icons/fi";
 import Modal from "../../components/Modal";
 import { projects } from "../../data/projects";
+import { SPRING } from "../../lib/motion";
 import { handleSpotlightMove } from "../../lib/spotlight";
 import styles from "./Projects.module.css";
 
@@ -18,6 +20,31 @@ const linkIcons = {
 const Projects = () => {
   const [preview, setPreview] = useState(null);
   const reducedMotion = useReducedMotion();
+  const activeCover = useRef(null);
+
+  // The preview grows out of its card and shrinks back into it: the thumbnail and the full image share
+  // a view-transition name, and only one of them carries it at a time.
+  const morph = (update, thumbnailName) => {
+    const thumbnail = activeCover.current?.querySelector("img");
+    if (!document.startViewTransition || reducedMotion || !thumbnail) {
+      update();
+      return;
+    }
+    thumbnail.style.viewTransitionName = thumbnailName.before;
+    document
+      .startViewTransition(() => {
+        thumbnail.style.viewTransitionName = thumbnailName.after;
+        flushSync(update);
+      })
+      .finished.finally(() => {
+        thumbnail.style.viewTransitionName = "";
+      });
+  };
+  const openPreview = (project, cover) => {
+    activeCover.current = cover;
+    morph(() => setPreview(project), { before: "project-preview", after: "" });
+  };
+  const closePreview = () => morph(() => setPreview(null), { before: "", after: "project-preview" });
 
   return (
     <main id="main-content" tabIndex={-1} className="page-main">
@@ -32,7 +59,8 @@ const Projects = () => {
             className={styles.projectCard}
             data-enter
             onMouseMove={handleSpotlightMove}
-            whileHover={reducedMotion ? undefined : { y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
+            whileHover={reducedMotion ? undefined : { y: -6 }}
+            transition={SPRING}
             style={{ "--gradient": project.gradient, "--enter-delay": `${index * 0.08}s`, "--enter-distance": "32px" }}
           >
             <a
@@ -42,7 +70,7 @@ const Projects = () => {
               onClick={(event) => {
                 if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
                 event.preventDefault();
-                setPreview(project);
+                openPreview(project, event.currentTarget);
               }}
             >
               <Image
@@ -86,7 +114,7 @@ const Projects = () => {
       </div>
       <Modal
         open={Boolean(preview)}
-        onClose={() => setPreview(null)}
+        onClose={closePreview}
         title={preview ? `${preview.title} preview` : "Project preview"}
         id="project-preview"
       >
@@ -97,6 +125,7 @@ const Projects = () => {
             width={1600}
             height={1200}
             className={styles.fullPreview}
+            style={{ viewTransitionName: "project-preview" }}
           />
         )}
       </Modal>

@@ -7,8 +7,12 @@ import { IoCheckmark } from "react-icons/io5";
 import { MdHourglassBottom } from "react-icons/md";
 import { educationYears, skillCategories } from "../../data/about";
 import { emailHref, profile } from "../../data/profile";
+import { SPRING } from "../../lib/motion";
 import { useHydrated } from "../../lib/useHydrated";
+import { useSlidingIndicator } from "../../lib/useSlidingIndicator";
 import styles from "./About.module.css";
+
+const tabs = ["Introduction", "Education", "Skills"];
 
 const About = () => {
   const [selectedSection, setSelectedSection] = useState("Introduction");
@@ -21,7 +25,9 @@ const About = () => {
   const springX = useSpring(rotateX, { stiffness: 250, damping: 28 });
   const springY = useSpring(rotateY, { stiffness: 250, damping: 28 });
   const tabRefs = useRef([]);
-  const tabs = ["Introduction", "Education", "Skills"];
+  const [tablist, setTablist] = useState(null);
+  // One highlight slides behind the tabs to the selected one, across and down alike.
+  const thumb = useSlidingIndicator(tablist, '[aria-selected="true"]', selectedSection);
 
   useEffect(() => {
     const query = window.matchMedia("(max-width: 768px)");
@@ -271,13 +277,23 @@ const About = () => {
       </h1>
       {hydrated ? (
         <div
+          ref={setTablist}
           className={styles.tabNavigation}
           role="tablist"
           aria-label="About sections"
           aria-orientation={verticalTabs ? "vertical" : "horizontal"}
         >
+          {thumb && (
+            <motion.span
+              className={styles.tabThumb}
+              initial={false}
+              animate={thumb}
+              transition={reducedMotion ? { duration: 0 } : SPRING}
+              aria-hidden="true"
+            />
+          )}
           {tabs.map((tab, index) => (
-            <motion.button
+            <button
               key={tab}
               type="button"
               role="tab"
@@ -291,11 +307,9 @@ const About = () => {
               onClick={() => selectSection(tab)}
               onKeyDown={(event) => handleTabKey(event, index)}
               className={`${styles.tabButton} ${selectedSection === tab ? styles.activeTab : ""}`}
-              whileHover={reducedMotion ? undefined : { scale: 1.05 }}
-              whileTap={reducedMotion ? undefined : { scale: 0.95 }}
             >
               {tab}
-            </motion.button>
+            </button>
           ))}
         </div>
       ) : (

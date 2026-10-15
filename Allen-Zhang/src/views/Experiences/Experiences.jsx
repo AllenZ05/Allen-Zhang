@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi";
 import { designTeams, experiences } from "../../data/experiences";
+import { SPRING } from "../../lib/motion";
 import { handleSpotlightMove } from "../../lib/spotlight";
 import styles from "./Experiences.module.css";
 
@@ -29,14 +30,8 @@ const Experiences = () => {
               className={`${styles.experienceCard} ${index % 2 === 0 ? styles.left : styles.right}`}
               data-enter
               onMouseMove={handleSpotlightMove}
-              whileHover={
-                reducedMotion
-                  ? undefined
-                  : {
-                      y: -8,
-                      transition: { duration: 0.3, ease: "easeOut" },
-                    }
-              }
+              whileHover={reducedMotion ? undefined : { y: -8 }}
+              transition={SPRING}
               style={{
                 "--gradient": experience.gradient,
                 "--enter-delay": `${index * 0.2}s`,
@@ -107,7 +102,8 @@ const Experiences = () => {
             className={styles.teamCard}
             data-enter
             onMouseMove={handleSpotlightMove}
-            whileHover={reducedMotion ? undefined : { y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
+            whileHover={reducedMotion ? undefined : { y: -6 }}
+            transition={SPRING}
             style={{ "--gradient": team.gradient, "--enter-delay": `${index * 0.1}s`, "--enter-distance": "32px" }}
           >
             <div className={styles.cardContent}>

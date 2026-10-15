@@ -5,6 +5,7 @@
 }
 
 .tabNavigation {
+  position: relative;
   display: flex;
   justify-content: center;
   gap: var(--spacing-xs);
@@ -34,6 +35,10 @@
   overflow: hidden;
 }
 
+.tabButton:active {
+  scale: 0.97;
+}
+
 .tabButton::before {
   content: "";
   position: absolute;
@@ -46,7 +51,7 @@
 }
 
 @media (hover: hover) {
-  .tabButton:hover {
+  .tabButton:not(.activeTab):hover {
     background: var(--border-color);
     color: var(--text-primary);
   }
@@ -57,10 +62,19 @@
 }
 
 .activeTab {
-  background: var(--accent-bg-hover) !important;
   color: var(--text-primary) !important;
+}
+
+/* Sits behind the tab buttons and slides to the selected one (position set by About.jsx). */
+.tabThumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--accent-bg-hover);
   border: 1px solid var(--accent-border);
+  border-radius: 8px;
   box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
+  pointer-events: none;
 }
 
 /* Light theme: a raised white segment, like a native segmented control. */
@@ -68,8 +82,8 @@
   background: var(--bg-tertiary);
 }
 
-:global([data-theme="light"]) .activeTab {
-  background: var(--bg-card) !important;
+:global([data-theme="light"]) .tabThumb {
+  background: var(--bg-card);
   border-color: var(--border-color);
   box-shadow: var(--shadow-md);
 }

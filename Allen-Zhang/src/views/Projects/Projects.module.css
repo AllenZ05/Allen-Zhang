@@ -126,7 +126,12 @@
     border-color var(--transition-fast),
     background var(--transition-fast),
     color var(--transition-fast),
-    transform var(--transition-fast);
+    transform var(--transition-fast),
+    scale 100ms ease-out;
+}
+
+.projectButton:active {
+  scale: 0.97;
 }
 
 .projectButton:hover {

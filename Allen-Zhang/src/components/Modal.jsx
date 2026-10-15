@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { FiX } from "react-icons/fi";
 import styles from "./Modal.module.css";
 
@@ -8,7 +8,8 @@ import styles from "./Modal.module.css";
 export default function Modal({ open, onClose, title, id, children, className = "" }) {
   const ref = useRef(null);
 
-  useEffect(() => {
+  // Layout effect: the dialog opens in the same commit that renders it, so view transitions can capture it open.
+  useLayoutEffect(() => {
     if (!open) return;
     const dialog = ref.current;
     const previousOverflow = document.body.style.overflow;

@@ -6,7 +6,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
 import { useTheme } from "../context/useTheme";
+import { SPRING } from "../lib/motion";
 import { useHydrated } from "../lib/useHydrated";
+import { useSlidingIndicator } from "../lib/useSlidingIndicator";
 import Modal from "./Modal";
 import styles from "./Navbar.module.css";
 
@@ -19,6 +21,8 @@ const navLinks = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [desktopList, setDesktopList] = useState(null);
   const pathname = usePathname();
   const hydrated = useHydrated();
   const reducedMotion = useReducedMotion();
@@ -35,31 +39,56 @@ export default function Navbar() {
     return () => desktop.removeEventListener("change", closeOnDesktop);
   }, []);
 
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 8);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: navigation closes the menu, including browser Back.
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  const links = navLinks.map(({ path, label }, index) => (
-    <li key={path} data-enter style={{ "--enter-delay": `${index * 0.08}s`, "--enter-distance": "-12px" }}>
-      <Link
-        href={path}
-        onClick={closeMenu}
-        className={normalize(pathname) === normalize(path) ? styles.activeLink : undefined}
-        aria-current={normalize(pathname) === normalize(path) ? "page" : undefined}
-      >
-        {label}
-      </Link>
-    </li>
-  ));
+  // The desktop list gets a single highlight that glides to the current page's link.
+  const indicator = useSlidingIndicator(desktopList, '[aria-current="page"]', pathname);
+
+  const links = navLinks.map(({ path, label }, index) => {
+    const active = normalize(pathname) === normalize(path);
+    return (
+      <li key={path} data-enter style={{ "--enter-delay": `${index * 0.08}s`, "--enter-distance": "-12px" }}>
+        <Link
+          href={path}
+          onClick={closeMenu}
+          className={active ? styles.activeLink : undefined}
+          aria-current={active ? "page" : undefined}
+        >
+          {label}
+        </Link>
+      </li>
+    );
+  });
 
   return (
     <>
-      <nav className={styles.header} aria-label="Main navigation">
+      <nav className={styles.header} data-scrolled={scrolled || undefined} aria-label="Main navigation">
         <Link href="/" className={styles.logo}>
           <span>AllenZ05</span>
         </Link>
-        <ul className={styles.desktopNav}>{links}</ul>
+        <ul ref={setDesktopList} className={styles.desktopNav} data-indicator={indicator ? "" : undefined}>
+          {indicator && (
+            <motion.li
+              className={styles.indicator}
+              data-enter
+              initial={false}
+              animate={indicator}
+              transition={reducedMotion ? { duration: 0 } : SPRING}
+              aria-hidden="true"
+            />
+          )}
+          {links}
+        </ul>
         {hydrated && (
           <div className={styles.navActions}>
             <button

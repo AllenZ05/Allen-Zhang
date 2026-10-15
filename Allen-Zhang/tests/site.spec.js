@@ -246,7 +246,8 @@ test("new pages start at the top and Back restores the previous scroll position"
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   await page.goBack();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Experiences");
-  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(900);
+  // Within 50px: WebKit can restore a few pixels off while late layout (web fonts) settles.
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeCloseTo(900, -2);
 });
 
 test("pages hydrate without errors after the build year ends", async ({ page }) => {
@@ -275,4 +276,19 @@ test("theme follows the system until the visitor chooses one", async ({ page }) 
   await expect(html).toHaveAttribute("data-theme", "light");
   await page.reload();
   await expect(html).toHaveAttribute("data-theme", "light");
+});
+
+test("navbar highlight stays in the navbar when navigating from a scrolled page", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/experiences/");
+  await page.evaluate(() => window.scrollTo(0, 1500));
+  const nav = page.getByRole("navigation", { name: "Main navigation" });
+  await nav.getByRole("link", { name: "Projects", exact: true }).click();
+  const navBox = await nav.boundingBox();
+  for (let i = 0; i < 10; i++) {
+    const highlight = await nav.locator('li[aria-hidden="true"]').boundingBox();
+    expect(highlight.y).toBeGreaterThanOrEqual(navBox.y);
+    expect(highlight.y + highlight.height).toBeLessThanOrEqual(navBox.y + navBox.height);
+    await page.waitForTimeout(40);
+  }
 });
