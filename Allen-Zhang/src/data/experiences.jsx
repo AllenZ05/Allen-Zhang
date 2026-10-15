@@ -3,6 +3,7 @@ import { profile } from "./profile";
 // Experience content for the Experiences page. Add new roles at the top.
 // `description` may contain JSX (links are styled by the page's CSS).
 // Optional `status`: "current" or "incoming" renders a badge.
+// `logo` is a square image in public/experiences/ (sources for edited logos are in assets/experience-logos/).
 // Omit `location` or `description` until those details are available.
 
 export const experiences = [
@@ -15,6 +16,7 @@ export const experiences = [
     description: profile.role.team,
     skills: [],
     url: profile.role.companyUrl,
+    logo: "/experiences/rippling.jpeg",
     gradient: "linear-gradient(180deg, #fdb71c 0%, #7a005d 100%)",
     status: profile.role.status,
   },
@@ -27,6 +29,7 @@ export const experiences = [
     description: "Device Compute Team",
     skills: ["Python", "Go", "Swift", "AI", "AI Agents"],
     url: "https://www.apple.com/",
+    logo: "/experiences/apple.webp",
     gradient: "linear-gradient(135deg, #a1a1aa 0%, #27272a 100%)",
   },
   {
@@ -46,6 +49,7 @@ export const experiences = [
     ),
     skills: ["Ruby", "Ruby on Rails", "React Native", "GraphQL", "Google Cloud Platform", "Apache Kafka", "Grafana"],
     url: "https://www.shopify.com/",
+    logo: "/experiences/shopify.webp",
     gradient: "linear-gradient(135deg, #5bf02eff 0%, #024c28ff 100%)",
   },
   {
@@ -58,6 +62,7 @@ export const experiences = [
       "Delivered full-stack solutions by modernizing systems while developing new features, including AI-driven tools.",
     skills: ["TypeScript", "Go", "Python", "Vue.js", "SQL"],
     url: "https://www.linkedin.com/company/hanov-solutions-inc./",
+    logo: "/experiences/websequencediagrams.svg",
     gradient: "linear-gradient(135deg, #937decff 0%, #6a11cb 100%)",
   },
   {
@@ -70,6 +75,7 @@ export const experiences = [
       "Led end-to-end blockchain app development across frontend, backend, and database, streamlining workflows and improving reliability.",
     skills: ["Go", "Nuxt.js", "Vue.js", "TypeScript", "SQL"],
     url: "https://www.dandelionnet.com/",
+    logo: "/experiences/dandelion-networks.webp",
     gradient: "linear-gradient(180deg, #de975aff 0%, #121f80ff 100%)",
   },
   {
@@ -81,6 +87,7 @@ export const experiences = [
     description: "Lifeguarded pools and waterparks across Toronto and taught swimming lessons to children ages 5-14.",
     skills: ["Leadership", "Teamwork", "Communication", "First Aid + CPR", "Public Relations"],
     url: "https://www.toronto.ca/",
+    logo: "/experiences/city-of-toronto.webp",
     gradient: "linear-gradient(135deg, #d8b0b0ff 0%, #e95a5dff 100%)",
   },
   {
@@ -93,6 +100,7 @@ export const experiences = [
       "Analyzed company and business data while coordinating logistics operations, including shipment planning and delivery handling.",
     skills: ["Microsoft Office", "Data Analysis", "Data Entry", "Logistics Management", "Inventory Control"],
     url: "https://somerville.ca/",
+    logo: "/experiences/somerville.webp",
     gradient: "linear-gradient(135deg, #708dc0ff 0%, #16346aff 100%)",
   },
 ];
@@ -103,8 +111,9 @@ export const designTeams = [
     id: 0,
     position: "Technical Lead",
     name: "UW Blueprint",
-    description: "Led engineering delivery for nonprofit projects across North America.",
+    description: "Leading engineering delivery for nonprofit projects across North America.",
     url: "https://uwblueprint.org/",
+    logo: "/experiences/blueprint.jpeg",
     gradient: "linear-gradient(135deg, #60a5fa 0%, #1d4ed8 100%)",
     status: "current",
   },
@@ -114,6 +123,7 @@ export const designTeams = [
     name: "University of Waterloo Formula Electric",
     description: "Built embedded systems and dashboards for electric race cars.",
     url: "https://www.uwfsae.ca/",
+    logo: "/experiences/uwfe.webp",
     gradient: "linear-gradient(180deg, #f6d567ff 0%, #79580cff 100%)",
   },
   {
@@ -122,6 +132,7 @@ export const designTeams = [
     name: "WATonomous",
     description: "Developed software for autonomous vehicles and self-driving systems.",
     url: "https://www.watonomous.ca/",
+    logo: "/experiences/wato.jpeg",
     gradient: "linear-gradient(135deg, #22d3ee 0%, #0f2a4a 100%)",
   },
 ];

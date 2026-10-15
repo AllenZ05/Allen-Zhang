@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi";
 import { designTeams, experiences } from "../../data/experiences";
 import { handleSpotlightMove } from "../../lib/spotlight";
@@ -44,6 +45,7 @@ const Experiences = () => {
             >
               <div className={styles.cardContent}>
                 <div className={styles.cardHeader}>
+                  <Image src={experience.logo} alt="" width={48} height={48} className={styles.logo} />
                   <div className={styles.positionInfo}>
                     <h3 className={styles.position}>{experience.position}</h3>
                     <div className={styles.companyRow}>
@@ -110,8 +112,14 @@ const Experiences = () => {
           >
             <div className={styles.cardContent}>
               <div className={styles.cardHeader}>
+                <Image src={team.logo} alt="" width={48} height={48} className={styles.logo} />
                 <div className={styles.positionInfo}>
-                  <h3 className={styles.position}>{team.position}</h3>
+                  <div className={styles.titleRow}>
+                    <h3 className={styles.position}>{team.position}</h3>
+                    {team.status === "current" && (
+                      <span className={`${styles.statusBadge} ${styles.current}`}>Current</span>
+                    )}
+                  </div>
                   <h4 className={styles.company}>
                     {team.name}
                     <a
@@ -125,9 +133,6 @@ const Experiences = () => {
                     </a>
                   </h4>
                 </div>
-                {team.status === "current" && (
-                  <span className={`${styles.statusBadge} ${styles.current}`}>Current</span>
-                )}
               </div>
               <p className={styles.description}>{team.description}</p>
             </div>

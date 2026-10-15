@@ -149,8 +149,8 @@ const About = () => {
                 <div className={styles.highlightBox}>
                   <strong>Seeking {profile.availability} Tech Internships</strong>
                   <span>
-                    Preferably in NYC or the Bay Area. Excited about Big Tech, high-growth startups, and anywhere
-                    building cool things.
+                    Preferably in New York City or the Bay Area. Excited about high-growth startups, top tech companies,
+                    and anywhere building cool things.
                   </span>
                 </div>
 
