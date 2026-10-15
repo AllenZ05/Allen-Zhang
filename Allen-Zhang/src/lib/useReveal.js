@@ -8,21 +8,29 @@ import { useEffect } from "react";
 export function useReveal(routeKey) {
   // biome-ignore lint/correctness/useExhaustiveDependencies: routeKey re-scans the page after navigation.
   useEffect(() => {
+    let index = 0;
+    const reveal = (element) => {
+      element.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 0.08}s`);
+      element.setAttribute("data-revealed", "");
+      index += 1;
+    };
     const observer = new IntersectionObserver(
       (entries) => {
-        let index = 0;
+        index = 0;
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
-          entry.target.style.setProperty("--reveal-delay", `${Math.min(index, 5) * 0.08}s`);
-          entry.target.setAttribute("data-revealed", "");
+          reveal(entry.target);
           observer.unobserve(entry.target);
-          index += 1;
         }
       },
       { rootMargin: "0px 0px -8% 0px" },
     );
     for (const element of document.querySelectorAll("[data-reveal]:not([data-revealed])")) {
-      observer.observe(element);
+      // Reveal what is already on screen right away instead of waiting for the observer's first
+      // report, which some engines deliver late; the observer handles everything further down.
+      const rect = element.getBoundingClientRect();
+      if (rect.width > 0 && rect.top < window.innerHeight * 0.92 && rect.bottom > 0) reveal(element);
+      else observer.observe(element);
     }
     return () => observer.disconnect();
   }, [routeKey]);

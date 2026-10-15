@@ -333,3 +333,25 @@ test("About's small cards lift and glow under the cursor", async ({ page }) => {
   await expect.poll(() => category.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m42)).toBeLessThan(-3);
   await expect(category.locator('[aria-hidden="true"]').first()).toHaveCSS("opacity", "1");
 });
+
+test("cards already on screen appear even if the browser's first visibility report is late", async ({ page }) => {
+  // Linux WebKit in CI delivered IntersectionObserver's initial report late; drop it entirely here.
+  await page.addInitScript(() => {
+    const Native = window.IntersectionObserver;
+    window.IntersectionObserver = class extends Native {
+      constructor(callback, options) {
+        let first = true;
+        super((entries, observer) => {
+          if (first) {
+            first = false;
+            return;
+          }
+          callback(entries, observer);
+        }, options);
+      }
+    };
+  });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/experiences/");
+  await expect(page.locator("[data-reveal]").first()).toHaveCSS("opacity", "1", { timeout: 3000 });
+});
