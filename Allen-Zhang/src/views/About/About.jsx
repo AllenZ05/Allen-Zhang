@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FaCode, FaGraduationCap, FaRocket } from "react-icons/fa6";
 import { IoCheckmark } from "react-icons/io5";
@@ -8,6 +8,7 @@ import { MdHourglassBottom } from "react-icons/md";
 import { educationYears, skillCategories } from "../../data/about";
 import { emailHref, profile } from "../../data/profile";
 import { SPRING } from "../../lib/motion";
+import { handleSpotlightMove } from "../../lib/spotlight";
 import { useHydrated } from "../../lib/useHydrated";
 import { useSlidingIndicator } from "../../lib/useSlidingIndicator";
 import styles from "./About.module.css";
@@ -18,12 +19,7 @@ const About = () => {
   const [selectedSection, setSelectedSection] = useState("Introduction");
   const hydrated = useHydrated();
   const [verticalTabs, setVerticalTabs] = useState(false);
-  const [tiltEnabled, setTiltEnabled] = useState(false);
   const reducedMotion = useReducedMotion();
-  const rotateX = useMotionValue(0);
-  const rotateY = useMotionValue(0);
-  const springX = useSpring(rotateX, { stiffness: 250, damping: 28 });
-  const springY = useSpring(rotateY, { stiffness: 250, damping: 28 });
   const tabRefs = useRef([]);
   const [tablist, setTablist] = useState(null);
   // One highlight slides behind the tabs to the selected one, across and down alike.
@@ -37,44 +33,21 @@ const About = () => {
     return () => query.removeEventListener("change", update);
   }, []);
 
-  useEffect(() => {
-    const query = window.matchMedia(
-      "(min-width: 1201px) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
-    );
-    const update = () => setTiltEnabled(query.matches);
-    update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
-  }, []);
+  const selectSection = (section) => setSelectedSection(section);
 
-  const resetTilt = () => {
-    rotateX.set(0);
-    rotateY.set(0);
-  };
-
-  const selectSection = (section) => {
-    resetTilt();
-    setSelectedSection(section);
-  };
-
-  const cardMotionProps = {
+  // The large reading cards stay still; the small cards inside them respond to the cursor.
+  const sectionCardProps = {
     className: styles.sectionCard,
     "data-enter": true,
-    style: {
-      "--enter-scale": 0.95,
-      transformPerspective: 1000,
-      rotateX: tiltEnabled && !reducedMotion ? springX : 0,
-      rotateY: tiltEnabled && !reducedMotion ? springY : 0,
-    },
-    onMouseMove: (event) => {
-      if (!tiltEnabled || reducedMotion) return;
-      // Measure the stationary panel, so the card's own tilt cannot move its target.
-      const rect = event.currentTarget.parentElement.getBoundingClientRect();
-      const strength = { Introduction: 3, Education: 1, Skills: 2 }[selectedSection];
-      rotateX.set(((event.clientY - rect.top) / rect.height - 0.5) * -2 * strength);
-      rotateY.set(((event.clientX - rect.left) / rect.width - 0.5) * 2 * strength);
-    },
-    onMouseLeave: resetTilt,
+    style: { "--enter-scale": 0.95 },
+  };
+
+  // Small cards lift on a spring and glow under the cursor, like the Projects and Experiences cards.
+  const smallCardMotion = {
+    "data-reveal": true,
+    onMouseMove: handleSpotlightMove,
+    whileHover: reducedMotion ? undefined : { y: -4 },
+    transition: SPRING,
   };
 
   const handleTabKey = (event, index) => {
@@ -93,7 +66,7 @@ const About = () => {
     switch (section) {
       case "Introduction":
         return (
-          <motion.div {...cardMotionProps}>
+          <div {...sectionCardProps}>
             <div className={styles.cardIcon}>
               <FaRocket aria-hidden="true" />
             </div>
@@ -178,11 +151,11 @@ const About = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         );
       case "Education":
         return (
-          <motion.div {...cardMotionProps}>
+          <div {...sectionCardProps}>
             <div className={styles.cardIcon}>
               <FaGraduationCap aria-hidden="true" />
             </div>
@@ -200,7 +173,8 @@ const About = () => {
                     <h4>{year.year}</h4>
                     <div className={styles.termsGrid}>
                       {year.terms.map((term) => (
-                        <div key={term.name} className={styles.termCard}>
+                        <motion.div key={term.name} className={styles.termCard} {...smallCardMotion}>
+                          <div className={styles.spotlight} aria-hidden="true" />
                           <h5>{term.name}</h5>
                           {term.status && (
                             <span className={styles.termBadge}>
@@ -219,18 +193,18 @@ const About = () => {
                               </li>
                             ))}
                           </ul>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         );
       case "Skills":
         return (
-          <motion.div {...cardMotionProps}>
+          <div {...sectionCardProps}>
             <div className={styles.cardIcon}>
               <FaCode aria-hidden="true" />
             </div>
@@ -239,17 +213,14 @@ const About = () => {
 
               <div className={styles.skillsContainer}>
                 <div className={styles.skillCategoriesGrid}>
-                  {skillCategories.map((category, index) => (
-                    <div
+                  {skillCategories.map((category) => (
+                    <motion.div
                       key={category.title}
                       className={styles.skillCategory}
-                      data-enter
-                      style={{
-                        "--gradient": category.gradient,
-                        "--enter-delay": `${0.1 + index * 0.1}s`,
-                        "--enter-scale": 0.95,
-                      }}
+                      {...smallCardMotion}
+                      style={{ "--gradient": category.gradient, "--enter-scale": 0.95 }}
                     >
+                      <div className={styles.spotlight} aria-hidden="true" />
                       <h3>{category.title}</h3>
                       <div className={styles.skillTags}>
                         {category.skills.map((skill) => (
@@ -258,12 +229,12 @@ const About = () => {
                           </span>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         );
       default:
         return null;

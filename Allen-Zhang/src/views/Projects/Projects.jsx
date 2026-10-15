@@ -53,15 +53,15 @@ const Projects = () => {
       </h1>
 
       <div className={styles.projectsGrid}>
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <motion.article
             key={project.id}
             className={styles.projectCard}
-            data-enter
+            data-reveal
             onMouseMove={handleSpotlightMove}
             whileHover={reducedMotion ? undefined : { y: -6 }}
             transition={SPRING}
-            style={{ "--gradient": project.gradient, "--enter-delay": `${index * 0.08}s`, "--enter-distance": "32px" }}
+            style={{ "--gradient": project.gradient, "--enter-distance": "32px" }}
           >
             <a
               href={project.preview || project.image}

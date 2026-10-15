@@ -28,13 +28,12 @@ const Experiences = () => {
             <motion.div
               key={experience.id}
               className={`${styles.experienceCard} ${index % 2 === 0 ? styles.left : styles.right}`}
-              data-enter
+              data-reveal
               onMouseMove={handleSpotlightMove}
               whileHover={reducedMotion ? undefined : { y: -8 }}
               transition={SPRING}
               style={{
                 "--gradient": experience.gradient,
-                "--enter-delay": `${index * 0.2}s`,
                 "--enter-distance": "50px",
               }}
             >
@@ -92,19 +91,19 @@ const Experiences = () => {
         </div>
       </div>
 
-      <h2 className={styles.sectionHeading} data-enter>
+      <h2 className={styles.sectionHeading} data-reveal>
         Design Teams
       </h2>
       <div className={styles.teamsGrid}>
-        {designTeams.map((team, index) => (
+        {designTeams.map((team) => (
           <motion.article
             key={team.id}
             className={styles.teamCard}
-            data-enter
+            data-reveal
             onMouseMove={handleSpotlightMove}
             whileHover={reducedMotion ? undefined : { y: -6 }}
             transition={SPRING}
-            style={{ "--gradient": team.gradient, "--enter-delay": `${index * 0.1}s`, "--enter-distance": "32px" }}
+            style={{ "--gradient": team.gradient, "--enter-distance": "32px" }}
           >
             <div className={styles.cardContent}>
               <div className={styles.cardHeader}>

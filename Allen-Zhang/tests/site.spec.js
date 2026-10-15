@@ -147,7 +147,7 @@ test("reduced motion preserves a stable introduction and disables page entrance"
   await expect(typewriter).toHaveText("Computer Engineering student at the University of Waterloo");
 });
 
-test("normal motion includes typing and deleting all hero messages, stable controls, and About-card tilt", async ({ page }) => {
+test("normal motion includes typing and deleting all hero messages and stable controls", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
@@ -188,19 +188,6 @@ test("normal motion includes typing and deleting all hero messages, stable contr
   await expect(typewriter).toHaveText("Computer Engineering student at the University of Waterloo");
   await page.clock.runFor(10000);
   await expect(typewriter).toHaveText("Computer Engineering student at the University of Waterloo");
-  await page.clock.resume();
-  await page.emulateMedia({ reducedMotion: "no-preference" });
-
-  await page.goto("/about/");
-  const panel = page.getByRole("tabpanel", { name: "Introduction" });
-  const card = panel.locator(":scope > div");
-  await expect(card).toHaveCSS("opacity", "1");
-  const bounds = await panel.boundingBox();
-  await page.mouse.move(bounds.x + bounds.width * 0.8, bounds.y + bounds.height * 0.2);
-  await expect.poll(() => card.evaluate((el) => Math.abs(new DOMMatrix(getComputedStyle(el).transform).m13))).toBeGreaterThan(0.005);
-
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect.poll(() => card.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m13)).toBe(0);
 });
 
 test("exported content and mobile navigation work without JavaScript", async ({ browser }) => {
@@ -319,4 +306,30 @@ test("glass surfaces keep their blur after CSS minification", async ({ page }) =
   await page.goto("/");
   const nav = page.getByRole("navigation", { name: "Main navigation" });
   expect(await nav.evaluate((el) => getComputedStyle(el).backdropFilter)).toContain("blur");
+});
+
+test("cards below the fold appear as they scroll into view, or immediately with reduced motion", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/experiences/");
+  const lastCard = page.locator("[data-reveal]").last();
+  await expect(page.locator("[data-reveal]").first()).toHaveCSS("opacity", "1");
+  await expect(lastCard).toHaveCSS("opacity", "0");
+  await lastCard.scrollIntoViewIfNeeded();
+  await expect(lastCard).toHaveAttribute("data-revealed", "");
+  await expect(lastCard).toHaveCSS("opacity", "1");
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/projects/");
+  await expect(page.locator("article").last()).toHaveCSS("opacity", "1");
+});
+
+test("About's small cards lift and glow under the cursor", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/about/");
+  await page.getByRole("tab", { name: "Skills" }).click();
+  const category = page.getByRole("tabpanel", { name: "Skills" }).locator("[data-reveal]").first();
+  await expect(category).toHaveCSS("opacity", "1");
+  await category.hover();
+  await expect.poll(() => category.evaluate((el) => new DOMMatrix(getComputedStyle(el).transform).m42)).toBeLessThan(-3);
+  await expect(category.locator('[aria-hidden="true"]').first()).toHaveCSS("opacity", "1");
 });

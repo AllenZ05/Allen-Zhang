@@ -69,6 +69,8 @@ export default function RootLayout({ children }) {
       <body>
         <Script id="theme-init" strategy="beforeInteractive">
           {`(() => {
+            // Lets CSS hide not-yet-revealed content only when JavaScript is running (see useReveal).
+            document.documentElement.setAttribute("data-js", "");
             let savedTheme = null;
             try {
               savedTheme = localStorage.getItem("theme");

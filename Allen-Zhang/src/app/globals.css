@@ -317,20 +317,15 @@ main:focus {
     transform: none;
   }
 }
-/* Content below the fold also reveals as it scrolls into view. The second animation fills only
-   backwards, so it hides an element until it enters and then gets out of the way; anything already
-   on screen keeps the time-based entrance above. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    [data-enter] {
-      animation:
-        content-entrance 600ms cubic-bezier(0.23, 1, 0.32, 1) var(--enter-delay, 0s) backwards,
-        content-entrance linear backwards;
-      animation-timeline: auto, view();
-      animation-range:
-        normal,
-        entry 0% entry 70%;
-    }
+/* Cards wait until they scroll into view, then play the entrance; useReveal marks them data-revealed.
+   Only while JavaScript runs (data-js is set before first paint) and with full motion, so content is
+   never left hidden. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-js] [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+  }
+  [data-reveal][data-revealed] {
+    animation: content-entrance 700ms cubic-bezier(0.23, 1, 0.32, 1) var(--reveal-delay, 0s) backwards;
   }
 }
 @keyframes content-entrance {
