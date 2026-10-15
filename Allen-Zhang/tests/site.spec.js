@@ -221,7 +221,12 @@ test("exported content and mobile navigation work without JavaScript", async ({ 
 
 test("mobile layouts fit in both themes", async ({ page }) => {
   const errors = [];
-  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("pageerror", (error) => {
+    // This test navigates faster than Next.js can finish prefetching link data; WebKit reports those
+    // cancelled prefetches as "... due to access control checks". They are not page errors.
+    if (/__next\..*due to access control checks/.test(error.message)) return;
+    errors.push(error.message);
+  });
   for (const width of [320, 390, 820, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     for (const path of ["/", "/about/", "/experiences/", "/projects/"]) {
