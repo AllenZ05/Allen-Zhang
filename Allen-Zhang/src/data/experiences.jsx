@@ -73,18 +73,6 @@ export const experiences = [
     gradient: "linear-gradient(180deg, #de975aff 0%, #121f80ff 100%)",
   },
   {
-    id: 4,
-    position: "Software Developer",
-    company: "University of Waterloo Formula Electric",
-    location: "Waterloo, ON",
-    period: "Sep 2023 - Apr 2024",
-    description:
-      "Built embedded C firmware, reengineered the dashboard, and validated electric race car systems with Python HIL testing.",
-    skills: ["C", "Python", "Git", "Hardware Testing", "Embedded Systems"],
-    url: "https://www.uwfsae.ca/",
-    gradient: "linear-gradient(180deg, #f6d567ff 0%, #79580cff 100%)",
-  },
-  {
     id: 5,
     position: "Lifeguard and Swim Instructor",
     company: "City of Toronto",
@@ -106,5 +94,34 @@ export const experiences = [
     skills: ["Microsoft Office", "Data Analysis", "Data Entry", "Logistics Management", "Inventory Control"],
     url: "https://somerville.ca/",
     gradient: "linear-gradient(135deg, #708dc0ff 0%, #16346aff 100%)",
+  },
+];
+
+// Design team roles, shown as cards below the work timeline. Optional `status`: "current" renders a badge.
+export const designTeams = [
+  {
+    id: 0,
+    position: "Technical Lead",
+    name: "UW Blueprint",
+    description: "Led engineering delivery for nonprofit projects across North America.",
+    url: "https://uwblueprint.org/",
+    gradient: "linear-gradient(135deg, #60a5fa 0%, #1d4ed8 100%)",
+    status: "current",
+  },
+  {
+    id: 1,
+    position: "Software Developer",
+    name: "University of Waterloo Formula Electric",
+    description: "Built embedded systems and dashboards for electric race cars.",
+    url: "https://www.uwfsae.ca/",
+    gradient: "linear-gradient(180deg, #f6d567ff 0%, #79580cff 100%)",
+  },
+  {
+    id: 2,
+    position: "Software Developer",
+    name: "WATonomous",
+    description: "Developed software for autonomous vehicles and self-driving systems.",
+    url: "https://www.watonomous.ca/",
+    gradient: "linear-gradient(135deg, #22d3ee 0%, #0f2a4a 100%)",
   },
 ];

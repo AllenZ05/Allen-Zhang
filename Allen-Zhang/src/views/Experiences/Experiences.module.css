@@ -28,10 +28,10 @@
   gap: var(--spacing-xl);
 }
 
-.experienceCard {
+.experienceCard,
+.teamCard {
   position: relative;
   --stripe-width: 4px;
-  width: calc(50% - 40px);
   background: var(--bg-card);
   border: none;
   border-radius: var(--radius-sm);
@@ -54,7 +54,12 @@
   -webkit-transform-origin: center center;
 }
 
-.experienceCard::before {
+.experienceCard {
+  width: calc(50% - 40px);
+}
+
+.experienceCard::before,
+.teamCard::before {
   content: "";
   position: absolute;
   left: 0;
@@ -69,7 +74,8 @@
   will-change: width;
 }
 
-.experienceCard::after {
+.experienceCard::after,
+.teamCard::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -91,29 +97,35 @@
   will-change: opacity;
 }
 
-:global([data-theme="light"]) .experienceCard {
+:global([data-theme="light"]) .experienceCard,
+:global([data-theme="light"]) .teamCard {
   box-shadow: var(--shadow-md);
 }
 
-:global([data-theme="light"]) .experienceCard:hover {
+:global([data-theme="light"]) .experienceCard:hover,
+:global([data-theme="light"]) .teamCard:hover {
   box-shadow: var(--shadow-lg);
 }
 
-.experienceCard:hover {
+.experienceCard:hover,
+.teamCard:hover {
   background: var(--bg-tertiary);
   box-shadow: var(--shadow-lg);
 }
 
-:global([data-theme="light"]) .experienceCard:hover {
+:global([data-theme="light"]) .experienceCard:hover,
+:global([data-theme="light"]) .teamCard:hover {
   background: var(--bg-card);
 }
 
-.experienceCard:hover::before {
+.experienceCard:hover::before,
+.teamCard:hover::before {
   --stripe-width: 6px;
   box-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
 }
 
-.experienceCard:hover::after {
+.experienceCard:hover::after,
+.teamCard:hover::after {
   opacity: 1;
 }
 
@@ -163,7 +175,8 @@
   z-index: 1;
 }
 
-.experienceCard:hover .spotlight {
+.experienceCard:hover .spotlight,
+.teamCard:hover .spotlight {
   opacity: 1;
 }
 
@@ -263,6 +276,12 @@
   background: rgba(0, 184, 148, 0.25);
   border-color: rgba(0, 184, 148, 0.5);
   box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+}
+
+:global([data-theme="light"]) .statusBadge.current {
+  background: rgba(20, 120, 56, 0.1);
+  color: var(--status-success);
+  border-color: rgba(20, 120, 56, 0.3);
 }
 
 .locationPeriod {
@@ -378,6 +397,63 @@
 .experienceCard:hover .timelineNode {
   transform: translateX(var(--node-shift-x)) scale(1.2);
   box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+}
+
+/* Section headings */
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  max-width: 1200px;
+  margin: 0 auto var(--spacing-md);
+  font-size: 1.5rem;
+  font-weight: 650;
+  color: var(--text-primary);
+}
+
+.sectionHeading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-color-hover), transparent);
+}
+
+.timelineContainer + .sectionHeading {
+  margin-top: var(--spacing-xl);
+}
+
+/* Design Teams */
+.teamsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.teamCard .position {
+  font-size: 1.25rem;
+}
+
+.teamCard .description {
+  margin-bottom: 0;
+}
+
+/* Inline flow keeps the link icon after the last word when a long team name wraps. */
+.teamCard .company {
+  display: block;
+}
+
+.teamCard .externalLink {
+  margin-left: var(--spacing-xs);
+  vertical-align: -0.1em;
+}
+
+@media (max-width: 900px) {
+  .teamsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
 }
 
 /* Mobile Design */

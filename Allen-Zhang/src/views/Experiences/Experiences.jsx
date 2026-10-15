@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { FiExternalLink } from "react-icons/fi";
-import { experiences } from "../../data/experiences";
+import { designTeams, experiences } from "../../data/experiences";
 import { handleSpotlightMove } from "../../lib/spotlight";
 import styles from "./Experiences.module.css";
 
@@ -15,6 +15,9 @@ const Experiences = () => {
         Experiences
       </h1>
 
+      <h2 className={styles.sectionHeading} data-enter style={{ "--enter-delay": "0.25s" }}>
+        Work
+      </h2>
       <div className={styles.timelineContainer}>
         <div className={styles.timelineLine}></div>
 
@@ -42,9 +45,9 @@ const Experiences = () => {
               <div className={styles.cardContent}>
                 <div className={styles.cardHeader}>
                   <div className={styles.positionInfo}>
-                    <h2 className={styles.position}>{experience.position}</h2>
+                    <h3 className={styles.position}>{experience.position}</h3>
                     <div className={styles.companyRow}>
-                      <h3 className={styles.company}>
+                      <h4 className={styles.company}>
                         {experience.company}
                         <a
                           href={experience.url}
@@ -55,7 +58,7 @@ const Experiences = () => {
                         >
                           <FiExternalLink />
                         </a>
-                      </h3>
+                      </h4>
                     </div>
                   </div>
                   {experience.status && (
@@ -90,6 +93,48 @@ const Experiences = () => {
             </motion.div>
           ))}
         </div>
+      </div>
+
+      <h2 className={styles.sectionHeading} data-enter>
+        Design Teams
+      </h2>
+      <div className={styles.teamsGrid}>
+        {designTeams.map((team, index) => (
+          <motion.article
+            key={team.id}
+            className={styles.teamCard}
+            data-enter
+            onMouseMove={handleSpotlightMove}
+            whileHover={reducedMotion ? undefined : { y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
+            style={{ "--gradient": team.gradient, "--enter-delay": `${index * 0.1}s`, "--enter-distance": "32px" }}
+          >
+            <div className={styles.cardContent}>
+              <div className={styles.cardHeader}>
+                <div className={styles.positionInfo}>
+                  <h3 className={styles.position}>{team.position}</h3>
+                  <h4 className={styles.company}>
+                    {team.name}
+                    <a
+                      href={team.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.externalLink}
+                      aria-label={`Visit ${team.name} website`}
+                    >
+                      <FiExternalLink />
+                    </a>
+                  </h4>
+                </div>
+                {team.status === "current" && (
+                  <span className={`${styles.statusBadge} ${styles.current}`}>Current</span>
+                )}
+              </div>
+              <p className={styles.description}>{team.description}</p>
+            </div>
+
+            <div className={styles.spotlight} aria-hidden="true" />
+          </motion.article>
+        ))}
       </div>
     </main>
   );

@@ -21,7 +21,7 @@ Most structured page content lives in data files:
 - `src/data/profile.js` — role, availability, email, and social links shared across pages and metadata
 
 - `src/data/projects.js` — project cards (covers live in `public/projects/`)
-- `src/data/experiences.jsx` — work experience timeline
+- `src/data/experiences.jsx` — work experience timeline and design team cards
 - `src/data/about.js` — skills and education
 
 The introduction is in `src/views/About/About.jsx`. Page descriptions and canonical/social metadata live in `src/app/*/page.jsx` and `src/app/siteConfig.js`.
