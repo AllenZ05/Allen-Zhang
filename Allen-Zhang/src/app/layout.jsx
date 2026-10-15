@@ -69,14 +69,16 @@ export default function RootLayout({ children }) {
       <body>
         <Script id="theme-init" strategy="beforeInteractive">
           {`(() => {
+            let savedTheme = null;
             try {
-              const savedTheme = localStorage.getItem("theme");
-              const theme = savedTheme === "light" ? "light" : "dark";
-              document.documentElement.setAttribute("data-theme", theme);
-              document.documentElement.style.colorScheme = theme;
+              savedTheme = localStorage.getItem("theme");
             } catch {
-              // ignore
+              // Storage can be blocked; fall back to the system theme.
             }
+            const systemTheme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+            const theme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : systemTheme;
+            document.documentElement.setAttribute("data-theme", theme);
+            document.documentElement.style.colorScheme = theme;
           })();`}
         </Script>
 
@@ -100,7 +102,8 @@ export default function RootLayout({ children }) {
         <Providers>
           <Navbar />
           <ClientLayout>{children}</ClientLayout>
-          <Footer />
+          {/* Fixed at build time so the static HTML and the browser render the same year. */}
+          <Footer year={new Date().getFullYear()} />
           <BackToTop />
         </Providers>
       </body>

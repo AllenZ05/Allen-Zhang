@@ -8,7 +8,7 @@ import { emailHref, profile } from "../data/profile";
 import { useHydrated } from "../lib/useHydrated";
 import styles from "./Footer.module.css";
 
-export default function Footer() {
+export default function Footer({ year }) {
   const [copyState, setCopyState] = useState("");
   const resetTimer = useRef(null);
   const hydrated = useHydrated();
@@ -85,7 +85,7 @@ export default function Footer() {
         </p>
       </div>
       <p className={styles.copyright}>
-        © {new Date().getFullYear()} {profile.name}
+        © {year} {profile.name}
       </p>
     </footer>
   );

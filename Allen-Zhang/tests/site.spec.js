@@ -30,7 +30,9 @@ test("mobile menu contains focus, closes on Escape, and unlocks after resizing",
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   const trigger = page.getByRole("button", { name: "Open navigation menu" });
-  await trigger.click();
+  // Keyboard activation: Safari does not focus buttons on mouse click, so only keyboard users have focus to restore.
+  await trigger.focus();
+  await page.keyboard.press("Enter");
   const menu = page.getByRole("dialog", { name: "Navigation", exact: true });
   await expect(menu).toBeVisible();
   for (let i = 0; i < 8; i++) {
@@ -70,7 +72,9 @@ test("project previews load, close with Escape, and return focus", async ({ page
   await expect(links.first().locator("img")).toHaveCSS("padding", "0px");
   await expect(links.first().locator("img")).toHaveCSS("object-fit", "cover");
   for (const link of await links.all()) {
-    await link.click();
+    // Keyboard activation: Safari does not focus links on mouse click, so only keyboard users have focus to restore.
+    await link.focus();
+    await page.keyboard.press("Enter");
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
     await expect(dialog.locator("img")).toHaveCSS("object-fit", "contain");
@@ -243,4 +247,32 @@ test("new pages start at the top and Back restores the previous scroll position"
   await page.goBack();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Experiences");
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(900);
+});
+
+test("pages hydrate without errors after the build year ends", async ({ page }) => {
+  const errors = [];
+  page.on("console", (message) => message.type() === "error" && errors.push(message.text()));
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.clock.install({ time: new Date(new Date().getFullYear() + 1, 0, 2) });
+  await page.goto("/");
+  await expect(page.getByRole("button", { name: /^Switch to/ })).toBeVisible();
+  await page.clock.runFor(2000);
+  expect(errors).toEqual([]);
+});
+
+test("theme follows the system until the visitor chooses one", async ({ page }) => {
+  const html = page.locator("html");
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.goto("/");
+  await expect(html).toHaveAttribute("data-theme", "light");
+  await page.emulateMedia({ colorScheme: "dark" });
+  await expect(html).toHaveAttribute("data-theme", "dark");
+  await page.getByRole("button", { name: "Switch to light mode" }).click();
+  await expect(html).toHaveAttribute("data-theme", "light");
+  // An explicit choice outlasts later system changes and reloads.
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.emulateMedia({ colorScheme: "dark" });
+  await expect(html).toHaveAttribute("data-theme", "light");
+  await page.reload();
+  await expect(html).toHaveAttribute("data-theme", "light");
 });

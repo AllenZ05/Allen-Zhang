@@ -31,11 +31,11 @@ Project cards use small WebP thumbnails; their `preview` field points to the ful
 ## Browser checks
 
 ```bash
-npx playwright install chromium   # once per Playwright update
+npx playwright install chromium webkit   # once per Playwright update
 npm run build
 npm run test:e2e
 ```
 
-The checks cover navigation, themes, mobile dialog focus, About tabs, project previews, contact fallback, reduced motion, static content without JavaScript, and layout widths. They start and stop a local static server on port 4175. Analytics requests are blocked during the tests.
+The checks run in Chromium and WebKit (Safari's engine) and cover navigation, themes, mobile dialog focus, About tabs, project previews, contact fallback, reduced motion, static content without JavaScript, and layout widths. They start and stop a local static server on port 4175. Analytics requests are blocked during the tests.
 
 GitHub Actions runs lint, build, and these browser checks on pushes and pull requests. The workflow belongs in `.github/workflows/website.yml` at the **parent repository root**, alongside `Allen-Zhang/`.

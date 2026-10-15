@@ -31,16 +31,15 @@ export default function Modal({ open, onClose, title, id, children, className = 
         const controls = [...ref.current.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]')].filter(
           (element) => element.getClientRects().length > 0,
         );
-        const first = controls[0];
-        const last = controls.at(-1);
-        // Keep Tab cycling in the dialog instead of moving into browser chrome.
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last?.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first?.focus();
-        }
+        const index = controls.indexOf(document.activeElement);
+        const next =
+          index === -1
+            ? controls.at(event.shiftKey ? -1 : 0)
+            : controls.at((index + (event.shiftKey ? -1 : 1)) % controls.length);
+        // Move focus ourselves so Tab cycles through the dialog's controls in every browser.
+        // Safari skips links by default, so leaving it to the browser lets focus escape the dialog.
+        event.preventDefault();
+        next?.focus();
       }}
       onCancel={(event) => {
         event.preventDefault();
