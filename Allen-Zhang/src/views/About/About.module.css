@@ -14,7 +14,6 @@
   border: 1px solid var(--border-color);
   border-radius: 12px;
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   margin-bottom: var(--spacing-xl);
   transition:
     background-color var(--transition-medium),
@@ -99,7 +98,6 @@
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   box-shadow: var(--shadow-md);
   padding: var(--spacing-xl);
   position: relative;

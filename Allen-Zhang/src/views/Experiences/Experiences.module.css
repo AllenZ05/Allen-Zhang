@@ -21,6 +21,40 @@
   border-radius: 2px;
 }
 
+/* The line fills down as you read: the fill reaches each point as it crosses the middle of the screen. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .timelineLine {
+      view-timeline-name: --timeline-line;
+    }
+    .timelineLine::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        180deg,
+        var(--accent-primary),
+        color-mix(in srgb, var(--accent-primary) 35%, transparent)
+      );
+      box-shadow: 0 0 12px var(--accent-border-hover);
+      transform-origin: top;
+      animation: timeline-fill linear both;
+      animation-timeline: --timeline-line;
+      animation-range: cover 50vh cover calc(100% - 50vh);
+    }
+  }
+}
+
+@keyframes timeline-fill {
+  from {
+    scale: 1 0;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
 .experiencesGrid {
   position: relative;
   display: flex;
@@ -37,7 +71,6 @@
   border-radius: var(--radius-sm);
   overflow: visible;
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   box-shadow:
     inset 0 0 0 1px var(--border-color),
     var(--shadow-md);

@@ -52,6 +52,34 @@
   opacity: 1;
 }
 
+/* Pointer light: position comes from HeroHome.jsx through --glow-x / --glow-y. */
+.cursorGlow,
+.gridHighlight {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.cursorGlow {
+  background: radial-gradient(520px circle at var(--glow-x) var(--glow-y), var(--spotlight), transparent 60%);
+}
+
+/* The same grid in the accent colour, revealed only around the pointer. */
+.gridHighlight {
+  background-image:
+    linear-gradient(var(--accent-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent-border) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(240px circle at var(--glow-x) var(--glow-y), #000, transparent 70%);
+  -webkit-mask-image: radial-gradient(240px circle at var(--glow-x) var(--glow-y), #000, transparent 70%);
+}
+
+.backdrop[data-glowing] .cursorGlow,
+.backdrop[data-glowing] .gridHighlight {
+  opacity: 1;
+}
+
 /* Content */
 
 .content {

@@ -13,7 +13,6 @@
   min-height: 56px;
   background: var(--surface-glass);
   backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--border-color);
   border-radius: 28px;
   box-shadow:
@@ -34,7 +33,6 @@
   .header[data-scrolled] {
     background: var(--bg-secondary);
     backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 }
 .logo {
@@ -179,21 +177,74 @@
 .fallbackNav {
   display: none;
 }
+/* Glass sheet anchored under the menu button: it grows out of the button and shrinks back into it.
+   Opening and closing are CSS transitions; allow-discrete keeps the dialog shown while it closes. */
 .menuDialog {
-  width: min(480px, calc(100% - 2rem));
+  inset: 76px 12px auto auto;
+  margin: 0;
+  width: min(320px, calc(100% - 24px));
+  max-height: calc(100dvh - 88px);
+  z-index: 1001;
+  background: var(--surface-glass-dense);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    var(--glass-shadow-dense);
+  transform-origin: calc(100% - 28px) -24px;
+  opacity: 0;
+  scale: 0.85;
+  transition:
+    opacity 200ms ease,
+    scale 300ms cubic-bezier(0.32, 0.72, 0, 1),
+    overlay 300ms allow-discrete,
+    display 300ms allow-discrete;
+}
+.menuDialog[open] {
+  opacity: 1;
+  scale: 1;
+  animation: none;
+}
+@starting-style {
+  .menuDialog[open] {
+    opacity: 0;
+    scale: 0.85;
+  }
+}
+.menuDialog::backdrop {
+  background: rgb(0 0 0 / 0);
+  transition:
+    background 300ms ease,
+    overlay 300ms allow-discrete,
+    display 300ms allow-discrete;
+}
+.menuDialog[open]::backdrop {
+  background: rgb(0 0 0 / 0.35);
+}
+@starting-style {
+  .menuDialog[open]::backdrop {
+    background: rgb(0 0 0 / 0);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .menuDialog {
+    background: var(--bg-card);
+    backdrop-filter: none;
+  }
 }
 .mobileNav {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 .mobileNav a {
   display: block;
-  padding: 1rem;
-  font-size: 1.2rem;
+  padding: 0.85rem 1rem;
+  font-size: 1.1rem;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
-  text-align: center;
+  border-radius: 14px;
+  background: var(--surface-glass-light);
 }
 .mobileNav a:hover {
   background: var(--accent-bg);

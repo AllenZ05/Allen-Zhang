@@ -14,11 +14,19 @@ export function useSlidingIndicator(container, activeSelector, activeKey) {
     if (!container) return;
     const measure = () => {
       const active = container.querySelector(activeSelector);
-      setBox(
-        active
-          ? { x: active.offsetLeft, y: active.offsetTop, width: active.offsetWidth, height: active.offsetHeight }
-          : null,
-      );
+      if (!active) {
+        setBox(null);
+        return;
+      }
+      // Sum layout offsets up to the container. They ignore transforms (entrance animations, press
+      // scaling), and an animating ancestor can become the offsetParent along the way.
+      let x = 0;
+      let y = 0;
+      for (let node = active; node && node !== container; node = node.offsetParent) {
+        x += node.offsetLeft;
+        y += node.offsetTop;
+      }
+      setBox({ x, y, width: active.offsetWidth, height: active.offsetHeight });
     };
     measure();
     const observer = new ResizeObserver(measure);

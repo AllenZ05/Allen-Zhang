@@ -151,9 +151,10 @@ test("normal motion includes typing and deleting all hero messages, stable contr
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
+  // The second animation is the scroll reveal, where scroll-driven animations are supported.
   await expect(page.getByRole("heading", { name: "Allen Zhang", exact: true })).toHaveCSS(
     "animation-name",
-    "content-entrance",
+    /^content-entrance(, content-entrance)?$/,
   );
   await page.getByRole("button", { name: "Copy email address" }).waitFor();
   await page.evaluate(async () => {
@@ -296,4 +297,26 @@ test("navbar highlight stays in the navbar when navigating from a scrolled page"
     expect(highlight.y + highlight.height).toBeLessThanOrEqual(navBox.y + navBox.height);
     await page.waitForTimeout(40);
   }
+});
+
+test("navbar highlight sits under the current page's link", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const nav = page.getByRole("navigation", { name: "Main navigation" });
+  for (const path of ["/", "/about/", "/experiences/", "/projects/"]) {
+    await page.goto(path);
+    const offset = () =>
+      nav.evaluate((el) => {
+        const highlight = el.querySelector('li[aria-hidden="true"]').getBoundingClientRect();
+        const active = el.querySelector('ul a[aria-current="page"]').getBoundingClientRect();
+        return Math.abs(highlight.x - active.x) + Math.abs(highlight.width - active.width);
+      });
+    await expect.poll(offset).toBeLessThan(2);
+  }
+});
+
+test("glass surfaces keep their blur after CSS minification", async ({ page }) => {
+  // Writing -webkit-backdrop-filter after backdrop-filter made the minifier drop the standard property.
+  await page.goto("/");
+  const nav = page.getByRole("navigation", { name: "Main navigation" });
+  expect(await nav.evaluate((el) => getComputedStyle(el).backdropFilter)).toContain("blur");
 });
