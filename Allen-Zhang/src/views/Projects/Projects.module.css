@@ -32,7 +32,7 @@
   position: absolute;
   inset: 0;
   opacity: 0;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--accent-bg), transparent 65%);
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--spotlight), transparent 65%);
   transition: opacity var(--transition-medium);
   pointer-events: none;
   z-index: 1;

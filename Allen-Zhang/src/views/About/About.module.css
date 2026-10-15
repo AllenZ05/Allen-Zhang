@@ -63,8 +63,15 @@
   box-shadow: 0 4px 15px rgba(79, 172, 254, 0.2);
 }
 
+/* Light theme: a raised white segment, like a native segmented control. */
+:global([data-theme="light"]) .tabNavigation {
+  background: var(--bg-tertiary);
+}
+
 :global([data-theme="light"]) .activeTab {
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  background: var(--bg-card) !important;
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-md);
 }
 
 .contentContainer {

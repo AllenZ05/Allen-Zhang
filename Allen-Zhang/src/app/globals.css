@@ -73,6 +73,7 @@
   /* Dark mode accent colors for components */
   --accent-bg: rgba(79, 172, 254, 0.15);
   --accent-bg-hover: rgba(79, 172, 254, 0.25);
+  --spotlight: rgba(79, 172, 254, 0.15);
   --accent-border: rgba(79, 172, 254, 0.3);
   --accent-border-hover: rgba(79, 172, 254, 0.5);
 }
@@ -104,13 +105,12 @@
   --shimmer-gradient: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.08);
-  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.2);
-
-  /* Hero */
-  --hero-glow: rgba(59, 130, 246, 0.3);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md:
+    0 0 0 1px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 20px -6px rgba(15, 23, 42, 0.08);
+  --shadow-lg:
+    0 0 0 1px rgba(15, 23, 42, 0.06), 0 2px 6px rgba(15, 23, 42, 0.06), 0 20px 40px -12px rgba(37, 99, 235, 0.25);
+  --shadow-glow: 0 8px 24px -6px rgba(37, 99, 235, 0.45);
 
   /* Status Colors */
   --status-success: #147838;
@@ -121,6 +121,7 @@
   /* Light mode specific accent colors for components */
   --accent-bg: rgba(59, 130, 246, 0.08);
   --accent-bg-hover: rgba(59, 130, 246, 0.12);
+  --spotlight: rgba(99, 102, 241, 0.12);
   --accent-border: rgba(59, 130, 246, 0.2);
   --accent-border-hover: rgba(59, 130, 246, 0.35);
 }
@@ -220,6 +221,12 @@ body {
   text-align: center;
   margin-bottom: var(--spacing-xl);
   scroll-margin-top: calc(var(--app-header-h) + 12px);
+}
+
+[data-theme="light"] .page-main {
+  background:
+    radial-gradient(ellipse 70% 360px at 50% 0, rgba(99, 102, 241, 0.1), transparent),
+    radial-gradient(ellipse 40% 280px at 85% 0, rgba(14, 165, 233, 0.08), transparent), var(--bg-primary);
 }
 
 @media (max-width: 768px) {
