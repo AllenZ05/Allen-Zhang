@@ -120,7 +120,7 @@ export const designTeams = [
   {
     id: 1,
     position: "Software Developer",
-    name: "University of Waterloo Formula Electric",
+    name: "UW Formula Electric",
     description: "Built embedded systems and dashboards for electric race cars.",
     url: "https://www.uwfsae.ca/",
     logo: "/experiences/uwfe.webp",
