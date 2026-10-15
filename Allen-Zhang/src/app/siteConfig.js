@@ -24,7 +24,7 @@ export function pageMetadata(title, description, path) {
           url: OG_IMAGE,
           width: 1200,
           height: 630,
-          alt: `${SITE_NAME} — Software Engineer & Waterloo Computer Engineering`,
+          alt: `${SITE_NAME} — ${roleLabel}, ${profile.education}`,
         },
       ],
     },

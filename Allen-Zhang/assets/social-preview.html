@@ -1,0 +1,133 @@
+<!doctype html>
+<!-- Link preview (Open Graph) image. scripts/social-preview.mjs fills the double-brace placeholders from
+     src/data/profile.js and renders this page to public/social-preview.png at 1200×630. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Geist+Mono:wght@500;600&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: #08090a;
+        color: #f7f8f8;
+        font-family: Geist, system-ui, sans-serif;
+      }
+      .glow {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 45% 55% at 38% -8%, rgba(79, 172, 254, 0.32), transparent 70%),
+          radial-gradient(ellipse 45% 55% at 62% -8%, rgba(99, 102, 241, 0.26), transparent 70%);
+      }
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(ellipse 75% 70% at 50% 42%, #000 30%, transparent 80%);
+      }
+      /* The site's floating glass navbar, as a brand cue. */
+      .nav {
+        position: absolute;
+        top: 34px;
+        left: 50%;
+        translate: -50% 0;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        padding: 10px 26px 10px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 999px;
+        background: rgba(14, 15, 18, 0.55);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.1),
+          0 8px 32px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(20px) saturate(180%);
+        font-size: 18px;
+        color: #a1a5ad;
+      }
+      .logo {
+        margin-right: 14px;
+        font: 600 20px "Geist Mono", monospace;
+        color: #f7f8f8;
+      }
+      .active {
+        padding: 6px 16px;
+        border: 1px solid rgba(79, 172, 254, 0.3);
+        border-radius: 999px;
+        background: rgba(79, 172, 254, 0.15);
+        color: #4facfe;
+      }
+      .content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 36px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 116px;
+        font-weight: 700;
+        letter-spacing: -0.045em;
+        line-height: 1.05;
+        background: linear-gradient(180deg, #f7f8f8 55%, #92969f 130%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .role {
+        margin-top: 26px;
+        font-size: 32px;
+        font-weight: 500;
+        color: #e5e7eb;
+      }
+      .education {
+        margin-top: 10px;
+        font-size: 24px;
+        color: #a1a5ad;
+      }
+      .url {
+        position: absolute;
+        bottom: 38px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font: 500 22px "Geist Mono", monospace;
+        letter-spacing: 0.02em;
+        color: #4facfe;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="glow"></div>
+    <div class="grid"></div>
+    <div class="nav">
+      <span class="logo">AllenZ05</span>
+      <span class="active">Home</span>
+      <span>About</span>
+      <span>Experiences</span>
+      <span>Projects</span>
+    </div>
+    <div class="content">
+      <h1>{{name}}</h1>
+      <p class="role">{{role}}</p>
+      <p class="education">{{education}}</p>
+    </div>
+    <p class="url">allenzhang05.com</p>
+  </body>
+</html>

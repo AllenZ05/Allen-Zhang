@@ -26,7 +26,7 @@ Most structured page content lives in data files:
 
 The introduction is in `src/views/About/About.jsx`. Page descriptions and canonical/social metadata live in `src/app/*/page.jsx` and `src/app/siteConfig.js`.
 
-Project cards use small WebP thumbnails; their `preview` field points to the full image loaded only when opened. The fall-detection diagram is an editable SVG in `public/projects/`. The social card source is `assets/social-preview.svg`, with its PNG export in `public/social-preview.png`.
+Project cards use small WebP thumbnails; their `preview` field points to the full image loaded only when opened. The fall-detection diagram is an editable SVG in `public/projects/`. The link preview image (`public/social-preview.png`) is rendered from `assets/social-preview.html` with details from `src/data/profile.js`; run `npm run social-preview` after changing your role or education.
 
 ## Browser checks
 
