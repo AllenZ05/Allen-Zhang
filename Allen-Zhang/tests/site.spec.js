@@ -507,3 +507,20 @@ test("on a phone the timeline's lit tip stays on screen until the line is full, 
     }
   }
 });
+
+test("Netlify keeps the build's hashed files cached for a year, and only those", async ({ page }) => {
+  const rules = await (await page.request.get("/_headers")).text();
+  const paths = rules.split("\n").filter((line) => line.startsWith("/"));
+  expect(paths).toEqual(["/_next/static/*"]);
+  expect(rules).toContain("/_next/static/*\n  Cache-Control: public, max-age=31536000, immutable\n");
+  // The rule is only safe because every file there has a content hash in its name.
+  await page.goto("/");
+  const assets = await page.evaluate(() =>
+    performance
+      .getEntriesByType("resource")
+      .map((entry) => new URL(entry.name).pathname)
+      .filter((path) => path.startsWith("/_next/static/")),
+  );
+  expect(assets.length).toBeGreaterThan(5);
+  for (const path of assets) expect(path).toMatch(/[a-z0-9_-]{10,}\.(js|css|woff2)$/);
+});
