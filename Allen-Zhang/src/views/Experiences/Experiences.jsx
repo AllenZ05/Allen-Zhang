@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { designTeams, experiences } from "../../data/experiences";
 import { SPRING } from "../../lib/motion";
@@ -10,6 +11,43 @@ import styles from "./Experiences.module.css";
 
 const Experiences = () => {
   const reducedMotion = useReducedMotion();
+  const lineRef = useRef(null);
+
+  // The timeline's fill (Experiences.module.css) completes at --fill-end: the scroll position where
+  // the line's end reaches mid-screen, or the bottom of the page if it never gets that far. Browsers
+  // without scroll timelines (Safari before 26) get the fill's progress from here too.
+  useEffect(() => {
+    const line = lineRef.current;
+    const native = CSS.supports("animation-timeline: scroll()");
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const lineEnd = line.getBoundingClientRect().bottom + window.scrollY - window.innerHeight / 2;
+      const fillEnd = Math.max(1, Math.min(lineEnd, maxScroll));
+      line.style.setProperty("--fill-end", `${fillEnd}px`);
+      if (!native) {
+        const progress = Math.min(Math.max(window.scrollY / fillEnd, 0), 1);
+        line.style.setProperty("--scroll-progress", String(progress));
+      }
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    // The layout also shifts without a resize, e.g. when fonts load.
+    const resizeObserver = new ResizeObserver(schedule);
+    resizeObserver.observe(document.documentElement);
+    resizeObserver.observe(line);
+    window.addEventListener("resize", schedule);
+    if (!native) window.addEventListener("scroll", schedule, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("scroll", schedule);
+    };
+  }, []);
 
   return (
     <main id="main-content" tabIndex={-1} className="page-main">
@@ -21,7 +59,7 @@ const Experiences = () => {
         Work
       </h2>
       <div className={styles.timelineContainer}>
-        <div className={styles.timelineLine}></div>
+        <div ref={lineRef} className={styles.timelineLine}></div>
 
         <div className={styles.experiencesGrid}>
           {experiences.map((experience, index) => (

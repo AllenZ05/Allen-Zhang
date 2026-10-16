@@ -437,7 +437,6 @@ test("the Experiences timeline fills with scroll: empty at the top, fully lit at
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.setViewportSize({ width: 2000, height: 1343 });
   await page.goto("/experiences/");
-  if (!(await page.evaluate(() => CSS.supports("animation-timeline: scroll()")))) return;
   const line = page.locator('[class*="timelineLine"]');
   const fill = () => line.evaluate((el) => Number(getComputedStyle(el, "::after").scale.split(" ")[1] ?? 1));
   await expect.poll(fill).toBeLessThan(0.02);
@@ -467,5 +466,44 @@ test("project demo videos are hosted here, start fast, and play from the Demo li
     });
     expect(played).toBeGreaterThan(0.5);
     await tab.close();
+  }
+});
+
+test("on a phone the timeline's lit tip stays on screen until the line is full, and older Safari's fallback matches", async ({
+  page,
+}) => {
+  // Report no scroll timelines, like Safari before 26, so the page also computes the fallback progress
+  // (--scroll-progress) while this browser's own scroll timeline keeps driving the fill.
+  await page.addInitScript(() => {
+    const supports = CSS.supports.bind(CSS);
+    CSS.supports = (...args) => !String(args[0]).includes("animation-timeline") && supports(...args);
+  });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/experiences/");
+  const line = page.locator('[class*="timelineLine"]');
+  // Both the browser's fill and the fallback must reach the progress for the new scroll position
+  // (scroll position over --fill-end) before the tip is measured.
+  const read = () =>
+    line.evaluate((el) => {
+      const expected = Math.min(window.scrollY / Number.parseFloat(el.style.getPropertyValue("--fill-end")), 1);
+      const native = Number(getComputedStyle(el, "::after").scale.split(" ")[1] ?? 1);
+      const fallback = Number(el.style.getPropertyValue("--scroll-progress"));
+      const rect = el.getBoundingClientRect();
+      return {
+        native,
+        error: Math.max(Math.abs(native - expected), Math.abs(fallback - expected)),
+        tip: (rect.top + native * rect.height) / window.innerHeight,
+      };
+    });
+  const max = await page.evaluate(() => document.documentElement.scrollHeight - window.innerHeight);
+  for (let step = 0; step <= 10; step++) {
+    await page.evaluate((y) => window.scrollTo(0, y), Math.round((max * step) / 10));
+    await expect.poll(async () => (await read()).error).toBeLessThan(0.02);
+    const { native, tip } = await read();
+    if (native < 1) {
+      expect(tip).toBeGreaterThan(0.15);
+      expect(tip).toBeLessThan(0.85);
+    }
   }
 });

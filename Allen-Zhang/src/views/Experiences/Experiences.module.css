@@ -21,20 +21,27 @@
   border-radius: 2px;
 }
 
-/* The line fills with the page's scroll progress, like the scrollbar: empty at the top, full at the
-   bottom, and in between its lit tip stays around the middle of the screen on any screen size. */
-@supports (animation-timeline: scroll()) {
-  @media (prefers-reduced-motion: no-preference) {
+/* The line fills as the page scrolls: empty at the top, and full once its end reaches mid-screen (or
+   at the bottom of the page), so on any screen size its lit tip moves toward the middle of the screen.
+   Experiences.jsx measures --fill-end, and supplies the progress itself in browsers without scroll
+   timelines (Safari before 26). */
+@media (prefers-reduced-motion: no-preference) {
+  .timelineLine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--accent-primary);
+    box-shadow: 0 0 12px var(--accent-border-hover);
+    transform-origin: top;
+    scale: 1 var(--scroll-progress, 0);
+  }
+
+  @supports (animation-timeline: scroll()) {
     .timelineLine::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: var(--accent-primary);
-      box-shadow: 0 0 12px var(--accent-border-hover);
-      transform-origin: top;
       animation: timeline-fill linear both;
       animation-timeline: scroll(root block);
+      animation-range: 0 var(--fill-end, 100%);
     }
   }
 }
