@@ -130,16 +130,20 @@
   will-change: opacity;
 }
 
-.sectionCard:hover::after {
-  opacity: 1;
+@media (hover: hover) {
+  .sectionCard:hover::after {
+    opacity: 1;
+  }
 }
 
 :global([data-theme="light"]) .sectionCard {
   box-shadow: var(--shadow-md);
 }
 
-:global([data-theme="light"]) .sectionCard:hover {
-  box-shadow: var(--shadow-lg);
+@media (hover: hover) {
+  :global([data-theme="light"]) .sectionCard:hover {
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 :global([data-theme="light"]) .sectionCard::after {
@@ -193,14 +197,16 @@
   border-bottom: 1px solid var(--accent-border);
 }
 
-.introLink:hover {
-  color: #60a5fa;
-  border-bottom-color: #60a5fa;
-}
+@media (hover: hover) {
+  .introLink:hover {
+    color: #60a5fa;
+    border-bottom-color: #60a5fa;
+  }
 
-:global([data-theme="light"]) .introLink:hover {
-  color: #2563eb;
-  border-bottom-color: #2563eb;
+  :global([data-theme="light"]) .introLink:hover {
+    color: #2563eb;
+    border-bottom-color: #2563eb;
+  }
 }
 
 .highlightBox {
@@ -305,14 +311,16 @@
     box-shadow var(--transition-medium);
 }
 
-.termCard:hover {
-  background: var(--border-color);
-  border-color: var(--border-color-hover);
-  box-shadow: var(--shadow-md);
-}
+@media (hover: hover) {
+  .termCard:hover {
+    background: var(--border-color);
+    border-color: var(--border-color-hover);
+    box-shadow: var(--shadow-md);
+  }
 
-:global([data-theme="light"]) .termCard:hover {
-  background: rgba(59, 130, 246, 0.06);
+  :global([data-theme="light"]) .termCard:hover {
+    background: rgba(59, 130, 246, 0.06);
+  }
 }
 
 .termCard h5 {
@@ -438,9 +446,11 @@
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
-.skillCategory:hover {
-  background: var(--border-color);
-  box-shadow: var(--shadow-md);
+@media (hover: hover) {
+  .skillCategory:hover {
+    background: var(--border-color);
+    box-shadow: var(--shadow-md);
+  }
 }
 
 /* Cursor spotlight on the small cards (position set by handleSpotlightMove via --mx / --my). */
@@ -455,13 +465,15 @@
   pointer-events: none;
 }
 
-.termCard:hover .spotlight,
-.skillCategory:hover .spotlight {
-  opacity: 1;
-}
+@media (hover: hover) {
+  .termCard:hover .spotlight,
+  .skillCategory:hover .spotlight {
+    opacity: 1;
+  }
 
-:global([data-theme="light"]) .skillCategory:hover {
-  background: rgba(59, 130, 246, 0.06);
+  :global([data-theme="light"]) .skillCategory:hover {
+    background: rgba(59, 130, 246, 0.06);
+  }
 }
 
 .skillCategory h3 {
@@ -491,11 +503,13 @@
   white-space: nowrap;
 }
 
-.skillTag:hover {
-  background: var(--accent-bg);
-  border-color: var(--accent-border);
-  color: var(--text-primary);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .skillTag:hover {
+    background: var(--accent-bg);
+    border-color: var(--accent-border);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+  }
 }
 
 :global([data-theme="light"]) .skillTag {
@@ -503,10 +517,12 @@
   border-color: rgba(59, 130, 246, 0.2);
 }
 
-:global([data-theme="light"]) .skillTag:hover {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: rgba(59, 130, 246, 0.35);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+@media (hover: hover) {
+  :global([data-theme="light"]) .skillTag:hover {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.35);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+  }
 }
 
 /* Mobile Design */

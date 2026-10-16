@@ -524,3 +524,29 @@ test("Netlify keeps the build's hashed files cached for a year, and only those",
   expect(assets.length).toBeGreaterThan(5);
   for (const path of assets) expect(path).toMatch(/[a-z0-9_-]{10,}\.(js|css|woff2)$/);
 });
+
+test("on touch screens a tap leaves no hover highlight behind, while a mouse still gets one", async ({
+  browser,
+  page,
+}) => {
+  const touch = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  await touch.route(/https:\/\/(www\.googletagmanager\.com|.*google-analytics\.com)\//, (route) =>
+    route.fulfill({ body: "" }),
+  );
+  const phone = await touch.newPage();
+  await phone.goto("http://127.0.0.1:4175/projects/");
+  const tapped = phone.locator('main a[class*="projectButton"]').first();
+  const resting = await tapped.evaluate((el) => getComputedStyle(el).backgroundColor);
+  // Coming back from the project's site, the button looks as it did before the tap.
+  const [tab] = await Promise.all([touch.waitForEvent("page"), tapped.tap()]);
+  await tab.close();
+  await phone.waitForTimeout(400);
+  await expect(tapped).toHaveCSS("background-color", resting);
+  await expect(tapped).toHaveCSS("transform", "none");
+  await touch.close();
+
+  await page.goto("/projects/");
+  const hovered = page.locator('main a[class*="projectButton"]').first();
+  await hovered.hover();
+  await expect(hovered).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -2)");
+});

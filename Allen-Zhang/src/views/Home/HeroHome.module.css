@@ -111,18 +111,22 @@
   color: var(--bg-primary);
 }
 
-.primaryCta:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
-  color: var(--bg-primary);
+@media (hover: hover) {
+  .primaryCta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    color: var(--bg-primary);
+  }
 }
 
 .ctaIcon {
   transition: transform var(--transition-fast);
 }
 
-.primaryCta:hover .ctaIcon {
-  transform: translateX(3px);
+@media (hover: hover) {
+  .primaryCta:hover .ctaIcon {
+    transform: translateX(3px);
+  }
 }
 
 .secondaryCta {
@@ -131,10 +135,12 @@
   background: var(--surface-glass-light);
 }
 
-.secondaryCta:hover {
-  border-color: var(--border-color-hover);
-  background: var(--accent-bg);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .secondaryCta:hover {
+    border-color: var(--border-color-hover);
+    background: var(--accent-bg);
+    transform: translateY(-2px);
+  }
 }
 
 /* Mobile */

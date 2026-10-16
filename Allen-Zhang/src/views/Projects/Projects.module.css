@@ -22,9 +22,11 @@
     background-color var(--transition-medium);
 }
 
-.projectCard:hover {
-  border-color: var(--border-color-hover);
-  box-shadow: var(--shadow-lg);
+@media (hover: hover) {
+  .projectCard:hover {
+    border-color: var(--border-color-hover);
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 /* Cursor spotlight (position set by JS via --mx / --my) */
@@ -38,8 +40,10 @@
   z-index: 1;
 }
 
-.projectCard:hover .spotlight {
-  opacity: 1;
+@media (hover: hover) {
+  .projectCard:hover .spotlight {
+    opacity: 1;
+  }
 }
 
 /* Cover image */
@@ -134,11 +138,13 @@
   scale: 0.97;
 }
 
-.projectButton:hover {
-  border-color: var(--accent-border-hover);
-  background: var(--accent-bg);
-  color: var(--text-accent);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .projectButton:hover {
+    border-color: var(--accent-border-hover);
+    background: var(--accent-bg);
+    color: var(--text-accent);
+    transform: translateY(-2px);
+  }
 }
 
 .projectButton svg {

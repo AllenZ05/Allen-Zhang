@@ -59,9 +59,11 @@
   scale: 0.95;
 }
 
-.socialButton:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-color-hover);
+@media (hover: hover) {
+  .socialButton:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-color-hover);
+  }
 }
 
 .footerIcon {
@@ -79,29 +81,31 @@
   height: 1em;
 }
 
-/* --- Platform-specific hover colors with glow --- */
-.socialButton.email:hover .footerIcon {
-  color: #ea4335;
-  filter: drop-shadow(0 0 10px rgba(234, 67, 53, 0.5));
-}
+@media (hover: hover) {
+  /* --- Platform-specific hover colors with glow --- */
+  .socialButton.email:hover .footerIcon {
+    color: #ea4335;
+    filter: drop-shadow(0 0 10px rgba(234, 67, 53, 0.5));
+  }
 
-.socialButton.linkedin:hover .footerIcon {
-  color: #0a66c2;
-  filter: drop-shadow(0 0 10px rgba(10, 102, 194, 0.5));
-}
+  .socialButton.linkedin:hover .footerIcon {
+    color: #0a66c2;
+    filter: drop-shadow(0 0 10px rgba(10, 102, 194, 0.5));
+  }
 
-.socialButton.instagram:hover .footerIcon {
-  color: #d62976;
-  filter: drop-shadow(0 0 10px rgba(214, 41, 118, 0.5));
-}
+  .socialButton.instagram:hover .footerIcon {
+    color: #d62976;
+    filter: drop-shadow(0 0 10px rgba(214, 41, 118, 0.5));
+  }
 
-.socialButton.github:hover .footerIcon {
-  color: var(--text-primary);
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.35));
-}
+  .socialButton.github:hover .footerIcon {
+    color: var(--text-primary);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.35));
+  }
 
-:global([data-theme="light"]) .socialButton.github:hover .footerIcon {
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
+  :global([data-theme="light"]) .socialButton.github:hover .footerIcon {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
+  }
 }
 
 .copyright {

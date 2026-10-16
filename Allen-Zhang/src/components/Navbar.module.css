@@ -60,9 +60,11 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
 }
-.desktopNav a:hover {
-  color: var(--text-primary);
-  background: var(--surface-glass-light);
+@media (hover: hover) {
+  .desktopNav a:hover {
+    color: var(--text-primary);
+    background: var(--surface-glass-light);
+  }
 }
 .activeLink {
   color: var(--text-accent) !important;
@@ -99,9 +101,11 @@
   border-radius: 999px;
   cursor: pointer;
 }
-.themeToggle:hover,
-.hamburgerMenu:hover {
-  background: var(--accent-bg);
+@media (hover: hover) {
+  .themeToggle:hover,
+  .hamburgerMenu:hover {
+    background: var(--accent-bg);
+  }
 }
 .themeIcon,
 .hamburgerIcon {
@@ -128,13 +132,15 @@
       background var(--transition-fast),
       color var(--transition-fast);
   }
-  .logo:hover,
-  .desktopNav a:hover,
-  .themeToggle:hover {
-    transform: translateY(-1px);
-  }
-  .mobileNav a:hover {
-    transform: scale(1.02);
+  @media (hover: hover) {
+    .logo:hover,
+    .desktopNav a:hover,
+    .themeToggle:hover {
+      transform: translateY(-1px);
+    }
+    .mobileNav a:hover {
+      transform: scale(1.02);
+    }
   }
   .logo::before,
   .desktopNav a::before {
@@ -146,9 +152,11 @@
     transition: transform 600ms ease;
     pointer-events: none;
   }
-  .logo:hover::before,
-  .desktopNav a:hover::before {
-    transform: translateX(100%);
+  @media (hover: hover) {
+    .logo:hover::before,
+    .desktopNav a:hover::before {
+      transform: translateX(100%);
+    }
   }
 }
 
@@ -250,8 +258,10 @@
   border-radius: 14px;
   background: var(--surface-glass-light);
 }
-.mobileNav a:hover {
-  background: var(--accent-bg);
+@media (hover: hover) {
+  .mobileNav a:hover {
+    background: var(--accent-bg);
+  }
 }
 @media (max-width: 1024px) {
   .header {
