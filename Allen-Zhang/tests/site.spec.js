@@ -444,3 +444,28 @@ test("the Experiences timeline fills with scroll: empty at the top, fully lit at
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
   await expect.poll(fill).toBe(1);
 });
+
+test("project demo videos are hosted here, start fast, and play from the Demo links", async ({ page, context }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/projects/");
+  for (const name of ["Demo for Minesweeper", "Demo for Snake"]) {
+    const link = page.getByRole("link", { name, exact: true });
+    const href = await link.getAttribute("href");
+    expect(href).toMatch(/^\/projects\/.+\.mp4$/);
+    // The index (moov) comes first, so a phone can start playing before the whole file arrives.
+    const head = await page.request.get(href, { headers: { Range: "bytes=0-4095" } });
+    expect(head.status()).toBe(206);
+    expect((await head.body()).includes("moov")).toBe(true);
+    const [tab] = await Promise.all([context.waitForEvent("page"), link.click()]);
+    await tab.waitForLoadState();
+    const played = await tab.evaluate(async () => {
+      const video = document.querySelector("video");
+      video.muted = true;
+      await video.play();
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      return video.currentTime;
+    });
+    expect(played).toBeGreaterThan(0.5);
+    await tab.close();
+  }
+});

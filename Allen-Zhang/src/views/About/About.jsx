@@ -6,7 +6,7 @@ import { FaCode, FaGraduationCap, FaRocket } from "react-icons/fa6";
 import { IoCheckmark } from "react-icons/io5";
 import { MdHourglassBottom } from "react-icons/md";
 import { educationYears, skillCategories } from "../../data/about";
-import { emailHref, profile } from "../../data/profile";
+import { profile } from "../../data/profile";
 import { SPRING } from "../../lib/motion";
 import { handleSpotlightMove } from "../../lib/spotlight";
 import { useHydrated } from "../../lib/useHydrated";
@@ -133,22 +133,7 @@ const About = () => {
                   </span>
                 </div>
 
-                <p>
-                  Feel free to{" "}
-                  <a href={emailHref} className={styles.introLink}>
-                    email me
-                  </a>{" "}
-                  or connect on{" "}
-                  <a
-                    href={profile.socials.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.introLink}
-                  >
-                    LinkedIn
-                  </a>
-                  !
-                </p>
+                <p>Feel free to connect with me using my social links in the footer!</p>
               </div>
             </div>
           </div>

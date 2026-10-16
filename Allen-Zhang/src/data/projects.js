@@ -61,7 +61,7 @@ export const projects = [
     links: [
       {
         type: "demo",
-        url: "https://github.com/user-attachments/assets/abed9941-ae4a-4830-8f50-09bf21d47cab",
+        url: "/projects/minesweeper-demo.mp4",
         label: "Demo",
       },
       { type: "repository", url: "https://github.com/AllenZ05/Minesweeper", label: "Repository" },
@@ -78,10 +78,10 @@ export const projects = [
     links: [
       {
         type: "demo",
-        url: "https://github.com/user-attachments/assets/ace73ade-3ee0-4d42-868a-ffef13b5f889",
+        url: "/projects/snake-demo.mp4",
         label: "Demo",
       },
-      { type: "repository", url: "https://github.com/AllenZ05/Python-Games", label: "Repository" },
+      { type: "repository", url: "https://github.com/AllenZ05/Snake-Game", label: "Repository" },
     ],
   },
   {

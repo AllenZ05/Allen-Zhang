@@ -41,7 +41,7 @@ export const experiences = [
     description: (
       <>
         Shipped products and features for millions of merchants and shoppers worldwide on Shopify&apos;s{" "}
-        <a href="https://shop.app/" target="_blank" rel="noopener noreferrer">
+        <a href="https://shop.com/" target="_blank" rel="noopener noreferrer">
           Shop Team
         </a>
         .
@@ -74,7 +74,8 @@ export const experiences = [
     description:
       "Led end-to-end blockchain app development across frontend, backend, and database, streamlining workflows and improving reliability.",
     skills: ["Go", "Nuxt.js", "Vue.js", "TypeScript", "SQL"],
-    url: "https://www.dandelionnet.com/",
+    // The company site is offline, so the link opens this site's 404 page.
+    url: "/404/",
     logo: "/experiences/dandelion-networks.webp",
     gradient: "linear-gradient(180deg, #de975aff 0%, #121f80ff 100%)",
   },
@@ -99,7 +100,7 @@ export const experiences = [
     description:
       "Analyzed company and business data while coordinating logistics operations, including shipment planning and delivery handling.",
     skills: ["Microsoft Office", "Data Analysis", "Data Entry", "Logistics Management", "Inventory Control"],
-    url: "https://somerville.ca/",
+    url: "https://experiencesomerville.com/",
     logo: "/experiences/somerville.webp",
     gradient: "linear-gradient(135deg, #708dc0ff 0%, #16346aff 100%)",
   },
