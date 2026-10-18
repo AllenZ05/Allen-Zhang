@@ -93,7 +93,7 @@ export const educationYears = [
         courses: [
           "Probability Theory and Statistics 1",
           "Signals and Systems",
-          "Discrete Mathematics and Logic 2",
+          "Discrete Math and Logic 2",
           "Embedded Microprocessor Systems",
           "Systems Programming and Concurrency",
           "Instrumentation and Prototyping Laboratory",

@@ -368,6 +368,46 @@ test("cards below the fold appear as they scroll into view, or immediately with 
   await expect(page.locator("article").last()).toHaveCSS("opacity", "1");
 });
 
+test("the home page draws a new contour-line landscape on every visit", async ({ page }) => {
+  const landscape = async () => {
+    await page.goto("/");
+    const terrain = page.locator('[class*="terrain"]');
+    await expect(terrain).toHaveAttribute("data-ready");
+    return terrain.locator("canvas").first().evaluate((canvas) => {
+      const { data } = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height);
+      let drawn = 0;
+      for (let i = 3; i < data.length; i += 4) if (data[i]) drawn++;
+      return { drawn: drawn / (data.length / 4), image: canvas.toDataURL() };
+    });
+  };
+  const first = await landscape();
+  const second = await landscape();
+  // A few lines, not a filled area.
+  for (const { drawn } of [first, second]) expect(drawn).toBeGreaterThan(0.002);
+  for (const { drawn } of [first, second]) expect(drawn).toBeLessThan(0.1);
+  expect(second.image).not.toBe(first.image);
+});
+
+test("the home page's light keeps up with a quick flick of the mouse", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  const backdrop = page.locator('[class*="backdrop"]').first();
+  await page.mouse.move(300, 450);
+  await expect(backdrop).toHaveAttribute("data-glowing");
+  await page.mouse.move(1100, 450, { steps: 4 });
+  // A couple of frames later the light is under the pointer, not still on its way.
+  await page.waitForTimeout(50);
+  const { glow, lit, lines } = await backdrop.evaluate((el) => {
+    const box = (selector) => el.querySelector(selector).getBoundingClientRect();
+    return { glow: box('[class*="cursorGlow"]'), lit: box('[class*="litLines"]'), lines: box('[class*="_lines"]') };
+  });
+  expect(Math.abs(glow.left + glow.width / 2 - 1100)).toBeLessThan(5);
+  expect(Math.abs(glow.top + glow.height / 2 - 450)).toBeLessThan(5);
+  // The light slides around rather than being redrawn, and its accent lines stay exactly on the faint ones.
+  expect([lit.left, lit.top, lit.width, lit.height]).toEqual([lines.left, lines.top, lines.width, lines.height]);
+});
+
 test("About's small cards lift and glow under the cursor", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/about/");
