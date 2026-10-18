@@ -421,6 +421,9 @@ test("the home page's light keeps up with a quick flick of the mouse", async ({ 
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
+  // The pointer listener and the first drawing start together, after the page loads; a move before
+  // then is missed (on a slow machine, often).
+  await expect(page.locator('[class*="terrain"]')).toHaveAttribute("data-ready");
   const backdrop = page.locator('[class*="backdrop"]').first();
   await page.mouse.move(300, 450);
   await expect(backdrop).toHaveAttribute("data-glowing");
