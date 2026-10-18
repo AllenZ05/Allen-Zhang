@@ -40,6 +40,7 @@ export default function HeroBackdrop() {
     const canvases = [...terrain.querySelectorAll("canvas")];
     const noise = createNoise();
     let path = null;
+    let range;
     let width = 0;
     let height = 0;
     const paint = () => {
@@ -64,8 +65,10 @@ export default function HeroBackdrop() {
         canvas.style.height = `${height}px`;
         canvas.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
       }
-      // A few broad hills: ten lines read as a design rather than a map.
-      path = traceContours(noise, width, height, { count: 10, scale: 600 });
+      // A few broad hills: ten lines read as a design rather than a map. Later traces reuse the first
+      // one's height range, so when the hero only grows or shrinks (e.g. a phone's address bar hiding
+      // on scroll) the lines stay put instead of all shifting.
+      ({ path, range } = traceContours(noise, width, height, { count: 10, scale: 600, range }));
       paint();
       terrain.dataset.ready = "";
     };

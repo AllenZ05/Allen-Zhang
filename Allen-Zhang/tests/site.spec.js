@@ -388,6 +388,35 @@ test("the home page draws a new contour-line landscape on every visit", async ({
   expect(second.image).not.toBe(first.image);
 });
 
+test("the home page's lines stay put when the page grows, as when a phone's address bar hides", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 664 });
+  await page.goto("/");
+  await expect(page.locator('[class*="terrain"]')).toHaveAttribute("data-ready");
+  const lines = page.locator('canvas[class*="_lines"]');
+  await lines.evaluate((canvas) => {
+    window.firstDrawing = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height);
+  });
+  await page.setViewportSize({ width: 390, height: 1400 });
+  await expect.poll(() => lines.evaluate((canvas) => canvas.height)).toBeGreaterThan(1000);
+  // Compare the area both drawings cover; a few antialiased edge pixels may differ.
+  const moved = await lines.evaluate((canvas) => {
+    const before = window.firstDrawing;
+    const after = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height);
+    let differing = 0;
+    for (let y = 0; y < Math.min(before.height, after.height); y++) {
+      for (let x = 0; x < Math.min(before.width, after.width); x++) {
+        const a = (y * before.width + x) * 4 + 3;
+        const b = (y * after.width + x) * 4 + 3;
+        if (Math.abs(before.data[a] - after.data[b]) > 8) differing++;
+      }
+    }
+    return differing;
+  });
+  expect(moved).toBeLessThan(50);
+});
+
 test("the home page's light keeps up with a quick flick of the mouse", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.setViewportSize({ width: 1440, height: 900 });
