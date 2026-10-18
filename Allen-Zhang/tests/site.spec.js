@@ -550,3 +550,31 @@ test("on touch screens a tap leaves no hover highlight behind, while a mouse sti
   await hovered.hover();
   await expect(hovered).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -2)");
 });
+
+test("on touch screens the small company link icons still catch a slightly-off tap", async ({ browser, page }) => {
+  const touch = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  await touch.route(/^https:\/\//, (route) => route.fulfill({ body: "" }));
+  const phone = await touch.newPage();
+  await phone.goto("http://127.0.0.1:4175/experiences/");
+  const card = phone.locator("[data-reveal]").filter({ has: phone.locator('a[class*="externalLink"]') }).first();
+  await expect(card).toHaveAttribute("data-revealed", "");
+  await expect(card).toHaveCSS("opacity", "1");
+  const icon = await card.locator('a[class*="externalLink"]').boundingBox();
+  // 10px past the 16px icon's right edge, where a fingertip easily lands.
+  const [tab] = await Promise.all([
+    touch.waitForEvent("page"),
+    phone.touchscreen.tap(icon.x + icon.width + 10, icon.y + icon.height / 2),
+  ]);
+  await expect(tab).toHaveURL(/rippling\.com/);
+  await touch.close();
+
+  // A mouse is precise, so the link stays exactly the icon.
+  await page.goto("/experiences/");
+  const link = page.locator('a[class*="externalLink"]').first();
+  const box = await link.boundingBox();
+  const hit = await page.evaluate(
+    ([x, y]) => Boolean(document.elementFromPoint(x, y)?.closest('a[class*="externalLink"]')),
+    [box.x + box.width + 10, box.y + box.height / 2],
+  );
+  expect(hit).toBe(false);
+});

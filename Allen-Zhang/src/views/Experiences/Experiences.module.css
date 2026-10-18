@@ -258,6 +258,19 @@
   }
 }
 
+/* The icon is 16px; fingers get an invisible 44px target around it. */
+@media (pointer: coarse) {
+  .externalLink {
+    position: relative;
+  }
+
+  .externalLink::after {
+    content: "";
+    position: absolute;
+    inset: -14px;
+  }
+}
+
 .statusBadge {
   padding: 0.3rem 0.8rem;
   border-radius: 6px;
