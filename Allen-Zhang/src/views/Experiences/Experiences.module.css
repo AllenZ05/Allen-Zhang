@@ -283,6 +283,8 @@
   transition: all var(--transition-fast);
   position: relative;
   overflow: hidden;
+  /* Overflow: hidden would otherwise let a tight header (e.g. iPads upright) squeeze and cut the label. */
+  flex-shrink: 0;
 }
 
 .statusBadge::before {
@@ -545,15 +547,16 @@
   vertical-align: -0.1em;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 56.25em) {
   .teamsGrid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
 }
 
-/* Mobile Design */
-@media (max-width: 768px) {
+/* Mobile Design. Breakpoints in em follow the visitor's browser font size: larger text gets the
+   single column sooner (48em is 768px at the default 16px). */
+@media (max-width: 48em) {
   .timelineContainer {
     --line-left: 18px;
     --line-half: 1px;
@@ -596,7 +599,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30em) {
   .timelineContainer {
     --card-offset: 44px;
   }

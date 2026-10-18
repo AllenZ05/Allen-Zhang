@@ -85,6 +85,16 @@
   border: 1px solid var(--accent-border);
   border-radius: 999px;
 }
+/* Contrast themes (e.g. Windows) drop background colours, which hid the current page among the links.
+   Important beats the more specific highlights above (phone menu, before the indicator measures). */
+@media (forced-colors: active) {
+  .activeLink {
+    forced-color-adjust: none;
+    background: Highlight !important;
+    border-color: Highlight !important;
+    color: HighlightText !important;
+  }
+}
 .navActions {
   display: flex;
   gap: 0.5rem;

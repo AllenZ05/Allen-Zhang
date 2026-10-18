@@ -198,8 +198,9 @@ ul {
 
 /* Font Sizes */
 
+/* The visitor's browser font size (16px unless they changed it); everything else is in rem. */
 html {
-  font-size: 16px;
+  font-size: 100%;
 }
 
 body {

@@ -190,6 +190,51 @@ test("normal motion includes typing and deleting all hero messages and stable co
   await expect(typewriter).toHaveText("Computer Engineering student at the University of Waterloo");
 });
 
+test("the home page survives browser translation while its typed line and copy message come and go", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.addInitScript(() =>
+    Object.defineProperty(navigator, "clipboard", { value: { writeText: async () => {} } }),
+  );
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto("/");
+  await page.getByRole("button", { name: "Copy email address" }).waitFor();
+  // Like Google Translate and Safari: each text node is swapped for <font> elements, including text added later.
+  await page.evaluate(() => {
+    const translate = (node) => {
+      if (!node.nodeValue.trim() || node.parentNode.closest("font, script, style")) return;
+      const font = document.createElement("font");
+      font.textContent = `[fr] ${node.nodeValue}`;
+      node.replaceWith(font);
+    };
+    const translateAll = (root) => {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(translate);
+    };
+    translateAll(document.body);
+    new MutationObserver((records) => {
+      for (const record of records) {
+        for (const node of record.addedNodes) {
+          if (node.nodeType === Node.TEXT_NODE) translate(node);
+          else if (node.nodeType === Node.ELEMENT_NODE && node.localName !== "font") translateAll(node);
+        }
+      }
+    }).observe(document.body, { childList: true, subtree: true });
+  });
+  // The copy message clears after 3 seconds, and typing out and deleting the first line takes about 7;
+  // React removing either piece of translated text crashed the page.
+  await page.getByRole("button", { name: "Copy email address" }).click();
+  await expect(page.getByRole("status")).toHaveText("[fr] Email copied!");
+  await page.waitForTimeout(9000);
+  expect(errors).toEqual([]);
+  await expect(page.getByRole("status", { includeHidden: true })).toBeEmpty();
+  await expect(page.getByRole("heading", { name: "[fr] Allen Zhang" })).toBeVisible();
+});
+
 test("exported content and mobile navigation work without JavaScript", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
@@ -549,6 +594,57 @@ test("on touch screens a tap leaves no hover highlight behind, while a mouse sti
   const hovered = page.locator('main a[class*="projectButton"]').first();
   await hovered.hover();
   await expect(hovered).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -2)");
+});
+
+test("in high-contrast mode the current page still stands out in the navbar and the phone menu", async ({ page }) => {
+  await page.emulateMedia({ forcedColors: "active" });
+  await page.goto("/about/");
+  // The contrast theme's own highlight colour, as the browser resolves it.
+  const highlight = await page.evaluate(() => {
+    const probe = document.body.appendChild(document.createElement("div"));
+    probe.style.cssText = "forced-color-adjust: none; background: Highlight";
+    const color = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    return color;
+  });
+  const nav = page.getByRole("navigation", { name: "Main navigation" });
+  await expect(nav.getByRole("link", { name: "About" })).toHaveCSS("background-color", highlight);
+  await expect(nav.getByRole("link", { name: "Home" })).not.toHaveCSS("background-color", highlight);
+
+  // The phone menu's own accent tint used to win here, leaving dark text on a dark tint.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByRole("button", { name: "Open navigation menu" }).click();
+  const menu = page.getByRole("dialog", { name: "Navigation", exact: true });
+  await expect(menu.getByRole("link", { name: "About" })).toHaveCSS("background-color", highlight);
+  await expect(menu.getByRole("link", { name: "Home" })).not.toHaveCSS("background-color", highlight);
+});
+
+test("the Incoming badge shows in full on an iPad held upright", async ({ page }) => {
+  await page.setViewportSize({ width: 820, height: 1180 });
+  await page.goto("/experiences/");
+  const badge = page.locator('[class*="statusBadge"]').first();
+  await expect(badge).toBeVisible();
+  const { content, box } = await badge.evaluate((el) => ({ content: el.scrollWidth, box: el.clientWidth }));
+  expect(content).toBeLessThanOrEqual(box);
+});
+
+test("text follows the browser's font size setting without breaking the Experiences layout", async ({
+  page,
+  browserName,
+}) => {
+  test.skip(browserName !== "chromium", "Only Chromium can emulate the font size setting");
+  // Chrome's Settings > Appearance > Font size > Very large.
+  const devtools = await page.context().newCDPSession(page);
+  await devtools.send("Page.enable");
+  await devtools.send("Page.setFontSizes", { fontSizes: { standard: 24, fixed: 13 } });
+  await page.setViewportSize({ width: 1000, height: 900 });
+  await page.goto("/experiences/");
+  await expect(page.locator("html")).toHaveCSS("font-size", "24px");
+  // Larger text switches to the single-column timeline sooner instead of overflowing two columns.
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
+  const badge = page.locator('[class*="statusBadge"]').first();
+  const { content, box } = await badge.evaluate((el) => ({ content: el.scrollWidth, box: el.clientWidth }));
+  expect(content).toBeLessThanOrEqual(box);
 });
 
 test("on touch screens the small company link icons still catch a slightly-off tap", async ({ browser, page }) => {

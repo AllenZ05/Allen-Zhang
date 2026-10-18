@@ -75,12 +75,14 @@ export default function Footer({ year }) {
             )}
           </motion.div>
         ))}
+        {/* Each message is an element, not bare text: browser translation swaps text nodes for its own,
+            and React removing a swapped one crashed the page (see HeroHome). */}
         <p className={styles.copyStatus} role="status">
-          {copyState === "copied" && "Email copied!"}
+          {copyState === "copied" && <span>Email copied!</span>}
           {copyState === "error" && (
-            <>
+            <span>
               Copy manually: <a href={emailHref}>{profile.email}</a>
-            </>
+            </span>
           )}
         </p>
       </div>
