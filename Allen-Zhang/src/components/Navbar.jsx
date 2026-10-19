@@ -27,8 +27,8 @@ export default function Navbar() {
   const hydrated = useHydrated();
   const reducedMotion = useReducedMotion();
   const { theme, toggleTheme } = useTheme();
-  // Following a link closes the menu at once, so the page transition is the only motion (otherwise
-  // the outgoing page is drawn over the shrinking menu); the X button and Escape keep the animation.
+  // Following a link closes the menu at once, so the page transition is the only motion; the X button
+  // and Escape animate it closed.
   const [closeInstantly, setCloseInstantly] = useState(false);
   const closeMenu = () => setIsOpen(false);
   const followLink = () => {
@@ -62,7 +62,6 @@ export default function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
-  // The desktop list gets a single highlight that glides to the current page's link.
   const indicator = useSlidingIndicator(desktopList, '[aria-current="page"]', pathname);
 
   const links = navLinks.map(({ path, label }, index) => {
@@ -83,8 +82,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Its own view-transition layer above the sliding pages (globals.css). Set inline: CSS Modules
-          would rename it, and the global rules for "navbar" would no longer match. */}
+      {/* Inline: CSS Modules would rename it, and the view-transition rules in globals.css target "navbar". */}
       <nav
         className={styles.header}
         style={{ viewTransitionName: "navbar" }}

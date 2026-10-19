@@ -1,5 +1,4 @@
-// Tracks the cursor inside a card so CSS can draw a radial "spotlight"
-// at var(--mx) / var(--my). Attach as onMouseMove on the card element.
+// A card's onMouseMove: CSS draws its spotlight at var(--mx) / var(--my).
 export const handleSpotlightMove = (e) => {
   const rect = e.currentTarget.getBoundingClientRect();
   e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);

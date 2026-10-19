@@ -8,7 +8,7 @@ import styles from "./Modal.module.css";
 export default function Modal({ open, onClose, title, id, children, className = "" }) {
   const ref = useRef(null);
 
-  // Layout effect: the dialog opens in the same commit that renders it, so view transitions can capture it open.
+  // A layout effect opens the dialog in the same commit, so view transitions capture it open.
   useLayoutEffect(() => {
     if (!open) return;
     const dialog = ref.current;
@@ -37,8 +37,7 @@ export default function Modal({ open, onClose, title, id, children, className = 
           index === -1
             ? controls.at(event.shiftKey ? -1 : 0)
             : controls.at((index + (event.shiftKey ? -1 : 1)) % controls.length);
-        // Move focus ourselves so Tab cycles through the dialog's controls in every browser.
-        // Safari skips links by default, so leaving it to the browser lets focus escape the dialog.
+        // Cycle focus ourselves: Safari's Tab skips links, which let focus escape the dialog.
         event.preventDefault();
         next?.focus();
       }}

@@ -13,9 +13,8 @@ export const ThemeProvider = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false);
   // Follow the system theme until the visitor picks one with the toggle.
   const followSystem = useRef(true);
-  // The theme most recently asked for, the one on screen, and whether a cross-fade is running.
-  // Clicks during a fade only move the target; it is applied when the fade ends, so fades never
-  // cut each other off (which left the page half-switched for a moment).
+  // Clicks during a cross-fade only move the target, applied when the fade ends, so fades never cut
+  // each other off.
   const targetTheme = useRef("dark");
   const appliedTheme = useRef("dark");
   const fading = useRef(false);
@@ -51,8 +50,7 @@ export const ThemeProvider = ({ children }) => {
     if (!fading.current) targetTheme.current = theme;
   }, [theme, isInitialized]);
 
-  // Cross-fade the whole page at once rather than letting each part change colour at its own speed.
-  // flushSync applies the theme inside the transition so the new snapshot is captured in the new theme.
+  // flushSync applies the theme inside the transition, so the new snapshot has it.
   const fadeToTarget = () => {
     fading.current = true;
     fadeWholePage(() => flushSync(() => setTheme(targetTheme.current))).finished.finally(() => {
@@ -74,14 +72,7 @@ export const ThemeProvider = ({ children }) => {
     }
   };
 
-  const value = {
-    theme,
-    toggleTheme,
-    isDark: theme === "dark",
-    isLight: theme === "light",
-  };
-
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeContext;

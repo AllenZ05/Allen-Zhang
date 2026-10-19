@@ -79,8 +79,8 @@ export default function HeroHome() {
             </span>
           ))}
           <span className={styles.typedLine} aria-hidden="true" data-typewriter>
-            {/* Its own element, so React replaces its text rather than removing a text node: browser
-                translation swaps text nodes for its own, and removing a swapped one crashed the page. */}
+            {/* An element, so React updates its text instead of removing a text node that browser
+                translation swapped, which crashed the page. */}
             <span>{typedText}</span>
             <span className={styles.cursor} />
           </span>

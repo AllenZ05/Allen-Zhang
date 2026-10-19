@@ -2,16 +2,14 @@
 
 import { useEffect } from "react";
 
-// Reveals elements marked data-reveal as they scroll into view (styles in globals.css); elements
-// that arrive together are staggered. Re-scans after each route change, since every page renders
-// new elements. Elements in hidden tab panels reveal once their panel is shown.
+// Reveals [data-reveal] elements as they scroll into view, staggering ones that arrive together.
+// routeKey re-scans after each navigation.
 export function useReveal(routeKey) {
   // biome-ignore lint/correctness/useExhaustiveDependencies: routeKey re-scans the page after navigation.
   useEffect(() => {
     let index = 0;
     const reveal = (element, baseDelay = 0) => {
-      // Cards set their own spacing with --reveal-step (globals.css); the order is capped so a long
-      // batch never waits too long.
+      // Capped so a long batch never waits too long.
       element.style.setProperty("--reveal-base", `${baseDelay}s`);
       element.style.setProperty("--reveal-order", String(Math.min(index, 5)));
       element.setAttribute("data-revealed", "");
@@ -29,9 +27,8 @@ export function useReveal(routeKey) {
       { rootMargin: "0px 0px -8% 0px" },
     );
     for (const element of document.querySelectorAll("[data-reveal]:not([data-revealed])")) {
-      // Reveal what is already on screen right away instead of waiting for the observer's first
-      // report, which some engines deliver late; the observer handles everything further down.
-      // A short base delay lets the page heading lead and the cards follow.
+      // What's on screen reveals now (some engines report late), just after the page heading.
+      // Elements in hidden tab panels have no size yet, so they wait for the observer.
       const rect = element.getBoundingClientRect();
       if (rect.width > 0 && rect.top < window.innerHeight * 0.92 && rect.bottom > 0) reveal(element, 0.15);
       else observer.observe(element);

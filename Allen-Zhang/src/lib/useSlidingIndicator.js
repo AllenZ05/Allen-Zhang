@@ -2,10 +2,8 @@
 
 import { useLayoutEffect, useState } from "react";
 
-// Measures the active item inside a container so a single highlight can slide between items.
-// Offsets are relative to the container (which must be positioned), so page scroll never affects
-// the motion. Pass the container element (from a callback ref) and a key that changes with the
-// active item; resizing the container re-measures.
+// Measures the active item so one highlight can slide between items. The container must be
+// positioned; activeKey changes with the active item.
 export function useSlidingIndicator(container, activeSelector, activeKey) {
   const [box, setBox] = useState(null);
 
@@ -18,8 +16,8 @@ export function useSlidingIndicator(container, activeSelector, activeKey) {
         setBox(null);
         return;
       }
-      // Sum layout offsets up to the container. They ignore transforms (entrance animations, press
-      // scaling), and an animating ancestor can become the offsetParent along the way.
+      // Layout offsets ignore transforms (entrances, press scaling). An animating ancestor can become
+      // the offsetParent, so sum them up to the container.
       let x = 0;
       let y = 0;
       for (let node = active; node && node !== container; node = node.offsetParent) {

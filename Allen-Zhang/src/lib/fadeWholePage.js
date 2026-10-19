@@ -1,6 +1,5 @@
-// Runs a view transition that cross-fades the whole page (theme switch, project preview). Page
-// navigations use React's <ViewTransition> instead, where the navbar and footer stay put; the
-// data-fade flag tells globals.css which kind is running, and stays on until every fade has ended.
+// Cross-fades the whole page (theme switch, project preview). data-fade tells globals.css this isn't
+// a page navigation, and stays on until every fade has ended.
 let running = 0;
 
 export function fadeWholePage(update) {

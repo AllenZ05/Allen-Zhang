@@ -1,5 +1,3 @@
-/* Layout, backdrop, and buttons come from the home hero (HeroHome.module.css, HeroBackdrop). */
-
 .code {
   font-size: clamp(6rem, 20vw, 10rem);
   margin-bottom: 0.5rem;

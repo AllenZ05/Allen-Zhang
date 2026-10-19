@@ -13,10 +13,8 @@ const Experiences = () => {
   const reducedMotion = useReducedMotion();
   const lineRef = useRef(null);
 
-  // The timeline's fill (Experiences.module.css) completes at --fill-end: the scroll position where
-  // the line's end reaches mid-screen, or the bottom of the page if it never gets that far. Browsers
-  // without scroll timelines (Safari before 26) get the fill's progress from here too. Each role's
-  // dot lights up (data-lit) once the fill reaches it.
+  // Sets --fill-end, where the fill completes (the line's end at mid-screen, or the page's end), and
+  // lights each dot the fill reaches. Without scroll timelines (Safari before 26) it drives the fill too.
   useEffect(() => {
     const line = lineRef.current;
     const container = line.parentElement;
@@ -75,16 +73,11 @@ const Experiences = () => {
 
         <div className={styles.experiencesGrid}>
           {experiences.map((experience) => (
-            // A role's dates (in the rail beside the line) and its card enter together.
             <div
               key={experience.id}
               className={styles.role}
               data-reveal
-              style={{
-                "--enter-distance": "50px",
-                // The timeline unfolds one role at a time.
-                "--reveal-step": "0.18s",
-              }}
+              style={{ "--enter-distance": "50px", "--reveal-step": "0.18s" }}
             >
               <div className={styles.when}>
                 <span className={styles.period}>{experience.period}</span>

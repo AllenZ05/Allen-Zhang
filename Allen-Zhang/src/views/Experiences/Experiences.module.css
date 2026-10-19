@@ -23,10 +23,8 @@
   border-radius: 2px;
 }
 
-/* The line fills as the page scrolls: empty at the top, and full once its end reaches mid-screen (or
-   at the bottom of the page), so on any screen size its lit tip moves toward the middle of the screen.
-   Experiences.jsx measures --fill-end, and supplies the progress itself in browsers without scroll
-   timelines (Safari before 26). */
+/* The line fills as the page scrolls, full once its end reaches mid-screen (--fill-end, from
+   Experiences.jsx). */
 @media (prefers-reduced-motion: no-preference) {
   .timelineLine::after {
     content: "";
@@ -105,10 +103,6 @@
     background-color var(--transition-medium);
   isolation: isolate;
   will-change: transform;
-  transform: translate3d(0, 0, 0) scale(1);
-  -webkit-transform: translate3d(0, 0, 0) scale(1);
-  transform-origin: center center;
-  -webkit-transform-origin: center center;
 }
 
 .experienceCard::before,
@@ -141,11 +135,7 @@
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
   mask-composite: exclude;
-  -webkit-mask-composite: xor;
   z-index: 1;
   will-change: opacity;
 }
@@ -478,8 +468,7 @@
   transform: translateX(var(--node-shift-x));
 }
 
-/* A role's dot stays dim until the fill reaches it (Experiences.jsx sets data-lit). Only with full
-   motion, like the fill, and only while JavaScript runs. */
+/* A dot stays dim until the fill reaches it (data-lit). Only with full motion and JavaScript, like the fill. */
 @media (prefers-reduced-motion: no-preference) {
   :global(html[data-js]) .timelineNode {
     transition:
@@ -589,8 +578,7 @@
   }
 }
 
-/* Mobile Design. Breakpoints in em follow the visitor's browser font size: larger text gets the
-   single column sooner (48em is 768px at the default 16px). */
+/* Mobile Design. em breakpoints follow the browser font size (48em is 768px at the default 16px). */
 @media (max-width: 48em) {
   .timelineContainer {
     --line-left: 18px;

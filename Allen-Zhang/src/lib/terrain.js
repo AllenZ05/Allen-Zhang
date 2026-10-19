@@ -33,10 +33,8 @@ export function createNoise() {
   };
 }
 
-// Traces `count` contour lines over a width × height area with marching squares, returning one Path2D and
-// the height range the levels were spread across. By default that's the heights this landscape actually
-// has, so a flat one and a rugged one get the same number of lines. Passing the returned `range` back
-// when retracing keeps every line where it was. `scale` is the size of a hill in pixels.
+// Traces `count` contour lines with marching squares, spread across this landscape's height range
+// unless one is passed. Returns one Path2D and that range. `scale` is the size of a hill in pixels.
 export function traceContours(noise, width, height, { count, scale, range, cell = 8 }) {
   const cols = Math.ceil(width / cell) + 1;
   const rows = Math.ceil(height / cell) + 1;

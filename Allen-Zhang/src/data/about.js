@@ -43,7 +43,7 @@ export const skillCategories = [
   },
 ];
 
-// An explicit status distinguishes active/upcoming courses from completed courses.
+// Optional `status`: "in-progress" or "upcoming" marks a term that isn't completed.
 export const educationYears = [
   {
     year: "Third Year",

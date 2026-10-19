@@ -75,8 +75,8 @@ export default function Footer({ year }) {
             )}
           </motion.div>
         ))}
-        {/* Each message is an element, not bare text: browser translation swaps text nodes for its own,
-            and React removing a swapped one crashed the page (see HeroHome). */}
+        {/* Messages are elements, not bare text: React removing text that browser translation swapped
+            crashed the page. */}
         <p className={styles.copyStatus} role="status">
           {copyState === "copied" && <span>Email copied!</span>}
           {copyState === "error" && (

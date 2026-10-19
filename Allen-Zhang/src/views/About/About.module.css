@@ -64,7 +64,6 @@
   color: var(--text-primary) !important;
 }
 
-/* Sits behind the tab buttons and slides to the selected one (position set by About.jsx). */
 .tabThumb {
   position: absolute;
   top: 0;
@@ -76,7 +75,6 @@
   pointer-events: none;
 }
 
-/* Light theme: a raised white segment, like a native segmented control. */
 :global([data-theme="light"]) .tabNavigation {
   background: var(--bg-tertiary);
 }
@@ -121,11 +119,7 @@
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
   mask-composite: exclude;
-  -webkit-mask-composite: xor;
   z-index: 1;
   will-change: opacity;
 }
@@ -210,7 +204,6 @@
 }
 
 .highlightBox {
-  /* Green "open to work" signal — matches the Current badge and stands out from the blue accent */
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
@@ -429,10 +422,6 @@
     background-color var(--transition-medium);
   isolation: isolate;
   will-change: transform;
-  transform: translate3d(0, 0, 0) scale(1);
-  -webkit-transform: translate3d(0, 0, 0) scale(1);
-  transform-origin: center center;
-  -webkit-transform-origin: center center;
 }
 
 .skillCategory::before {

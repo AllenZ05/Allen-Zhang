@@ -6,5 +6,5 @@ const subscribe = () => () => {};
 const clientSnapshot = () => true;
 const serverSnapshot = () => false;
 
-// Progressive enhancement: the server renders usable links/content first.
+// False in the static HTML and during hydration, so components can render a no-JavaScript fallback.
 export const useHydrated = () => useSyncExternalStore(subscribe, clientSnapshot, serverSnapshot);

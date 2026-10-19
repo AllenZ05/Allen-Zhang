@@ -1,14 +1,8 @@
-/** Global Styles */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-/** App Styles */
-
-/* Theme Design System */
 
 /* Dark Theme (Default) */
 :root,
@@ -52,14 +46,10 @@
 
   /* Status Colors */
   --status-success: #22c55e;
-  --status-warning: #f59e0b;
-  --status-error: #ef4444;
-  --status-info: #3b82f6;
 
   /* Transitions */
   --transition-fast: 0.15s ease;
   --transition-medium: 0.3s ease;
-  --transition-slow: 0.5s ease;
 
   /* Radii */
   --radius-sm: 8px;
@@ -122,9 +112,6 @@
 
   /* Status Colors */
   --status-success: #147838;
-  --status-warning: #995006;
-  --status-error: #dc2626;
-  --status-info: #2563eb;
 
   /* Light mode specific accent colors for components */
   --accent-bg: rgba(59, 130, 246, 0.08);
@@ -196,17 +183,6 @@ ul {
   list-style-type: none;
 }
 
-/* Font Sizes */
-
-/* The visitor's browser font size (16px unless they changed it); everything else is in rem. */
-html {
-  font-size: 100%;
-}
-
-body {
-  font-size: 1rem;
-}
-
 .page-content {
   width: 100%;
   display: flex;
@@ -217,7 +193,7 @@ body {
 /* Shared shell for the About, Experiences, and Projects pages */
 .page-main {
   min-height: 100dvh;
-  /* Spacing above the content lives in padding (not margin) so the page background reaches under the floating navbar. */
+  /* Padding, not margin, so the page background reaches under the floating navbar. */
   padding: calc(2 * var(--spacing-lg) + var(--app-header-h)) var(--spacing-md) var(--spacing-lg);
   background: var(--bg-primary);
   transition: background-color var(--transition-medium);
@@ -286,15 +262,12 @@ main:focus {
   .page-content {
     animation: page-entrance 400ms cubic-bezier(0.23, 1, 0.32, 1);
   }
-  /* CSS entrances finish even without JavaScript. Independent translate/scale
-     leave transform available for the cards' interactive hover and tilt. */
+  /* translate and scale, not transform, which Framer Motion uses for hover. */
   [data-enter] {
     animation: content-entrance 600ms cubic-bezier(0.23, 1, 0.32, 1) var(--enter-delay, 0s) backwards;
   }
 }
-/* Page changes: the root (navbar, footer, background) stays still. Pages slide the way the nav
-   highlight moves (ClientLayout sets data-nav): the old page slips out quickly, then the new one
-   glides in from the other side, so the two barely overlap. Unknown pages (404) just fade. */
+/* Page changes slide the way the nav highlight moves (ClientLayout sets data-nav); the 404 page just fades. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -323,16 +296,14 @@ html[data-nav="back"] {
     translate: calc(var(--nav-shift, 0) * 56px) 0;
   }
 }
-/* The slide replaces the page container's own rise; headings and cards still play their entrances,
-   starting a little sooner than on first load (keeping their stagger) so the page is never blank. */
+/* The slide replaces the page's own rise; its entrances start a little sooner so it's never blank. */
 html[data-nav] .page-content {
   animation-duration: 0s;
   animation-delay: 0s;
 }
 html[data-nav] .page-content [data-enter] {
   animation-delay: calc(var(--enter-delay, 0s) - 0.15s);
-  /* Titles travel with the sliding page and only fade, so all motion runs one way. !important beats
-     the inline --enter-distance that first-load entrances use. */
+  /* Only fade, so all motion runs one way. !important beats the inline --enter-distance. */
   --enter-distance: 0px !important;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -341,8 +312,7 @@ html[data-nav] .page-content [data-enter] {
     animation: none;
   }
 }
-/* The navbar is its own layer above the page: during page changes it shows its live state with no
-   fade (the highlight pill slides on its own); theme switches cross-fade it with everything else. */
+/* The navbar stays live during page changes; theme switches cross-fade it with everything else. */
 ::view-transition-group(navbar) {
   z-index: 1;
 }
@@ -352,15 +322,13 @@ html:not([data-fade])::view-transition-old(navbar) {
 html:not([data-fade])::view-transition-new(navbar) {
   animation: none;
 }
-/* During a whole-page cross-fade, per-element colour transitions would leave the incoming layer
-   half-switched (muddy backgrounds, vanishing text); the cross-fade does all the animating. */
+/* Colour transitions would leave the cross-fade's new snapshot half-switched. */
 html[data-fade] *,
 html[data-fade] *::before,
 html[data-fade] *::after {
   transition: none !important;
 }
-/* The home page's typing line keeps typing during a theme fade; as its own live layer it can't
-   double up against the frozen snapshot of itself. */
+/* The typing line stays live during a theme fade instead of doubling up with its snapshot. */
 html[data-fade] [data-typewriter] {
   view-transition-name: hero-typed;
 }
@@ -378,13 +346,11 @@ html[data-fade]::view-transition-new(navbar) {
   animation: revert;
   animation-duration: 350ms;
 }
-/* The project image travels between its card and the preview on a fast-out, soft-landing curve. */
 ::view-transition-group(project-preview) {
   animation-duration: 450ms;
   animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
 }
-/* The card crop and the full preview are framed differently; swapping them early, while the image
-   is still small, avoids a visible double image mid-flight. */
+/* Swap the card crop for the full image early, while it's small, to avoid a visible double image. */
 ::view-transition-old(project-preview),
 ::view-transition-new(project-preview) {
   animation-duration: 200ms;
@@ -399,9 +365,7 @@ html[data-fade]::view-transition-new(navbar) {
     transform: none;
   }
 }
-/* Cards wait until they scroll into view, then play the entrance; useReveal marks them data-revealed.
-   Only while JavaScript runs (data-js is set before first paint) and with full motion, so content is
-   never left hidden. */
+/* Cards wait for useReveal (data-revealed). Only while JavaScript runs, so content is never left hidden. */
 @media (prefers-reduced-motion: no-preference) {
   html[data-js] [data-reveal]:not([data-revealed]) {
     opacity: 0;
@@ -421,14 +385,5 @@ html[data-fade]::view-transition-new(navbar) {
     opacity: 1;
     translate: 0 0;
     scale: 1;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  [data-motion-card]:hover {
-    transform: none !important;
-  }
-  a:hover,
-  button:hover {
-    transform: none;
   }
 }

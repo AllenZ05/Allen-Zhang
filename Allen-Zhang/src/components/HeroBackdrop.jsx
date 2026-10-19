@@ -5,15 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { createNoise, traceContours } from "../lib/terrain";
 import styles from "./HeroBackdrop.module.css";
 
-// Glow and contour lines behind a hero section (place it first inside the section). The lines trace a
-// random landscape, so every visit gets its own design. A soft light follows the pointer across the
-// section and brings out the lines beneath it. It tracks the pointer directly, like the cards'
-// spotlights: a trailing spring left the light hundreds of pixels behind a quick mouse.
-// Mouse and pen only, and off for reduced motion.
-//
-// The light and the lit lines are drawn once and slid around with transforms, which the compositor
-// moves without repainting: redrawing full-section gradients and masks on every mouse move cost
-// frames on big screens without graphics acceleration.
+// Glow and contour lines behind a hero section (place it first inside the section), with a light that
+// follows the mouse and brings out the lines beneath it. The light is drawn once and moved with
+// transforms: repainting it on every mouse move dropped frames on big screens.
 const GLOW_RADIUS = 380;
 const LIT_RADIUS = 180;
 
@@ -32,8 +26,7 @@ export default function HeroBackdrop() {
   const litX = useTransform(pointerX, (x) => LIT_RADIUS - x);
   const litY = useTransform(pointerY, (y) => LIT_RADIUS - y);
 
-  // One landscape per visit, drawn twice: faint lines, and an accent copy the pointer light reveals.
-  // It's retraced only when the section changes size; a theme change just recolours it.
+  // A new landscape every visit, drawn twice: faint lines, and an accent copy the light reveals.
   useEffect(() => {
     const terrain = terrainRef.current;
     const section = ref.current.parentElement;
@@ -44,7 +37,7 @@ export default function HeroBackdrop() {
     let width = 0;
     let height = 0;
     const paint = () => {
-      // The theme is set again on load, before the first drawing.
+      // The theme can change before the first drawing.
       if (!path) return;
       const css = getComputedStyle(document.documentElement);
       const colors = [css.getPropertyValue("--border-color"), css.getPropertyValue("--accent-border")];
@@ -65,9 +58,8 @@ export default function HeroBackdrop() {
         canvas.style.height = `${height}px`;
         canvas.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
       }
-      // A few broad hills: ten lines read as a design rather than a map. Later traces reuse the first
-      // one's height range, so when the hero only grows or shrinks (e.g. a phone's address bar hiding
-      // on scroll) the lines stay put instead of all shifting.
+      // Retraces reuse the first height range, so the lines stay put when the hero resizes (e.g. a
+      // phone's address bar hiding).
       ({ path, range } = traceContours(noise, width, height, { count: 10, scale: 600, range }));
       paint();
       terrain.dataset.ready = "";

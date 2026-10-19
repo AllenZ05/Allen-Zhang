@@ -100,7 +100,6 @@
     box-shadow var(--transition-fast);
 }
 
-/* Press feedback: dip the instant a button is pressed, not on release. */
 .primaryCta:active,
 .secondaryCta:active {
   scale: 0.97;

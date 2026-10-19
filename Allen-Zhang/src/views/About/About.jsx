@@ -22,7 +22,6 @@ const About = () => {
   const reducedMotion = useReducedMotion();
   const tabRefs = useRef([]);
   const [tablist, setTablist] = useState(null);
-  // One highlight slides behind the tabs to the selected one, across and down alike.
   const thumb = useSlidingIndicator(tablist, '[aria-selected="true"]', selectedSection);
 
   useEffect(() => {
@@ -42,7 +41,6 @@ const About = () => {
     style: { "--enter-scale": 0.95 },
   };
 
-  // Small cards lift on a spring and glow under the cursor, like the Projects and Experiences cards.
   const smallCardMotion = {
     "data-reveal": true,
     onMouseMove: handleSpotlightMove,

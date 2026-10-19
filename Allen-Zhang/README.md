@@ -19,7 +19,6 @@ npm run format   # biome auto-format
 Most structured page content lives in data files:
 
 - `src/data/profile.js` — role, availability, email, and social links shared across pages and metadata
-
 - `src/data/projects.js` — project cards (covers live in `public/projects/`)
 - `src/data/experiences.jsx` — work experience timeline and design team cards
 - `src/data/about.js` — skills and education

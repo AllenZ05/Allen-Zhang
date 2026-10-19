@@ -43,8 +43,8 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// Sets the theme (saved choice, else the system's) and marks that JavaScript is running, so CSS can
-// hide not-yet-revealed content (see useReveal) only when it will actually be revealed.
+// Sets the theme before the first paint, and marks that JavaScript runs so CSS only hides content
+// that useReveal will reveal.
 const themeInitScript = `(() => {
   const root = document.documentElement;
   root.setAttribute("data-js", "");
@@ -84,9 +84,7 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <head>
-        {/* A plain inline script runs while the HTML is parsed, before the first paint. next/script's
-            beforeInteractive is queued until Next's JavaScript loads, so the page painted in the
-            default dark theme first and cards flickered before their reveal. */}
+        {/* Not next/script: its beforeInteractive waits for Next's JavaScript, after the first paint. */}
         <script
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static first-paint script with no user input.
           dangerouslySetInnerHTML={{ __html: themeInitScript }}
@@ -100,7 +98,6 @@ export default function RootLayout({ children }) {
           gtag('js', new Date());
           gtag('config', 'G-FESWP1E6XM');`}
         </Script>
-        {/* Structured data is not executable, so it belongs in the static HTML rather than next/script. */}
         <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: static JSON with "<" escaped, per Next.js JSON-LD guidance.

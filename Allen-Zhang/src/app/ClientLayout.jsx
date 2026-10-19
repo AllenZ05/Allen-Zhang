@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import { useLayoutEffect, useRef, ViewTransition } from "react";
-import PageTransition from "../components/PageTransition";
 import { useReveal } from "../lib/useReveal";
 
 // Navbar order, so page changes slide the same way the nav highlight moves.
@@ -14,9 +13,8 @@ const ClientLayout = ({ children }) => {
   const previousPath = useRef(pathname);
   useReveal(pathname);
 
-  // Runs inside the navigation's view transition, before the new page is captured: tells
-  // globals.css which way to slide (the slide replaces the page container's own rise). The flag
-  // outlasts that rise, so removing it never restarts it.
+  // Tells globals.css which way to slide, before the view transition captures the new page. The flag
+  // outlasts the page's entrance, so removing it never restarts it.
   useLayoutEffect(() => {
     if (previousPath.current === pathname) return;
     const from = pageIndex(previousPath.current);
@@ -28,10 +26,9 @@ const ClientLayout = ({ children }) => {
     return () => clearTimeout(timer);
   }, [pathname]);
 
-  // The navbar and footer sit outside the transition, so they stay put (animations in globals.css).
   return (
     <ViewTransition key={pathname} enter="page-enter" exit="page-exit" default="none">
-      <PageTransition>{children}</PageTransition>
+      <div className="page-content">{children}</div>
     </ViewTransition>
   );
 };
