@@ -749,7 +749,11 @@ test("on touch screens a tap leaves no hover highlight behind, while a mouse sti
   await touch.close();
 
   await page.goto("/projects/");
-  const hovered = page.locator('main a[class*="projectButton"]').first();
+  // Hovering while the card waits to slide in scrolls to it there, and the slide leaves the mouse behind.
+  const card = page.locator("main article").first();
+  await expect(card).toHaveAttribute("data-revealed", "");
+  await expect(card).toHaveCSS("opacity", "1");
+  const hovered = card.locator('a[class*="projectButton"]').first();
   await hovered.hover();
   await expect(hovered).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -2)");
 });
