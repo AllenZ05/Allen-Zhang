@@ -565,7 +565,10 @@ test("beside a phone's width the roles line up in one column, with their dates i
   page,
 }) => {
   const layout = () =>
-    page.evaluate(() => {
+    page.evaluate(async () => {
+      // The entrances scale the page slightly, so measure once they've finished.
+      const entrances = document.getAnimations().filter((animation) => animation.timeline === document.timeline);
+      await Promise.all(entrances.map((animation) => animation.finished.catch(() => {})));
       const line = document.querySelector('[class*="timelineLine"]').getBoundingClientRect();
       const roles = [...document.querySelectorAll('[class*="experienceCard"]')].map((card) => {
         const when = card.parentElement.querySelector('[class*="when"]');

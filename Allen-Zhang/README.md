@@ -37,4 +37,4 @@ npm run test:e2e
 
 The checks run in Chromium and WebKit (Safari's engine) and cover navigation, themes, mobile dialog focus, About tabs, project previews, contact fallback, reduced motion, static content without JavaScript, and layout widths. They start and stop a local static server on port 4175. Analytics requests are blocked during the tests.
 
-GitHub Actions runs lint, build, and these browser checks on pushes and pull requests. The workflow belongs in `.github/workflows/website.yml` at the **parent repository root**, alongside `Allen-Zhang/`.
+GitHub Actions runs lint, build, and these browser checks on pushes and pull requests: Chromium on Linux and WebKit on macOS. The workflow belongs in `.github/workflows/website.yml` at the **parent repository root**, alongside `Allen-Zhang/`.

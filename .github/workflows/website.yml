@@ -11,7 +11,17 @@ permissions:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    name: verify (${{ matrix.browser }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - browser: chromium
+            os: ubuntu-latest
+          # Safari's engine on macOS, as Mac and iPhone visitors get it; its Linux build behaves differently.
+          - browser: webkit
+            os: macos-latest
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     defaults:
       run:
@@ -26,5 +36,5 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
-      - run: npx playwright install --with-deps chromium webkit
-      - run: npm run test:e2e
+      - run: npx playwright install --with-deps ${{ matrix.browser }}
+      - run: npm run test:e2e -- --project=${{ matrix.browser }}
