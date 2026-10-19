@@ -561,6 +561,89 @@ test("the Experiences timeline fills with scroll: empty at the top, fully lit at
   await expect.poll(fill).toBe(1);
 });
 
+test("beside a phone's width the roles line up in one column, with their dates in a rail left of the line", async ({
+  page,
+}) => {
+  const layout = () =>
+    page.evaluate(() => {
+      const line = document.querySelector('[class*="timelineLine"]').getBoundingClientRect();
+      const roles = [...document.querySelectorAll('[class*="experienceCard"]')].map((card) => {
+        const when = card.parentElement.querySelector('[class*="when"]');
+        const node = card.querySelector('[class*="timelineNode"]').getBoundingClientRect();
+        return {
+          card: card.getBoundingClientRect().left,
+          rail: when.checkVisibility() ? when.getBoundingClientRect().right : null,
+          inCard: card.querySelector('[class*="locationPeriod"]').checkVisibility(),
+          node: node.left + node.width / 2,
+        };
+      });
+      return { line: line.left + line.width / 2, roles };
+    });
+  for (const width of [820, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/experiences/");
+    const { line, roles } = await layout();
+    expect(roles.length).toBeGreaterThan(1);
+    for (const role of roles) {
+      expect(role.card).toBe(roles[0].card);
+      expect(role.rail).toBeLessThan(line);
+      expect(role.card).toBeGreaterThan(line);
+      expect(Math.abs(role.node - line)).toBeLessThan(1.5);
+      expect(role.inCard).toBe(false);
+    }
+  }
+  // A phone has no room for the rail, so the dates stay in the card.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/experiences/");
+  const { line, roles } = await layout();
+  for (const role of roles) {
+    expect(role.rail).toBeNull();
+    expect(role.inCard).toBe(true);
+    expect(Math.abs(role.node - line)).toBeLessThan(1.5);
+  }
+});
+
+test("each role's dot on the timeline lights up once the fill reaches it", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/experiences/");
+  const dots = page.locator('[class*="timelineNode"]');
+  // Lit dots, dots well clear of the fill's tip that are on the wrong side of it, and how far the fill
+  // is from where this scroll position puts it.
+  const read = () =>
+    page.evaluate(() => {
+      const line = document.querySelector('[class*="timelineLine"]');
+      const rect = line.getBoundingClientRect();
+      const fill = Number(getComputedStyle(line, "::after").scale.split(" ")[1] ?? 1);
+      const expected = Math.min(window.scrollY / Number.parseFloat(line.style.getPropertyValue("--fill-end")), 1);
+      const tip = rect.top + fill * rect.height;
+      const nodes = [...document.querySelectorAll('[class*="timelineNode"]')].map((node) => {
+        const box = node.getBoundingClientRect();
+        return { lit: node.hasAttribute("data-lit"), center: box.top + box.height / 2 };
+      });
+      return {
+        lag: Math.abs(fill - expected),
+        lit: nodes.filter((node) => node.lit).length,
+        wrong: nodes.filter((node) => Math.abs(node.center - tip) > 8 && node.lit !== node.center < tip).length,
+      };
+    });
+  await expect.poll(async () => (await read()).lit).toBe(0);
+  const max = await page.evaluate(() => document.documentElement.scrollHeight - window.innerHeight);
+  for (let step = 1; step <= 4; step++) {
+    await page.evaluate((y) => window.scrollTo(0, y), Math.round((max * step) / 4));
+    await expect.poll(async () => (await read()).lag).toBeLessThan(0.02);
+    await expect.poll(async () => (await read()).wrong).toBe(0);
+  }
+  await expect.poll(async () => (await read()).lit).toBe(await dots.count());
+  // A dim dot has a cover over its colour; with reduced motion there's no fill, so every dot shows its colour.
+  const covered = () => dots.first().evaluate((node) => getComputedStyle(node, "::after").opacity);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect.poll(covered).toBe("1");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.reload();
+  expect(await dots.first().evaluate((node) => getComputedStyle(node, "::after").content)).toBe("none");
+});
+
 test("project demo videos are hosted here, start fast, and play from the Demo links", async ({ page, context }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/projects/");
@@ -712,7 +795,7 @@ test("text follows the browser's font size setting without breaking the Experien
   await page.setViewportSize({ width: 1000, height: 900 });
   await page.goto("/experiences/");
   await expect(page.locator("html")).toHaveCSS("font-size", "24px");
-  // Larger text switches to the single-column timeline sooner instead of overflowing two columns.
+  // Larger text switches to the phone layout sooner instead of overflowing the date rail and cards.
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
   const badge = page.locator('[class*="statusBadge"]').first();
   const { content, box } = await badge.evaluate((el) => ({ content: el.scrollWidth, box: el.clientWidth }));
